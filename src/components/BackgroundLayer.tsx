@@ -28,18 +28,18 @@ export function BackgroundLayer() {
         className="absolute inset-0 will-change-[filter]"
       >
         <ColorBends
-          colors={["#ff5c7a", "#8a5cff", "#00ffd1"]}
+          colors={["#1d78eb"]}
           rotation={90}
           speed={0.2}
           scale={1}
-          frequency={1}
-          warpStrength={1}
+          frequency={0.9}
+          warpStrength={0.975}
           mouseInfluence={1}
           noise={0.15}
-          parallax={0.5}
+          parallax={0}
           iterations={1}
-          intensity={1.5}
-          bandWidth={6}
+          intensity={2}
+          bandWidth={4}
           transparent
         />
       </motion.div>
