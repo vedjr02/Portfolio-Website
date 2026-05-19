@@ -21,10 +21,10 @@ export function Education() {
               Education
             </span>
           </div>
-          <h2 className="font-display text-[clamp(2.2rem,5.5vw,4.5rem)] leading-[0.95] text-white max-w-3xl">
+          <h2 className="font-display text-[clamp(2rem,5vw,4.25rem)] leading-[0.95] text-white max-w-5xl">
             Two countries,{" "}
-            <span className="italic text-sky-300/90">
-              one continuous curriculum.
+            <span className="italic text-sky-300/90 whitespace-nowrap">
+              one continuous&nbsp;curriculum.
             </span>
           </h2>
         </motion.div>
