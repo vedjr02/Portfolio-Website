@@ -7,8 +7,21 @@
   --color-fg-dim: #a3a3a3;
   --color-accent: #e8b96b;
   --font-sans: var(--font-sans);
-  --font-display: var(--font-display);
+  --font-display: var(--font-sans);
   --font-mono: var(--font-mono);
+}
+
+body {
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.005em;
+}
+
+.font-display {
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
 }
 
 :root {
@@ -17,9 +30,13 @@
   color-scheme: dark;
 }
 
-html,
-body {
+html {
   background: var(--background);
+  color: var(--foreground);
+}
+
+body {
+  background: transparent;
   color: var(--foreground);
 }
 

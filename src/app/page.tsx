@@ -6,18 +6,23 @@ import { Skills } from "@/components/Skills";
 import { Education } from "@/components/Education";
 import { Footer } from "@/components/Footer";
 import { ScrollProgress } from "@/components/ScrollProgress";
+import { BackgroundLayer } from "@/components/BackgroundLayer";
 
 export default function Home() {
   return (
-    <main className="relative grain">
-      <ScrollProgress />
-      <Nav />
-      <Hero />
-      <Work />
-      <Story />
-      <Skills />
-      <Education />
-      <Footer />
-    </main>
+    <>
+      <BackgroundLayer />
+
+      <main className="relative grain">
+        <ScrollProgress />
+        <Nav />
+        <Hero />
+        <Work />
+        <Story />
+        <Skills />
+        <Education />
+        <Footer />
+      </main>
+    </>
   );
 }

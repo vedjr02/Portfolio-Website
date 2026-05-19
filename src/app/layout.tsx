@@ -1,18 +1,11 @@
 import type { Metadata } from "next";
-import { Inter, Instrument_Serif, JetBrains_Mono } from "next/font/google";
+import { Oswald, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({
+const oswald = Oswald({
   variable: "--font-sans",
   subsets: ["latin"],
-  display: "swap",
-});
-
-const instrumentSerif = Instrument_Serif({
-  variable: "--font-display",
-  subsets: ["latin"],
-  weight: ["400"],
-  style: ["normal", "italic"],
+  weight: ["300", "400", "500", "600", "700"],
   display: "swap",
 });
 
@@ -43,9 +36,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${instrumentSerif.variable} ${jetbrainsMono.variable} h-full antialiased`}
+      className={`${oswald.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full bg-[#0a0a0a] text-neutral-100 font-sans selection:bg-amber-200/30 selection:text-amber-100">
+      <body className="min-h-full text-neutral-100 font-sans selection:bg-amber-200/30 selection:text-amber-100">
         {children}
       </body>
     </html>

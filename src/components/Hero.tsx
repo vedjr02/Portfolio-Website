@@ -11,31 +11,6 @@ export function Hero() {
       id="top"
       className="relative min-h-[100svh] flex flex-col justify-end overflow-hidden pt-32 pb-12 md:pb-16"
     >
-      {/* Aurora glow background */}
-      <div
-        className="aurora bg-amber-400/30"
-        style={{ width: 520, height: 520, top: "10%", left: "-10%" }}
-      />
-      <div
-        className="aurora bg-rose-400/20"
-        style={{ width: 460, height: 460, top: "30%", right: "-8%" }}
-      />
-      <div
-        className="aurora bg-indigo-500/20"
-        style={{ width: 520, height: 520, bottom: "-20%", left: "30%" }}
-      />
-
-      {/* Grid lines */}
-      <div
-        className="absolute inset-0 opacity-[0.04] pointer-events-none"
-        style={{
-          backgroundImage:
-            "linear-gradient(to right, #fff 1px, transparent 1px), linear-gradient(to bottom, #fff 1px, transparent 1px)",
-          backgroundSize: "64px 64px",
-          maskImage:
-            "radial-gradient(ellipse at center, black 40%, transparent 75%)",
-        }}
-      />
 
       <div className="relative z-10 mx-auto w-full max-w-6xl px-6">
         {/* Status pill */}

@@ -8,16 +8,6 @@ const easeOut = [0.2, 0.8, 0.2, 1] as const;
 export function Footer() {
   return (
     <footer id="contact" className="relative pt-24 md:pt-36 pb-10 overflow-hidden">
-      {/* Aurora */}
-      <div
-        className="aurora bg-amber-400/25"
-        style={{ width: 600, height: 600, bottom: "-40%", left: "-10%" }}
-      />
-      <div
-        className="aurora bg-rose-400/20"
-        style={{ width: 520, height: 520, bottom: "-30%", right: "-10%" }}
-      />
-
       <div className="relative mx-auto max-w-6xl px-6">
         {/* CTA block */}
         <motion.div

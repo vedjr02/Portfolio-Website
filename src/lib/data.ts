@@ -132,7 +132,14 @@ export const education = [
     degree: "B.E. Information Technology",
     school: "Ramrao Adik Institute of Technology, DY Patil University",
     location: "Mumbai, India",
-    period: "Jun 2021 — May 2025",
+    period: "Jun 2022 — May 2025",
+    status: "completed",
+  },
+  {
+    degree: "Diploma in Computer Science",
+    school: "V.P.M's Polytechnic",
+    location: "Mumbai, India",
+    period: "Jun 2019 — May 2022",
     status: "completed",
   },
 ];
