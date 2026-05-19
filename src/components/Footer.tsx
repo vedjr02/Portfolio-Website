@@ -144,7 +144,7 @@ export function Footer() {
             © {new Date().getFullYear()} Vedant Ambre. Crafted with care.
           </p>
           <p className="font-mono text-[10px] tracking-[0.18em] uppercase text-neutral-500">
-            Maynooth → Mumbai
+            Built with curiosity
           </p>
         </div>
       </div>
