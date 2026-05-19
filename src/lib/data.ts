@@ -5,7 +5,6 @@ export const profile = {
   title: "Business Analyst",
   altTitle: "Data Analyst",
   tagline: "Currently living in Ireland",
-  availability: "Available October 2026",
   email: "ambreved3@gmail.com",
   location: "Maynooth, Ireland",
   socials: {

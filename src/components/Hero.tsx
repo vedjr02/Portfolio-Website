@@ -25,7 +25,7 @@ export function Hero() {
             <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />
           </span>
           <span className="font-mono text-[11px] tracking-[0.16em] uppercase text-neutral-300">
-            {profile.tagline} · {profile.availability}
+            {profile.tagline}
           </span>
         </motion.div>
 

@@ -23,7 +23,7 @@ export function Footer() {
               <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />
             </span>
             <span className="font-mono text-[11px] tracking-[0.18em] uppercase text-neutral-300">
-              {profile.availability}
+              Open to opportunities
             </span>
           </div>
 
@@ -129,9 +129,12 @@ export function Footer() {
               Now
             </div>
             <p className="text-neutral-300 text-sm leading-relaxed">
-              Wrapping up my Master&apos;s in Maynooth and packing the bags for
-              Mumbai. Open to Business Analyst & Data Analyst roles from{" "}
-              <span className="text-white">October 2026.</span>
+              Wrapping up my Master&apos;s in Maynooth and exploring what comes
+              next. Open to{" "}
+              <span className="text-white">
+                Business Analyst & Data Analyst
+              </span>{" "}
+              roles wherever the data is interesting.
             </p>
           </div>
         </div>
