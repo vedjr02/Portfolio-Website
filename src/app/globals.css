@@ -92,8 +92,25 @@ html {
     transform: translate3d(-50%, 0, 0);
   }
 }
+@keyframes marquee-reverse {
+  0% {
+    transform: translate3d(-50%, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
 .animate-marquee {
   animation: marquee 40s linear infinite;
+}
+.animate-marquee-slow {
+  animation: marquee 55s linear infinite;
+}
+.animate-marquee-reverse {
+  animation: marquee-reverse 45s linear infinite;
+}
+.pause-on-hover:hover {
+  animation-play-state: paused;
 }
 
 /* Slow spin */
