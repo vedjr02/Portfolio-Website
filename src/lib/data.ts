@@ -145,20 +145,10 @@ export const education = [
 ];
 
 export const experience = [
-  {
-    label: "Maynooth University",
-    note: "Master's in Business Analytics",
-  },
-  {
-    label: "EnerShare",
-    note: "Business Consulting Project",
-  },
-  {
-    label: "DY Patil University",
-    note: "B.E. Information Technology",
-  },
-  {
-    label: "Independent Research",
-    note: "Thermal Diagnostics Paper",
-  },
+  { label: "Insights", note: "Turning data into clarity" },
+  { label: "Storytelling", note: "Numbers with a narrative" },
+  { label: "Strategy", note: "Models that move the needle" },
+  { label: "Decisions", note: "Evidence over opinion" },
+  { label: "Dashboards", note: "Built for non-technical eyes" },
+  { label: "Impact", note: "From slide to shipped" },
 ];
