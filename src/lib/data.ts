@@ -77,7 +77,7 @@ export const projects: Project[] = [
       "Real-time fleet visualization",
     ],
     status: "Completed",
-    accent: "from-emerald-300/30 to-teal-400/10",
+    accent: "from-sky-300/30 to-indigo-400/10",
   },
   {
     id: "diabetic-foot",
@@ -93,7 +93,7 @@ export const projects: Project[] = [
       "Published research paper",
     ],
     status: "Completed",
-    accent: "from-fuchsia-300/30 to-purple-400/10",
+    accent: "from-sky-300/30 to-indigo-400/10",
   },
 ];
 
