@@ -112,11 +112,11 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.9, ease: easeOut, delay: (index % 2) * 0.08 }}
-      className={`group relative ${span} glass glass-hover rounded-[28px] overflow-hidden`}
+      className={`group relative ${span} glass glass-hover rounded-[28px] overflow-hidden bg-neutral-950/70 backdrop-blur-2xl`}
     >
-      {/* Decorative accent gradient */}
+      {/* Decorative accent gradient — kept subtle so card stays readable */}
       <div
-        className={`absolute inset-0 bg-gradient-to-br ${project.accent} opacity-60 group-hover:opacity-100 transition-opacity duration-700`}
+        className={`absolute inset-0 bg-gradient-to-br ${project.accent} opacity-30 group-hover:opacity-50 transition-opacity duration-700`}
       />
       {/* Decorative number watermark */}
       <div className="absolute -top-2 -right-3 select-none pointer-events-none">
