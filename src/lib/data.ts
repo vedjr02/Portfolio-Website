@@ -4,7 +4,7 @@ export const profile = {
   lastName: "Ambre",
   title: "Business Analyst",
   altTitle: "Data Analyst",
-  tagline: "Relocating to Mumbai, India",
+  tagline: "Currently living in Ireland",
   availability: "Available October 2026",
   email: "ambreved3@gmail.com",
   location: "Maynooth, Ireland",
