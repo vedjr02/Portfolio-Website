@@ -11,7 +11,7 @@ export function Work() {
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeader
           eyebrow="Selected Work"
-          title="From 2024 til today"
+          title="Things I've shipped"
           subtitle="A handful of projects where data, design and decision-making intersect."
         />
 
