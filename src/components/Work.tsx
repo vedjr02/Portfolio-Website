@@ -29,7 +29,7 @@ export function Work() {
           className="mt-16 text-center text-neutral-400"
         >
           More case studies coming soon,{" "}
-          <span className="font-display italic text-amber-200/90">
+          <span className="font-display italic text-sky-300/90">
             steadily but surely.
           </span>
         </motion.p>
@@ -132,7 +132,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
             <span
               className={`h-1.5 w-1.5 rounded-full ${
                 project.status === "In Progress"
-                  ? "bg-amber-300"
+                  ? "bg-sky-300"
                   : "bg-emerald-400"
               }`}
             />

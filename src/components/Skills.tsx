@@ -43,7 +43,7 @@ export function Skills() {
             </div>
             <h2 className="font-display text-[clamp(2.2rem,5.5vw,4.5rem)] leading-[0.95] text-white max-w-2xl">
               Every tool has a job;{" "}
-              <span className="italic text-amber-200/90">
+              <span className="italic text-sky-300/90">
                 I match the tool to the question.
               </span>
             </h2>

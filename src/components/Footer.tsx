@@ -30,7 +30,7 @@ export function Footer() {
           <h2 className="font-display text-[clamp(2.5rem,8vw,7rem)] leading-[0.9] text-white">
             Let&apos;s build something
             <br />
-            <span className="italic text-amber-200/90">data-driven.</span>
+            <span className="italic text-sky-300/90">data-driven.</span>
           </h2>
 
           <p className="mt-8 max-w-xl mx-auto text-neutral-400 text-base md:text-lg">
@@ -40,7 +40,7 @@ export function Footer() {
 
           <a
             href={profile.socials.email}
-            className="group inline-flex items-center gap-3 mt-10 rounded-full bg-white text-black px-6 py-3.5 text-base font-medium hover:bg-amber-200 transition-colors duration-300"
+            className="group inline-flex items-center gap-3 mt-10 rounded-full bg-white text-black px-6 py-3.5 text-base font-medium hover:bg-sky-300 transition-colors duration-300"
           >
             <span>{profile.email}</span>
             <span className="flex h-7 w-7 items-center justify-center rounded-full bg-black/10 group-hover:bg-black/20 transition-colors">

@@ -46,7 +46,7 @@ export const projects: Project[] = [
       "Cross-functional requirement gathering",
     ],
     status: "In Progress",
-    accent: "from-amber-300/30 to-rose-300/10",
+    accent: "from-sky-300/30 to-indigo-400/10",
   },
   {
     id: "vcg",

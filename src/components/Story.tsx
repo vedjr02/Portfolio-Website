@@ -28,7 +28,7 @@ export function Story() {
             </div>
             <h2 className="font-display text-[clamp(2.2rem,5.5vw,4.5rem)] leading-[0.95] text-white">
               I don&apos;t have dark secrets,{" "}
-              <span className="italic text-amber-200/90">
+              <span className="italic text-sky-300/90">
                 only bright spreadsheets.
               </span>
             </h2>
@@ -88,7 +88,7 @@ function Marquee({ items }: { items: string[] }) {
             <span className="font-display text-3xl md:text-5xl text-neutral-200 whitespace-nowrap">
               {label}
             </span>
-            <span className="h-2 w-2 rounded-full bg-amber-300/60" />
+            <span className="h-2 w-2 rounded-full bg-sky-300/60" />
           </div>
         ))}
       </div>

@@ -38,7 +38,7 @@ export function Hero() {
         >
           Howdy! Meet your trusted analytics partner,{" "}
           <span className="text-white">turning ambiguous data into</span>{" "}
-          <span className="italic font-display text-amber-200/90">
+          <span className="italic font-display text-sky-300/90">
             confident business decisions.
           </span>
         </motion.p>

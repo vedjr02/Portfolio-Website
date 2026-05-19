@@ -38,7 +38,7 @@ export default function RootLayout({
       lang="en"
       className={`${oswald.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full text-neutral-100 font-sans selection:bg-amber-200/30 selection:text-amber-100">
+      <body className="min-h-full text-neutral-100 font-sans selection:bg-sky-300/30 selection:text-sky-100">
         {children}
       </body>
     </html>

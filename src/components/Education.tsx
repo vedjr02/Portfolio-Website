@@ -23,7 +23,7 @@ export function Education() {
           </div>
           <h2 className="font-display text-[clamp(2.2rem,5.5vw,4.5rem)] leading-[0.95] text-white max-w-3xl">
             Two countries,{" "}
-            <span className="italic text-amber-200/90">
+            <span className="italic text-sky-300/90">
               one continuous curriculum.
             </span>
           </h2>
@@ -46,7 +46,7 @@ export function Education() {
                 }`}
               >
                 {/* Dot */}
-                <div className="absolute left-3 md:left-1/2 md:-translate-x-1/2 top-1 h-3 w-3 rounded-full bg-amber-300 ring-4 ring-amber-300/15" />
+                <div className="absolute left-3 md:left-1/2 md:-translate-x-1/2 top-1 h-3 w-3 rounded-full bg-sky-300 ring-4 ring-sky-300/15" />
 
                 <div className="pl-10 md:pl-0 md:pr-10">
                   <div className="font-mono text-[10px] tracking-[0.22em] uppercase text-neutral-400 mb-3 flex items-center gap-2">

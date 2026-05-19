@@ -61,7 +61,7 @@ export function Nav() {
 
         <a
           href="#contact"
-          className="group relative overflow-hidden rounded-full bg-white text-black px-3.5 py-1.5 text-[13px] font-medium hover:bg-amber-200 transition-colors duration-300"
+          className="group relative overflow-hidden rounded-full bg-white text-black px-3.5 py-1.5 text-[13px] font-medium hover:bg-sky-300 transition-colors duration-300"
         >
           Contact
         </a>
