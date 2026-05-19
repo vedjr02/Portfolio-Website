@@ -112,22 +112,13 @@ function SkillRow({ row, index }: { row: Row; index: number }) {
   );
 }
 
-function SkillPill({ label, accent }: { label: string; accent: number }) {
-  const accents = [
-    "from-sky-400/20 to-blue-500/5 hover:from-sky-300/30 hover:to-blue-500/10",
-    "from-indigo-400/20 to-blue-600/5 hover:from-indigo-300/30 hover:to-blue-600/10",
-    "from-cyan-400/20 to-sky-500/5 hover:from-cyan-300/30 hover:to-sky-500/10",
-  ];
+function SkillPill({ label }: { label: string; accent: number }) {
   return (
-    <div
-      className={`group shrink-0 rounded-2xl border border-white/10 bg-gradient-to-br ${accents[accent % 3]} backdrop-blur-xl px-5 py-3 md:px-6 md:py-3.5 transition-colors duration-500 hover:border-white/25`}
-    >
-      <div className="flex items-center gap-2.5">
-        <span className="h-1.5 w-1.5 rounded-full bg-sky-300 group-hover:bg-sky-200 transition-colors" />
-        <span className="font-display tracking-[0.02em] text-[15px] md:text-base text-white whitespace-nowrap">
-          {label}
-        </span>
-      </div>
+    <div className="group shrink-0 flex items-center gap-4 px-1">
+      <span className="font-display tracking-[0.01em] text-2xl md:text-4xl text-white/60 group-hover:text-white whitespace-nowrap transition-colors duration-500">
+        {label}
+      </span>
+      <span className="text-sky-300/50 text-xl md:text-2xl select-none">✦</span>
     </div>
   );
 }
