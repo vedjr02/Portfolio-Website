@@ -98,10 +98,10 @@ function SideProjectCard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
       transition={{ duration: 0.6, ease: easeOut, delay: (index % 4) * 0.05 }}
-      className="group relative shrink-0 snap-start w-[280px] md:w-[320px] rounded-3xl overflow-hidden border border-white/10 bg-neutral-950/70 backdrop-blur-2xl hover:border-white/25 transition-colors duration-500"
+      className="group relative shrink-0 snap-start w-[280px] md:w-[320px] glass glass-hover rounded-3xl overflow-hidden bg-neutral-950/70 backdrop-blur-2xl"
     >
-      {/* Hover accent */}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-sky-400/0 via-blue-500/0 to-indigo-500/0 group-hover:from-sky-400/10 group-hover:via-blue-500/5 group-hover:to-indigo-500/10 transition-colors duration-700" />
+      {/* Subtle accent gradient — same family as the Work cards */}
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-sky-300/20 to-indigo-400/5 opacity-40 group-hover:opacity-70 transition-opacity duration-700" />
 
       <div className="relative p-6 md:p-7 flex flex-col h-[300px] md:h-[320px]">
         <div className="flex items-start justify-between">
