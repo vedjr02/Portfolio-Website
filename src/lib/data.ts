@@ -151,3 +151,96 @@ export const experience = [
   { label: "Dashboards", note: "Built for non-technical eyes" },
   { label: "Impact", note: "From slide to shipped" },
 ];
+
+export type SideProject = {
+  id: string;
+  name: string;
+  blurb: string;
+  stack: string[];
+  href: string;
+  emoji: string;
+};
+
+export const sideProjects: SideProject[] = [
+  {
+    id: "lumen",
+    name: "Lumen — AI BI Dashboard",
+    blurb:
+      "Drop a CSV, get auto KPIs, gradient charts, anomaly flags and Claude-powered Q&A.",
+    stack: ["Next.js", "FastAPI", "Claude", "Pandas"],
+    href: "https://github.com/vedjr02/AI-Business-Intelligence-Dashboard",
+    emoji: "✦",
+  },
+  {
+    id: "habitify",
+    name: "Habitifyyy",
+    blurb:
+      "SwiftUI iOS habit tracker with heatmaps, Pomodoro focus and AI-driven insights.",
+    stack: ["SwiftUI", "Swift", "MVVM"],
+    href: "https://github.com/vedjr02/Habitifyyy",
+    emoji: "◐",
+  },
+  {
+    id: "touchless",
+    name: "Touchless Zoom",
+    blurb:
+      "Computer-vision zoom controller — pinch the air with your fingers to zoom on screen.",
+    stack: ["Python", "OpenCV", "MediaPipe"],
+    href: "https://github.com/vedjr02/Touchless-Zoom",
+    emoji: "✶",
+  },
+  {
+    id: "photography",
+    name: "Photography Portfolio",
+    blurb:
+      "Personal photo site with an interactive click-speed game and live leaderboard.",
+    stack: ["Node.js", "Express", "Vanilla JS"],
+    href: "https://github.com/vedjr02/Photography-Portfolio",
+    emoji: "◇",
+  },
+  {
+    id: "ip-2",
+    name: "IP-2",
+    blurb:
+      "Innovation Project — early-stage engineering exploration from undergrad.",
+    stack: ["Research", "Prototyping"],
+    href: "https://github.com/vedjr02/IP-2",
+    emoji: "◆",
+  },
+  {
+    id: "internship",
+    name: "Internship Basics",
+    blurb:
+      "Plain HTML/CSS/JS exercises from my early internship — fundamentals, no frameworks.",
+    stack: ["HTML", "CSS", "JavaScript"],
+    href: "https://github.com/vedjr02/Internship-Basic-Projects",
+    emoji: "○",
+  },
+  {
+    id: "neighbor",
+    name: "Neighbor Swap Connect",
+    blurb:
+      "Community marketplace where neighbours swap items and services locally.",
+    stack: ["React", "Vite", "shadcn-ui", "TS"],
+    href: "https://github.com/vedjr02/neighbor-swap-connect",
+    emoji: "✧",
+  },
+  {
+    id: "air-canvas",
+    name: "Air Canvas",
+    blurb:
+      "Draw in the air with hand tracking — paint with gesture-controlled brushes.",
+    stack: ["Python", "OpenCV", "NumPy"],
+    href: "https://github.com/vedjr02/Air-Canvas",
+    emoji: "◈",
+  },
+  {
+    id: "portfolio",
+    name: "This portfolio",
+    blurb:
+      "The site you're reading. Next.js + Tailwind + Framer Motion over a WebGL shader.",
+    stack: ["Next.js", "Tailwind", "Framer", "Three.js"],
+    href: "https://github.com/vedjr02/Portfolio-Website",
+    emoji: "✺",
+  },
+];

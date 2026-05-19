@@ -113,6 +113,15 @@ html {
   animation-play-state: paused;
 }
 
+/* Hide scrollbar but keep scroll behavior */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
 /* Slow spin */
 @keyframes slow-spin {
   to {
