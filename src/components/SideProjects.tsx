@@ -66,8 +66,8 @@ export function SideProjects() {
       <div className="relative">
         <div
           ref={scrollerRef}
-          className="flex gap-4 md:gap-5 overflow-x-auto snap-x snap-mandatory scroll-px-6 px-6 md:px-[max(1.5rem,calc((100vw-72rem)/2))] pb-4 hide-scrollbar"
-          style={{ scrollbarWidth: "none" }}
+          className="flex gap-4 md:gap-5 overflow-x-auto overflow-y-hidden snap-x snap-mandatory scroll-px-6 px-6 md:px-[max(1.5rem,calc((100vw-72rem)/2))] py-2 hide-scrollbar"
+          style={{ scrollbarWidth: "none", overscrollBehaviorY: "contain" }}
         >
           {sideProjects.map((p, i) => (
             <SideProjectCard key={p.id} project={p} index={i} />
