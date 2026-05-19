@@ -37,7 +37,7 @@ export function Skills() {
           <div>
             <div className="flex items-center gap-3 mb-5">
               <span className="h-px w-8 bg-neutral-700" />
-              <span className="font-mono text-[11px] tracking-[0.22em] uppercase text-neutral-400">
+              <span className="font-mono text-[12px] tracking-[0.22em] uppercase text-neutral-400">
                 The Toolkit
               </span>
             </div>
@@ -61,7 +61,7 @@ export function Skills() {
               className="glass glass-hover rounded-3xl p-7 md:p-8"
             >
               <div className="flex items-center justify-between mb-8">
-                <span className="font-mono text-[10px] tracking-[0.22em] uppercase text-neutral-500">
+                <span className="font-mono text-[11px] tracking-[0.22em] uppercase text-neutral-500">
                   {g.eyebrow}
                 </span>
                 <span className="h-px w-12 bg-neutral-700" />

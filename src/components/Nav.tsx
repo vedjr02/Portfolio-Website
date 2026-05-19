@@ -41,7 +41,7 @@ export function Nav() {
             <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 animate-soft-pulse" />
             <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />
           </span>
-          <span className="font-mono text-[10px] tracking-[0.16em] uppercase text-neutral-200 group-hover:text-white transition-colors">
+          <span className="font-mono text-[11px] tracking-[0.16em] uppercase text-neutral-200 group-hover:text-white transition-colors">
             Vedant
           </span>
         </a>

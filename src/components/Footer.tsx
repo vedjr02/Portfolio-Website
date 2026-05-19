@@ -22,7 +22,7 @@ export function Footer() {
               <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 animate-soft-pulse" />
               <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />
             </span>
-            <span className="font-mono text-[11px] tracking-[0.18em] uppercase text-neutral-300">
+            <span className="font-mono text-[12px] tracking-[0.18em] uppercase text-neutral-300">
               Open to opportunities
             </span>
           </div>
@@ -74,7 +74,7 @@ export function Footer() {
         {/* Bottom row */}
         <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 pt-8 border-t border-white/5">
           <div className="md:col-span-1">
-            <div className="font-mono text-[10px] tracking-[0.22em] uppercase text-neutral-500 mb-3">
+            <div className="font-mono text-[11px] tracking-[0.22em] uppercase text-neutral-500 mb-3">
               Insights
             </div>
             <ul className="space-y-1.5 text-neutral-300 text-sm">
@@ -86,7 +86,7 @@ export function Footer() {
           </div>
 
           <div className="md:col-span-1">
-            <div className="font-mono text-[10px] tracking-[0.22em] uppercase text-neutral-500 mb-3">
+            <div className="font-mono text-[11px] tracking-[0.22em] uppercase text-neutral-500 mb-3">
               Social
             </div>
             <ul className="space-y-1.5 text-neutral-300 text-sm">
@@ -125,7 +125,7 @@ export function Footer() {
           </div>
 
           <div className="md:col-span-1">
-            <div className="font-mono text-[10px] tracking-[0.22em] uppercase text-neutral-500 mb-3">
+            <div className="font-mono text-[11px] tracking-[0.22em] uppercase text-neutral-500 mb-3">
               Now
             </div>
             <p className="text-neutral-300 text-sm leading-relaxed">
@@ -140,11 +140,11 @@ export function Footer() {
         </div>
 
         <div className="mt-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-3">
-          <p className="font-mono text-[10px] tracking-[0.18em] uppercase text-neutral-500">
+          <p className="font-mono text-[11px] tracking-[0.18em] uppercase text-neutral-500">
             © {new Date().getFullYear()} Vedant Ambre. Crafted with care.
           </p>
-          <p className="font-mono text-[10px] tracking-[0.18em] uppercase text-neutral-500">
-            Built with curiosity
+          <p className="font-mono text-[11px] tracking-[0.18em] uppercase text-neutral-500">
+            Built with love
           </p>
         </div>
       </div>

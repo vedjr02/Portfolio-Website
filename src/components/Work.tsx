@@ -57,7 +57,7 @@ function SectionHeader({
         className="flex items-center gap-3"
       >
         <span className="h-px w-8 bg-neutral-700" />
-        <span className="font-mono text-[11px] tracking-[0.22em] uppercase text-neutral-400">
+        <span className="font-mono text-[12px] tracking-[0.22em] uppercase text-neutral-400">
           {eyebrow}
         </span>
       </motion.div>
@@ -136,18 +136,18 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
                   : "bg-emerald-400"
               }`}
             />
-            <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-neutral-300">
+            <span className="font-mono text-[11px] tracking-[0.2em] uppercase text-neutral-300">
               {project.status}
             </span>
           </div>
-          <span className="font-mono text-[10px] tracking-[0.18em] uppercase text-neutral-400">
+          <span className="font-mono text-[11px] tracking-[0.18em] uppercase text-neutral-400">
             {project.period}
           </span>
         </div>
 
         {/* Mid: title + category */}
         <div className="mt-12 md:mt-16">
-          <p className="font-mono text-[11px] tracking-[0.18em] uppercase text-neutral-400 mb-3">
+          <p className="font-mono text-[12px] tracking-[0.18em] uppercase text-neutral-400 mb-3">
             {project.category}
           </p>
           <h3 className="font-display text-3xl md:text-4xl text-white leading-[1.05] tracking-tight">
@@ -163,7 +163,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
           {project.tags.map((t) => (
             <span
               key={t}
-              className="rounded-full border border-white/10 bg-white/[0.03] px-2.5 py-1 text-[11px] text-neutral-300"
+              className="rounded-full border border-white/10 bg-white/[0.03] px-2.5 py-1 text-[12px] text-neutral-300"
             >
               {t}
             </span>

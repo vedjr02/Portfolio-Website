@@ -22,7 +22,7 @@ export function Story() {
           >
             <div className="flex items-center gap-3 mb-5">
               <span className="h-px w-8 bg-neutral-700" />
-              <span className="font-mono text-[11px] tracking-[0.22em] uppercase text-neutral-400">
+              <span className="font-mono text-[12px] tracking-[0.22em] uppercase text-neutral-400">
                 The Story
               </span>
             </div>
@@ -67,7 +67,7 @@ function Stat({ value, label }: { value: string; label: string }) {
       <div className="font-display text-3xl md:text-4xl text-white">
         {value}
       </div>
-      <div className="mt-1.5 font-mono text-[10px] tracking-[0.15em] uppercase text-neutral-400">
+      <div className="mt-1.5 font-mono text-[11px] tracking-[0.15em] uppercase text-neutral-400">
         {label}
       </div>
     </div>

@@ -17,7 +17,7 @@ export function Education() {
         >
           <div className="flex items-center gap-3 mb-5">
             <span className="h-px w-8 bg-neutral-700" />
-            <span className="font-mono text-[11px] tracking-[0.22em] uppercase text-neutral-400">
+            <span className="font-mono text-[12px] tracking-[0.22em] uppercase text-neutral-400">
               Education
             </span>
           </div>
@@ -49,7 +49,7 @@ export function Education() {
                 <div className="absolute left-3 md:left-1/2 md:-translate-x-1/2 top-1 h-3 w-3 rounded-full bg-sky-300 ring-4 ring-sky-300/15" />
 
                 <div className="pl-10 md:pl-0 md:pr-10">
-                  <div className="font-mono text-[10px] tracking-[0.22em] uppercase text-neutral-400 mb-3 flex items-center gap-2">
+                  <div className="font-mono text-[11px] tracking-[0.22em] uppercase text-neutral-400 mb-3 flex items-center gap-2">
                     {e.status === "current" && (
                       <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
                     )}
@@ -70,7 +70,7 @@ export function Education() {
                     </div>
                     <div className="mt-4 flex items-center gap-2">
                       <span
-                        className={`inline-flex rounded-full px-2 py-0.5 text-[10px] font-mono tracking-[0.18em] uppercase ${
+                        className={`inline-flex rounded-full px-2 py-0.5 text-[11px] font-mono tracking-[0.18em] uppercase ${
                           e.status === "current"
                             ? "bg-emerald-400/15 text-emerald-300 border border-emerald-400/20"
                             : "bg-white/5 text-neutral-400 border border-white/10"

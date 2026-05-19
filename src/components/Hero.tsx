@@ -24,7 +24,7 @@ export function Hero() {
             <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 animate-soft-pulse" />
             <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />
           </span>
-          <span className="font-mono text-[11px] tracking-[0.16em] uppercase text-neutral-300">
+          <span className="font-mono text-[12px] tracking-[0.16em] uppercase text-neutral-300">
             {profile.tagline}
           </span>
         </motion.div>
@@ -74,7 +74,7 @@ export function Hero() {
         >
           <div className="flex items-center gap-4">
             <div className="h-px w-10 bg-neutral-600" />
-            <p className="font-mono text-[11px] tracking-[0.2em] uppercase text-neutral-400">
+            <p className="font-mono text-[12px] tracking-[0.2em] uppercase text-neutral-400">
               {profile.title} <span className="text-neutral-600">/</span>{" "}
               {profile.altTitle}
             </p>
@@ -84,7 +84,7 @@ export function Hero() {
             href="#work"
             className="group flex items-center gap-3 text-neutral-400 hover:text-white transition-colors"
           >
-            <span className="font-mono text-[11px] tracking-[0.2em] uppercase">
+            <span className="font-mono text-[12px] tracking-[0.2em] uppercase">
               Scroll to explore
             </span>
             <span className="relative flex h-8 w-5 items-start justify-center rounded-full border border-neutral-600 group-hover:border-white transition-colors">
