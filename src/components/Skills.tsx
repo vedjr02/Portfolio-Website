@@ -111,8 +111,8 @@ export function Skills() {
           ))}
         </div>
 
-        <p className="mt-6 text-center font-mono text-[10px] tracking-[0.18em] uppercase text-neutral-600 px-6">
-          Drag a wave · {skills.technical.length + skills.frameworks.length + skills.competencies.length} tools
+        <p className="mt-4 text-center font-mono text-[10px] tracking-[0.18em] uppercase text-neutral-600 px-6">
+          Drag a line · {skills.technical.length + skills.frameworks.length + skills.competencies.length} tools
         </p>
       </motion.div>
     </section>
