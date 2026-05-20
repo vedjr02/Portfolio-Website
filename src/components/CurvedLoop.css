@@ -5,6 +5,7 @@
   width: 100%;
   min-height: 0;
   touch-action: pan-y;
+  line-height: 1;
 }
 
 /* Stacked row — one wave per band, no overlap */
