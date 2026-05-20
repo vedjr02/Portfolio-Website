@@ -19,7 +19,7 @@ const WAVES = [
   {
     label: "Stack",
     text: toMarquee(skills.technical),
-    curveAmount: 36,
+    curveAmount: 16,
     direction: "left" as const,
     speed: 1.5,
     startPhase: 0,
@@ -29,7 +29,7 @@ const WAVES = [
   {
     label: "Build",
     text: toMarquee(skills.frameworks),
-    curveAmount: -36,
+    curveAmount: -16,
     direction: "right" as const,
     speed: 1.7,
     startPhase: 0.25,
@@ -39,7 +39,7 @@ const WAVES = [
   {
     label: "Practice",
     text: toMarquee(skills.competencies),
-    curveAmount: 36,
+    curveAmount: 16,
     direction: "left" as const,
     speed: 1.4,
     startPhase: 0.5,
