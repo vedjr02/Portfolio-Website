@@ -14,7 +14,7 @@ export default function Home() {
     <>
       <BackgroundLayer />
 
-      <main className="relative grain">
+      <main className="relative grain overflow-x-hidden">
         <ScrollProgress />
         <Nav />
         <Hero />

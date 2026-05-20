@@ -38,11 +38,15 @@ body {
 html {
   background: var(--background);
   color: var(--foreground);
+  overflow-x: hidden;
+  max-width: 100%;
 }
 
 body {
   background: transparent;
   color: var(--foreground);
+  overflow-x: hidden;
+  max-width: 100%;
 }
 
 html {
@@ -120,6 +124,13 @@ html {
 .hide-scrollbar {
   scrollbar-width: none;
   -ms-overflow-style: none;
+}
+
+/* Horizontal carousels — allow vertical page scroll through the track */
+.side-projects-track {
+  overscroll-behavior-x: contain;
+  overscroll-behavior-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 /* Slow spin */

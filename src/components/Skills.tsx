@@ -113,8 +113,6 @@ function SkillRow({ row, index }: { row: Row; index: number }) {
                 <SkillPill key={`${item}-${i}`} label={item} />
               ))}
             </div>
-            <div className="pointer-events-none absolute inset-y-0 left-0 w-20 md:w-40 bg-gradient-to-r from-[#0a0a0a] via-[#0a0a0a]/80 to-transparent" />
-            <div className="pointer-events-none absolute inset-y-0 right-0 w-20 md:w-40 bg-gradient-to-l from-[#0a0a0a] via-[#0a0a0a]/80 to-transparent" />
           </div>
         </ParallaxMarquee>
       </motion.div>

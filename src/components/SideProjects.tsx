@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { sideProjects, type SideProject } from "@/lib/data";
 import { SectionParallaxOrbs } from "@/components/BackgroundLayer";
 import { ParallaxCard, ParallaxDepth } from "@/components/Parallax";
@@ -17,6 +17,22 @@ export function SideProjects() {
     const amount = Math.min(el.clientWidth * 0.8, 520);
     el.scrollBy({ left: dir * amount, behavior: "smooth" });
   };
+
+  // Let vertical wheel / trackpad scroll pass through to the page
+  useEffect(() => {
+    const el = scrollerRef.current;
+    if (!el) return;
+
+    const onWheel = (e: WheelEvent) => {
+      if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+        e.preventDefault();
+        window.scrollBy({ top: e.deltaY, left: 0, behavior: "auto" });
+      }
+    };
+
+    el.addEventListener("wheel", onWheel, { passive: false });
+    return () => el.removeEventListener("wheel", onWheel);
+  }, []);
 
   return (
     <section id="side-quests" className="relative py-20 md:py-28 overflow-hidden">
@@ -71,20 +87,17 @@ export function SideProjects() {
         </ParallaxDepth>
       </div>
 
-      <ParallaxDepth depth="medium" className="relative">
+      <div className="relative">
         <div
           ref={scrollerRef}
-          className="flex gap-4 md:gap-5 overflow-x-auto overflow-y-hidden snap-x snap-mandatory scroll-px-6 px-6 md:px-[max(1.5rem,calc((100vw-72rem)/2))] py-2 hide-scrollbar"
-          style={{ scrollbarWidth: "none", overscrollBehaviorY: "contain" }}
+          className="side-projects-track flex gap-4 md:gap-5 overflow-x-auto overflow-y-visible snap-x snap-mandatory scroll-px-6 px-6 md:px-[max(1.5rem,calc((100vw-72rem)/2))] py-2 hide-scrollbar"
         >
           {sideProjects.map((p, i) => (
             <SideProjectCard key={p.id} project={p} index={i} />
           ))}
           <div className="shrink-0 w-6" aria-hidden />
         </div>
-        <div className="pointer-events-none absolute inset-y-0 left-0 w-12 md:w-24 bg-gradient-to-r from-[#0a0a0a] to-transparent" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 w-12 md:w-24 bg-gradient-to-l from-[#0a0a0a] to-transparent" />
-      </ParallaxDepth>
+      </div>
     </section>
   );
 }
@@ -107,7 +120,7 @@ function SideProjectCard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
       transition={{ duration: 0.6, ease: easeOut, delay: (index % 4) * 0.05 }}
-      className="group relative shrink-0 snap-start w-[280px] md:w-[320px] glass glass-hover rounded-3xl overflow-hidden bg-neutral-950/70 backdrop-blur-2xl block no-underline"
+      className="group relative shrink-0 snap-start w-[min(280px,calc(100vw-3rem))] md:w-[320px] glass glass-hover rounded-3xl overflow-hidden bg-neutral-950/70 backdrop-blur-2xl block no-underline touch-pan-y"
     >
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-sky-300/20 to-indigo-400/5 opacity-40 group-hover:opacity-70 transition-opacity duration-700" />
 

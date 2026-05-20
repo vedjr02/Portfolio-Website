@@ -4,7 +4,6 @@ import {
   motion,
   useReducedMotion,
   useScroll,
-  useSpring,
   useTransform,
   type HTMLMotionProps,
   type MotionStyle,
@@ -16,6 +15,7 @@ import {
   type ReactNode,
   type RefObject,
 } from "react";
+import { useIsMobile } from "@/hooks/useIsMobile";
 
 export type ParallaxDepthLevel =
   | "background"
@@ -30,22 +30,22 @@ type ScrollOffset = [
 ];
 
 const DEPTH_Y: Record<ParallaxDepthLevel, number> = {
-  background: 28,
-  slow: 48,
-  medium: 72,
-  fast: 96,
-  foreground: 128,
+  background: 20,
+  slow: 34,
+  medium: 50,
+  fast: 66,
+  foreground: 84,
 };
 
 const DEPTH_X: Record<ParallaxDepthLevel, number> = {
-  background: 12,
-  slow: 20,
-  medium: 32,
-  fast: 44,
-  foreground: 56,
+  background: 8,
+  slow: 14,
+  medium: 22,
+  fast: 30,
+  foreground: 38,
 };
 
-const SPRING = { stiffness: 90, damping: 28, mass: 0.35 };
+const GPU = "transform-gpu will-change-transform [backface-visibility:hidden]";
 
 type ParallaxConfig = {
   y?: number;
@@ -56,6 +56,12 @@ type ParallaxConfig = {
   offset?: ScrollOffset;
   stagger?: number;
 };
+
+function useParallaxEnabled() {
+  const prefersReducedMotion = useReducedMotion();
+  const isMobile = useIsMobile();
+  return !(prefersReducedMotion || isMobile);
+}
 
 function useParallaxMotion(
   ref: RefObject<HTMLDivElement | null>,
@@ -69,33 +75,29 @@ function useParallaxMotion(
     stagger = 0,
   }: ParallaxConfig
 ) {
-  const prefersReducedMotion = useReducedMotion();
+  const enabled = useParallaxEnabled();
   const { scrollYProgress } = useScroll({ target: ref, offset });
 
   const yTravel = y + stagger;
-  const xTravel = x + stagger * 0.4;
+  const xTravel = x + stagger * 0.25;
 
-  const rawY = useTransform(scrollYProgress, [0, 1], [yTravel * 0.5, -yTravel * 0.5]);
-  const rawX = useTransform(scrollYProgress, [0, 1], [-xTravel * 0.5, xTravel * 0.5]);
+  const rawY = useTransform(scrollYProgress, [0, 1], [yTravel * 0.4, -yTravel * 0.4]);
+  const rawX = useTransform(scrollYProgress, [0, 1], [-xTravel * 0.4, xTravel * 0.4]);
   const rawScale = useTransform(scrollYProgress, [0, 0.5, 1], [scale[0], (scale[0] + scale[1]) / 2, scale[1]]);
   const rawOpacity = useTransform(scrollYProgress, [0, 0.35, 0.65, 1], [opacity[0], 1, 1, opacity[1]]);
   const rawRotate = useTransform(scrollYProgress, [0, 1], rotate);
 
-  const smoothY = useSpring(rawY, SPRING);
-  const smoothX = useSpring(rawX, SPRING);
-  const smoothScale = useSpring(rawScale, SPRING);
-
-  const style: MotionStyle = prefersReducedMotion
-    ? {}
-    : {
-        y: y !== 0 || stagger !== 0 ? smoothY : undefined,
-        x: x !== 0 || stagger !== 0 ? smoothX : undefined,
-        scale: scale[0] !== 1 || scale[1] !== 1 ? smoothScale : undefined,
+  const style: MotionStyle = enabled
+    ? {
+        y: y !== 0 || stagger !== 0 ? rawY : undefined,
+        x: x !== 0 || stagger !== 0 ? rawX : undefined,
+        scale: scale[0] !== 1 || scale[1] !== 1 ? rawScale : undefined,
         opacity: opacity[0] !== 1 || opacity[1] !== 1 ? rawOpacity : undefined,
         rotate: rotate[0] !== 0 || rotate[1] !== 0 ? rawRotate : undefined,
-      };
+      }
+    : {};
 
-  return { ref, style, scrollYProgress, disabled: prefersReducedMotion };
+  return { ref, style, scrollYProgress, disabled: !enabled };
 }
 
 export function useParallaxDepth(
@@ -106,8 +108,8 @@ export function useParallaxDepth(
   const ref = useRef<HTMLDivElement>(null);
   return useParallaxMotion(ref, {
     y: DEPTH_Y[depth],
-    x: depth === "background" || depth === "foreground" ? DEPTH_X[depth] * 0.5 : 0,
-    scale: depth === "foreground" ? [1, 0.96] : depth === "background" ? [1.02, 1] : [1, 1],
+    x: depth === "background" || depth === "foreground" ? DEPTH_X[depth] * 0.35 : 0,
+    scale: depth === "foreground" ? [1, 0.98] : depth === "background" ? [1.01, 1] : [1, 1],
     stagger,
     offset,
   });
@@ -115,24 +117,20 @@ export function useParallaxDepth(
 
 export function useHeroParallax() {
   const ref = useRef<HTMLElement>(null);
-  const prefersReducedMotion = useReducedMotion();
+  const enabled = useParallaxEnabled();
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
   });
 
-  const contentY = useSpring(
-    useTransform(scrollYProgress, [0, 1], [0, 220]),
-    SPRING
-  );
-  const contentOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
-  const nameScale = useTransform(scrollYProgress, [0, 1], [1, 0.9]);
-  const firstNameY = useSpring(useTransform(scrollYProgress, [0, 1], [0, 140]), SPRING);
-  const lastNameY = useSpring(useTransform(scrollYProgress, [0, 1], [0, 200]), SPRING);
-  const introY = useSpring(useTransform(scrollYProgress, [0, 1], [0, 80]), SPRING);
-  const metaY = useSpring(useTransform(scrollYProgress, [0, 1], [0, 260]), SPRING);
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.85], [1, 0]);
+  const nameScale = useTransform(scrollYProgress, [0, 1], [1, 0.94]);
+  const firstNameY = useTransform(scrollYProgress, [0, 1], [0, 100]);
+  const lastNameY = useTransform(scrollYProgress, [0, 1], [0, 150]);
+  const introY = useTransform(scrollYProgress, [0, 1], [0, 60]);
+  const metaY = useTransform(scrollYProgress, [0, 1], [0, 180]);
 
-  if (prefersReducedMotion) {
+  if (!enabled) {
     return {
       ref,
       disabled: true,
@@ -183,7 +181,11 @@ export function ParallaxDepth({
   }
 
   return (
-    <motion.div ref={ref} style={{ ...style, ...extraStyle }} className={className}>
+    <motion.div
+      ref={ref}
+      style={{ ...style, ...extraStyle }}
+      className={`${GPU} ${className ?? ""}`}
+    >
       {children}
     </motion.div>
   );
@@ -203,18 +205,19 @@ export function ParallaxMarquee({
   speed = 80,
 }: ParallaxMarqueeProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const prefersReducedMotion = useReducedMotion();
+  const enabled = useParallaxEnabled();
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"],
   });
 
-  const x = useSpring(
-    useTransform(scrollYProgress, [0, 1], [speed * direction, -speed * direction]),
-    SPRING
+  const x = useTransform(
+    scrollYProgress,
+    [0, 1],
+    [speed * direction * 0.35, -speed * direction * 0.35]
   );
 
-  if (prefersReducedMotion) {
+  if (!enabled) {
     return (
       <div ref={ref} className={className}>
         {children}
@@ -223,7 +226,7 @@ export function ParallaxMarquee({
   }
 
   return (
-    <motion.div ref={ref} style={{ x }} className={className}>
+    <motion.div ref={ref} style={{ x }} className={`${GPU} ${className ?? ""}`}>
       {children}
     </motion.div>
   );
@@ -241,28 +244,20 @@ export function ParallaxFloat({
   offset = ["start end", "end start"],
 }: ParallaxFloatProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const prefersReducedMotion = useReducedMotion();
+  const enabled = useParallaxEnabled();
   const { scrollYProgress } = useScroll({ target: ref, offset });
 
-  const y = useSpring(
-    useTransform(scrollYProgress, [0, 1], [DEPTH_Y[depth], -DEPTH_Y[depth] * 1.4]),
-    { stiffness: 60, damping: 22, mass: 0.5 }
-  );
-  const x = useSpring(
-    useTransform(scrollYProgress, [0, 1], [-DEPTH_X[depth], DEPTH_X[depth] * 1.2]),
-    { stiffness: 60, damping: 22, mass: 0.5 }
-  );
-  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.92, 1.05, 0.88]);
-  const opacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.15, 0.45, 0.35, 0.1]);
+  const y = useTransform(scrollYProgress, [0, 1], [DEPTH_Y[depth] * 0.5, -DEPTH_Y[depth] * 0.7]);
+  const opacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.12, 0.35, 0.28, 0.08]);
 
-  if (prefersReducedMotion) return null;
+  if (!enabled) return null;
 
   return (
     <motion.div
       ref={ref}
       aria-hidden
-      style={{ y, x, scale, opacity }}
-      className={`pointer-events-none absolute ${className ?? ""}`}
+      style={{ y, opacity }}
+      className={`pointer-events-none absolute ${GPU} ${className ?? ""}`}
     />
   );
 }
@@ -279,20 +274,20 @@ type ParallaxLayerProps = {
 };
 
 export function ParallaxLayer({ children, className, style }: ParallaxLayerProps) {
-  const prefersReducedMotion = useReducedMotion();
+  const enabled = useParallaxEnabled();
 
-  if (prefersReducedMotion) {
+  if (!enabled) {
     return <div className={className}>{children}</div>;
   }
 
   return (
-    <motion.div style={style} className={className}>
+    <motion.div style={style} className={`${GPU} ${className ?? ""}`}>
       {children}
     </motion.div>
   );
 }
 
-/** Wraps a card with scroll-linked depth + subtle tilt */
+/** Wraps a card with scroll-linked depth */
 export function ParallaxCard({
   children,
   className,
@@ -306,9 +301,9 @@ export function ParallaxCard({
   as?: "article" | "a" | "div";
 } & HTMLMotionProps<"article"> & HTMLMotionProps<"a"> & HTMLMotionProps<"div">) {
   const ref = useRef<HTMLDivElement>(null);
-  const prefersReducedMotion = useReducedMotion();
+  const enabled = useParallaxEnabled();
   const depth = index % 2 === 0 ? "medium" : "fast";
-  const stagger = (index % 3) * 14;
+  const stagger = (index % 3) * 10;
 
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -316,28 +311,17 @@ export function ParallaxCard({
   });
 
   const yTravel = DEPTH_Y[depth] + stagger;
-  const y = useSpring(
-    useTransform(scrollYProgress, [0, 1], [yTravel * 0.45, -yTravel * 0.55]),
-    SPRING
-  );
-  const rotate = useTransform(
-    scrollYProgress,
-    [0, 0.5, 1],
-    [index % 2 === 0 ? -1.2 : 1.2, 0, index % 2 === 0 ? 1.2 : -1.2]
-  );
-  const scale = useSpring(
-    useTransform(scrollYProgress, [0, 0.45, 0.55, 1], [0.97, 1, 1, 0.97]),
-    SPRING
-  );
+  const y = useTransform(scrollYProgress, [0, 1], [yTravel * 0.35, -yTravel * 0.45]);
+  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.99, 1, 0.99]);
 
-  const parallaxStyle = prefersReducedMotion ? {} : { y, rotate, scale };
+  const parallaxStyle = enabled ? { y, scale } : {};
   const Component = motion[as];
 
   return (
     <Component
       ref={ref as never}
       style={parallaxStyle}
-      className={className}
+      className={`${enabled ? GPU : ""} ${className ?? ""}`}
       {...motionProps}
     >
       {children}
