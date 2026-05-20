@@ -89,7 +89,7 @@ export function Skills() {
         <div className="skills-wave-stack mx-auto w-full max-w-[100vw]">
           {WAVES.map((wave, i) => (
             <div key={wave.label} className="skills-wave-row">
-              <div className="mx-auto max-w-6xl px-6 flex items-center gap-3 mb-1 md:mb-2">
+              <div className="mx-auto max-w-6xl px-6 flex items-center gap-3 mb-0.5">
                 <span className="font-mono text-[10px] md:text-[11px] tracking-[0.22em] uppercase text-neutral-500">
                   0{i + 1} · {wave.label}
                 </span>
