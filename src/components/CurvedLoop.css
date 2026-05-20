@@ -10,7 +10,7 @@
 /* Stacked row — one wave per band, no overlap */
 .curved-loop-jacket--row {
   position: relative;
-  height: 3.25rem;
+  height: 1.375rem;
   overflow: hidden;
 }
 
