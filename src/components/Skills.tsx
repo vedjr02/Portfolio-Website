@@ -53,7 +53,7 @@ export function Skills() {
     <section id="skills" className="relative py-24 md:py-36 overflow-hidden">
       <SectionParallaxOrbs />
 
-      <div className="relative mx-auto max-w-6xl px-6 mb-10 md:mb-14">
+      <div className="relative mx-auto max-w-6xl px-6 mb-6 md:mb-8">
         <ParallaxDepth depth="slow">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
