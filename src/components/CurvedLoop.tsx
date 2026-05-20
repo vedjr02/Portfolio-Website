@@ -175,6 +175,7 @@ export default function CurvedLoop({
               ref={textPathRef}
               href={`#${pathId}`}
               startOffset={`${offset}px`}
+              dy={curveAmount === 0 ? "0.12em" : undefined}
               xmlSpace="preserve"
             >
               {totalText}
