@@ -111,8 +111,8 @@ export function Skills() {
           ))}
         </div>
 
-        <p className="mt-8 text-center font-mono text-[11px] tracking-[0.2em] uppercase text-neutral-600 px-6">
-          Drag any wave to explore · {skills.technical.length + skills.frameworks.length + skills.competencies.length} tools
+        <p className="mt-6 text-center font-mono text-[10px] tracking-[0.18em] uppercase text-neutral-600 px-6">
+          Drag a wave · {skills.technical.length + skills.frameworks.length + skills.competencies.length} tools
         </p>
       </motion.div>
     </section>
