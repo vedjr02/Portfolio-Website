@@ -7,7 +7,7 @@ import { ParallaxDepth } from "@/components/Parallax";
 import CurvedLoop from "@/components/CurvedLoop";
 
 const easeOut = [0.2, 0.8, 0.2, 1] as const;
-const SEP = " ✦ ";
+const SEP = " · ";
 const VB_H = 72;
 const BASELINE = 36;
 
