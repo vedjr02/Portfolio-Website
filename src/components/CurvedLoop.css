@@ -1,0 +1,82 @@
+.curved-loop-jacket {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 0;
+  touch-action: pan-y;
+}
+
+/* Stacked row — one wave per band, no overlap */
+.curved-loop-jacket--row {
+  position: relative;
+  height: 5.5rem;
+  overflow: hidden;
+}
+
+.skills-wave-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  max-width: 100vw;
+}
+
+.skills-wave-row {
+  width: 100%;
+}
+
+.curved-loop-svg {
+  user-select: none;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  display: block;
+  font-size: clamp(1.5rem, 3.8vw, 2.75rem);
+  fill: #ffffff;
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  line-height: 1;
+}
+
+.curved-loop-skills--wave-top {
+  fill: rgba(255, 255, 255, 0.55);
+}
+
+.curved-loop-skills--wave-mid {
+  fill: rgba(186, 230, 253, 0.85);
+}
+
+.curved-loop-skills--wave-bottom {
+  fill: rgba(255, 255, 255, 0.45);
+}
+
+@media (min-width: 768px) {
+  .curved-loop-jacket--row {
+    height: 6.75rem;
+  }
+
+  .skills-wave-stack {
+    gap: 1.75rem;
+  }
+
+  .curved-loop-svg {
+    font-size: clamp(1.75rem, 3.2vw, 3rem);
+  }
+}
+
+@media (max-width: 767px) {
+  .curved-loop-svg {
+    font-size: clamp(1.15rem, 5vw, 1.65rem);
+    letter-spacing: 0.04em;
+  }
+
+  .curved-loop-jacket--row {
+    height: 4.75rem;
+  }
+
+  .skills-wave-stack {
+    gap: 1rem;
+  }
+}
