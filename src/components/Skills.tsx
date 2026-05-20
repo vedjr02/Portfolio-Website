@@ -8,8 +8,8 @@ import CurvedLoop from "@/components/CurvedLoop";
 
 const easeOut = [0.2, 0.8, 0.2, 1] as const;
 const SEP = " · ";
-const VB_H = 28;
-const BASELINE = 14;
+const VB_H = 48;
+const BASELINE = 34;
 
 function toMarquee(items: string[]) {
   return items.join(SEP) + SEP;
