@@ -11,8 +11,9 @@
 /* Stacked row — one wave per band, no overlap */
 .curved-loop-jacket--row {
   position: relative;
-  height: 1.375rem;
-  overflow: hidden;
+  height: 1.625rem;
+  overflow-x: hidden;
+  overflow-y: visible;
 }
 
 .skills-wave-stack {
