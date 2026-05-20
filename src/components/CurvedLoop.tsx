@@ -45,7 +45,8 @@ export default function CurvedLoop({
   const [dragging, setDragging] = useState(false);
   const uid = useId();
   const pathId = `curve-${uid.replace(/:/g, "")}`;
-  const pathD = `M-100,${baselineY} Q500,${baselineY + curveAmount} 1540,${baselineY}`;
+  // Centered control point → symmetric, gentle ripple
+  const pathD = `M-100,${baselineY} Q720,${baselineY + curveAmount} 1540,${baselineY}`;
 
   const dragRef = useRef(false);
   const lastXRef = useRef(0);
