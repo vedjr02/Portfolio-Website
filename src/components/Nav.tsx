@@ -2,15 +2,17 @@
 
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import { useEffect, useState } from "react";
+import { useCommand } from "@/components/CommandProvider";
 
 const links = [
-  { id: "work", label: "Work" },
+  { id: "spotlight", label: "Spotlight" },
+  { id: "workbench", label: "Workbench" },
   { id: "story", label: "Story" },
-  { id: "skills", label: "Skills" },
   { id: "education", label: "Education" },
 ];
 
 export function Nav() {
+  const { toggle } = useCommand();
   const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState("top");
   const { scrollY } = useScroll();
@@ -44,7 +46,7 @@ export function Nav() {
       initial={{ y: -32, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, ease: [0.2, 0.8, 0.2, 1] }}
-      className="fixed top-4 left-1/2 -translate-x-1/2 z-40 w-[calc(100%-2rem)] max-w-2xl"
+      className="fixed top-4 left-1/2 -translate-x-1/2 z-40 w-[calc(100%-2rem)] max-w-3xl"
     >
       <nav
         className={`flex items-center justify-between rounded-full pl-3 pr-1.5 py-1.5 transition-all duration-500 ${
@@ -87,12 +89,22 @@ export function Nav() {
           })}
         </ul>
 
-        <a
-          href="#contact"
-          className="rounded-full bg-ink text-bg px-3.5 py-1.5 text-[13px] font-semibold hover:bg-accent transition-colors duration-300 shadow-[6px_6px_14px_#121417]"
-        >
-          Contact
-        </a>
+        <div className="flex items-center gap-1.5">
+          <button
+            type="button"
+            onClick={toggle}
+            className="hidden sm:inline-flex neu-btn rounded-full px-3 py-1.5 text-[12px] font-medium text-ink-soft hover:text-ink"
+            aria-label="Open command palette"
+          >
+            ⌘K
+          </button>
+          <a
+            href="#contact"
+            className="rounded-full bg-ink text-bg px-3.5 py-1.5 text-[13px] font-semibold hover:bg-accent transition-colors duration-300 shadow-[6px_6px_14px_#121417]"
+          >
+            Contact
+          </a>
+        </div>
       </nav>
     </motion.header>
   );

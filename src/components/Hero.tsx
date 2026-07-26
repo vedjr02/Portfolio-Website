@@ -4,10 +4,12 @@ import { motion } from "framer-motion";
 import { profile } from "@/lib/data";
 import { ParallaxLayer, useHeroParallax } from "@/components/Parallax";
 import { BlurFade } from "@/components/ui/blur-fade";
+import { useCommand } from "@/components/CommandProvider";
 
 const easeOut = [0.2, 0.8, 0.2, 1] as const;
 
 export function Hero() {
+  const { toggle } = useCommand();
   const {
     ref,
     disabled,
@@ -22,7 +24,7 @@ export function Hero() {
     <section
       ref={ref}
       id="top"
-      className="relative min-h-[100svh] flex flex-col justify-end overflow-hidden pt-32 pb-12 md:pb-16"
+      className="relative min-h-[100svh] flex flex-col justify-end overflow-hidden pt-28 pb-24 md:pb-28"
     >
       <div className="relative z-10 mx-auto w-full max-w-6xl px-6">
         <ParallaxLayer className="inline-block mb-8" style={disabled ? {} : pillStyle}>
@@ -55,10 +57,7 @@ export function Hero() {
 
         <div className="relative">
           <h1 className="font-display leading-[0.9]">
-            <ParallaxLayer
-              style={disabled ? {} : firstNameStyle}
-              className="block"
-            >
+            <ParallaxLayer style={disabled ? {} : firstNameStyle} className="block">
               <motion.span
                 initial={{ opacity: 0, y: 60 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -68,10 +67,7 @@ export function Hero() {
                 {profile.firstName}
               </motion.span>
             </ParallaxLayer>
-            <ParallaxLayer
-              style={disabled ? {} : lastNameStyle}
-              className="block"
-            >
+            <ParallaxLayer style={disabled ? {} : lastNameStyle} className="block">
               <motion.span
                 initial={{ opacity: 0, y: 60 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -95,24 +91,28 @@ export function Hero() {
               <p className="font-mono text-[12px] tracking-[0.2em] uppercase text-muted mb-3">
                 {profile.title} / {profile.altTitle}
               </p>
-              <p className="text-sm text-ink-soft leading-relaxed">
-                {profile.now}
-              </p>
+              <p className="text-sm text-ink-soft leading-relaxed">{profile.now}</p>
             </div>
 
             <div className="flex flex-wrap items-center gap-3">
               <a
-                href="#work"
+                href="#spotlight"
                 className="neu-btn rounded-full px-5 py-3 text-sm font-semibold text-ink"
               >
-                View main projects
+                Enter spotlight
               </a>
-              <a
-                href="#contact"
+              <button
+                type="button"
+                onClick={toggle}
                 className="neu-inset rounded-full px-5 py-3 text-sm font-medium text-ink-soft hover:text-ink transition-colors"
               >
-                Contact
-              </a>
+                <span className="inline-flex items-center gap-2">
+                  Command
+                  <kbd className="rounded-md border border-line px-1.5 py-0.5 font-mono text-[10px] tracking-[0.12em]">
+                    ⌘K
+                  </kbd>
+                </span>
+              </button>
             </div>
           </motion.div>
         </ParallaxLayer>
