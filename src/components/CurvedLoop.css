@@ -8,7 +8,6 @@
   line-height: 1;
 }
 
-/* Stacked row — one wave per band, no overlap */
 .curved-loop-jacket--row {
   position: relative;
   height: 1.75rem;
@@ -37,24 +36,24 @@
   overflow: visible;
   display: block;
   font-size: clamp(0.95rem, 2.2vw, 1.35rem);
-  fill: #ffffff;
+  fill: #14171d;
   font-family: var(--font-display), system-ui, sans-serif;
-  font-weight: 600;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   line-height: 1;
 }
 
 .curved-loop-skills--wave-top {
-  fill: rgba(255, 255, 255, 0.42);
+  fill: rgba(20, 23, 29, 0.55);
 }
 
 .curved-loop-skills--wave-mid {
-  fill: rgba(186, 230, 253, 0.62);
+  fill: rgba(31, 78, 121, 0.75);
 }
 
 .curved-loop-skills--wave-bottom {
-  fill: rgba(255, 255, 255, 0.36);
+  fill: rgba(20, 23, 29, 0.4);
 }
 
 @media (min-width: 768px) {

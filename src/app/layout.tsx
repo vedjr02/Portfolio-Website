@@ -1,26 +1,25 @@
 import type { Metadata } from "next";
-import { Oswald, Space_Grotesk, JetBrains_Mono } from "next/font/google";
+import { Syne, Outfit, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 
-// Display font — bold impact for headlines
-const oswald = Oswald({
+const syne = Syne({
   variable: "--font-display",
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
+  weight: ["600", "700", "800"],
   display: "swap",
 });
 
-// Body font — geometric grotesque for paragraphs / UI
-const spaceGrotesk = Space_Grotesk({
+const outfit = Outfit({
   variable: "--font-sans",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
-const jetbrainsMono = JetBrains_Mono({
+const plexMono = IBM_Plex_Mono({
   variable: "--font-mono",
   subsets: ["latin"],
+  weight: ["400", "500"],
   display: "swap",
 });
 
@@ -52,9 +51,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${oswald.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} h-full antialiased`}
+      className={`${syne.variable} ${outfit.variable} ${plexMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full text-neutral-100 font-sans selection:bg-sky-300/30 selection:text-sky-100">
+      <body className="min-h-full text-[var(--color-ink)] font-sans selection:bg-[var(--color-accent)]/15 selection:text-[var(--color-accent)]">
         {children}
       </body>
     </html>

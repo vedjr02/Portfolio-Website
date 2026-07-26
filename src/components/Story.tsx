@@ -2,8 +2,6 @@
 
 import { motion } from "framer-motion";
 import { profile, experience, impactStats } from "@/lib/data";
-import { SectionParallaxOrbs } from "@/components/BackgroundLayer";
-import { ParallaxDepth, ParallaxMarquee } from "@/components/Parallax";
 import { NumberTicker } from "@/components/ui/number-ticker";
 import { BlurFade } from "@/components/ui/blur-fade";
 
@@ -11,67 +9,72 @@ const easeOut = [0.2, 0.8, 0.2, 1] as const;
 
 export function Story() {
   return (
-    <section id="story" className="relative py-24 md:py-36 overflow-hidden">
-      <SectionParallaxOrbs />
+    <section id="story" className="relative py-24 md:py-32 overflow-hidden">
+      <div className="relative w-full overflow-hidden py-6 md:py-8">
+        <div className="neu-inset mx-4 md:mx-8 rounded-full py-5 overflow-hidden">
+          <div className="flex w-max animate-marquee gap-10 md:gap-14 pr-10">
+            {[...experience, ...experience, ...experience, ...experience].map(
+              (item, i) => (
+                <div
+                  key={`${item.label}-${i}`}
+                  className="flex items-center gap-10 md:gap-14 shrink-0"
+                >
+                  <span className="font-display text-2xl md:text-4xl text-[var(--color-ink)] whitespace-nowrap tracking-tight">
+                    {item.label}
+                  </span>
+                  <span className="h-2 w-2 rounded-full bg-[var(--color-accent)]/50" />
+                </div>
+              )
+            )}
+          </div>
+        </div>
+      </div>
 
-      <ParallaxMarquee direction={1} speed={100}>
-        <Marquee items={experience.map((e) => e.label)} />
-      </ParallaxMarquee>
-
-      <div className="relative mx-auto max-w-6xl px-6 mt-20 md:mt-28">
+      <div className="relative mx-auto max-w-6xl px-6 mt-16 md:mt-24">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16">
-          <ParallaxDepth depth="slow" className="md:col-span-5">
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.7, ease: easeOut }}
-            >
+          <div className="md:col-span-5">
+            <BlurFade inView direction="up">
               <div className="flex items-center gap-3 mb-5">
-                <span className="h-px w-8 bg-neutral-700" />
-                <span className="font-mono text-[12px] tracking-[0.22em] uppercase text-neutral-400">
+                <span className="h-px w-8 bg-[var(--color-ink)]/20" />
+                <span className="font-mono text-[12px] tracking-[0.22em] uppercase text-[var(--color-muted)]">
                   The Story
                 </span>
               </div>
-              <ParallaxDepth depth="foreground" stagger={10}>
-                <h2 className="font-display text-[clamp(2.2rem,5.5vw,4.5rem)] leading-[0.95] text-white">
-                  I don&apos;t have dark secrets,{" "}
-                  <span className="italic text-sky-300/90">
-                    only bright spreadsheets.
-                  </span>
-                </h2>
-              </ParallaxDepth>
-            </motion.div>
-          </ParallaxDepth>
+              <h2 className="font-display text-[clamp(2.4rem,5.5vw,4.5rem)] leading-[0.95] text-[var(--color-ink)] tracking-tight">
+                Evidence first.{" "}
+                <span className="text-[var(--color-accent)]">Slides second.</span>
+              </h2>
+            </BlurFade>
+          </div>
 
-          <ParallaxDepth depth="medium" stagger={12} className="md:col-span-7 md:pt-6">
+          <div className="md:col-span-7 md:pt-2">
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.7, ease: easeOut, delay: 0.1 }}
             >
-              <p className="text-lg md:text-xl text-neutral-300 leading-relaxed">
+              <p className="text-lg md:text-xl text-[var(--color-ink-soft)] leading-relaxed">
                 {profile.story}
               </p>
-
-              <p className="mt-6 text-neutral-400 leading-relaxed">
+              <p className="mt-6 text-[var(--color-muted)] leading-relaxed">
                 {profile.intro}
               </p>
 
-              <div className="mt-10 grid grid-cols-2 gap-4 md:gap-5">
+              <div className="mt-10 grid grid-cols-2 gap-4">
                 {impactStats.map((stat, index) => (
                   <BlurFade key={stat.label} inView delay={0.08 * index} direction="up">
-                    <div className="glass rounded-2xl p-5 h-full">
-                      <div className="font-display text-3xl md:text-4xl text-white tracking-tight">
+                    <div className="neu rounded-[22px] p-5 h-full">
+                      <div className="font-display text-3xl md:text-4xl text-[var(--color-ink)] tracking-tight">
                         <NumberTicker
                           value={stat.value}
                           decimalPlaces={stat.decimals}
                           delay={0.1 * index}
+                          className="text-[var(--color-ink)]"
                         />
                         {stat.suffix}
                       </div>
-                      <div className="mt-1.5 font-mono text-[11px] tracking-[0.15em] uppercase text-neutral-400">
+                      <div className="mt-1.5 font-mono text-[11px] tracking-[0.14em] uppercase text-[var(--color-muted)]">
                         {stat.label}
                       </div>
                     </div>
@@ -79,30 +82,9 @@ export function Story() {
                 ))}
               </div>
             </motion.div>
-          </ParallaxDepth>
+          </div>
         </div>
       </div>
     </section>
-  );
-}
-
-function Marquee({ items }: { items: string[] }) {
-  const list = [...items, ...items, ...items, ...items];
-  return (
-    <div className="relative w-full overflow-hidden border-y border-white/5 py-6 md:py-8">
-      <div className="flex w-max animate-marquee gap-12 md:gap-16 pr-12">
-        {list.map((label, i) => (
-          <div
-            key={`${label}-${i}`}
-            className="flex items-center gap-12 md:gap-16 shrink-0"
-          >
-            <span className="font-display text-3xl md:text-5xl text-neutral-200 whitespace-nowrap">
-              {label}
-            </span>
-            <span className="h-2 w-2 rounded-full bg-sky-300/60" />
-          </div>
-        ))}
-      </div>
-    </div>
   );
 }

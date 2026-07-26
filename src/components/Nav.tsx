@@ -48,9 +48,7 @@ export function Nav() {
     >
       <nav
         className={`flex items-center justify-between rounded-full pl-3 pr-1.5 py-1.5 transition-all duration-500 ${
-          scrolled
-            ? "glass shadow-[0_8px_40px_-8px_rgba(0,0,0,0.5)]"
-            : "glass shadow-[0_4px_20px_-8px_rgba(0,0,0,0.4)]"
+          scrolled ? "neu" : "neu-sm"
         }`}
         aria-label="Primary"
       >
@@ -60,10 +58,10 @@ export function Nav() {
           aria-label="Vedant Ambre — home"
         >
           <span className="relative flex h-1.5 w-1.5">
-            <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 animate-soft-pulse" />
-            <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />
+            <span className="absolute inline-flex h-full w-full rounded-full bg-[var(--color-accent)] opacity-60 animate-soft-pulse" />
+            <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-[var(--color-accent)]" />
           </span>
-          <span className="font-mono text-[11px] tracking-[0.16em] uppercase text-neutral-200 group-hover:text-white transition-colors">
+          <span className="font-mono text-[11px] tracking-[0.16em] uppercase text-[var(--color-ink)] group-hover:text-[var(--color-accent)] transition-colors">
             Vedant
           </span>
         </a>
@@ -76,10 +74,10 @@ export function Nav() {
                 <a
                   href={`#${link.id}`}
                   aria-current={isActive ? "true" : undefined}
-                  className={`px-3 py-1.5 text-[13px] rounded-full transition-colors ${
+                  className={`neu-btn rounded-full px-3 py-1.5 text-[13px] transition-colors ${
                     isActive
-                      ? "text-white bg-white/10"
-                      : "text-neutral-300 hover:text-white hover:bg-white/5"
+                      ? "text-[var(--color-accent)]"
+                      : "text-[var(--color-ink-soft)] hover:text-[var(--color-ink)]"
                   }`}
                 >
                   {link.label}
@@ -91,7 +89,7 @@ export function Nav() {
 
         <a
           href="#contact"
-          className="group relative overflow-hidden rounded-full bg-white text-black px-3.5 py-1.5 text-[13px] font-medium hover:bg-sky-300 transition-colors duration-300"
+          className="rounded-full bg-[var(--color-ink)] text-[#dde1e8] px-3.5 py-1.5 text-[13px] font-semibold hover:bg-[var(--color-accent)] transition-colors duration-300 shadow-[6px_6px_14px_#c4c9d2]"
         >
           Contact
         </a>

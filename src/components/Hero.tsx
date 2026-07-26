@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import { profile } from "@/lib/data";
 import { ParallaxLayer, useHeroParallax } from "@/components/Parallax";
-import { AnimatedShinyText } from "@/components/ui/animated-shiny-text";
 import { BlurFade } from "@/components/ui/blur-fade";
 
 const easeOut = [0.2, 0.8, 0.2, 1] as const;
@@ -31,32 +30,31 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: easeOut, delay: 0.1 }}
-            className="inline-flex items-center gap-2.5 rounded-full glass px-3.5 py-1.5"
+            className="inline-flex items-center gap-2.5 rounded-full neu-sm px-4 py-2"
           >
             <span className="relative flex h-1.5 w-1.5">
-              <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 animate-soft-pulse" />
-              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />
+              <span className="absolute inline-flex h-full w-full rounded-full bg-[var(--color-accent)] opacity-60 animate-soft-pulse" />
+              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-[var(--color-accent)]" />
             </span>
-            <AnimatedShinyText className="mx-0 max-w-none font-mono text-[12px] tracking-[0.16em] uppercase text-neutral-300">
+            <span className="font-mono text-[12px] tracking-[0.16em] uppercase text-[var(--color-ink-soft)]">
               {profile.tagline}
-            </AnimatedShinyText>
+            </span>
           </motion.div>
         </ParallaxLayer>
 
         <ParallaxLayer style={disabled ? {} : introStyle}>
-          <BlurFade delay={0.15} offset={16} direction="up" inView={false}>
-            <p className="max-w-2xl text-balance text-base sm:text-lg md:text-xl text-neutral-300 leading-relaxed mb-10 md:mb-14">
-              Howdy! Meet your trusted analytics partner,{" "}
-              <span className="text-white">turning ambiguous data into</span>{" "}
-              <span className="italic font-display text-sky-300/90">
-                confident business decisions.
+          <BlurFade delay={0.15} offset={16} direction="up">
+            <p className="max-w-2xl text-balance text-base sm:text-lg md:text-xl text-[var(--color-ink-soft)] leading-relaxed mb-10 md:mb-14">
+              Business Analyst who turns ambiguous data into{" "}
+              <span className="text-[var(--color-ink)] font-semibold">
+                decisions teams can ship on.
               </span>
             </p>
           </BlurFade>
         </ParallaxLayer>
 
         <div className="relative">
-          <h1 className="font-display leading-[0.85] tracking-tight">
+          <h1 className="font-display leading-[0.82] tracking-tight">
             <ParallaxLayer
               style={disabled ? {} : firstNameStyle}
               className="block"
@@ -65,7 +63,7 @@ export function Hero() {
                 initial={{ opacity: 0, y: 60 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1.1, ease: easeOut, delay: 0.3 }}
-                className="block text-[clamp(4.5rem,16vw,15rem)] text-white"
+                className="block text-[clamp(4.25rem,15vw,13.5rem)] text-[var(--color-ink)]"
               >
                 {profile.firstName}
               </motion.span>
@@ -78,7 +76,7 @@ export function Hero() {
                 initial={{ opacity: 0, y: 60 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1.1, ease: easeOut, delay: 0.45 }}
-                className="block text-[clamp(4.5rem,16vw,15rem)] text-white italic"
+                className="block text-[clamp(4.25rem,15vw,13.5rem)] text-[var(--color-accent)]"
               >
                 {profile.lastName}
               </motion.span>
@@ -91,17 +89,13 @@ export function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, ease: easeOut, delay: 0.7 }}
-            className="mt-8 md:mt-12 flex flex-col md:flex-row md:items-end md:justify-between gap-6"
+            className="mt-8 md:mt-12 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8"
           >
-            <div className="flex flex-col gap-3">
-              <div className="flex items-center gap-4">
-                <div className="h-px w-10 bg-neutral-600" />
-                <p className="font-mono text-[12px] tracking-[0.2em] uppercase text-neutral-400">
-                  {profile.title} <span className="text-neutral-600">/</span>{" "}
-                  {profile.altTitle}
-                </p>
-              </div>
-              <p className="max-w-md text-sm text-neutral-500 leading-relaxed pl-14">
+            <div className="max-w-md">
+              <p className="font-mono text-[12px] tracking-[0.2em] uppercase text-[var(--color-muted)] mb-3">
+                {profile.title} / {profile.altTitle}
+              </p>
+              <p className="text-sm text-[var(--color-ink-soft)] leading-relaxed">
                 {profile.now}
               </p>
             </div>
@@ -109,24 +103,15 @@ export function Hero() {
             <div className="flex flex-wrap items-center gap-3">
               <a
                 href="#work"
-                className="group inline-flex items-center gap-2 rounded-full bg-white text-black px-4 py-2.5 text-sm font-medium hover:bg-sky-300 transition-colors"
+                className="neu-btn rounded-full px-5 py-3 text-sm font-semibold text-[var(--color-ink)]"
               >
-                View case studies
+                View main projects
               </a>
               <a
                 href="#contact"
-                className="group flex items-center gap-3 text-neutral-400 hover:text-white transition-colors px-2"
+                className="neu-inset rounded-full px-5 py-3 text-sm font-medium text-[var(--color-ink-soft)] hover:text-[var(--color-ink)] transition-colors"
               >
-                <span className="font-mono text-[12px] tracking-[0.2em] uppercase">
-                  Scroll to explore
-                </span>
-                <span className="relative flex h-8 w-5 items-start justify-center rounded-full border border-neutral-600 group-hover:border-white transition-colors">
-                  <motion.span
-                    animate={{ y: [2, 12, 2], opacity: [1, 0.2, 1] }}
-                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                    className="mt-1.5 block h-1.5 w-0.5 rounded-full bg-current"
-                  />
-                </span>
+                Contact
               </a>
             </div>
           </motion.div>
