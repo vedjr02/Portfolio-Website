@@ -18,20 +18,20 @@ export function BackgroundLayer() {
         style={{ y: ySlow }}
         className="absolute inset-[-8%] transform-gpu will-change-transform"
       >
-        <div className="absolute -top-[18%] -left-[12%] h-[52vh] w-[52vh] rounded-full bg-[#c5cedb]/55 blur-[100px]" />
-        <div className="absolute top-[28%] -right-[18%] h-[48vh] w-[48vh] rounded-full bg-[#d2d8e2] blur-[110px]" />
-        <div className="absolute -bottom-[12%] left-[18%] h-[42vh] w-[42vh] rounded-full bg-[#c8d4cc]/45 blur-[120px]" />
+        <div className="absolute -top-[18%] -left-[12%] h-[52vh] w-[52vh] rounded-full bg-[#2a2f36] blur-[110px]" />
+        <div className="absolute top-[28%] -right-[18%] h-[48vh] w-[48vh] rounded-full bg-[#252a30] blur-[120px]" />
+        <div className="absolute -bottom-[12%] left-[18%] h-[42vh] w-[42vh] rounded-full bg-[#232820]/80 blur-[130px]" />
       </motion.div>
 
       <motion.div
         style={{ y: yMid }}
-        className="absolute inset-0 transform-gpu will-change-transform pointer-events-none opacity-40"
+        className="absolute inset-0 transform-gpu will-change-transform pointer-events-none opacity-30"
       >
         <div
           className="absolute inset-0"
           style={{
             backgroundImage:
-              "radial-gradient(circle at 1px 1px, rgba(11,13,16,0.07) 1px, transparent 0)",
+              "radial-gradient(circle at 1px 1px, rgba(243,241,236,0.06) 1px, transparent 0)",
             backgroundSize: "26px 26px",
           }}
         />

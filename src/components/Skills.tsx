@@ -58,7 +58,7 @@ export function Skills() {
               The Toolkit
             </span>
           </div>
-          <h2 className="font-display text-[clamp(2.4rem,5.5vw,4.5rem)] leading-[0.95] text-ink max-w-3xl tracking-tight">
+          <h2 className="font-display text-[clamp(2.4rem,5.5vw,4.5rem)] leading-[1.02] text-ink max-w-3xl">
             Tools matched to the{" "}
             <span className="text-accent">question.</span>
           </h2>

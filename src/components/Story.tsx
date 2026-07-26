@@ -19,7 +19,7 @@ export function Story() {
                   key={`${item.label}-${i}`}
                   className="flex items-center gap-10 md:gap-14 shrink-0"
                 >
-                  <span className="font-display text-2xl md:text-4xl text-ink whitespace-nowrap tracking-tight">
+                  <span className="font-display text-2xl md:text-4xl text-ink whitespace-nowrap">
                     {item.label}
                   </span>
                   <span className="h-2 w-2 rounded-full bg-accent/50" />
@@ -40,7 +40,7 @@ export function Story() {
                   The Story
                 </span>
               </div>
-              <h2 className="font-display text-[clamp(2.4rem,5.5vw,4.5rem)] leading-[0.95] text-ink tracking-tight">
+              <h2 className="font-display text-[clamp(2.4rem,5.5vw,4.5rem)] leading-[1.02] text-ink">
                 Evidence first.{" "}
                 <span className="text-accent">Slides second.</span>
               </h2>
@@ -65,7 +65,7 @@ export function Story() {
                 {impactStats.map((stat, index) => (
                   <BlurFade key={stat.label} inView delay={0.08 * index} direction="up">
                     <div className="neu rounded-[22px] p-5 h-full">
-                      <div className="font-display text-3xl md:text-4xl text-ink tracking-tight">
+                      <div className="font-display text-3xl md:text-4xl text-ink">
                         <NumberTicker
                           value={stat.value}
                           decimalPlaces={stat.decimals}

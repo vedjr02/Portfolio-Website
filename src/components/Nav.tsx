@@ -89,7 +89,7 @@ export function Nav() {
 
         <a
           href="#contact"
-          className="rounded-full bg-ink text-bg px-3.5 py-1.5 text-[13px] font-semibold hover:bg-accent transition-colors duration-300 shadow-[6px_6px_14px_#b8c0cc]"
+          className="rounded-full bg-ink text-bg px-3.5 py-1.5 text-[13px] font-semibold hover:bg-accent transition-colors duration-300 shadow-[6px_6px_14px_#121417]"
         >
           Contact
         </a>

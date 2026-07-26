@@ -1,41 +1,40 @@
 @import "tailwindcss";
 
 /*
-  Use @theme (NOT inline) so --color-* exist as real CSS variables on :root.
-  @theme inline previously broke text-ink → invisible / washed text.
+  Dark neumorphism by default.
+  Accent is warm stone — no blue.
 */
 @theme {
-  --color-bg: #e6e9ef;
-  --color-surface: #e6e9ef;
-  --color-ink: #0b0d10;
-  --color-ink-soft: #2c333d;
-  --color-muted: #5a6573;
-  --color-accent: #163a5f;
-  --color-accent-soft: #1f567f;
-  --color-line: rgba(11, 13, 16, 0.1);
+  --color-bg: #1e2126;
+  --color-surface: #1e2126;
+  --color-ink: #f3f1ec;
+  --color-ink-soft: #c5c2ba;
+  --color-muted: #8f8c84;
+  --color-accent: #e8e2d4;
+  --color-accent-soft: #d6d0c2;
+  --color-line: rgba(243, 241, 236, 0.1);
   --font-sans: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-syne), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-plex), ui-monospace, monospace;
 }
 
 :root {
-  --background: #e6e9ef;
-  --foreground: #0b0d10;
-  --surface: #e6e9ef;
-  --ink: #0b0d10;
-  --ink-soft: #2c333d;
-  --muted: #5a6573;
-  --accent: #163a5f;
-  --accent-soft: #1f567f;
-  --line: rgba(11, 13, 16, 0.1);
+  --background: #1e2126;
+  --foreground: #f3f1ec;
+  --surface: #1e2126;
+  --ink: #f3f1ec;
+  --ink-soft: #c5c2ba;
+  --muted: #8f8c84;
+  --accent: #e8e2d4;
+  --accent-soft: #d6d0c2;
+  --line: rgba(243, 241, 236, 0.1);
 
-  /* Stronger neumorphic depth so cards read clearly on light UI */
-  --shadow-neu: 12px 12px 28px #b8c0cc, -12px -12px 28px #ffffff;
-  --shadow-neu-sm: 7px 7px 16px #b8c0cc, -7px -7px 16px #ffffff;
-  --shadow-neu-inset: inset 7px 7px 14px #b8c0cc, inset -7px -7px 14px #ffffff;
-  --shadow-neu-press: inset 5px 5px 12px #b8c0cc, inset -5px -5px 12px #ffffff;
+  --shadow-neu: 11px 11px 26px #121417, -11px -11px 26px #2a2f36;
+  --shadow-neu-sm: 7px 7px 16px #121417, -7px -7px 16px #2a2f36;
+  --shadow-neu-inset: inset 7px 7px 14px #121417, inset -7px -7px 14px #2a2f36;
+  --shadow-neu-press: inset 5px 5px 12px #121417, inset -5px -5px 12px #2a2f36;
 
-  color-scheme: light;
+  color-scheme: dark;
 }
 
 html {
@@ -51,7 +50,7 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans), system-ui, sans-serif;
   font-weight: 500;
-  letter-spacing: -0.015em;
+  letter-spacing: 0.01em;
   overflow-x: hidden;
   max-width: 100%;
   -webkit-font-smoothing: antialiased;
@@ -62,7 +61,8 @@ body {
 .font-display {
   font-family: var(--font-display), system-ui, sans-serif;
   font-weight: 800;
-  letter-spacing: -0.04em;
+  /* Keep Syne — just give glyphs room to breathe */
+  letter-spacing: -0.01em;
   color: var(--ink);
   text-transform: none;
 }
@@ -70,6 +70,7 @@ body {
 .font-mono {
   font-family: var(--font-mono), monospace;
   font-weight: 500;
+  letter-spacing: 0.04em;
 }
 
 * {
@@ -85,42 +86,40 @@ body {
   background: var(--background);
 }
 ::-webkit-scrollbar-thumb {
-  background: #a8b1bf;
+  background: #3a3f48;
   border-radius: 8px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #8b96a8;
+  background: #4d545f;
 }
 
-/* Very light grain — never covers text */
 .grain::before {
   content: "";
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: 50;
-  opacity: 0.025;
-  mix-blend-mode: multiply;
-  background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/></svg>");
+  opacity: 0.04;
+  mix-blend-mode: soft-light;
+  background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/></svg>");
 }
 
-/* Neumorphic surfaces */
 .neu {
   background: var(--surface);
   box-shadow: var(--shadow-neu);
-  border: 1px solid rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.04);
 }
 
 .neu-sm {
   background: var(--surface);
   box-shadow: var(--shadow-neu-sm);
-  border: 1px solid rgba(255, 255, 255, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.04);
 }
 
 .neu-inset {
   background: var(--surface);
   box-shadow: var(--shadow-neu-inset);
-  border: 1px solid rgba(184, 192, 204, 0.35);
+  border: 1px solid rgba(0, 0, 0, 0.25);
 }
 
 .neu-hover {
@@ -129,7 +128,7 @@ body {
     transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 .neu-hover:hover {
-  box-shadow: 16px 16px 32px #b0b8c6, -16px -16px 32px #ffffff;
+  box-shadow: 14px 14px 30px #101215, -14px -14px 30px #2e343c;
   transform: translateY(-2px);
 }
 .neu-hover:active {
@@ -140,7 +139,7 @@ body {
 .neu-btn {
   background: var(--surface);
   box-shadow: var(--shadow-neu-sm);
-  border: 1px solid rgba(255, 255, 255, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.04);
   color: var(--ink);
   transition:
     box-shadow 0.25s ease,
@@ -161,7 +160,7 @@ body {
   background: var(--surface);
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
-  border: 1px solid rgba(255, 255, 255, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.04);
   box-shadow: var(--shadow-neu-sm);
 }
 
@@ -197,10 +196,10 @@ body {
 @keyframes soft-pulse {
   0%,
   100% {
-    box-shadow: 0 0 0 0 rgba(22, 58, 95, 0.35);
+    box-shadow: 0 0 0 0 rgba(232, 226, 212, 0.35);
   }
   50% {
-    box-shadow: 0 0 0 8px rgba(22, 58, 95, 0);
+    box-shadow: 0 0 0 8px rgba(232, 226, 212, 0);
   }
 }
 .animate-soft-pulse {
@@ -217,5 +216,5 @@ body {
 }
 
 .curved-loop-skills text {
-  fill: #0b0d10;
+  fill: #f3f1ec;
 }

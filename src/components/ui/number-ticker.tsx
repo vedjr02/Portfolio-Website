@@ -64,7 +64,7 @@ export function NumberTicker({
         "inline-block tabular-nums tracking-wider text-ink",
         className
       )}
-      style={{ color: "#0b0d10", ...style }}
+      style={{ color: "#f3f1ec", ...style }}
       {...props}
     >
       {startValue}

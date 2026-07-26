@@ -54,7 +54,7 @@ export function Hero() {
         </ParallaxLayer>
 
         <div className="relative">
-          <h1 className="font-display leading-[0.82] tracking-tight">
+          <h1 className="font-display leading-[0.9]">
             <ParallaxLayer
               style={disabled ? {} : firstNameStyle}
               className="block"

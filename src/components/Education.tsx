@@ -17,7 +17,7 @@ export function Education() {
               Education
             </span>
           </div>
-          <h2 className="font-display text-[clamp(2.2rem,5vw,4.25rem)] leading-[0.95] text-ink max-w-4xl tracking-tight">
+          <h2 className="font-display text-[clamp(2.2rem,5vw,4.25rem)] leading-[1.02] text-ink max-w-4xl">
             Two countries,{" "}
             <span className="text-accent">one curriculum.</span>
           </h2>
@@ -42,7 +42,7 @@ export function Education() {
                 </span>
               </div>
 
-              <h3 className="font-display text-2xl md:text-[1.65rem] leading-tight tracking-tight text-ink">
+              <h3 className="font-display text-2xl md:text-[1.65rem] leading-tight text-ink">
                 {e.degree}
               </h3>
               <p className="mt-3 text-sm text-ink-soft leading-relaxed">

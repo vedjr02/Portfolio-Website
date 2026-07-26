@@ -26,7 +26,7 @@ export function Footer() {
             </span>
           </div>
 
-          <h2 className="font-display text-[clamp(2.5rem,7vw,5.5rem)] leading-[0.92] text-ink tracking-tight">
+          <h2 className="font-display text-[clamp(2.5rem,7vw,5.5rem)] leading-[0.98] text-ink">
             Let&apos;s make the numbers
             <br />
             <span className="text-accent">make sense.</span>
@@ -40,7 +40,7 @@ export function Footer() {
 
           <a
             href={profile.socials.email}
-            className="inline-flex items-center gap-3 mt-10 rounded-full bg-ink text-bg px-6 py-3.5 text-base font-semibold hover:bg-accent transition-colors shadow-[8px_8px_18px_#b8c0cc]"
+            className="inline-flex items-center gap-3 mt-10 rounded-full bg-ink text-bg px-6 py-3.5 text-base font-semibold hover:bg-accent transition-colors shadow-[8px_8px_18px_#121417]"
           >
             <span>{profile.email}</span>
             <ArrowUpRight />

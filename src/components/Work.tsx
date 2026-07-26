@@ -90,7 +90,7 @@ export function Work() {
               <p className="font-mono text-[11px] tracking-[0.22em] uppercase text-muted mb-2">
                 More work
               </p>
-              <h3 className="font-display text-2xl md:text-3xl text-ink tracking-tight">
+              <h3 className="font-display text-2xl md:text-3xl text-ink">
                 Compact builds & systems
               </h3>
             </div>
@@ -127,7 +127,7 @@ function SectionHeader({
         </div>
       </BlurFade>
       <BlurFade inView delay={0.1} direction="up">
-        <h2 className="font-display text-[clamp(2.75rem,7vw,5.5rem)] leading-[0.92] text-ink">
+        <h2 className="font-display text-[clamp(2.75rem,7vw,5.5rem)] leading-[0.98] text-ink">
           {title}
         </h2>
       </BlurFade>
@@ -170,7 +170,7 @@ function FeaturedBlock({
           <p className="font-mono text-[11px] tracking-[0.18em] uppercase text-muted mb-3">
             {project.category}
           </p>
-          <h3 className="font-display text-[clamp(2rem,4.2vw,3.4rem)] leading-[1.02] tracking-tight text-ink max-w-2xl">
+          <h3 className="font-display text-[clamp(2rem,4.2vw,3.4rem)] leading-[1.02] text-ink max-w-2xl">
             {project.title}
           </h3>
           <p className="mt-5 text-ink-soft text-[15px] md:text-base leading-relaxed max-w-2xl">
@@ -227,7 +227,7 @@ function FeaturedBlock({
 
           {project.metric ? (
             <div className="neu-inset rounded-[24px] p-6">
-              <div className="font-display text-5xl md:text-6xl text-ink tracking-tight">
+              <div className="font-display text-5xl md:text-6xl text-ink">
                 <NumberTicker
                   value={project.metric.value}
                   decimalPlaces={project.metric.decimals ?? 0}
@@ -241,7 +241,7 @@ function FeaturedBlock({
             </div>
           ) : (
             <div className="neu-inset rounded-[24px] p-6">
-              <p className="font-display text-4xl text-ink tracking-tight">
+              <p className="font-display text-4xl text-ink">
                 0{index + 1}
               </p>
               <p className="mt-2 font-mono text-[11px] tracking-[0.14em] uppercase text-muted">
@@ -269,7 +269,7 @@ function SmallCard({ project, index }: { project: Project; index: number }) {
         </span>
       </div>
 
-      <h4 className="font-display text-xl leading-tight tracking-tight text-ink">
+      <h4 className="font-display text-xl leading-tight text-ink">
         {project.title}
       </h4>
       <p className="mt-2 text-[13px] text-ink-soft leading-relaxed line-clamp-3">

@@ -48,7 +48,7 @@ export function SideProjects() {
                 Side Quests
               </span>
             </div>
-            <h2 className="font-display text-[clamp(1.9rem,4.5vw,3.25rem)] leading-[0.95] text-ink max-w-2xl tracking-tight">
+            <h2 className="font-display text-[clamp(1.9rem,4.5vw,3.25rem)] leading-[1.02] text-ink max-w-2xl">
               Built for curiosity.
             </h2>
             <p className="mt-3 max-w-xl text-ink-soft text-[15px]">
@@ -116,7 +116,7 @@ function SideProjectCard({
       </div>
 
       <div className="mt-auto">
-        <h3 className="font-display text-lg leading-tight tracking-tight text-ink">
+        <h3 className="font-display text-lg leading-tight text-ink">
           {project.name}
         </h3>
         <p className="mt-2 text-[13px] text-ink-soft leading-relaxed line-clamp-2">
