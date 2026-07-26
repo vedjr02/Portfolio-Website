@@ -2,127 +2,102 @@
 
 import { motion } from "framer-motion";
 import { profile } from "@/lib/data";
-import { ParallaxLayer, useHeroParallax } from "@/components/Parallax";
+import { useCommand } from "@/components/CommandProvider";
+import { DoodleNote, DoodleUnderline } from "@/components/Doodles";
 
-const easeOut = [0.2, 0.8, 0.2, 1] as const;
+const easeOut = [0.22, 1, 0.36, 1] as const;
 
 export function Hero() {
-  const {
-    ref,
-    disabled,
-    pillStyle,
-    introStyle,
-    firstNameStyle,
-    lastNameStyle,
-    metaStyle,
-  } = useHeroParallax();
+  const { toggle } = useCommand();
 
   return (
     <section
-      ref={ref}
       id="top"
-      className="relative min-h-[100svh] flex flex-col justify-end overflow-hidden pt-32 pb-12 md:pb-16"
+      className="relative min-h-[100svh] flex flex-col justify-end pt-28 pb-16 md:pb-24"
     >
-      <div className="relative z-10 mx-auto w-full max-w-6xl px-6">
-        {/* Status pill */}
-        <ParallaxLayer className="inline-block mb-8" style={disabled ? {} : pillStyle}>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
+      <div className="mx-auto w-full max-w-6xl px-5 md:px-6 relative">
+        <motion.div
+          initial={{ opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: easeOut }}
+          className="flex flex-wrap items-center gap-3 mb-8"
+        >
+          <span className="pill pill-accent">
+            <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse-dot" />
+            Open to BA roles
+          </span>
+          <span className="pill">{profile.location}</span>
+        </motion.div>
+
+        {/* Empty space right of the name block on wide screens */}
+        <DoodleNote
+          label="that's me"
+          direction="down-left"
+          size="md"
+          rotate={8}
+          className="absolute right-8 top-24 hidden xl:flex"
+        />
+
+        <h1 className="font-display leading-[0.86] tracking-[-0.05em]">
+          <motion.span
+            initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: easeOut, delay: 0.1 }}
-            className="inline-flex items-center gap-2.5 rounded-full glass px-3.5 py-1.5"
+            transition={{ duration: 0.85, ease: easeOut, delay: 0.05 }}
+            className="block text-[clamp(4.2rem,15vw,11rem)] text-ink"
           >
-            <span className="relative flex h-1.5 w-1.5">
-              <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 animate-soft-pulse" />
-              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />
-            </span>
-            <span className="font-mono text-[12px] tracking-[0.16em] uppercase text-neutral-300">
-              {profile.tagline}
-            </span>
-          </motion.div>
-        </ParallaxLayer>
-
-        {/* Intro paragraph */}
-        <ParallaxLayer style={disabled ? {} : introStyle}>
-          <motion.p
-            initial={{ opacity: 0, y: 24 }}
+            {profile.firstName}
+          </motion.span>
+          <motion.span
+            initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: easeOut, delay: 0.2 }}
-            className="max-w-2xl text-balance text-base sm:text-lg md:text-xl text-neutral-300 leading-relaxed mb-10 md:mb-14"
+            transition={{ duration: 0.85, ease: easeOut, delay: 0.16 }}
+            className="inline-block text-[clamp(4.2rem,15vw,11rem)] text-accent pb-2"
           >
-            Howdy! Meet your trusted analytics partner,{" "}
-            <span className="text-white">turning ambiguous data into</span>{" "}
-            <span className="italic font-display text-sky-300/90">
-              confident business decisions.
-            </span>
-          </motion.p>
-        </ParallaxLayer>
+            {profile.lastName}
+            <DoodleUnderline className="mt-1 h-2.5 w-[min(100%,16rem)]" />
+          </motion.span>
+        </h1>
 
-        {/* Giant name — each line drifts at a different rate */}
-        <div className="relative">
-          <h1 className="font-display leading-[0.85] tracking-tight">
-            <ParallaxLayer
-              style={disabled ? {} : firstNameStyle}
-              className="block"
-            >
-              <motion.span
-                initial={{ opacity: 0, y: 60 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1.1, ease: easeOut, delay: 0.3 }}
-                className="block text-[clamp(4.5rem,16vw,15rem)] text-white"
-              >
-                {profile.firstName}
-              </motion.span>
-            </ParallaxLayer>
-            <ParallaxLayer
-              style={disabled ? {} : lastNameStyle}
-              className="block"
-            >
-              <motion.span
-                initial={{ opacity: 0, y: 60 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1.1, ease: easeOut, delay: 0.45 }}
-                className="block text-[clamp(4.5rem,16vw,15rem)] text-white italic"
-              >
-                {profile.lastName}
-              </motion.span>
-            </ParallaxLayer>
-          </h1>
-        </div>
+        <motion.p
+          initial={{ opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: easeOut, delay: 0.28 }}
+          className="mt-8 max-w-2xl text-lg md:text-xl leading-relaxed text-ink-soft"
+        >
+          Business Analyst building sourced case studies, stakeholder
+          dashboards, and KPI models that hold up in the room.
+        </motion.p>
 
-        {/* Bottom row: title + scroll cue */}
-        <ParallaxLayer style={disabled ? {} : metaStyle}>
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, ease: easeOut, delay: 0.7 }}
-            className="mt-8 md:mt-12 flex flex-col md:flex-row md:items-end md:justify-between gap-6"
-          >
-            <div className="flex items-center gap-4">
-              <div className="h-px w-10 bg-neutral-600" />
-              <p className="font-mono text-[12px] tracking-[0.2em] uppercase text-neutral-400">
-                {profile.title} <span className="text-neutral-600">/</span>{" "}
-                {profile.altTitle}
-              </p>
-            </div>
-
-            <a
-              href="#work"
-              className="group flex items-center gap-3 text-neutral-400 hover:text-white transition-colors"
-            >
-              <span className="font-mono text-[12px] tracking-[0.2em] uppercase">
-                Scroll to explore
-              </span>
-              <span className="relative flex h-8 w-5 items-start justify-center rounded-full border border-neutral-600 group-hover:border-white transition-colors">
-                <motion.span
-                  animate={{ y: [2, 12, 2], opacity: [1, 0.2, 1] }}
-                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                  className="mt-1.5 block h-1.5 w-0.5 rounded-full bg-current"
-                />
-              </span>
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: easeOut, delay: 0.38 }}
+          className="mt-10 grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-end border-t border-line pt-8"
+        >
+          <div className="md:col-span-6">
+            <p className="text-xs font-bold uppercase tracking-[0.16em] text-muted mb-2">
+              {profile.title}
+            </p>
+            <p className="text-sm text-ink-soft leading-relaxed max-w-md">
+              {profile.now}
+            </p>
+          </div>
+          <div className="md:col-span-6 relative flex flex-wrap items-center justify-start md:justify-end gap-3">
+            <DoodleNote
+              label="start here"
+              direction="right"
+              size="sm"
+              rotate={-4}
+              className="hidden md:inline-flex order-first md:order-none mr-1"
+            />
+            <a href="#showcase" className="btn-primary">
+              See the work
             </a>
-          </motion.div>
-        </ParallaxLayer>
+            <button type="button" onClick={toggle} className="btn-secondary">
+              Search projects
+            </button>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

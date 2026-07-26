@@ -1,57 +1,72 @@
 "use client";
 
-import { motion, useScroll, useMotionValueEvent } from "framer-motion";
-import { useState } from "react";
+import { useScroll, useMotionValueEvent } from "framer-motion";
+import { useEffect, useState } from "react";
+import { useCommand } from "@/components/CommandProvider";
 
 const links = [
-  { id: "work", label: "Work" },
-  { id: "story", label: "Story" },
-  { id: "skills", label: "Skills" },
-  { id: "education", label: "Education" },
+  { id: "showcase", label: "Cases" },
+  { id: "archive", label: "Projects" },
+  { id: "story", label: "About" },
+  { id: "education", label: "Path" },
 ];
 
 export function Nav() {
+  const { toggle } = useCommand();
   const [scrolled, setScrolled] = useState(false);
+  const [active, setActive] = useState("top");
   const { scrollY } = useScroll();
 
-  useMotionValueEvent(scrollY, "change", (v) => {
-    setScrolled(v > 24);
-  });
+  useMotionValueEvent(scrollY, "change", (v) => setScrolled(v > 20));
+
+  useEffect(() => {
+    const ids = ["top", ...links.map((l) => l.id), "contact"];
+    const els = ids
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => !!el);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+        if (visible[0]?.target.id) setActive(visible[0].target.id);
+      },
+      { rootMargin: "-35% 0px -50% 0px", threshold: [0.1, 0.35] }
+    );
+    els.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <motion.header
-      initial={{ y: -32, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.8, ease: [0.2, 0.8, 0.2, 1] }}
-      className="fixed top-4 left-1/2 -translate-x-1/2 z-40 w-[calc(100%-2rem)] max-w-2xl"
-    >
+    <header className="fixed top-0 inset-x-0 z-40 px-4 pt-4 md:px-6 md:pt-5">
       <nav
-        className={`flex items-center justify-between rounded-full pl-3 pr-1.5 py-1.5 transition-all duration-500 ${
+        className={`mx-auto flex max-w-6xl items-center justify-between gap-4 rounded-full px-4 py-2.5 transition-all duration-300 ${
           scrolled
-            ? "glass shadow-[0_8px_40px_-8px_rgba(0,0,0,0.5)]"
-            : "glass shadow-[0_4px_20px_-8px_rgba(0,0,0,0.4)]"
+            ? "border border-white/10 bg-[#161412]/55 backdrop-blur-xl backdrop-saturate-150 shadow-[0_10px_40px_rgba(0,0,0,0.35)]"
+            : "border border-transparent bg-transparent"
         }`}
+        aria-label="Primary"
       >
-        <a
-          href="#top"
-          className="flex items-center gap-2 px-2 group"
-          aria-label="Vedant Ambre — home"
-        >
-          <span className="relative flex h-1.5 w-1.5">
-            <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 animate-soft-pulse" />
-            <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />
+        <a href="#top" className="flex items-center gap-2.5 pl-1">
+          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-accent font-display text-[12px] text-[#061018]">
+            VA
           </span>
-          <span className="font-mono text-[11px] tracking-[0.16em] uppercase text-neutral-200 group-hover:text-white transition-colors">
-            Vedant
+          <span className="hidden sm:inline text-sm font-bold text-ink tracking-tight">
+            Vedant Ambre
           </span>
         </a>
 
-        <ul className="hidden md:flex items-center gap-0.5">
+        <ul className="hidden md:flex items-center gap-1">
           {links.map((link) => (
             <li key={link.id}>
               <a
                 href={`#${link.id}`}
-                className="px-3 py-1.5 text-[13px] text-neutral-300 hover:text-white rounded-full hover:bg-white/5 transition-colors"
+                aria-current={active === link.id ? "true" : undefined}
+                className={`rounded-full px-3.5 py-1.5 text-sm font-bold transition-colors ${
+                  active === link.id
+                    ? "bg-ink text-bg"
+                    : "text-ink-soft hover:text-ink"
+                }`}
               >
                 {link.label}
               </a>
@@ -59,13 +74,19 @@ export function Nav() {
           ))}
         </ul>
 
-        <a
-          href="#contact"
-          className="group relative overflow-hidden rounded-full bg-white text-black px-3.5 py-1.5 text-[13px] font-medium hover:bg-sky-300 transition-colors duration-300"
-        >
-          Contact
-        </a>
+        <div className="flex items-center gap-2">
+          <button
+            type="button"
+            onClick={toggle}
+            className="rounded-full border border-line bg-bg-deep px-3 py-1.5 text-xs font-bold text-ink-soft hover:text-ink"
+          >
+            ⌘K
+          </button>
+          <a href="#contact" className="btn-primary !py-2 !px-4 text-sm">
+            Contact
+          </a>
+        </div>
       </nav>
-    </motion.header>
+    </header>
   );
 }

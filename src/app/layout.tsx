@@ -1,38 +1,37 @@
 import type { Metadata } from "next";
-import { Oswald, Space_Grotesk, JetBrains_Mono } from "next/font/google";
+import { Syne, Manrope, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-// Display font — bold impact for headlines
-const oswald = Oswald({
-  variable: "--font-display",
+const syne = Syne({
+  variable: "--font-syne",
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
+  weight: ["600", "700", "800"],
   display: "swap",
 });
 
-// Body font — geometric grotesque for paragraphs / UI
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-sans",
+const manrope = Manrope({
+  variable: "--font-manrope",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700", "800"],
   display: "swap",
 });
 
-const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-mono",
+const jetbrains = JetBrains_Mono({
+  variable: "--font-mono-body",
   subsets: ["latin"],
+  weight: ["400", "500"],
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Vedant Ambre — Business Analyst & Data Analyst",
+  title: "Vedant Ambre — Business Analyst",
   description:
-    "Detail-oriented Business Analyst translating complex datasets into actionable business insights. Master's in Business Analytics, Maynooth University.",
+    "Portfolio of business analytics case studies, consulting work, and product analytics builds.",
   metadataBase: new URL("https://vedantambre.com"),
   openGraph: {
-    title: "Vedant Ambre — Business Analyst & Data Analyst",
+    title: "Vedant Ambre — Business Analyst",
     description:
-      "Detail-oriented Business Analyst translating complex datasets into actionable business insights.",
+      "Case studies, live demos, and consulting work for Business Analyst hiring managers.",
     type: "website",
   },
 };
@@ -52,9 +51,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${oswald.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} h-full antialiased`}
+      className={`${syne.variable} ${manrope.variable} ${jetbrains.variable} h-full antialiased`}
     >
-      <body className="min-h-full text-neutral-100 font-sans selection:bg-sky-300/30 selection:text-sky-100">
+      <body className="min-h-full bg-bg text-ink font-sans selection:bg-accent selection:text-[#061018]">
         {children}
       </body>
     </html>
