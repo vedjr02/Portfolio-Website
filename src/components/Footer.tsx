@@ -18,21 +18,21 @@ export function Footer() {
         >
           <div className="inline-flex items-center gap-2 rounded-full neu-inset px-3.5 py-1.5 mb-8">
             <span className="relative flex h-1.5 w-1.5">
-              <span className="absolute inline-flex h-full w-full rounded-full bg-[var(--color-accent)] opacity-60 animate-soft-pulse" />
-              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-[var(--color-accent)]" />
+              <span className="absolute inline-flex h-full w-full rounded-full bg-accent opacity-60 animate-soft-pulse" />
+              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-accent" />
             </span>
-            <span className="font-mono text-[12px] tracking-[0.18em] uppercase text-[var(--color-ink-soft)]">
+            <span className="font-mono text-[12px] tracking-[0.18em] uppercase text-ink-soft">
               Open to BA / DA roles
             </span>
           </div>
 
-          <h2 className="font-display text-[clamp(2.5rem,7vw,5.5rem)] leading-[0.92] text-[var(--color-ink)] tracking-tight">
+          <h2 className="font-display text-[clamp(2.5rem,7vw,5.5rem)] leading-[0.92] text-ink tracking-tight">
             Let&apos;s make the numbers
             <br />
-            <span className="text-[var(--color-accent)]">make sense.</span>
+            <span className="text-accent">make sense.</span>
           </h2>
 
-          <p className="mt-7 max-w-xl mx-auto text-[var(--color-ink-soft)] text-base md:text-lg">
+          <p className="mt-7 max-w-xl mx-auto text-ink-soft text-base md:text-lg">
             Hiring for a Business Analyst or Data Analyst who ships case studies
             and stakeholder-ready dashboards? Reach out — replies usually within
             24 hours.
@@ -40,36 +40,36 @@ export function Footer() {
 
           <a
             href={profile.socials.email}
-            className="inline-flex items-center gap-3 mt-10 rounded-full bg-[var(--color-ink)] text-[#dde1e8] px-6 py-3.5 text-base font-semibold hover:bg-[var(--color-accent)] transition-colors shadow-[8px_8px_18px_#c4c9d2]"
+            className="inline-flex items-center gap-3 mt-10 rounded-full bg-ink text-bg px-6 py-3.5 text-base font-semibold hover:bg-accent transition-colors shadow-[8px_8px_18px_#b8c0cc]"
           >
             <span>{profile.email}</span>
             <ArrowUpRight />
           </a>
         </motion.div>
 
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 pt-8 border-t border-[var(--color-line)]">
+        <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 pt-8 border-t border-line">
           <div>
-            <div className="font-mono text-[11px] tracking-[0.22em] uppercase text-[var(--color-muted)] mb-3">
+            <div className="font-mono text-[11px] tracking-[0.22em] uppercase text-muted mb-3">
               Navigate
             </div>
-            <ul className="space-y-1.5 text-[var(--color-ink-soft)] text-sm">
+            <ul className="space-y-1.5 text-ink-soft text-sm">
               <li>
-                <a href="#work" className="hover:text-[var(--color-ink)] transition-colors">
+                <a href="#work" className="hover:text-ink transition-colors">
                   Work
                 </a>
               </li>
               <li>
-                <a href="#story" className="hover:text-[var(--color-ink)] transition-colors">
+                <a href="#story" className="hover:text-ink transition-colors">
                   Story
                 </a>
               </li>
               <li>
-                <a href="#skills" className="hover:text-[var(--color-ink)] transition-colors">
+                <a href="#skills" className="hover:text-ink transition-colors">
                   Skills
                 </a>
               </li>
               <li>
-                <a href="#contact" className="hover:text-[var(--color-ink)] transition-colors">
+                <a href="#contact" className="hover:text-ink transition-colors">
                   Connect
                 </a>
               </li>
@@ -77,16 +77,16 @@ export function Footer() {
           </div>
 
           <div>
-            <div className="font-mono text-[11px] tracking-[0.22em] uppercase text-[var(--color-muted)] mb-3">
+            <div className="font-mono text-[11px] tracking-[0.22em] uppercase text-muted mb-3">
               Social
             </div>
-            <ul className="space-y-1.5 text-[var(--color-ink-soft)] text-sm">
+            <ul className="space-y-1.5 text-ink-soft text-sm">
               <li>
                 <a
                   href={profile.socials.linkedin}
                   target="_blank"
                   rel="noreferrer"
-                  className="hover:text-[var(--color-ink)] transition-colors inline-flex items-center gap-2"
+                  className="hover:text-ink transition-colors inline-flex items-center gap-2"
                 >
                   LinkedIn <ArrowUpRight />
                 </a>
@@ -96,7 +96,7 @@ export function Footer() {
                   href={profile.socials.github}
                   target="_blank"
                   rel="noreferrer"
-                  className="hover:text-[var(--color-ink)] transition-colors inline-flex items-center gap-2"
+                  className="hover:text-ink transition-colors inline-flex items-center gap-2"
                 >
                   GitHub <ArrowUpRight />
                 </a>
@@ -104,7 +104,7 @@ export function Footer() {
               <li>
                 <a
                   href={profile.socials.email}
-                  className="hover:text-[var(--color-ink)] transition-colors inline-flex items-center gap-2"
+                  className="hover:text-ink transition-colors inline-flex items-center gap-2"
                 >
                   Email <ArrowUpRight />
                 </a>
@@ -113,20 +113,20 @@ export function Footer() {
           </div>
 
           <div>
-            <div className="font-mono text-[11px] tracking-[0.22em] uppercase text-[var(--color-muted)] mb-3">
+            <div className="font-mono text-[11px] tracking-[0.22em] uppercase text-muted mb-3">
               Now
             </div>
-            <p className="text-[var(--color-ink-soft)] text-sm leading-relaxed">
+            <p className="text-ink-soft text-sm leading-relaxed">
               {profile.now}
             </p>
           </div>
         </div>
 
         <div className="mt-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-3">
-          <p className="font-mono text-[11px] tracking-[0.18em] uppercase text-[var(--color-muted)]">
+          <p className="font-mono text-[11px] tracking-[0.18em] uppercase text-muted">
             © {new Date().getFullYear()} Vedant Ambre
           </p>
-          <p className="font-display text-[clamp(2.5rem,10vw,7rem)] leading-none text-[var(--color-ink)]/10 select-none">
+          <p className="font-display text-[clamp(2.5rem,10vw,7rem)] leading-none text-ink/10 select-none">
             VA
           </p>
         </div>

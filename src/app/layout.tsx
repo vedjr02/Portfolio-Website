@@ -3,21 +3,21 @@ import { Syne, Outfit, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 
 const syne = Syne({
-  variable: "--font-display",
+  variable: "--font-syne",
   subsets: ["latin"],
   weight: ["600", "700", "800"],
   display: "swap",
 });
 
 const outfit = Outfit({
-  variable: "--font-sans",
+  variable: "--font-outfit",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
 const plexMono = IBM_Plex_Mono({
-  variable: "--font-mono",
+  variable: "--font-plex",
   subsets: ["latin"],
   weight: ["400", "500"],
   display: "swap",
@@ -53,7 +53,7 @@ export default function RootLayout({
       lang="en"
       className={`${syne.variable} ${outfit.variable} ${plexMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full text-[var(--color-ink)] font-sans selection:bg-[var(--color-accent)]/15 selection:text-[var(--color-accent)]">
+      <body className="min-h-full text-ink font-sans selection:bg-accent/15 selection:text-accent">
         {children}
       </body>
     </html>

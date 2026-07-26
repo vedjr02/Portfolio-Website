@@ -12,14 +12,14 @@ export function Education() {
       <div className="relative mx-auto max-w-6xl px-6">
         <BlurFade inView direction="up">
           <div className="flex items-center gap-3 mb-5">
-            <span className="h-px w-8 bg-[var(--color-ink)]/20" />
-            <span className="font-mono text-[12px] tracking-[0.22em] uppercase text-[var(--color-muted)]">
+            <span className="h-px w-8 bg-ink/20" />
+            <span className="font-mono text-[12px] tracking-[0.22em] uppercase text-muted">
               Education
             </span>
           </div>
-          <h2 className="font-display text-[clamp(2.2rem,5vw,4.25rem)] leading-[0.95] text-[var(--color-ink)] max-w-4xl tracking-tight">
+          <h2 className="font-display text-[clamp(2.2rem,5vw,4.25rem)] leading-[0.95] text-ink max-w-4xl tracking-tight">
             Two countries,{" "}
-            <span className="text-[var(--color-accent)]">one curriculum.</span>
+            <span className="text-accent">one curriculum.</span>
           </h2>
         </BlurFade>
 
@@ -35,23 +35,23 @@ export function Education() {
             >
               <div className="flex items-center gap-2 mb-6">
                 {e.status === "current" && (
-                  <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-accent)] animate-soft-pulse" />
+                  <span className="h-1.5 w-1.5 rounded-full bg-accent animate-soft-pulse" />
                 )}
-                <span className="font-mono text-[11px] tracking-[0.18em] uppercase text-[var(--color-muted)]">
+                <span className="font-mono text-[11px] tracking-[0.18em] uppercase text-muted">
                   {e.period}
                 </span>
               </div>
 
-              <h3 className="font-display text-2xl md:text-[1.65rem] leading-tight tracking-tight text-[var(--color-ink)]">
+              <h3 className="font-display text-2xl md:text-[1.65rem] leading-tight tracking-tight text-ink">
                 {e.degree}
               </h3>
-              <p className="mt-3 text-sm text-[var(--color-ink-soft)] leading-relaxed">
+              <p className="mt-3 text-sm text-ink-soft leading-relaxed">
                 {e.school}
               </p>
-              <p className="mt-1 text-sm text-[var(--color-muted)]">{e.location}</p>
+              <p className="mt-1 text-sm text-muted">{e.location}</p>
 
               <div className="mt-auto pt-6">
-                <span className="neu-inset inline-flex rounded-full px-3 py-1 text-[11px] font-mono tracking-[0.16em] uppercase text-[var(--color-ink-soft)]">
+                <span className="neu-inset inline-flex rounded-full px-3 py-1 text-[11px] font-mono tracking-[0.16em] uppercase text-ink-soft">
                   {e.status === "current" ? "Ongoing" : "Completed"}
                 </span>
               </div>

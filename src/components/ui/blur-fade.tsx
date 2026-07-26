@@ -2,7 +2,6 @@
 
 import { useRef } from "react";
 import {
-  AnimatePresence,
   motion,
   useInView,
   type MotionProps,
@@ -25,70 +24,51 @@ interface BlurFadeProps extends MotionProps {
   direction?: "up" | "down" | "left" | "right";
   inView?: boolean;
   inViewMargin?: MarginType;
+  /** Kept for API compat — blur disabled by default for readability */
   blur?: string;
 }
-
-const getFilter = (v: Variants[string]) =>
-  typeof v === "function" ? undefined : v.filter;
 
 export function BlurFade({
   children,
   className,
   variant,
-  duration = 0.4,
+  duration = 0.45,
   delay = 0,
-  offset = 6,
-  direction = "down",
+  offset = 10,
+  direction = "up",
   inView = false,
-  inViewMargin = "-50px",
-  blur = "6px",
+  inViewMargin = "-40px",
   ...props
 }: BlurFadeProps) {
   const ref = useRef(null);
   const inViewResult = useInView(ref, { once: true, margin: inViewMargin });
   const isInView = !inView || inViewResult;
+
+  const axis = direction === "left" || direction === "right" ? "x" : "y";
+  const from =
+    direction === "right" || direction === "down" ? -offset : offset;
+
   const defaultVariants: Variants = {
-    hidden: {
-      [direction === "left" || direction === "right" ? "x" : "y"]:
-        direction === "right" || direction === "down" ? -offset : offset,
-      opacity: 0,
-      filter: `blur(${blur})`,
-    },
-    visible: {
-      [direction === "left" || direction === "right" ? "x" : "y"]: 0,
-      opacity: 1,
-      filter: `blur(0px)`,
-    },
+    hidden: { [axis]: from, opacity: 0 },
+    visible: { [axis]: 0, opacity: 1 },
   };
   const combinedVariants = variant ?? defaultVariants;
 
-  const hiddenFilter = getFilter(combinedVariants.hidden);
-  const visibleFilter = getFilter(combinedVariants.visible);
-
-  const shouldTransitionFilter =
-    hiddenFilter != null &&
-    visibleFilter != null &&
-    hiddenFilter !== visibleFilter;
-
   return (
-    <AnimatePresence>
-      <motion.div
-        ref={ref}
-        initial="hidden"
-        animate={isInView ? "visible" : "hidden"}
-        exit="hidden"
-        variants={combinedVariants}
-        transition={{
-          delay: 0.04 + delay,
-          duration,
-          ease: "easeOut",
-          ...(shouldTransitionFilter ? { filter: { duration } } : {}),
-        }}
-        className={className}
-        {...props}
-      >
-        {children}
-      </motion.div>
-    </AnimatePresence>
+    <motion.div
+      ref={ref}
+      initial="hidden"
+      animate={isInView ? "visible" : "hidden"}
+      variants={combinedVariants}
+      transition={{
+        delay: 0.04 + delay,
+        duration,
+        ease: [0.22, 1, 0.36, 1],
+      }}
+      className={className}
+      {...props}
+    >
+      {children}
+    </motion.div>
   );
 }

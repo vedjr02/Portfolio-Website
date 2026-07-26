@@ -1,26 +1,40 @@
 @import "tailwindcss";
 
-@theme inline {
-  --color-bg: #dde1e8;
-  --color-surface: #dde1e8;
-  --color-ink: #14171d;
-  --color-ink-soft: #3d4450;
-  --color-muted: #6b7280;
-  --color-accent: #1f4e79;
-  --color-accent-soft: #2f6f9f;
-  --color-line: rgba(20, 23, 29, 0.08);
-  --font-sans: var(--font-sans);
-  --font-display: var(--font-display);
-  --font-mono: var(--font-mono);
-  --shadow-neu: 10px 10px 22px #c4c9d2, -10px -10px 22px #f6f8fc;
-  --shadow-neu-sm: 6px 6px 14px #c4c9d2, -6px -6px 14px #f6f8fc;
-  --shadow-neu-inset: inset 6px 6px 12px #c4c9d2, inset -6px -6px 12px #f6f8fc;
-  --shadow-neu-press: inset 4px 4px 10px #c4c9d2, inset -4px -4px 10px #f6f8fc;
+/*
+  Use @theme (NOT inline) so --color-* exist as real CSS variables on :root.
+  @theme inline previously broke text-ink → invisible / washed text.
+*/
+@theme {
+  --color-bg: #e6e9ef;
+  --color-surface: #e6e9ef;
+  --color-ink: #0b0d10;
+  --color-ink-soft: #2c333d;
+  --color-muted: #5a6573;
+  --color-accent: #163a5f;
+  --color-accent-soft: #1f567f;
+  --color-line: rgba(11, 13, 16, 0.1);
+  --font-sans: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-syne), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-plex), ui-monospace, monospace;
 }
 
 :root {
-  --background: #dde1e8;
-  --foreground: #14171d;
+  --background: #e6e9ef;
+  --foreground: #0b0d10;
+  --surface: #e6e9ef;
+  --ink: #0b0d10;
+  --ink-soft: #2c333d;
+  --muted: #5a6573;
+  --accent: #163a5f;
+  --accent-soft: #1f567f;
+  --line: rgba(11, 13, 16, 0.1);
+
+  /* Stronger neumorphic depth so cards read clearly on light UI */
+  --shadow-neu: 12px 12px 28px #b8c0cc, -12px -12px 28px #ffffff;
+  --shadow-neu-sm: 7px 7px 16px #b8c0cc, -7px -7px 16px #ffffff;
+  --shadow-neu-inset: inset 7px 7px 14px #b8c0cc, inset -7px -7px 14px #ffffff;
+  --shadow-neu-press: inset 5px 5px 12px #b8c0cc, inset -5px -5px 12px #ffffff;
+
   color-scheme: light;
 }
 
@@ -49,6 +63,7 @@ body {
   font-family: var(--font-display), system-ui, sans-serif;
   font-weight: 800;
   letter-spacing: -0.04em;
+  color: var(--ink);
   text-transform: none;
 }
 
@@ -67,43 +82,45 @@ body {
   height: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: #dde1e8;
+  background: var(--background);
 }
 ::-webkit-scrollbar-thumb {
-  background: #b8bec8;
+  background: #a8b1bf;
   border-radius: 8px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #9aa3b0;
+  background: #8b96a8;
 }
 
-/* Soft paper grain — subtle, not film-noir */
+/* Very light grain — never covers text */
 .grain::before {
   content: "";
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: 50;
-  opacity: 0.035;
+  opacity: 0.025;
   mix-blend-mode: multiply;
-  background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/></svg>");
+  background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/></svg>");
 }
 
 /* Neumorphic surfaces */
 .neu {
-  background: #dde1e8;
+  background: var(--surface);
   box-shadow: var(--shadow-neu);
-  border: none;
+  border: 1px solid rgba(255, 255, 255, 0.55);
 }
 
 .neu-sm {
-  background: #dde1e8;
+  background: var(--surface);
   box-shadow: var(--shadow-neu-sm);
+  border: 1px solid rgba(255, 255, 255, 0.45);
 }
 
 .neu-inset {
-  background: #dde1e8;
+  background: var(--surface);
   box-shadow: var(--shadow-neu-inset);
+  border: 1px solid rgba(184, 192, 204, 0.35);
 }
 
 .neu-hover {
@@ -112,7 +129,7 @@ body {
     transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 .neu-hover:hover {
-  box-shadow: 14px 14px 28px #c0c6d0, -14px -14px 28px #f8fafc;
+  box-shadow: 16px 16px 32px #b0b8c6, -16px -16px 32px #ffffff;
   transform: translateY(-2px);
 }
 .neu-hover:active {
@@ -121,8 +138,10 @@ body {
 }
 
 .neu-btn {
-  background: #dde1e8;
+  background: var(--surface);
   box-shadow: var(--shadow-neu-sm);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  color: var(--ink);
   transition:
     box-shadow 0.25s ease,
     color 0.25s ease,
@@ -130,19 +149,19 @@ body {
 }
 .neu-btn:hover {
   box-shadow: var(--shadow-neu);
+  color: var(--accent);
 }
 .neu-btn:active,
 .neu-btn[aria-current="true"] {
   box-shadow: var(--shadow-neu-press);
 }
 
-/* Keep old class names from exploding if leftover — neutralize glass */
 .glass,
 .glass-hover {
-  background: #dde1e8;
+  background: var(--surface);
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
-  border: none;
+  border: 1px solid rgba(255, 255, 255, 0.45);
   box-shadow: var(--shadow-neu-sm);
 }
 
@@ -178,33 +197,17 @@ body {
 @keyframes soft-pulse {
   0%,
   100% {
-    box-shadow: 0 0 0 0 rgba(31, 78, 121, 0.35);
+    box-shadow: 0 0 0 0 rgba(22, 58, 95, 0.35);
   }
   50% {
-    box-shadow: 0 0 0 8px rgba(31, 78, 121, 0);
+    box-shadow: 0 0 0 8px rgba(22, 58, 95, 0);
   }
 }
 .animate-soft-pulse {
   animation: soft-pulse 2.4s ease-out infinite;
 }
 
-@keyframes shiny-text {
-  0%,
-  90%,
-  100% {
-    background-position: calc(-100% - var(--shiny-width)) 0;
-  }
-  30%,
-  60% {
-    background-position: calc(100% + var(--shiny-width)) 0;
-  }
-}
-.animate-shiny-text {
-  animation: shiny-text 8s infinite;
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .animate-shiny-text,
   .animate-marquee,
   .animate-soft-pulse,
   .neu-hover {
@@ -213,7 +216,6 @@ body {
   }
 }
 
-/* Skills curved loop — force ink on light */
 .curved-loop-skills text {
-  fill: #14171d;
+  fill: #0b0d10;
 }

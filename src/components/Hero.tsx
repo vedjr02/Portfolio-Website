@@ -33,10 +33,10 @@ export function Hero() {
             className="inline-flex items-center gap-2.5 rounded-full neu-sm px-4 py-2"
           >
             <span className="relative flex h-1.5 w-1.5">
-              <span className="absolute inline-flex h-full w-full rounded-full bg-[var(--color-accent)] opacity-60 animate-soft-pulse" />
-              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-[var(--color-accent)]" />
+              <span className="absolute inline-flex h-full w-full rounded-full bg-accent opacity-60 animate-soft-pulse" />
+              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-accent" />
             </span>
-            <span className="font-mono text-[12px] tracking-[0.16em] uppercase text-[var(--color-ink-soft)]">
+            <span className="font-mono text-[12px] tracking-[0.16em] uppercase text-ink-soft">
               {profile.tagline}
             </span>
           </motion.div>
@@ -44,9 +44,9 @@ export function Hero() {
 
         <ParallaxLayer style={disabled ? {} : introStyle}>
           <BlurFade delay={0.15} offset={16} direction="up">
-            <p className="max-w-2xl text-balance text-base sm:text-lg md:text-xl text-[var(--color-ink-soft)] leading-relaxed mb-10 md:mb-14">
+            <p className="max-w-2xl text-balance text-base sm:text-lg md:text-xl text-ink-soft leading-relaxed mb-10 md:mb-14">
               Business Analyst who turns ambiguous data into{" "}
-              <span className="text-[var(--color-ink)] font-semibold">
+              <span className="text-ink font-semibold">
                 decisions teams can ship on.
               </span>
             </p>
@@ -63,7 +63,7 @@ export function Hero() {
                 initial={{ opacity: 0, y: 60 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1.1, ease: easeOut, delay: 0.3 }}
-                className="block text-[clamp(4.25rem,15vw,13.5rem)] text-[var(--color-ink)]"
+                className="block text-[clamp(4.25rem,15vw,13.5rem)] text-ink"
               >
                 {profile.firstName}
               </motion.span>
@@ -76,7 +76,7 @@ export function Hero() {
                 initial={{ opacity: 0, y: 60 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1.1, ease: easeOut, delay: 0.45 }}
-                className="block text-[clamp(4.25rem,15vw,13.5rem)] text-[var(--color-accent)]"
+                className="block text-[clamp(4.25rem,15vw,13.5rem)] text-accent"
               >
                 {profile.lastName}
               </motion.span>
@@ -92,10 +92,10 @@ export function Hero() {
             className="mt-8 md:mt-12 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8"
           >
             <div className="max-w-md">
-              <p className="font-mono text-[12px] tracking-[0.2em] uppercase text-[var(--color-muted)] mb-3">
+              <p className="font-mono text-[12px] tracking-[0.2em] uppercase text-muted mb-3">
                 {profile.title} / {profile.altTitle}
               </p>
-              <p className="text-sm text-[var(--color-ink-soft)] leading-relaxed">
+              <p className="text-sm text-ink-soft leading-relaxed">
                 {profile.now}
               </p>
             </div>
@@ -103,13 +103,13 @@ export function Hero() {
             <div className="flex flex-wrap items-center gap-3">
               <a
                 href="#work"
-                className="neu-btn rounded-full px-5 py-3 text-sm font-semibold text-[var(--color-ink)]"
+                className="neu-btn rounded-full px-5 py-3 text-sm font-semibold text-ink"
               >
                 View main projects
               </a>
               <a
                 href="#contact"
-                className="neu-inset rounded-full px-5 py-3 text-sm font-medium text-[var(--color-ink-soft)] hover:text-[var(--color-ink)] transition-colors"
+                className="neu-inset rounded-full px-5 py-3 text-sm font-medium text-ink-soft hover:text-ink transition-colors"
               >
                 Contact
               </a>

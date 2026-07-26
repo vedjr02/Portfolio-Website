@@ -53,14 +53,14 @@ export function Skills() {
       <div className="relative mx-auto max-w-6xl px-6 mb-8">
         <BlurFade inView direction="up">
           <div className="flex items-center gap-3 mb-5">
-            <span className="h-px w-8 bg-[var(--color-ink)]/20" />
-            <span className="font-mono text-[12px] tracking-[0.22em] uppercase text-[var(--color-muted)]">
+            <span className="h-px w-8 bg-ink/20" />
+            <span className="font-mono text-[12px] tracking-[0.22em] uppercase text-muted">
               The Toolkit
             </span>
           </div>
-          <h2 className="font-display text-[clamp(2.4rem,5.5vw,4.5rem)] leading-[0.95] text-[var(--color-ink)] max-w-3xl tracking-tight">
+          <h2 className="font-display text-[clamp(2.4rem,5.5vw,4.5rem)] leading-[0.95] text-ink max-w-3xl tracking-tight">
             Tools matched to the{" "}
-            <span className="text-[var(--color-accent)]">question.</span>
+            <span className="text-accent">question.</span>
           </h2>
         </BlurFade>
       </div>
@@ -77,10 +77,10 @@ export function Skills() {
             {WAVES.map((wave, i) => (
               <div key={wave.label} className="skills-wave-row">
                 <div className="mx-auto max-w-6xl px-6 flex items-center gap-3 mb-0.5">
-                  <span className="font-mono text-[10px] md:text-[11px] tracking-[0.22em] uppercase text-[var(--color-muted)]">
+                  <span className="font-mono text-[10px] md:text-[11px] tracking-[0.22em] uppercase text-muted">
                     0{i + 1} · {wave.label}
                   </span>
-                  <span className="h-px flex-1 bg-[var(--color-ink)]/10" />
+                  <span className="h-px flex-1 bg-ink/10" />
                 </div>
                 <CurvedLoop
                   marqueeText={wave.text}
@@ -99,7 +99,7 @@ export function Skills() {
           </div>
         </div>
 
-        <p className="mt-5 text-center font-mono text-[10px] tracking-[0.18em] uppercase text-[var(--color-muted)] px-6">
+        <p className="mt-5 text-center font-mono text-[10px] tracking-[0.18em] uppercase text-muted px-6">
           Drag a line ·{" "}
           {skills.technical.length +
             skills.frameworks.length +

@@ -58,10 +58,10 @@ export function Nav() {
           aria-label="Vedant Ambre — home"
         >
           <span className="relative flex h-1.5 w-1.5">
-            <span className="absolute inline-flex h-full w-full rounded-full bg-[var(--color-accent)] opacity-60 animate-soft-pulse" />
-            <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-[var(--color-accent)]" />
+            <span className="absolute inline-flex h-full w-full rounded-full bg-accent opacity-60 animate-soft-pulse" />
+            <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-accent" />
           </span>
-          <span className="font-mono text-[11px] tracking-[0.16em] uppercase text-[var(--color-ink)] group-hover:text-[var(--color-accent)] transition-colors">
+          <span className="font-mono text-[11px] tracking-[0.16em] uppercase text-ink group-hover:text-accent transition-colors">
             Vedant
           </span>
         </a>
@@ -76,8 +76,8 @@ export function Nav() {
                   aria-current={isActive ? "true" : undefined}
                   className={`neu-btn rounded-full px-3 py-1.5 text-[13px] transition-colors ${
                     isActive
-                      ? "text-[var(--color-accent)]"
-                      : "text-[var(--color-ink-soft)] hover:text-[var(--color-ink)]"
+                      ? "text-accent"
+                      : "text-ink-soft hover:text-ink"
                   }`}
                 >
                   {link.label}
@@ -89,7 +89,7 @@ export function Nav() {
 
         <a
           href="#contact"
-          className="rounded-full bg-[var(--color-ink)] text-[#dde1e8] px-3.5 py-1.5 text-[13px] font-semibold hover:bg-[var(--color-accent)] transition-colors duration-300 shadow-[6px_6px_14px_#c4c9d2]"
+          className="rounded-full bg-ink text-bg px-3.5 py-1.5 text-[13px] font-semibold hover:bg-accent transition-colors duration-300 shadow-[6px_6px_14px_#b8c0cc]"
         >
           Contact
         </a>

@@ -19,6 +19,7 @@ export function NumberTicker({
   delay = 0,
   className,
   decimalPlaces = 0,
+  style,
   ...props
 }: NumberTickerProps) {
   const ref = useRef<HTMLSpanElement>(null);
@@ -59,7 +60,11 @@ export function NumberTicker({
   return (
     <span
       ref={ref}
-      className={cn("inline-block tabular-nums tracking-wider text-[var(--color-ink)]", className)}
+      className={cn(
+        "inline-block tabular-nums tracking-wider text-ink",
+        className
+      )}
+      style={{ color: "#0b0d10", ...style }}
       {...props}
     >
       {startValue}

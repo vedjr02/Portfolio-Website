@@ -43,15 +43,15 @@ export function SideProjects() {
         >
           <div>
             <div className="flex items-center gap-3 mb-4">
-              <span className="h-px w-8 bg-[var(--color-ink)]/20" />
-              <span className="font-mono text-[12px] tracking-[0.22em] uppercase text-[var(--color-muted)]">
+              <span className="h-px w-8 bg-ink/20" />
+              <span className="font-mono text-[12px] tracking-[0.22em] uppercase text-muted">
                 Side Quests
               </span>
             </div>
-            <h2 className="font-display text-[clamp(1.9rem,4.5vw,3.25rem)] leading-[0.95] text-[var(--color-ink)] max-w-2xl tracking-tight">
+            <h2 className="font-display text-[clamp(1.9rem,4.5vw,3.25rem)] leading-[0.95] text-ink max-w-2xl tracking-tight">
               Built for curiosity.
             </h2>
-            <p className="mt-3 max-w-xl text-[var(--color-ink-soft)] text-[15px]">
+            <p className="mt-3 max-w-xl text-ink-soft text-[15px]">
               Small experiments under the case studies — scroll sideways.
             </p>
           </div>
@@ -60,14 +60,14 @@ export function SideProjects() {
             <button
               onClick={() => scrollBy(-1)}
               aria-label="Scroll left"
-              className="h-10 w-10 rounded-full neu-btn flex items-center justify-center text-[var(--color-ink-soft)]"
+              className="h-10 w-10 rounded-full neu-btn flex items-center justify-center text-ink-soft"
             >
               <Chevron dir="left" />
             </button>
             <button
               onClick={() => scrollBy(1)}
               aria-label="Scroll right"
-              className="h-10 w-10 rounded-full neu-btn flex items-center justify-center text-[var(--color-ink-soft)]"
+              className="h-10 w-10 rounded-full neu-btn flex items-center justify-center text-ink-soft"
             >
               <Chevron dir="right" />
             </button>
@@ -107,26 +107,26 @@ function SideProjectCard({
       className="group shrink-0 snap-start w-[min(260px,calc(100vw-3rem))] neu neu-hover rounded-[22px] p-5 flex flex-col h-[240px] no-underline text-inherit touch-pan-y"
     >
       <div className="flex items-start justify-between">
-        <span className="font-display text-2xl text-[var(--color-accent)]">
+        <span className="font-display text-2xl text-accent">
           {project.emoji}
         </span>
-        <span className="h-8 w-8 rounded-full neu-inset flex items-center justify-center text-[var(--color-ink-soft)] group-hover:text-[var(--color-ink)]">
+        <span className="h-8 w-8 rounded-full neu-inset flex items-center justify-center text-ink-soft group-hover:text-ink">
           <ArrowUpRight />
         </span>
       </div>
 
       <div className="mt-auto">
-        <h3 className="font-display text-lg leading-tight tracking-tight text-[var(--color-ink)]">
+        <h3 className="font-display text-lg leading-tight tracking-tight text-ink">
           {project.name}
         </h3>
-        <p className="mt-2 text-[13px] text-[var(--color-ink-soft)] leading-relaxed line-clamp-2">
+        <p className="mt-2 text-[13px] text-ink-soft leading-relaxed line-clamp-2">
           {project.blurb}
         </p>
         <div className="mt-4 flex flex-wrap gap-1.5">
           {project.stack.slice(0, 3).map((s) => (
             <span
               key={s}
-              className="neu-inset rounded-full px-2 py-0.5 text-[10px] text-[var(--color-muted)]"
+              className="neu-inset rounded-full px-2 py-0.5 text-[10px] text-muted"
             >
               {s}
             </span>
