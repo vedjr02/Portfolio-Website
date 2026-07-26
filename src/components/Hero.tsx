@@ -103,10 +103,10 @@ export function Hero() {
             <div className="flex flex-wrap items-center gap-3">
               <Magnetic>
                 <a
-                  href="#spotlight"
+                  href="#showcase"
                   className="neu-btn rounded-full px-5 py-3 text-sm font-semibold text-ink"
                 >
-                  Enter spotlight
+                  Enter showcase
                 </a>
               </Magnetic>
               <Magnetic strength={0.22}>

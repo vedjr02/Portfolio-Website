@@ -19,10 +19,10 @@ export function FloatingDock() {
           <DockIcon
             role="button"
             tabIndex={0}
-            onClick={() => jump("spotlight")}
-            onKeyDown={(e) => e.key === "Enter" && jump("spotlight")}
-            aria-label="Spotlight"
-            title="Spotlight"
+            onClick={() => jump("showcase")}
+            onKeyDown={(e) => e.key === "Enter" && jump("showcase")}
+            aria-label="Showcase"
+            title="Showcase"
           >
             <BriefcaseBusiness className="h-5 w-5 text-ink" />
           </DockIcon>

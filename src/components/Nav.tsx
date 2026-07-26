@@ -5,8 +5,8 @@ import { useEffect, useState } from "react";
 import { useCommand } from "@/components/CommandProvider";
 
 const links = [
-  { id: "spotlight", label: "Spotlight" },
-  { id: "workbench", label: "Workbench" },
+  { id: "showcase", label: "Showcase" },
+  { id: "archive", label: "Index" },
   { id: "story", label: "Story" },
   { id: "education", label: "Education" },
 ];

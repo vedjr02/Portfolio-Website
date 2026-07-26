@@ -219,11 +219,6 @@ body {
   animation: ripple 4.5s ease-in-out infinite;
 }
 
-.has-custom-cursor,
-.has-custom-cursor * {
-  cursor: none !important;
-}
-
 @media (prefers-reduced-motion: reduce) {
   .animate-marquee,
   .animate-soft-pulse,

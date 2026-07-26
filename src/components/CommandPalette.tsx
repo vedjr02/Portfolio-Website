@@ -27,18 +27,18 @@ export function CommandPalette() {
 
     const list: CommandItem[] = [
       {
-        id: "sec-spotlight",
-        label: "Jump to Spotlight",
-        hint: "Featured case studies",
+        id: "sec-showcase",
+        label: "Jump to Showcase",
+        hint: "Featured case cinema",
         group: "Navigate",
-        action: () => jump("spotlight"),
+        action: () => jump("showcase"),
       },
       {
-        id: "sec-workbench",
-        label: "Jump to Workbench",
-        hint: "All projects",
+        id: "sec-archive",
+        label: "Jump to Index",
+        hint: "Full project list",
         group: "Navigate",
-        action: () => jump("workbench"),
+        action: () => jump("archive"),
       },
       {
         id: "sec-story",
