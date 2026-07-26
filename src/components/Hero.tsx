@@ -24,7 +24,7 @@ export function Hero() {
         >
           <span className="pill pill-accent">
             <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse-dot" />
-            Open to BA / DA roles
+            Open to BA roles
           </span>
           <span className="pill">{profile.location}</span>
         </motion.div>
@@ -64,8 +64,8 @@ export function Hero() {
           transition={{ duration: 0.8, ease: easeOut, delay: 0.28 }}
           className="mt-8 max-w-2xl text-lg md:text-xl leading-relaxed text-ink-soft"
         >
-          Business Analyst & Data Analyst building sourced case studies,
-          stakeholder dashboards, and KPI models that hold up in the room.
+          Business Analyst building sourced case studies, stakeholder
+          dashboards, and KPI models that hold up in the room.
         </motion.p>
 
         <motion.div
@@ -76,7 +76,7 @@ export function Hero() {
         >
           <div className="md:col-span-6">
             <p className="text-xs font-bold uppercase tracking-[0.16em] text-muted mb-2">
-              {profile.title} / {profile.altTitle}
+              {profile.title}
             </p>
             <p className="text-sm text-ink-soft leading-relaxed max-w-md">
               {profile.now}

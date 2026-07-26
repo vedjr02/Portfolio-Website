@@ -16,11 +16,11 @@ export function Footer() {
               Contact
             </p>
             <h2 className="relative font-display text-[clamp(1.85rem,4vw,2.85rem)] leading-[1.1] tracking-tight max-w-2xl text-ink">
-              Looking for a BA / DA who ships.
+              Looking for a BA who ships?
             </h2>
             <p className="relative mt-5 max-w-xl text-ink-soft leading-relaxed">
-              If you need someone who can own requirements, build the dashboard,
-              and defend the numbers with stakeholders — email me.
+              I got you — requirements, dashboards, and numbers you can defend
+              with stakeholders. Email me and let&apos;s talk.
             </p>
             <div className="relative mt-8 flex w-full flex-wrap items-center gap-y-4">
               <a
@@ -89,7 +89,7 @@ export function Footer() {
             © {new Date().getFullYear()} Vedant Ambre
           </p>
           <p className="text-xs font-bold uppercase tracking-[0.12em] text-muted">
-            Paper studio · BA / DA
+            Paper studio · Business Analyst
           </p>
         </div>
       </div>

@@ -6,7 +6,7 @@ import { DoodleNote } from "@/components/Doodles";
 export function Education() {
   return (
     <section id="education" className="relative py-16 md:py-24">
-      <div className="mx-auto max-w-5xl px-5 md:px-6 relative">
+      <div className="mx-auto max-w-5xl px-5 md:px-6">
         <div className="max-w-2xl mb-8">
           <p className="text-xs font-bold uppercase tracking-[0.18em] text-accent mb-3">
             Path
@@ -16,22 +16,23 @@ export function Education() {
           </h2>
         </div>
 
-        <DoodleNote
-          label="right now"
-          direction="down"
-          size="xl"
-          rotate={-5}
-          className="absolute right-8 top-2 hidden lg:flex"
-        />
-
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {education.map((e) => (
             <article
               key={e.degree}
-              className={`surface p-6 flex flex-col min-h-[230px] hover:border-ink/20 transition-colors ${
-                e.status === "current" ? "border-accent/40" : ""
+              className={`relative surface p-6 flex flex-col min-h-[230px] hover:border-ink/20 transition-colors ${
+                e.status === "current" ? "border-accent/40 md:mt-16" : ""
               }`}
             >
+              {e.status === "current" && (
+                <DoodleNote
+                  label="right now"
+                  direction="down"
+                  size="lg"
+                  rotate={-4}
+                  className="absolute left-4 -top-16 z-10 hidden md:flex"
+                />
+              )}
               <div className="flex items-center gap-2 mb-8">
                 {e.status === "current" && (
                   <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse-dot" />

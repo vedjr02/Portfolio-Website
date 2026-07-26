@@ -24,14 +24,14 @@ const jetbrains = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Vedant Ambre — Business Analyst & Data Analyst",
+  title: "Vedant Ambre — Business Analyst",
   description:
     "Portfolio of business analytics case studies, consulting work, and product analytics builds.",
   metadataBase: new URL("https://vedantambre.com"),
   openGraph: {
-    title: "Vedant Ambre — Business Analyst & Data Analyst",
+    title: "Vedant Ambre — Business Analyst",
     description:
-      "Case studies, live demos, and consulting work for BA / DA hiring managers.",
+      "Case studies, live demos, and consulting work for Business Analyst hiring managers.",
     type: "website",
   },
 };

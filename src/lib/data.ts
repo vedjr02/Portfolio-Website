@@ -3,8 +3,8 @@ export const profile = {
   firstName: "Vedant",
   lastName: "Ambre",
   title: "Business Analyst",
-  altTitle: "Data Analyst",
-  tagline: "Open to BA / DA roles · Based in Ireland",
+  altTitle: "",
+  tagline: "Open to Business Analyst roles · Based in Ireland",
   email: "ambreved3@gmail.com",
   location: "Maynooth, Ireland",
   socials: {
@@ -15,7 +15,7 @@ export const profile = {
   intro:
     "Detail-oriented Business Analyst with a Bachelor's in Information Technology and a Master's in Business Analytics. I translate complex datasets into actionable business insights — building dashboards, modeling KPIs, and bridging the gap between technical execution and business scalability.",
   story:
-    "I grew up in Mumbai, fascinated by how a single line of SQL could change the way a business saw itself. That curiosity carried me through an engineering degree in Information Technology and on to Maynooth University in Ireland, where I'm finishing my Master's in Business Analytics. Along the way I've shipped full-stack systems, authored a research paper on non-invasive diagnostics, and built dashboards that help non-technical stakeholders see the story inside the numbers. Now I'm looking for Business Analyst and Data Analyst roles where evidence beats opinion.",
+    "I started in engineering because I liked how a clean query could change what a team believed about its own business. That curiosity carried me through Information Technology into a Master's in Business Analytics at Maynooth University. Along the way I've shipped full-stack systems, authored research on non-invasive diagnostics, and built dashboards that help non-technical stakeholders see the story inside the numbers. Now I'm looking for Business Analyst roles where evidence beats opinion.",
   now:
     "Currently building the AdFlex dynamic pricing dashboard as a Business Consultant project for Sustainable Energy Ireland (SEI), while wrapping up my Master's at Maynooth.",
 };

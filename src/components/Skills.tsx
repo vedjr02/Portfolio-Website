@@ -77,7 +77,7 @@ export function Skills() {
             How I actually work with data.
           </h2>
           <p className="mt-3 text-[15px] text-ink-soft leading-relaxed">
-            Not a logo wall — grouped by the job each skill does on a BA / DA
+            Not a logo wall — grouped by the job each skill does on a BA
             engagement.
           </p>
         </div>

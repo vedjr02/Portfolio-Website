@@ -29,17 +29,9 @@ export function Story() {
             About
           </p>
           <h2 className="font-display text-[clamp(1.85rem,4vw,2.75rem)] leading-[1.1] tracking-tight text-ink">
-            From Mumbai to Maynooth.
+            I make the business case clear.
           </h2>
         </div>
-
-        <DoodleNote
-          label="the receipts"
-          direction="down"
-          size="md"
-          rotate={5}
-          className="absolute right-8 top-2 hidden lg:flex"
-        />
 
         <div className="mt-8 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10">
           <div className="lg:col-span-7 min-w-0">
@@ -51,7 +43,15 @@ export function Story() {
             </p>
           </div>
 
-          <div className="lg:col-span-5 min-w-0 grid grid-cols-2 gap-3 content-start">
+          <div className="relative lg:col-span-5 min-w-0 lg:pt-28">
+            <DoodleNote
+              label="the receipts"
+              direction="down"
+              size="lg"
+              rotate={4}
+              className="absolute left-1 top-0 z-10 hidden lg:flex"
+            />
+            <div className="grid grid-cols-2 gap-3 content-start">
               {impactStats.map((stat, i) => (
                 <motion.div
                   key={stat.label}
@@ -75,6 +75,7 @@ export function Story() {
                   </p>
                 </motion.div>
               ))}
+            </div>
           </div>
         </div>
       </div>
