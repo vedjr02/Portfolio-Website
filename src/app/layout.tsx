@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Syne, Outfit, IBM_Plex_Mono } from "next/font/google";
+import { Syne, Manrope, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
 const syne = Syne({
@@ -9,15 +9,15 @@ const syne = Syne({
   display: "swap",
 });
 
-const outfit = Outfit({
-  variable: "--font-outfit",
+const manrope = Manrope({
+  variable: "--font-manrope",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700", "800"],
   display: "swap",
 });
 
-const plexMono = IBM_Plex_Mono({
-  variable: "--font-plex",
+const jetbrains = JetBrains_Mono({
+  variable: "--font-mono-body",
   subsets: ["latin"],
   weight: ["400", "500"],
   display: "swap",
@@ -26,12 +26,12 @@ const plexMono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   title: "Vedant Ambre — Business Analyst & Data Analyst",
   description:
-    "Business Analyst & Data Analyst portfolio — interactive Starbucks and NVIDIA case studies, SEI consulting (AdFlex), and product analytics builds. Master's in Business Analytics, Maynooth University.",
+    "Portfolio of business analytics case studies, consulting work, and product analytics builds.",
   metadataBase: new URL("https://vedantambre.com"),
   openGraph: {
     title: "Vedant Ambre — Business Analyst & Data Analyst",
     description:
-      "Featured case studies, live demos, and consulting work for hiring managers evaluating BA / DA talent.",
+      "Case studies, live demos, and consulting work for BA / DA hiring managers.",
     type: "website",
   },
 };
@@ -51,9 +51,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${syne.variable} ${outfit.variable} ${plexMono.variable} h-full antialiased`}
+      className={`${syne.variable} ${manrope.variable} ${jetbrains.variable} h-full antialiased`}
     >
-      <body className="min-h-full text-ink font-sans selection:bg-accent/15 selection:text-accent">
+      <body className="min-h-full bg-bg text-ink font-sans selection:bg-accent selection:text-[#061018]">
         {children}
       </body>
     </html>

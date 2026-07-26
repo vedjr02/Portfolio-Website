@@ -3,85 +3,78 @@
 import { motion } from "framer-motion";
 import { profile, experience, impactStats } from "@/lib/data";
 import { NumberTicker } from "@/components/ui/number-ticker";
-import { BlurFade } from "@/components/ui/blur-fade";
-
-const easeOut = [0.2, 0.8, 0.2, 1] as const;
+import { DoodleNote } from "@/components/Doodles";
 
 export function Story() {
   return (
-    <section id="story" className="relative py-24 md:py-32 overflow-hidden">
-      <div className="relative w-full overflow-hidden py-6 md:py-8">
-        <div className="neu-inset mx-4 md:mx-8 rounded-full py-5 overflow-hidden">
-          <div className="flex w-max animate-marquee gap-10 md:gap-14 pr-10">
-            {[...experience, ...experience, ...experience, ...experience].map(
-              (item, i) => (
-                <div
-                  key={`${item.label}-${i}`}
-                  className="flex items-center gap-10 md:gap-14 shrink-0"
-                >
-                  <span className="font-display text-2xl md:text-4xl text-ink whitespace-nowrap">
-                    {item.label}
-                  </span>
-                  <span className="h-2 w-2 rounded-full bg-accent/50" />
-                </div>
-              )
-            )}
-          </div>
+    <section id="story" className="relative py-16 md:py-24">
+      <div className="border-y border-line bg-panel/50 py-4 mb-12 overflow-hidden">
+        <div className="flex w-max animate-marquee gap-8 pr-8">
+          {[...experience, ...experience, ...experience, ...experience].map(
+            (item, i) => (
+              <div key={`${item.label}-${i}`} className="flex items-center gap-8">
+                <span className="font-display text-xl md:text-2xl text-ink whitespace-nowrap tracking-tight">
+                  {item.label}
+                </span>
+                <span className="text-accent text-sm">●</span>
+              </div>
+            )
+          )}
         </div>
       </div>
 
-      <div className="relative mx-auto max-w-6xl px-6 mt-16 md:mt-24">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16">
-          <div className="md:col-span-5">
-            <BlurFade inView direction="up">
-              <div className="flex items-center gap-3 mb-5">
-                <span className="h-px w-8 bg-ink/20" />
-                <span className="font-mono text-[12px] tracking-[0.22em] uppercase text-muted">
-                  The Story
-                </span>
-              </div>
-              <h2 className="font-display text-[clamp(2.4rem,5.5vw,4.5rem)] leading-[1.02] text-ink">
-                Evidence first.{" "}
-                <span className="text-accent">Slides second.</span>
-              </h2>
-            </BlurFade>
+      <div className="mx-auto max-w-5xl px-5 md:px-6 relative">
+        <div className="relative max-w-xl">
+          <p className="text-xs font-bold uppercase tracking-[0.18em] text-accent mb-3">
+            About
+          </p>
+          <h2 className="font-display text-[clamp(1.85rem,4vw,2.75rem)] leading-[1.1] tracking-tight text-ink">
+            From Mumbai to Maynooth.
+          </h2>
+        </div>
+
+        <DoodleNote
+          label="the receipts"
+          direction="down"
+          size="md"
+          rotate={5}
+          className="absolute right-8 top-2 hidden lg:flex"
+        />
+
+        <div className="mt-8 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10">
+          <div className="lg:col-span-7 min-w-0">
+            <p className="text-[15px] md:text-base text-ink-soft leading-relaxed">
+              {profile.story}
+            </p>
+            <p className="mt-4 text-sm md:text-[15px] text-ink-soft/90 leading-relaxed">
+              {profile.intro}
+            </p>
           </div>
 
-          <div className="md:col-span-7 md:pt-2">
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.7, ease: easeOut, delay: 0.1 }}
-            >
-              <p className="text-lg md:text-xl text-ink-soft leading-relaxed">
-                {profile.story}
-              </p>
-              <p className="mt-6 text-muted leading-relaxed">
-                {profile.intro}
-              </p>
-
-              <div className="mt-10 grid grid-cols-2 gap-4">
-                {impactStats.map((stat, index) => (
-                  <BlurFade key={stat.label} inView delay={0.08 * index} direction="up">
-                    <div className="neu rounded-[22px] p-5 h-full">
-                      <div className="font-display text-3xl md:text-4xl text-ink">
-                        <NumberTicker
-                          value={stat.value}
-                          decimalPlaces={stat.decimals}
-                          delay={0.1 * index}
-                          className="text-ink"
-                        />
-                        {stat.suffix}
-                      </div>
-                      <div className="mt-1.5 font-mono text-[11px] tracking-[0.14em] uppercase text-muted">
-                        {stat.label}
-                      </div>
-                    </div>
-                  </BlurFade>
-                ))}
-              </div>
-            </motion.div>
+          <div className="lg:col-span-5 min-w-0 grid grid-cols-2 gap-3 content-start">
+              {impactStats.map((stat, i) => (
+                <motion.div
+                  key={stat.label}
+                  initial={{ opacity: 0, y: 12 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.05 }}
+                  className="surface p-4 min-w-0 overflow-hidden"
+                >
+                  <div className="font-display text-2xl md:text-[1.75rem] text-ink tracking-tight tabular-nums truncate">
+                    <NumberTicker
+                      value={stat.value}
+                      decimalPlaces={stat.decimals}
+                      delay={0.05 * i}
+                      className="text-ink"
+                    />
+                    <span className="text-accent">{stat.suffix}</span>
+                  </div>
+                  <p className="mt-2 text-[10px] font-bold uppercase tracking-[0.08em] text-muted leading-snug">
+                    {stat.label}
+                  </p>
+                </motion.div>
+              ))}
           </div>
         </div>
       </div>

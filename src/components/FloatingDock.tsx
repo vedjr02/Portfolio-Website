@@ -15,14 +15,14 @@ export function FloatingDock() {
   return (
     <div className="pointer-events-none fixed inset-x-0 bottom-4 z-50 flex justify-center px-4 pb-[env(safe-area-inset-bottom)]">
       <div className="pointer-events-auto">
-        <Dock iconSize={40} iconMagnification={56}>
+        <Dock iconSize={40} iconMagnification={54}>
           <DockIcon
             role="button"
             tabIndex={0}
             onClick={() => jump("showcase")}
             onKeyDown={(e) => e.key === "Enter" && jump("showcase")}
-            aria-label="Showcase"
-            title="Showcase"
+            aria-label="Work"
+            title="Work"
           >
             <BriefcaseBusiness className="h-5 w-5 text-ink" />
           </DockIcon>
@@ -31,8 +31,8 @@ export function FloatingDock() {
             tabIndex={0}
             onClick={() => jump("story")}
             onKeyDown={(e) => e.key === "Enter" && jump("story")}
-            aria-label="Story"
-            title="Story"
+            aria-label="About"
+            title="About"
           >
             <UserRound className="h-5 w-5 text-ink" />
           </DockIcon>
@@ -43,7 +43,7 @@ export function FloatingDock() {
             onKeyDown={(e) => e.key === "Enter" && toggle()}
             aria-label="Open command palette"
             title="Command (⌘K)"
-            className="neu-inset"
+            className="bg-accent/10"
           >
             <Search className="h-5 w-5 text-accent" />
           </DockIcon>

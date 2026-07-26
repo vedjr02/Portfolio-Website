@@ -10,7 +10,6 @@ import { ScrollProgress } from "@/components/ScrollProgress";
 import { BackgroundLayer } from "@/components/BackgroundLayer";
 import { CommandProvider } from "@/components/CommandProvider";
 import { CommandPalette } from "@/components/CommandPalette";
-import { FloatingDock } from "@/components/FloatingDock";
 import { SideRail } from "@/components/SideRail";
 import { SmoothScroll } from "@/components/SmoothScroll";
 
@@ -20,7 +19,7 @@ export default function Home() {
       <SmoothScroll>
         <BackgroundLayer />
 
-        <main className="relative grain overflow-x-hidden pb-28">
+        <main className="relative overflow-x-hidden pb-10">
           <ScrollProgress />
           <Nav />
           <SideRail />
@@ -33,7 +32,6 @@ export default function Home() {
           <Footer />
         </main>
 
-        <FloatingDock />
         <CommandPalette />
       </SmoothScroll>
     </CommandProvider>

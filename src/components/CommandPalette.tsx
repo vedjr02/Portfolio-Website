@@ -28,22 +28,22 @@ export function CommandPalette() {
     const list: CommandItem[] = [
       {
         id: "sec-showcase",
-        label: "Jump to Showcase",
-        hint: "Featured case cinema",
+        label: "Jump to Work",
+        hint: "Featured chapters",
         group: "Navigate",
         action: () => jump("showcase"),
       },
       {
         id: "sec-archive",
-        label: "Jump to Index",
+        label: "Jump to Archive",
         hint: "Full project list",
         group: "Navigate",
         action: () => jump("archive"),
       },
       {
         id: "sec-story",
-        label: "Jump to Story",
-        hint: "Background & impact",
+        label: "Jump to About",
+        hint: "Story & impact",
         group: "Navigate",
         action: () => jump("story"),
       },
@@ -117,8 +117,8 @@ export function CommandPalette() {
       list.push({
         id: `side-${p.id}`,
         label: p.name,
-        hint: "Side quest",
-        group: "Side quests",
+        hint: "Side project",
+        group: "Side projects",
         action: () => {
           window.open(p.href, "_blank", "noopener,noreferrer");
           setOpen(false);
@@ -198,7 +198,7 @@ export function CommandPalette() {
           <button
             type="button"
             aria-label="Close command palette"
-            className="absolute inset-0 bg-black/55 backdrop-blur-[2px]"
+            className="absolute inset-0 bg-black/70"
             onClick={() => setOpen(false)}
           />
 
@@ -210,10 +210,10 @@ export function CommandPalette() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 10, scale: 0.98 }}
             transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
-            className="relative z-10 w-full max-w-xl overflow-hidden rounded-[24px] neu"
+            className="relative z-10 w-full max-w-xl overflow-hidden rounded-[1.75rem] border border-line bg-panel"
           >
-            <div className="flex items-center gap-3 border-b border-line px-4 py-3">
-              <span className="font-mono text-[11px] tracking-[0.16em] uppercase text-muted">
+            <div className="flex items-center gap-3 border-b border-line px-4 py-3.5">
+              <span className="text-xs font-bold uppercase tracking-[0.14em] text-accent">
                 Search
               </span>
               <input
@@ -223,7 +223,7 @@ export function CommandPalette() {
                 placeholder="Jump, open a demo, copy email…"
                 className="flex-1 bg-transparent text-[15px] text-ink outline-none placeholder:text-muted"
               />
-              <kbd className="neu-inset hidden sm:inline-flex rounded-md px-2 py-1 font-mono text-[10px] text-muted">
+              <kbd className="hidden sm:inline-flex rounded-full border border-line px-2.5 py-1 text-[10px] font-bold text-muted">
                 esc
               </kbd>
             </div>
@@ -237,7 +237,7 @@ export function CommandPalette() {
 
               {groups.map(([group, groupItems]) => (
                 <div key={group} className="mb-2">
-                  <p className="px-3 py-2 font-mono text-[10px] tracking-[0.18em] uppercase text-muted">
+                  <p className="px-3 py-2 text-[10px] font-bold uppercase tracking-[0.14em] text-muted">
                     {group}
                   </p>
                   <ul>
@@ -251,14 +251,14 @@ export function CommandPalette() {
                             type="button"
                             onMouseEnter={() => setActive(index)}
                             onClick={item.action}
-                            className={`flex w-full items-center justify-between gap-3 rounded-xl px-3 py-2.5 text-left transition-colors ${
+                            className={`flex w-full items-center justify-between gap-3 rounded-2xl px-3 py-2.5 text-left transition-colors ${
                               isActive
-                                ? "neu-inset text-ink"
+                                ? "bg-bg-deep text-ink"
                                 : "text-ink-soft hover:text-ink"
                             }`}
                           >
-                            <span className="text-sm font-medium">{item.label}</span>
-                            <span className="truncate font-mono text-[10px] tracking-[0.08em] uppercase text-muted">
+                            <span className="text-sm font-semibold">{item.label}</span>
+                            <span className="truncate text-[11px] font-semibold uppercase tracking-[0.06em] text-muted">
                               {item.hint}
                             </span>
                           </button>
@@ -270,11 +270,9 @@ export function CommandPalette() {
               ))}
             </div>
 
-            <div className="flex items-center justify-between border-t border-line px-4 py-2.5 text-[11px] text-muted">
+            <div className="flex items-center justify-between border-t border-line px-4 py-2.5 text-[11px] font-semibold text-muted">
               <span>↑↓ navigate · ↵ open</span>
-              <span className="font-mono tracking-[0.14em] uppercase">
-                ⌘K
-              </span>
+              <span>⌘K</span>
             </div>
           </motion.div>
         </motion.div>

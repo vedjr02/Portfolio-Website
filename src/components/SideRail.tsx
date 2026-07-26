@@ -4,11 +4,11 @@ import { useEffect, useState } from "react";
 
 const SECTIONS = [
   { id: "top", label: "Top" },
-  { id: "showcase", label: "Showcase" },
-  { id: "archive", label: "Index" },
-  { id: "story", label: "Story" },
+  { id: "showcase", label: "Cases" },
+  { id: "archive", label: "Projects" },
+  { id: "story", label: "About" },
   { id: "skills", label: "Skills" },
-  { id: "education", label: "Education" },
+  { id: "education", label: "Path" },
   { id: "contact", label: "Contact" },
 ];
 
@@ -39,7 +39,7 @@ export function SideRail() {
       aria-label="Section rail"
       className="pointer-events-none fixed right-5 top-1/2 z-40 hidden -translate-y-1/2 xl:block"
     >
-      <ul className="pointer-events-auto neu rounded-full px-2 py-3 space-y-1">
+      <ul className="pointer-events-auto rounded-full border border-line bg-panel px-2 py-3 space-y-1">
         {SECTIONS.map((section) => {
           const isActive = active === section.id;
           return (
@@ -58,7 +58,7 @@ export function SideRail() {
                       : "h-1.5 w-1.5 bg-muted group-hover:bg-ink-soft"
                   }`}
                 />
-                <span className="pointer-events-none absolute right-10 whitespace-nowrap rounded-full neu-inset px-2.5 py-1 font-mono text-[10px] tracking-[0.14em] uppercase text-ink-soft opacity-0 translate-x-1 transition-all group-hover:opacity-100 group-hover:translate-x-0">
+                <span className="pointer-events-none absolute right-10 whitespace-nowrap rounded-full border border-line bg-panel px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.1em] text-ink-soft opacity-0 translate-x-1 transition-all group-hover:opacity-100 group-hover:translate-x-0">
                   {section.label}
                 </span>
               </a>

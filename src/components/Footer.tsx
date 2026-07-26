@@ -1,150 +1,98 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { profile } from "@/lib/data";
-
-const easeOut = [0.2, 0.8, 0.2, 1] as const;
+import { DoodleNote } from "@/components/Doodles";
 
 export function Footer() {
   return (
-    <footer id="contact" className="relative pt-24 md:pt-32 pb-10 overflow-hidden">
-      <div className="relative mx-auto max-w-6xl px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8, ease: easeOut }}
-          className="neu rounded-[32px] px-8 py-14 md:px-14 md:py-16 text-center"
-        >
-          <div className="inline-flex items-center gap-2 rounded-full neu-inset px-3.5 py-1.5 mb-8">
-            <span className="relative flex h-1.5 w-1.5">
-              <span className="absolute inline-flex h-full w-full rounded-full bg-accent opacity-60 animate-soft-pulse" />
-              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-accent" />
-            </span>
-            <span className="font-mono text-[12px] tracking-[0.18em] uppercase text-ink-soft">
-              Open to BA / DA roles
-            </span>
-          </div>
+    <footer id="contact" className="relative pt-16 md:pt-24 pb-10">
+      <div className="mx-auto max-w-5xl px-5 md:px-6">
+        <div className="surface overflow-hidden bg-bg-deep border-line">
+          <div className="p-8 md:p-12 relative">
+            <div className="absolute -right-16 -top-16 h-56 w-56 rounded-full bg-accent/20 blur-3xl" />
+            <div className="absolute -left-10 bottom-0 h-40 w-40 rounded-full bg-sage/15 blur-3xl" />
 
-          <h2 className="font-display text-[clamp(2.5rem,7vw,5.5rem)] leading-[0.98] text-ink">
-            Let&apos;s make the numbers
-            <br />
-            <span className="text-accent">make sense.</span>
-          </h2>
-
-          <p className="mt-7 max-w-xl mx-auto text-ink-soft text-base md:text-lg">
-            Hiring for a Business Analyst or Data Analyst who ships case studies
-            and stakeholder-ready dashboards? Reach out — replies usually within
-            24 hours.
-          </p>
-
-          <a
-            href={profile.socials.email}
-            className="inline-flex items-center gap-3 mt-10 rounded-full bg-ink text-bg px-6 py-3.5 text-base font-semibold hover:bg-accent transition-colors shadow-[8px_8px_18px_#121417]"
-          >
-            <span>{profile.email}</span>
-            <ArrowUpRight />
-          </a>
-        </motion.div>
-
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 pt-8 border-t border-line">
-          <div>
-            <div className="font-mono text-[11px] tracking-[0.22em] uppercase text-muted mb-3">
-              Navigate
-            </div>
-            <ul className="space-y-1.5 text-ink-soft text-sm">
-              <li>
-                <a href="#work" className="hover:text-ink transition-colors">
-                  Work
-                </a>
-              </li>
-              <li>
-                <a href="#story" className="hover:text-ink transition-colors">
-                  Story
-                </a>
-              </li>
-              <li>
-                <a href="#skills" className="hover:text-ink transition-colors">
-                  Skills
-                </a>
-              </li>
-              <li>
-                <a href="#contact" className="hover:text-ink transition-colors">
-                  Connect
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <div className="font-mono text-[11px] tracking-[0.22em] uppercase text-muted mb-3">
-              Social
-            </div>
-            <ul className="space-y-1.5 text-ink-soft text-sm">
-              <li>
-                <a
-                  href={profile.socials.linkedin}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="hover:text-ink transition-colors inline-flex items-center gap-2"
-                >
-                  LinkedIn <ArrowUpRight />
-                </a>
-              </li>
-              <li>
-                <a
-                  href={profile.socials.github}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="hover:text-ink transition-colors inline-flex items-center gap-2"
-                >
-                  GitHub <ArrowUpRight />
-                </a>
-              </li>
-              <li>
-                <a
-                  href={profile.socials.email}
-                  className="hover:text-ink transition-colors inline-flex items-center gap-2"
-                >
-                  Email <ArrowUpRight />
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <div className="font-mono text-[11px] tracking-[0.22em] uppercase text-muted mb-3">
-              Now
-            </div>
-            <p className="text-ink-soft text-sm leading-relaxed">
-              {profile.now}
+            <p className="relative text-xs font-bold uppercase tracking-[0.18em] text-accent mb-4">
+              Contact
             </p>
+            <h2 className="relative font-display text-[clamp(1.85rem,4vw,2.85rem)] leading-[1.1] tracking-tight max-w-2xl text-ink">
+              Looking for a BA / DA who ships.
+            </h2>
+            <p className="relative mt-5 max-w-xl text-ink-soft leading-relaxed">
+              If you need someone who can own requirements, build the dashboard,
+              and defend the numbers with stakeholders — email me.
+            </p>
+            <div className="relative mt-8 flex w-full flex-wrap items-center gap-y-4">
+              <a
+                href={profile.socials.email}
+                className="relative inline-flex btn-primary text-base shrink-0"
+              >
+                {profile.email}
+              </a>
+              <div className="ml-auto hidden md:flex min-w-0 pl-6">
+                <DoodleNote
+                  label="say hi"
+                  direction="left"
+                  size="xxl"
+                  rotate={-2}
+                  align="end"
+                />
+              </div>
+            </div>
           </div>
         </div>
 
-        <div className="mt-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-3">
-          <p className="font-mono text-[11px] tracking-[0.18em] uppercase text-muted">
+        <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div>
+            <p className="text-xs font-bold uppercase tracking-[0.14em] text-muted mb-3">
+              Navigate
+            </p>
+            <ul className="space-y-2 text-sm font-semibold text-ink-soft">
+              <li><a href="#showcase" className="hover:text-accent">Cases</a></li>
+              <li><a href="#archive" className="hover:text-accent">Projects</a></li>
+              <li><a href="#story" className="hover:text-accent">About</a></li>
+              <li><a href="#contact" className="hover:text-accent">Contact</a></li>
+            </ul>
+          </div>
+          <div>
+            <p className="text-xs font-bold uppercase tracking-[0.14em] text-muted mb-3">
+              Social
+            </p>
+            <ul className="space-y-2 text-sm font-semibold text-ink-soft">
+              <li>
+                <a href={profile.socials.linkedin} target="_blank" rel="noreferrer" className="hover:text-accent">
+                  LinkedIn
+                </a>
+              </li>
+              <li>
+                <a href={profile.socials.github} target="_blank" rel="noreferrer" className="hover:text-accent">
+                  GitHub
+                </a>
+              </li>
+              <li>
+                <a href={profile.socials.email} className="hover:text-accent">
+                  Email
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <p className="text-xs font-bold uppercase tracking-[0.14em] text-muted mb-3">
+              Now
+            </p>
+            <p className="text-sm text-ink-soft leading-relaxed">{profile.now}</p>
+          </div>
+        </div>
+
+        <div className="mt-10 flex flex-col md:flex-row md:items-center justify-between gap-3 border-t border-line pt-6">
+          <p className="text-xs font-bold uppercase tracking-[0.12em] text-muted">
             © {new Date().getFullYear()} Vedant Ambre
           </p>
-          <p className="font-display text-[clamp(2.5rem,10vw,7rem)] leading-none text-ink/10 select-none">
-            VA
+          <p className="text-xs font-bold uppercase tracking-[0.12em] text-muted">
+            Paper studio · BA / DA
           </p>
         </div>
       </div>
     </footer>
-  );
-}
-
-function ArrowUpRight() {
-  return (
-    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" className="opacity-70">
-      <path
-        d="M3 9L9 3M9 3H4M9 3V8"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
   );
 }

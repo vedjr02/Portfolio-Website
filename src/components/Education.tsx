@@ -1,61 +1,56 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { education } from "@/lib/data";
-import { BlurFade } from "@/components/ui/blur-fade";
-
-const easeOut = [0.2, 0.8, 0.2, 1] as const;
+import { DoodleNote } from "@/components/Doodles";
 
 export function Education() {
   return (
-    <section id="education" className="relative py-24 md:py-32 overflow-hidden">
-      <div className="relative mx-auto max-w-6xl px-6">
-        <BlurFade inView direction="up">
-          <div className="flex items-center gap-3 mb-5">
-            <span className="h-px w-8 bg-ink/20" />
-            <span className="font-mono text-[12px] tracking-[0.22em] uppercase text-muted">
-              Education
-            </span>
-          </div>
-          <h2 className="font-display text-[clamp(2.2rem,5vw,4.25rem)] leading-[1.02] text-ink max-w-4xl">
-            Two countries,{" "}
-            <span className="text-accent">one curriculum.</span>
+    <section id="education" className="relative py-16 md:py-24">
+      <div className="mx-auto max-w-5xl px-5 md:px-6 relative">
+        <div className="max-w-2xl mb-8">
+          <p className="text-xs font-bold uppercase tracking-[0.18em] text-accent mb-3">
+            Path
+          </p>
+          <h2 className="font-display text-[clamp(1.85rem,4vw,2.75rem)] leading-[1.1] tracking-tight text-ink">
+            Education across India and Ireland.
           </h2>
-        </BlurFade>
+        </div>
 
-        <div className="mt-12 md:mt-16 grid grid-cols-1 md:grid-cols-3 gap-5">
-          {education.map((e, i) => (
-            <motion.div
+        <DoodleNote
+          label="right now"
+          direction="down"
+          size="xl"
+          rotate={-5}
+          className="absolute right-8 top-2 hidden lg:flex"
+        />
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {education.map((e) => (
+            <article
               key={e.degree}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.7, ease: easeOut, delay: i * 0.08 }}
-              className="neu neu-hover rounded-[24px] p-6 md:p-7 flex flex-col min-h-[240px]"
+              className={`surface p-6 flex flex-col min-h-[230px] hover:border-ink/20 transition-colors ${
+                e.status === "current" ? "border-accent/40" : ""
+              }`}
             >
-              <div className="flex items-center gap-2 mb-6">
+              <div className="flex items-center gap-2 mb-8">
                 {e.status === "current" && (
-                  <span className="h-1.5 w-1.5 rounded-full bg-accent animate-soft-pulse" />
+                  <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse-dot" />
                 )}
-                <span className="font-mono text-[11px] tracking-[0.18em] uppercase text-muted">
+                <span className="text-xs font-bold uppercase tracking-[0.12em] text-muted">
                   {e.period}
                 </span>
               </div>
-
-              <h3 className="font-display text-2xl md:text-[1.65rem] leading-tight text-ink">
+              <h3 className="font-display text-xl md:text-2xl leading-tight text-ink tracking-tight">
                 {e.degree}
               </h3>
-              <p className="mt-3 text-sm text-ink-soft leading-relaxed">
-                {e.school}
-              </p>
+              <p className="mt-3 text-sm font-semibold text-ink-soft">{e.school}</p>
               <p className="mt-1 text-sm text-muted">{e.location}</p>
-
               <div className="mt-auto pt-6">
-                <span className="neu-inset inline-flex rounded-full px-3 py-1 text-[11px] font-mono tracking-[0.16em] uppercase text-ink-soft">
+                <span className={`pill ${e.status === "current" ? "pill-accent" : ""}`}>
                   {e.status === "current" ? "Ongoing" : "Completed"}
                 </span>
               </div>
-            </motion.div>
+            </article>
           ))}
         </div>
       </div>

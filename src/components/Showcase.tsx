@@ -1,266 +1,266 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
-import { motion } from "motion/react";
-import {
-  consultingProjects,
-  featuredProjects,
-  type Project,
-} from "@/lib/data";
+import { useEffect, useMemo, useState } from "react";
+import { AnimatePresence, motion } from "motion/react";
+import { featuredProjects } from "@/lib/data";
 import { NumberTicker } from "@/components/ui/number-ticker";
-import { Magnetic } from "@/components/Magnetic";
+import { ArrowUpRight, ExternalLink } from "lucide-react";
+import { DoodleNote } from "@/components/Doodles";
 
-const VISUAL: Record<
-  string,
-  { tone: string; mark: string; caption: string }
-> = {
-  starbucks: {
-    tone: "from-[#2a221c] via-[#1a1612] to-[#0e1014]",
-    mark: "SBX",
-    caption: "Daypart · Loyalty · Mix",
-  },
-  nvidia: {
-    tone: "from-[#1c241c] via-[#121814] to-[#0e1014]",
-    mark: "NVDA",
-    caption: "CUDA · Inflection · Risk",
-  },
-  adflex: {
-    tone: "from-[#222018] via-[#16140f] to-[#0e1014]",
-    mark: "ADX",
-    caption: "SEI · Tariffs · Pricing",
-  },
+const SHORT: Record<string, string> = {
+  starbucks: "Starbucks",
+  nvidia: "NVIDIA",
+};
+
+const PROOF: Record<string, string> = {
+  starbucks:
+    "Public filings only — every figure traces to a named disclosure.",
+  nvidia:
+    "Twenty years of AI infrastructure decisions, sourced and reject-logged.",
 };
 
 export function Showcase() {
-  const lineup = useMemo(() => {
-    const adflex = consultingProjects.find((p) => p.id === "adflex");
-    return [...featuredProjects, ...(adflex ? [adflex] : [])];
-  }, []);
-
-  const scrollerRef = useRef<HTMLDivElement>(null);
-  const [active, setActive] = useState(0);
+  const lineup = useMemo(() => featuredProjects, []);
+  const [activeId, setActiveId] = useState(lineup[0]?.id ?? "");
+  const active = lineup.find((p) => p.id === activeId) ?? lineup[0];
+  const activeIndex = Math.max(
+    0,
+    lineup.findIndex((p) => p.id === active?.id)
+  );
 
   useEffect(() => {
-    const el = scrollerRef.current;
-    if (!el) return;
-
-    const onScroll = () => {
-      const width = el.clientWidth;
-      if (!width) return;
-      const idx = Math.round(el.scrollLeft / width);
-      setActive(Math.min(Math.max(idx, 0), lineup.length - 1));
+    const onKey = (e: KeyboardEvent) => {
+      const tag = (e.target as HTMLElement | null)?.tagName;
+      if (tag === "INPUT" || tag === "TEXTAREA") return;
+      if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+      e.preventDefault();
+      const next =
+        e.key === "ArrowRight"
+          ? (activeIndex + 1) % lineup.length
+          : (activeIndex - 1 + lineup.length) % lineup.length;
+      setActiveId(lineup[next].id);
     };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [activeIndex, lineup]);
 
-    el.addEventListener("scroll", onScroll, { passive: true });
-    return () => el.removeEventListener("scroll", onScroll);
-  }, [lineup.length]);
-
-  const goTo = (index: number) => {
-    const el = scrollerRef.current;
-    if (!el) return;
-    el.scrollTo({ left: index * el.clientWidth, behavior: "smooth" });
-  };
+  if (!active) return null;
 
   return (
-    <section id="showcase" className="relative pt-20 md:pt-28 pb-10 overflow-hidden">
-      <div className="mx-auto max-w-6xl px-6 mb-8 md:mb-10">
-        <div className="flex flex-wrap items-end justify-between gap-6">
-          <div>
-            <div className="flex items-center gap-3 mb-4">
-              <span className="h-px w-8 bg-ink/20" />
-              <span className="font-mono text-[12px] tracking-[0.22em] uppercase text-muted">
-                Case cinema
-              </span>
+    <section id="showcase" className="relative py-16 md:py-24">
+      <div className="mx-auto max-w-5xl px-5 md:px-6 relative">
+        <div className="max-w-xl mb-6">
+          <p className="text-xs font-bold uppercase tracking-[0.18em] text-accent mb-3">
+            Case studies
+          </p>
+          <h2 className="font-display text-[clamp(1.85rem,4vw,2.75rem)] leading-[1.1] tracking-tight text-ink">
+            Case studies with receipts.
+          </h2>
+          <p className="mt-3 text-[15px] text-ink-soft leading-relaxed">
+            Deep, sourced narratives — separate from product and consulting
+            builds. Pick a case, scan the proof, open the live demo.
+          </p>
+          <p className="mt-3 text-[11px] font-bold uppercase tracking-[0.12em] text-muted">
+            Tip · use ← → to switch cases
+          </p>
+        </div>
+
+        <div className="relative">
+          {/* One cue in the empty gutter above the browser — long arrow into the tabs */}
+          <DoodleNote
+            label="open these"
+            direction="down"
+            size="xxl"
+            rotate={-5}
+            className="absolute right-6 top-0 z-10 hidden lg:flex"
+          />
+          <div className="hidden lg:block h-40" aria-hidden />
+
+          <div className="surface overflow-hidden relative">
+            <div
+              role="tablist"
+              aria-label="Featured case studies"
+              className="flex gap-1 overflow-x-auto border-b border-line p-2 hide-scrollbar"
+            >
+              {lineup.map((project, index) => {
+                const on = project.id === active.id;
+                return (
+                  <button
+                    key={project.id}
+                    type="button"
+                    role="tab"
+                    aria-selected={on}
+                    onClick={() => setActiveId(project.id)}
+                    className={`group relative flex min-w-[9.5rem] flex-1 items-center gap-3 rounded-2xl px-3.5 py-3 text-left transition-colors ${
+                      on
+                        ? "bg-bg-deep text-ink"
+                        : "text-ink-soft hover:bg-bg/60 hover:text-ink"
+                    }`}
+                  >
+                    <span
+                      className={`font-mono text-[11px] font-bold ${
+                        on ? "text-accent" : "text-muted"
+                      }`}
+                    >
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <span className="min-w-0">
+                      <span className="block truncate font-display text-[15px] tracking-tight">
+                        {SHORT[project.id] ?? project.title}
+                      </span>
+                      <span className="mt-0.5 flex items-center gap-1.5 text-[11px] font-semibold text-muted">
+                        <span
+                          className={`h-1.5 w-1.5 rounded-full ${
+                            project.status === "Live" ? "bg-sage" : "bg-muted"
+                          }`}
+                        />
+                        {project.status}
+                      </span>
+                    </span>
+                    {on && (
+                      <motion.span
+                        layoutId="case-tab-indicator"
+                        className="absolute inset-x-2 -bottom-[9px] h-0.5 rounded-full bg-accent"
+                      />
+                    )}
+                  </button>
+                );
+              })}
             </div>
-            <h2 className="font-display text-[clamp(2.6rem,7vw,5rem)] leading-[1.02] text-ink max-w-3xl">
-              Scroll sideways through the work that matters.
-            </h2>
-          </div>
-          <div className="flex flex-col items-start md:items-end gap-3">
-            <p className="font-mono text-[11px] tracking-[0.16em] uppercase text-muted">
-              {String(active + 1).padStart(2, "0")} /{" "}
-              {String(lineup.length).padStart(2, "0")}
-            </p>
-            <div className="flex gap-2">
-              {lineup.map((p, i) => (
-                <button
-                  key={p.id}
-                  type="button"
-                  aria-label={`Go to ${p.title}`}
-                  aria-current={i === active}
-                  onClick={() => goTo(i)}
-                  className={`h-2 rounded-full transition-all ${
-                    i === active ? "w-8 bg-accent" : "w-2 bg-muted/50 hover:bg-ink-soft"
-                  }`}
-                />
-              ))}
-            </div>
+
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={active.id}
+                role="tabpanel"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+                className="grid grid-cols-1 lg:grid-cols-12"
+              >
+                <div className="lg:col-span-7 min-w-0 p-5 md:p-8 lg:border-r border-line">
+                  <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-muted">
+                    {active.category}
+                  </p>
+                  <h3 className="mt-2 font-display text-[clamp(1.5rem,3vw,2.15rem)] leading-[1.12] tracking-tight text-ink">
+                    {active.title}
+                  </h3>
+                  <p className="mt-4 text-[15px] leading-relaxed text-ink-soft">
+                    {active.description}
+                  </p>
+
+                  <ol className="mt-7 space-y-0">
+                    {active.highlights.map((h, i) => (
+                      <li
+                        key={h}
+                        className="grid grid-cols-[2.25rem_1fr] gap-3 border-t border-line py-3.5"
+                      >
+                        <span className="font-mono text-[11px] font-bold text-accent pt-0.5">
+                          {String(i + 1).padStart(2, "0")}
+                        </span>
+                        <span className="text-sm text-ink leading-relaxed">{h}</span>
+                      </li>
+                    ))}
+                  </ol>
+
+                  <div className="mt-6 flex flex-wrap gap-2">
+                    {active.tags.map((t) => (
+                      <span key={t} className="pill">
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className="mt-8 flex flex-wrap gap-3">
+                    {active.liveUrl && (
+                      <a
+                        href={active.liveUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="btn-primary gap-2"
+                      >
+                        Open live demo
+                        <ArrowUpRight className="h-4 w-4" />
+                      </a>
+                    )}
+                    {active.repoUrl && (
+                      <a
+                        href={active.repoUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="btn-secondary gap-2"
+                      >
+                        Source
+                      </a>
+                    )}
+                  </div>
+                </div>
+
+                <aside className="lg:col-span-5 min-w-0 flex flex-col bg-bg/40">
+                  <div className="p-5 md:p-8 flex-1">
+                    <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-muted">
+                      Signal
+                    </p>
+
+                    <div className="mt-5 rounded-2xl border border-line bg-panel p-5 overflow-hidden">
+                      {active.metric ? (
+                        <>
+                          <div className="font-display text-[clamp(2.5rem,6vw,3.75rem)] leading-none tracking-tight text-accent tabular-nums">
+                            <NumberTicker
+                              value={active.metric.value}
+                              decimalPlaces={active.metric.decimals ?? 0}
+                              className="text-accent"
+                            />
+                            <span>{active.metric.suffix}</span>
+                          </div>
+                          <p className="mt-3 text-sm font-semibold text-ink-soft">
+                            {active.metric.label}
+                          </p>
+                        </>
+                      ) : null}
+                    </div>
+
+                    <div className="mt-5 space-y-4">
+                      <MetaRow label="Period" value={active.period} />
+                      <MetaRow label="Status" value={active.status} />
+                      <MetaRow
+                        label="Why it matters"
+                        value={PROOF[active.id] ?? active.highlights[0]}
+                      />
+                    </div>
+                  </div>
+
+                  {active.liveUrl && (
+                    <a
+                      href={active.liveUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="group flex items-center justify-between gap-3 border-t border-line px-5 md:px-8 py-4 text-sm font-bold text-ink hover:bg-panel/80 transition-colors"
+                    >
+                      <span className="flex items-center gap-2">
+                        <ExternalLink className="h-4 w-4 text-accent" />
+                        Launch this case
+                      </span>
+                      <ArrowUpRight className="h-4 w-4 text-muted transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent" />
+                    </a>
+                  )}
+                </aside>
+              </motion.div>
+            </AnimatePresence>
           </div>
         </div>
       </div>
-
-      <div
-        ref={scrollerRef}
-        className="flex snap-x snap-mandatory overflow-x-auto hide-scrollbar touch-pan-x"
-      >
-        {lineup.map((project, index) => (
-          <FilmPanel
-            key={project.id}
-            project={project}
-            index={index}
-            total={lineup.length}
-          />
-        ))}
-      </div>
-
-      <p className="mt-5 text-center font-mono text-[10px] tracking-[0.18em] uppercase text-muted">
-        Drag / trackpad sideways · or tap the dots
-      </p>
     </section>
   );
 }
 
-function FilmPanel({
-  project,
-  index,
-  total,
-}: {
-  project: Project;
-  index: number;
-  total: number;
-}) {
-  const visual = VISUAL[project.id] ?? {
-    tone: "from-[#1a1c20] to-[#0e1014]",
-    mark: String(index + 1).padStart(2, "0"),
-    caption: project.category,
-  };
-
+function MetaRow({ label, value }: { label: string; value: string }) {
   return (
-    <article className="relative h-[min(78vh,820px)] w-full shrink-0 snap-center px-4 md:px-6">
-      <div className="mx-auto flex h-full max-w-6xl overflow-hidden rounded-[28px] neu">
-        <div className="grid h-full w-full grid-cols-1 lg:grid-cols-12">
-          <div className="lg:col-span-6 flex flex-col p-7 md:p-10 lg:p-12 border-b lg:border-b-0 lg:border-r border-line">
-            <div className="flex items-center justify-between gap-3 mb-8">
-              <span className="font-mono text-[11px] tracking-[0.2em] uppercase text-muted">
-                {String(index + 1).padStart(2, "0")} — {String(total).padStart(2, "0")}
-              </span>
-              <Status status={project.status} />
-            </div>
-
-            <p className="font-mono text-[11px] tracking-[0.18em] uppercase text-muted mb-3">
-              {project.category}
-            </p>
-            <h3 className="font-display text-[clamp(2rem,4.5vw,3.6rem)] leading-[1.05] text-ink">
-              {project.title}
-            </h3>
-            <p className="mt-5 max-w-xl text-[15px] leading-relaxed text-ink-soft line-clamp-5 md:line-clamp-6">
-              {project.description}
-            </p>
-
-            <ul className="mt-6 space-y-2.5">
-              {project.highlights.slice(0, 3).map((h) => (
-                <li key={h} className="flex gap-3 text-sm text-ink-soft">
-                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
-                  {h}
-                </li>
-              ))}
-            </ul>
-
-            <div className="mt-auto pt-8 flex flex-wrap gap-3">
-              {project.liveUrl && (
-                <Magnetic>
-                  <a
-                    href={project.liveUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex rounded-full bg-ink text-bg px-5 py-3 text-sm font-semibold hover:bg-accent transition-colors"
-                  >
-                    Launch live case →
-                  </a>
-                </Magnetic>
-              )}
-              {project.repoUrl && (
-                <a
-                  href={project.repoUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex neu-inset rounded-full px-5 py-3 text-sm text-ink-soft hover:text-ink transition-colors"
-                >
-                  Source
-                </a>
-              )}
-            </div>
-          </div>
-
-          <div
-            className={`relative lg:col-span-6 min-h-[280px] bg-gradient-to-br ${visual.tone} overflow-hidden`}
-          >
-            <div className="absolute inset-0 opacity-[0.12] [background-image:linear-gradient(rgba(243,241,236,0.35)_1px,transparent_1px),linear-gradient(90deg,rgba(243,241,236,0.35)_1px,transparent_1px)] [background-size:42px_42px]" />
-            <div className="absolute -right-10 top-10 font-display text-[clamp(6rem,18vw,14rem)] leading-none text-white/[0.06] select-none">
-              {visual.mark}
-            </div>
-
-            <div className="relative z-10 flex h-full flex-col justify-between p-7 md:p-10">
-              <div>
-                <p className="font-mono text-[11px] tracking-[0.18em] uppercase text-white/45">
-                  {visual.caption}
-                </p>
-                <p className="mt-3 font-mono text-[11px] tracking-[0.14em] uppercase text-white/35">
-                  {project.period}
-                </p>
-              </div>
-
-              {project.metric ? (
-                <div>
-                  <div className="font-display text-[clamp(4rem,10vw,7rem)] leading-none text-ink tracking-tight">
-                    <NumberTicker
-                      value={project.metric.value}
-                      decimalPlaces={project.metric.decimals ?? 0}
-                    />
-                    <span className="text-accent">{project.metric.suffix}</span>
-                  </div>
-                  <p className="mt-3 max-w-[14rem] font-mono text-[11px] tracking-[0.14em] uppercase text-white/50">
-                    {project.metric.label}
-                  </p>
-                </div>
-              ) : (
-                <div>
-                  <p className="font-display text-5xl text-ink">Now</p>
-                  <p className="mt-3 font-mono text-[11px] tracking-[0.14em] uppercase text-white/50">
-                    Active consulting engagement
-                  </p>
-                </div>
-              )}
-
-              <div className="flex flex-wrap gap-2">
-                {project.tags.slice(0, 4).map((t) => (
-                  <span
-                    key={t}
-                    className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] text-white/70"
-                  >
-                    {t}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </article>
-  );
-}
-
-function Status({ status }: { status: Project["status"] }) {
-  const color =
-    status === "Live"
-      ? "bg-emerald-500"
-      : status === "In Progress"
-        ? "bg-accent"
-        : "bg-muted";
-  return (
-    <span className="inline-flex items-center gap-2 font-mono text-[11px] tracking-[0.16em] uppercase text-ink-soft">
-      <span className={`h-1.5 w-1.5 rounded-full ${color}`} />
-      {status}
-    </span>
+    <div className="grid grid-cols-[6.5rem_1fr] gap-3 border-t border-line pt-3">
+      <span className="text-[11px] font-bold uppercase tracking-[0.12em] text-muted pt-0.5">
+        {label}
+      </span>
+      <span className="text-sm text-ink-soft leading-relaxed">{value}</span>
+    </div>
   );
 }

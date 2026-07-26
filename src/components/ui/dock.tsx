@@ -27,7 +27,7 @@ const DEFAULT_MAGNIFICATION = 58;
 const DEFAULT_DISTANCE = 140;
 
 const dockVariants = cva(
-  "mx-auto flex h-[62px] w-max items-center justify-center gap-1.5 rounded-[22px] px-2 py-2"
+  "mx-auto flex h-[58px] w-max items-center justify-center gap-1.5 rounded-full border border-line bg-panel px-2 py-2"
 );
 
 const Dock = React.forwardRef<
@@ -75,7 +75,6 @@ const Dock = React.forwardRef<
         {...props}
         className={cn(
           dockVariants({ className }),
-          "neu",
           {
             "items-start": direction === "top",
             "items-center": direction === "middle",

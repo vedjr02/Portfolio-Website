@@ -45,15 +45,15 @@
 }
 
 .curved-loop-skills--wave-top {
-  fill: rgba(243, 241, 236, 0.55);
+  fill: rgba(244, 241, 234, 0.45);
 }
 
 .curved-loop-skills--wave-mid {
-  fill: rgba(232, 226, 212, 0.85);
+  fill: rgba(232, 255, 71, 0.85);
 }
 
 .curved-loop-skills--wave-bottom {
-  fill: rgba(243, 241, 236, 0.4);
+  fill: rgba(244, 241, 234, 0.35);
 }
 
 @media (min-width: 768px) {
