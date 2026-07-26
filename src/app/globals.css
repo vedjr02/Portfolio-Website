@@ -5,8 +5,8 @@
   Accent is warm stone — no blue.
 */
 @theme {
-  --color-bg: #1e2126;
-  --color-surface: #1e2126;
+  --color-bg: #0e1014;
+  --color-surface: #171a20;
   --color-ink: #f3f1ec;
   --color-ink-soft: #c5c2ba;
   --color-muted: #8f8c84;
@@ -19,9 +19,9 @@
 }
 
 :root {
-  --background: #1e2126;
+  --background: #0e1014;
   --foreground: #f3f1ec;
-  --surface: #1e2126;
+  --surface: #171a20;
   --ink: #f3f1ec;
   --ink-soft: #c5c2ba;
   --muted: #8f8c84;
@@ -29,10 +29,10 @@
   --accent-soft: #d6d0c2;
   --line: rgba(243, 241, 236, 0.1);
 
-  --shadow-neu: 11px 11px 26px #121417, -11px -11px 26px #2a2f36;
-  --shadow-neu-sm: 7px 7px 16px #121417, -7px -7px 16px #2a2f36;
-  --shadow-neu-inset: inset 7px 7px 14px #121417, inset -7px -7px 14px #2a2f36;
-  --shadow-neu-press: inset 5px 5px 12px #121417, inset -5px -5px 12px #2a2f36;
+  --shadow-neu: 10px 10px 24px #08090c, -10px -10px 24px #1e232c;
+  --shadow-neu-sm: 6px 6px 14px #08090c, -6px -6px 14px #1e232c;
+  --shadow-neu-inset: inset 6px 6px 12px #08090c, inset -6px -6px 12px #1e232c;
+  --shadow-neu-press: inset 4px 4px 10px #08090c, inset -4px -4px 10px #1e232c;
 
   color-scheme: dark;
 }
@@ -206,9 +206,28 @@ body {
   animation: soft-pulse 2.4s ease-out infinite;
 }
 
+@keyframes ripple {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.08);
+  }
+}
+.animate-ripple {
+  animation: ripple 4.5s ease-in-out infinite;
+}
+
+.has-custom-cursor,
+.has-custom-cursor * {
+  cursor: none !important;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .animate-marquee,
   .animate-soft-pulse,
+  .animate-ripple,
   .neu-hover {
     animation: none !important;
     transition: none !important;
