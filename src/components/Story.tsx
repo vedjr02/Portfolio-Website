@@ -1,9 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { profile, experience } from "@/lib/data";
+import { profile, experience, impactStats } from "@/lib/data";
 import { SectionParallaxOrbs } from "@/components/BackgroundLayer";
 import { ParallaxDepth, ParallaxMarquee } from "@/components/Parallax";
+import { NumberTicker } from "@/components/ui/number-ticker";
+import { BlurFade } from "@/components/ui/blur-fade";
 
 const easeOut = [0.2, 0.8, 0.2, 1] as const;
 
@@ -57,32 +59,30 @@ export function Story() {
                 {profile.intro}
               </p>
 
-              <div className="mt-10 grid grid-cols-2 sm:grid-cols-3 gap-6">
-                <Stat value="15K+" label="Thermal images processed" index={0} />
-                <Stat value="88%" label="Diagnostic accuracy" index={1} />
-                <Stat value="90%" label="Manual workflow automated" index={2} />
+              <div className="mt-10 grid grid-cols-2 gap-4 md:gap-5">
+                {impactStats.map((stat, index) => (
+                  <BlurFade key={stat.label} inView delay={0.08 * index} direction="up">
+                    <div className="glass rounded-2xl p-5 h-full">
+                      <div className="font-display text-3xl md:text-4xl text-white tracking-tight">
+                        <NumberTicker
+                          value={stat.value}
+                          decimalPlaces={stat.decimals}
+                          delay={0.1 * index}
+                        />
+                        {stat.suffix}
+                      </div>
+                      <div className="mt-1.5 font-mono text-[11px] tracking-[0.15em] uppercase text-neutral-400">
+                        {stat.label}
+                      </div>
+                    </div>
+                  </BlurFade>
+                ))}
               </div>
             </motion.div>
           </ParallaxDepth>
         </div>
       </div>
     </section>
-  );
-}
-
-function Stat({ value, label, index }: { value: string; label: string; index: number }) {
-  const depths = ["slow", "medium", "fast"] as const;
-  return (
-    <ParallaxDepth depth={depths[index % depths.length]} stagger={index * 8}>
-      <div className="glass rounded-2xl p-5">
-        <div className="font-display text-3xl md:text-4xl text-white">
-          {value}
-        </div>
-        <div className="mt-1.5 font-mono text-[11px] tracking-[0.15em] uppercase text-neutral-400">
-          {label}
-        </div>
-      </div>
-    </ParallaxDepth>
   );
 }
 

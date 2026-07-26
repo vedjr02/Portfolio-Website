@@ -61,9 +61,8 @@ export function SideProjects() {
                 </h2>
               </ParallaxDepth>
               <p className="mt-4 max-w-xl text-neutral-400 text-[15px]">
-                Weekend experiments, internship leftovers, and the occasional
-                foray into computer vision, mobile, or AI — drag, scroll, or use
-                the arrows.
+                Weekend experiments and side builds — the curiosity layer under
+                the case studies. Drag, scroll, or use the arrows.
               </p>
             </div>
 

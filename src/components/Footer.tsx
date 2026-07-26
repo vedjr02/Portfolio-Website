@@ -27,7 +27,7 @@ export function Footer() {
                 <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />
               </span>
               <span className="font-mono text-[12px] tracking-[0.18em] uppercase text-neutral-300">
-                Open to opportunities
+                Open to BA / DA roles
               </span>
             </div>
 
@@ -40,8 +40,9 @@ export function Footer() {
             </ParallaxDepth>
 
             <p className="mt-8 max-w-xl mx-auto text-neutral-400 text-base md:text-lg">
-              Have a question, a dataset, or a dashboard to scope? Tap the button
-              below — replies usually land within 24 hours.
+              Hiring for a Business Analyst or Data Analyst who can ship case
+              studies, dashboards, and stakeholder-ready insights? Reach out —
+              replies usually land within 24 hours.
             </p>
 
             <a
@@ -141,8 +142,7 @@ export function Footer() {
                 Now
               </div>
               <p className="text-neutral-300 text-sm leading-relaxed">
-                Wrapping up my Master&apos;s in Maynooth and exploring what comes
-                next. Open to{" "}
+                {profile.now} Open to{" "}
                 <span className="text-white">
                   Business Analyst & Data Analyst
                 </span>{" "}

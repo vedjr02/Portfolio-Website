@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const links = [
   { id: "work", label: "Work" },
@@ -12,11 +12,32 @@ const links = [
 
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
+  const [active, setActive] = useState("top");
   const { scrollY } = useScroll();
 
   useMotionValueEvent(scrollY, "change", (v) => {
     setScrolled(v > 24);
   });
+
+  useEffect(() => {
+    const sectionIds = ["top", ...links.map((l) => l.id), "contact"];
+    const elements = sectionIds
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => !!el);
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+        if (visible[0]?.target.id) setActive(visible[0].target.id);
+      },
+      { rootMargin: "-35% 0px -50% 0px", threshold: [0.1, 0.25, 0.5] }
+    );
+
+    elements.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <motion.header
@@ -31,6 +52,7 @@ export function Nav() {
             ? "glass shadow-[0_8px_40px_-8px_rgba(0,0,0,0.5)]"
             : "glass shadow-[0_4px_20px_-8px_rgba(0,0,0,0.4)]"
         }`}
+        aria-label="Primary"
       >
         <a
           href="#top"
@@ -47,16 +69,24 @@ export function Nav() {
         </a>
 
         <ul className="hidden md:flex items-center gap-0.5">
-          {links.map((link) => (
-            <li key={link.id}>
-              <a
-                href={`#${link.id}`}
-                className="px-3 py-1.5 text-[13px] text-neutral-300 hover:text-white rounded-full hover:bg-white/5 transition-colors"
-              >
-                {link.label}
-              </a>
-            </li>
-          ))}
+          {links.map((link) => {
+            const isActive = active === link.id;
+            return (
+              <li key={link.id}>
+                <a
+                  href={`#${link.id}`}
+                  aria-current={isActive ? "true" : undefined}
+                  className={`px-3 py-1.5 text-[13px] rounded-full transition-colors ${
+                    isActive
+                      ? "text-white bg-white/10"
+                      : "text-neutral-300 hover:text-white hover:bg-white/5"
+                  }`}
+                >
+                  {link.label}
+                </a>
+              </li>
+            );
+          })}
         </ul>
 
         <a

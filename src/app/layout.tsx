@@ -27,12 +27,12 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "Vedant Ambre — Business Analyst & Data Analyst",
   description:
-    "Detail-oriented Business Analyst translating complex datasets into actionable business insights. Master's in Business Analytics, Maynooth University.",
+    "Business Analyst & Data Analyst portfolio — interactive Starbucks and NVIDIA case studies, SEI consulting (AdFlex), and product analytics builds. Master's in Business Analytics, Maynooth University.",
   metadataBase: new URL("https://vedantambre.com"),
   openGraph: {
     title: "Vedant Ambre — Business Analyst & Data Analyst",
     description:
-      "Detail-oriented Business Analyst translating complex datasets into actionable business insights.",
+      "Featured case studies, live demos, and consulting work for hiring managers evaluating BA / DA talent.",
     type: "website",
   },
 };

@@ -157,6 +157,50 @@ html {
   animation: soft-pulse 2s ease-out infinite;
 }
 
+/* Magic UI — shiny text */
+@keyframes shiny-text {
+  0%,
+  90%,
+  100% {
+    background-position: calc(-100% - var(--shiny-width)) 0;
+  }
+  30%,
+  60% {
+    background-position: calc(100% + var(--shiny-width)) 0;
+  }
+}
+.animate-shiny-text {
+  animation: shiny-text 8s infinite;
+}
+
+/* Magic UI — shine border */
+@keyframes shine {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+.animate-shine {
+  animation: shine var(--duration, 14s) infinite linear;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-shiny-text,
+  .animate-shine,
+  .animate-marquee,
+  .animate-marquee-slow,
+  .animate-marquee-reverse,
+  .animate-soft-pulse,
+  .animate-slow-spin {
+    animation: none !important;
+  }
+}
+
 /* Glassmorphism card */
 .glass {
   background: linear-gradient(
