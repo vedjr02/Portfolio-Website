@@ -77,15 +77,21 @@ body {
 }
 
 .surface {
-  background: var(--color-panel);
-  border: 1px solid var(--color-line);
+  background: color-mix(in oklab, var(--color-panel) 52%, transparent);
+  border: 1px solid color-mix(in oklab, white 10%, var(--color-line));
   border-radius: 1.75rem;
+  backdrop-filter: blur(14px) saturate(1.2);
+  -webkit-backdrop-filter: blur(14px) saturate(1.2);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
 .surface-quiet {
-  background: color-mix(in oklab, var(--color-panel) 80%, transparent);
-  border: 1px solid var(--color-line);
+  background: color-mix(in oklab, var(--color-panel) 40%, transparent);
+  border: 1px solid color-mix(in oklab, white 8%, var(--color-line));
   border-radius: 1.25rem;
+  backdrop-filter: blur(12px) saturate(1.15);
+  -webkit-backdrop-filter: blur(12px) saturate(1.15);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 
 .pill {
@@ -93,8 +99,10 @@ body {
   align-items: center;
   gap: 0.4rem;
   border-radius: 999px;
-  border: 1px solid var(--color-line);
-  background: var(--color-bg-deep);
+  border: 1px solid color-mix(in oklab, white 8%, var(--color-line));
+  background: color-mix(in oklab, var(--color-bg-deep) 55%, transparent);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   color: var(--color-ink-soft);
   font-size: 0.75rem;
   font-weight: 700;
@@ -144,6 +152,30 @@ body {
 .btn-secondary:hover {
   border-color: var(--color-ink-soft);
   background: var(--color-bg-deep);
+}
+
+.btn-brief {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  border: none;
+  background: transparent;
+  color: var(--color-accent-deep);
+  font-weight: 700;
+  padding: 0.55rem 0.15rem;
+  border-radius: 0;
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 0.28em;
+  text-decoration-color: color-mix(in oklab, var(--color-accent) 45%, transparent);
+  transition:
+    color 0.2s ease,
+    text-decoration-color 0.2s ease;
+}
+.btn-brief:hover {
+  color: var(--color-accent);
+  text-decoration-color: var(--color-accent);
 }
 
 .neu,
@@ -252,10 +284,127 @@ body {
   animation: float-soft 9s ease-in-out infinite;
 }
 
+@keyframes grid-drift {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-28px, -28px, 0);
+  }
+}
+.animate-grid-drift {
+  animation: grid-drift 48s linear infinite;
+}
+
+@keyframes aurora-a {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(6%, 4%, 0) scale(1.08);
+  }
+}
+.animate-aurora-a {
+  animation: aurora-a 18s ease-in-out infinite;
+}
+
+@keyframes aurora-b {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(-5%, 6%, 0) scale(1.1);
+  }
+}
+.animate-aurora-b {
+  animation: aurora-b 22s ease-in-out infinite;
+}
+
+@keyframes aurora-c {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(4%, -5%, 0) scale(1.06);
+  }
+}
+.animate-aurora-c {
+  animation: aurora-c 26s ease-in-out infinite;
+}
+
+@keyframes grain-shift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  25% {
+    transform: translate3d(-2%, 1%, 0);
+  }
+  50% {
+    transform: translate3d(1%, -2%, 0);
+  }
+  75% {
+    transform: translate3d(-1%, -1%, 0);
+  }
+}
+.animate-grain {
+  animation: grain-shift 1.2s steps(3) infinite;
+}
+
+@keyframes scanline {
+  0% {
+    opacity: 0.15;
+    transform: translate3d(-8%, 0, 0);
+  }
+  50% {
+    opacity: 0.55;
+    transform: translate3d(8%, 0, 0);
+  }
+  100% {
+    opacity: 0.15;
+    transform: translate3d(-8%, 0, 0);
+  }
+}
+.animate-scanline {
+  animation: scanline 7s ease-in-out infinite;
+}
+
+@keyframes preview-shimmer {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}
+
+.preview-skeleton {
+  background: linear-gradient(
+    110deg,
+    #161412 0%,
+    #161412 35%,
+    #2a2621 50%,
+    #161412 65%,
+    #161412 100%
+  );
+  background-size: 200% 100%;
+  animation: preview-shimmer 1.35s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .animate-marquee,
   .animate-pulse-dot,
-  .animate-float-soft {
+  .animate-float-soft,
+  .animate-grid-drift,
+  .animate-aurora-a,
+  .animate-aurora-b,
+  .animate-aurora-c,
+  .animate-grain,
+  .animate-scanline,
+  .preview-skeleton {
     animation: none !important;
   }
 }
