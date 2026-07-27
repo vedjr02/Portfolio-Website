@@ -1,8 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { profile, experience, impactStats } from "@/lib/data";
-import { NumberTicker } from "@/components/ui/number-ticker";
+import Image from "next/image";
+import { profile, experience } from "@/lib/data";
 import { DoodleNote } from "@/components/Doodles";
 
 export function Story() {
@@ -33,49 +32,45 @@ export function Story() {
           </h2>
         </div>
 
-        <div className="mt-8 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10">
-          <div className="lg:col-span-7 min-w-0">
+        <div className="mt-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+          <figure className="relative lg:col-span-4 min-w-0">
+            <div className="relative aspect-[4/5]">
+              <div className="absolute inset-0 overflow-hidden rounded-[1.25rem] border border-line bg-bg-deep">
+                <Image
+                  src="/vedant.jpg"
+                  alt="Vedant Ambre in Maynooth, Ireland"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 320px"
+                  className="object-cover object-center scale-[1.55] origin-center brightness-[0.88] contrast-[1.08] saturate-[0.72]"
+                  priority={false}
+                />
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0b0a09]/70 via-[#0b0a09]/10 to-transparent"
+                />
+              </div>
+              <DoodleNote
+                label="that's me"
+                direction="down"
+                size="lg"
+                rotate={-4}
+                className="absolute left-1/2 top-2 z-10 hidden -translate-x-1/2 items-center gap-1 lg:flex flex-col"
+              />
+            </div>
+            <figcaption className="mt-3">
+              <span className="text-xs font-bold uppercase tracking-[0.14em] text-muted">
+                Maynooth · Ireland
+              </span>
+            </figcaption>
+          </figure>
+
+          <div className="lg:col-span-8 min-w-0">
             <p className="text-[15px] md:text-base text-ink-soft leading-relaxed">
               {profile.story}
             </p>
             <p className="mt-4 text-sm md:text-[15px] text-ink-soft/90 leading-relaxed">
               {profile.intro}
             </p>
-          </div>
-
-          <div className="relative lg:col-span-5 min-w-0 lg:pt-28">
-            <DoodleNote
-              label="the receipts"
-              direction="down"
-              size="lg"
-              rotate={4}
-              className="absolute left-1 top-0 z-10 hidden lg:flex"
-            />
-            <div className="grid grid-cols-2 gap-3 content-start">
-              {impactStats.map((stat, i) => (
-                <motion.div
-                  key={stat.label}
-                  initial={{ opacity: 0, y: 12 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.05 }}
-                  className="surface p-4 min-w-0 overflow-hidden"
-                >
-                  <div className="font-display text-2xl md:text-[1.75rem] text-ink tracking-tight tabular-nums truncate">
-                    <NumberTicker
-                      value={stat.value}
-                      decimalPlaces={stat.decimals}
-                      delay={0.05 * i}
-                      className="text-ink"
-                    />
-                    <span className="text-accent">{stat.suffix}</span>
-                  </div>
-                  <p className="mt-2 text-[10px] font-bold uppercase tracking-[0.08em] text-muted leading-snug">
-                    {stat.label}
-                  </p>
-                </motion.div>
-              ))}
-            </div>
           </div>
         </div>
       </div>
