@@ -21,7 +21,7 @@ export function Education() {
             <article
               key={e.degree}
               className={`relative surface p-6 flex flex-col min-h-[230px] hover:border-ink/20 transition-colors ${
-                e.status === "current" ? "border-accent/40 md:mt-16" : ""
+                e.status === "current" ? "border-accent/40 lg:mt-16" : ""
               }`}
             >
               {e.status === "current" && (
@@ -30,7 +30,7 @@ export function Education() {
                   direction="down"
                   size="lg"
                   rotate={-4}
-                  className="absolute left-4 -top-16 z-10 hidden md:flex"
+                  className="absolute left-4 -top-16 z-10 hidden lg:flex flex-col"
                 />
               )}
               <div className="flex items-center gap-2 mb-8">
