@@ -34,7 +34,7 @@ export function ProjectDrawer({
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "spring", stiffness: 280, damping: 32 }}
-            className="fixed top-0 right-0 z-[75] flex h-[100dvh] w-full max-w-lg flex-col border-l border-line bg-panel"
+            className="fixed top-0 right-0 z-[75] flex h-[100dvh] w-full max-w-lg flex-col border-l border-white/10 bg-panel/70 backdrop-blur-xl backdrop-saturate-150"
           >
             <div className="flex items-center justify-between border-b border-line px-5 py-4">
               <span className="text-xs font-bold uppercase tracking-[0.14em] text-accent">
@@ -88,14 +88,6 @@ export function ProjectDrawer({
                   </p>
                 </div>
               )}
-
-              <div className="mt-8 flex flex-wrap gap-2">
-                {project.tags.map((t) => (
-                  <span key={t} className="pill">
-                    {t}
-                  </span>
-                ))}
-              </div>
             </div>
 
             <div className="border-t border-line p-5 flex flex-wrap gap-3">
