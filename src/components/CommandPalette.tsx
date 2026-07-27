@@ -159,11 +159,16 @@ export function CommandPalette() {
         group: "Actions",
         keywords: "email copy contact",
         action: async () => {
-          await navigator.clipboard.writeText(profile.email);
-          track("copy-email", () => {
+          try {
+            await navigator.clipboard.writeText(profile.email);
+            track("copy-email", () => {
+              setOpen(false);
+              toast("Copied email");
+            });
+          } catch {
+            toast("Couldn’t copy — open Contact");
             setOpen(false);
-            toast("Copied email");
-          });
+          }
         },
       },
       {
@@ -212,11 +217,16 @@ export function CommandPalette() {
         group: "Cases",
         keywords: `${p.title} ${p.id} case link share copy`,
         action: async () => {
-          await navigator.clipboard.writeText(caseShareUrl(p.id));
-          track(`copy-case-${p.id}`, () => {
+          try {
+            await navigator.clipboard.writeText(caseShareUrl(p.id));
+            track(`copy-case-${p.id}`, () => {
+              setOpen(false);
+              toast(`Copied ${short} link`);
+            });
+          } catch {
+            toast("Couldn’t copy link");
             setOpen(false);
-            toast(`Copied ${short} link`);
-          });
+          }
         },
       });
       list.push({
@@ -369,7 +379,7 @@ export function CommandPalette() {
     <AnimatePresence>
       {open && (
         <motion.div
-          className="fixed inset-0 z-[80] flex items-start justify-center px-4 pt-[12vh]"
+          className="fixed inset-0 z-[80] flex items-start justify-center px-3 pt-[max(1rem,env(safe-area-inset-top))] sm:px-4 sm:pt-[12vh]"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -389,7 +399,7 @@ export function CommandPalette() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 10, scale: 0.98 }}
             transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
-            className="relative z-10 w-full max-w-xl overflow-hidden rounded-[1.75rem] border border-white/10 bg-panel/55 backdrop-blur-xl backdrop-saturate-150 shadow-[0_20px_60px_rgba(0,0,0,0.45)]"
+          className="relative z-10 w-full max-w-xl overflow-hidden rounded-[1.75rem] border border-white/10 bg-panel/55 shadow-[0_20px_60px_rgba(0,0,0,0.45)] backdrop-blur-xl backdrop-saturate-150"
           >
             <div className="flex items-center gap-3 border-b border-line px-4 py-3.5">
               <span className="text-xs font-bold uppercase tracking-[0.14em] text-accent">
@@ -452,8 +462,9 @@ export function CommandPalette() {
             </div>
 
             <div className="flex items-center justify-between border-t border-line px-4 py-2.5 text-[11px] font-semibold text-muted">
-              <span>↑↓ navigate · ↵ open</span>
-              <span>⌘K</span>
+              <span className="sm:hidden">Tap to open</span>
+              <span className="hidden sm:inline">↑↓ navigate · ↵ open</span>
+              <span className="hidden sm:inline">⌘K</span>
             </div>
           </motion.div>
         </motion.div>

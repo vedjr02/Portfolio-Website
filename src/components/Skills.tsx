@@ -101,7 +101,7 @@ export function Skills() {
                   key={cap.id}
                   type="button"
                   onClick={() => setActiveId(cap.id)}
-                  className={`shrink-0 rounded-full px-4 py-2 text-sm font-bold transition-colors ${
+                  className={`min-h-11 shrink-0 rounded-full px-4 py-2.5 text-sm font-bold transition-colors ${
                     on
                       ? "bg-accent text-[#061018]"
                       : "bg-bg-deep text-ink-soft border border-line"

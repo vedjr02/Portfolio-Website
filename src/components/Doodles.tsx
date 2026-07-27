@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 
-type Dir = "down" | "down-right" | "down-left" | "right" | "left";
+type Dir = "down" | "up" | "down-right" | "down-left" | "right" | "left";
 type Size = "sm" | "md" | "lg" | "xl" | "xxl";
 
 const SIZE: Record<
@@ -56,6 +56,19 @@ export function DoodleNote({
   align?: "start" | "end";
 }) {
   const s = SIZE[size];
+  const arrowFirst = direction === "up";
+  const labelEl = (
+    <span
+      className={cn(
+        "font-display font-bold italic tracking-tight leading-none whitespace-nowrap",
+        s.label
+      )}
+    >
+      {label}
+    </span>
+  );
+  const arrowEl = <ArrowSvg direction={direction} size={size} />;
+
   return (
     <div
       aria-hidden
@@ -68,21 +81,43 @@ export function DoodleNote({
       )}
       style={{ transform: `rotate(${rotate}deg)` }}
     >
-      <span
-        className={cn(
-          "font-display font-bold italic tracking-tight leading-none whitespace-nowrap",
-          s.label
-        )}
-      >
-        {label}
-      </span>
-      <ArrowSvg direction={direction} size={size} />
+      {arrowFirst ? (
+        <>
+          {arrowEl}
+          {labelEl}
+        </>
+      ) : (
+        <>
+          {labelEl}
+          {arrowEl}
+        </>
+      )}
     </div>
   );
 }
 
 function ArrowSvg({ direction, size }: { direction: Dir; size: Size }) {
   const s = SIZE[size];
+
+  if (direction === "up") {
+    return (
+      <svg viewBox="0 0 36 140" className={s.down} fill="none">
+        <path
+          d="M18 136c2-32-2-70 0-108"
+          stroke="currentColor"
+          strokeWidth="2.1"
+          strokeLinecap="round"
+        />
+        <path
+          d="M7 44l11-32 11 32"
+          stroke="currentColor"
+          strokeWidth="2.1"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    );
+  }
 
   if (direction === "down") {
     return (

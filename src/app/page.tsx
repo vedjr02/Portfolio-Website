@@ -13,6 +13,7 @@ import { CommandPalette } from "@/components/CommandPalette";
 import { SideRail } from "@/components/SideRail";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { ToastProvider } from "@/components/Toast";
+import GradualBlur from "@/components/GradualBlur";
 
 export default function Home() {
   return (
@@ -33,6 +34,18 @@ export default function Home() {
             <Education />
             <Footer />
           </main>
+
+          <GradualBlur
+            target="page"
+            position="bottom"
+            height="4.5rem"
+            strength={2}
+            divCount={5}
+            curve="bezier"
+            exponential
+            opacity={1}
+            zIndex={20}
+          />
 
           <CommandPalette />
         </SmoothScroll>
