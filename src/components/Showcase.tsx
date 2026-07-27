@@ -1,11 +1,13 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { featuredProjects } from "@/lib/data";
 import { NumberTicker } from "@/components/ui/number-ticker";
 import { ArrowUpRight, ExternalLink } from "lucide-react";
 import { DoodleNote } from "@/components/Doodles";
+import { ProjectPreview } from "@/components/ProjectPreview";
+import { cn } from "@/lib/utils";
 
 const SHORT: Record<string, string> = {
   starbucks: "Starbucks",
@@ -19,14 +21,51 @@ const PROOF: Record<string, string> = {
     "Twenty years of AI infrastructure decisions, sourced and reject-logged.",
 };
 
+/** Nav clearance — keep in sync with sticky top offset */
+const STICKY_TOP = 76;
+
+function writeCaseToUrl(id: string) {
+  const url = new URL(window.location.href);
+  url.searchParams.set("case", id);
+  url.hash = "showcase";
+  window.history.replaceState({}, "", url.toString());
+}
+
 export function Showcase() {
   const lineup = useMemo(() => featuredProjects, []);
   const [activeId, setActiveId] = useState(lineup[0]?.id ?? "");
+  const [tabsStuck, setTabsStuck] = useState(false);
+  const [tabsHeight, setTabsHeight] = useState(0);
+  const panelRef = useRef<HTMLDivElement>(null);
+  const tabsRef = useRef<HTMLDivElement>(null);
   const active = lineup.find((p) => p.id === activeId) ?? lineup[0];
   const activeIndex = Math.max(
     0,
     lineup.findIndex((p) => p.id === active?.id)
   );
+
+  const activate = useCallback((id: string) => {
+    setActiveId(id);
+    writeCaseToUrl(id);
+  }, []);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const fromUrl = params.get("case");
+    if (fromUrl && lineup.some((p) => p.id === fromUrl)) {
+      setActiveId(fromUrl);
+    }
+
+    const onSelect = (e: Event) => {
+      const id = (e as CustomEvent<string>).detail;
+      if (id && lineup.some((p) => p.id === id)) {
+        setActiveId(id);
+        writeCaseToUrl(id);
+      }
+    };
+    window.addEventListener("va:select-case", onSelect);
+    return () => window.removeEventListener("va:select-case", onSelect);
+  }, [lineup]);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -38,11 +77,41 @@ export function Showcase() {
         e.key === "ArrowRight"
           ? (activeIndex + 1) % lineup.length
           : (activeIndex - 1 + lineup.length) % lineup.length;
-      setActiveId(lineup[next].id);
+      activate(lineup[next].id);
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [activeIndex, lineup]);
+  }, [activeIndex, lineup, activate]);
+
+  /* Smart sticky tabs: fixed while the active case panel is scrolling (mobile).
+     Native sticky fails under overflow-x:hidden on html/body/main. */
+  useEffect(() => {
+    const update = () => {
+      const panel = panelRef.current;
+      const tabs = tabsRef.current;
+      if (!panel || !tabs) return;
+
+      if (window.matchMedia("(min-width: 1024px)").matches) {
+        setTabsStuck(false);
+        return;
+      }
+
+      const height = tabs.offsetHeight;
+      setTabsHeight(height);
+      const rect = panel.getBoundingClientRect();
+      const shouldStick =
+        rect.top < STICKY_TOP && rect.bottom > STICKY_TOP + height + 8;
+      setTabsStuck(shouldStick);
+    };
+
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    return () => {
+      window.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
+    };
+  }, [activeId]);
 
   if (!active) return null;
 
@@ -66,21 +135,27 @@ export function Showcase() {
         </div>
 
         <div className="relative">
-          {/* One cue in the empty gutter above the browser — long arrow into the tabs */}
           <DoodleNote
             label="open these"
             direction="down"
             size="xxl"
             rotate={-5}
-            className="absolute right-6 top-0 z-10 hidden lg:flex"
+            className="absolute right-6 top-0 z-10 hidden lg:flex flex-col"
           />
           <div className="hidden lg:block h-40" aria-hidden />
 
-          <div className="surface overflow-hidden relative">
+          <div ref={panelRef} className="surface relative">
+            {tabsStuck && <div style={{ height: tabsHeight }} aria-hidden />}
             <div
+              ref={tabsRef}
               role="tablist"
               aria-label="Featured case studies"
-              className="flex gap-1 overflow-x-auto border-b border-line p-2 hide-scrollbar"
+              className={cn(
+                "z-30 flex gap-1 overflow-x-auto border-b border-line p-2 hide-scrollbar",
+                tabsStuck
+                  ? "fixed inset-x-0 top-[4.75rem] border-b border-line bg-panel/90 px-[max(1.25rem,calc((100vw-64rem)/2+1.25rem))] backdrop-blur-xl backdrop-saturate-150 md:top-[5.25rem] md:px-[max(1.5rem,calc((100vw-64rem)/2+1.5rem))]"
+                  : "relative bg-transparent lg:static"
+              )}
             >
               {lineup.map((project, index) => {
                 const on = project.id === active.id;
@@ -90,7 +165,7 @@ export function Showcase() {
                     type="button"
                     role="tab"
                     aria-selected={on}
-                    onClick={() => setActiveId(project.id)}
+                    onClick={() => activate(project.id)}
                     className={`group relative flex min-w-[9.5rem] flex-1 items-center gap-3 rounded-2xl px-3.5 py-3 text-left transition-colors ${
                       on
                         ? "bg-bg-deep text-ink"
@@ -158,18 +233,12 @@ export function Showcase() {
                         <span className="font-mono text-[11px] font-bold text-accent pt-0.5">
                           {String(i + 1).padStart(2, "0")}
                         </span>
-                        <span className="text-sm text-ink leading-relaxed">{h}</span>
+                        <span className="text-sm text-ink leading-relaxed">
+                          {h}
+                        </span>
                       </li>
                     ))}
                   </ol>
-
-                  <div className="mt-6 flex flex-wrap gap-2">
-                    {active.tags.map((t) => (
-                      <span key={t} className="pill">
-                        {t}
-                      </span>
-                    ))}
-                  </div>
 
                   <div className="mt-8 flex flex-wrap gap-3">
                     {active.liveUrl && (
@@ -199,10 +268,23 @@ export function Showcase() {
                 <aside className="lg:col-span-5 min-w-0 flex flex-col bg-bg/40">
                   <div className="p-5 md:p-8 flex-1">
                     <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-muted">
-                      Signal
+                      Preview
                     </p>
 
-                    <div className="mt-5 rounded-2xl border border-line bg-panel p-5 overflow-hidden">
+                    {active.liveUrl && (
+                      <ProjectPreview
+                        url={active.liveUrl}
+                        title={active.title}
+                        size="md"
+                        image={active.previewImage}
+                        className="mt-4"
+                      />
+                    )}
+
+                    <div className="mt-5 surface-quiet p-5 overflow-hidden">
+                      <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-muted mb-3">
+                        Signal
+                      </p>
                       {active.metric ? (
                         <>
                           <div className="font-display text-[clamp(2.5rem,6vw,3.75rem)] leading-none tracking-tight text-accent tabular-nums">
@@ -235,7 +317,7 @@ export function Showcase() {
                       href={active.liveUrl}
                       target="_blank"
                       rel="noreferrer"
-                      className="group flex items-center justify-between gap-3 border-t border-line px-5 md:px-8 py-4 text-sm font-bold text-ink hover:bg-panel/80 transition-colors"
+                      className="group flex items-center justify-between gap-3 border-t border-line px-5 md:px-8 py-4 text-sm font-bold text-ink hover:bg-white/[0.03] transition-colors"
                     >
                       <span className="flex items-center gap-2">
                         <ExternalLink className="h-4 w-4 text-accent" />

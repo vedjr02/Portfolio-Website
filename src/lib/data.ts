@@ -13,9 +13,9 @@ export const profile = {
     email: "mailto:ambreved3@gmail.com",
   },
   intro:
-    "Detail-oriented Business Analyst with a Bachelor's in Information Technology and a Master's in Business Analytics. I translate complex datasets into actionable business insights — building dashboards, modeling KPIs, and bridging the gap between technical execution and business scalability.",
+    "Today that means scoping the right questions, modeling the KPIs that matter, and shipping dashboards stakeholders can actually use in the room. I'm currently building AdFlex — a dynamic pricing dashboard for Sustainable Energy Ireland — while finishing my Master's at Maynooth, and looking for a team where evidence beats opinion.",
   story:
-    "I started in engineering because I liked how a clean query could change what a team believed about its own business. That curiosity carried me through Information Technology into a Master's in Business Analytics at Maynooth University. Along the way I've shipped full-stack systems, authored research on non-invasive diagnostics, and built dashboards that help non-technical stakeholders see the story inside the numbers. Now I'm looking for Business Analyst roles where evidence beats opinion.",
+    "I came up through engineering because I liked how a clean query could change what a team believed about its own numbers. That path took me from a Bachelor's in Information Technology to a Master's in Business Analytics at Maynooth University in Ireland. Along the way I've shipped full-stack product systems, authored research on non-invasive diagnostics, and learned to turn messy datasets into a story non-technical people can act on.",
   now:
     "Currently building the AdFlex dynamic pricing dashboard as a Business Consultant project for Sustainable Energy Ireland (SEI), while wrapping up my Master's at Maynooth.",
 };
@@ -35,6 +35,8 @@ export type Project = {
   accent: string;
   liveUrl?: string;
   repoUrl?: string;
+  /** Optional local preview under /public, e.g. `/previews/starbucks.jpg` */
+  previewImage?: string;
   metric?: { value: number; suffix?: string; label: string; decimals?: number };
 };
 
@@ -57,6 +59,7 @@ export const projects: Project[] = [
     accent: "from-white/10 to-white/5",
     liveUrl: "https://starbucks-case-study-ved.vercel.app/",
     repoUrl: "https://github.com/vedjr02/Starbucks-Analysis",
+    previewImage: "/previews/starbucks.jpg",
     metric: { value: 34.2, suffix: "M", label: "Rewards members analyzed", decimals: 1 },
   },
   {
@@ -77,6 +80,7 @@ export const projects: Project[] = [
     accent: "from-white/10 to-white/5",
     liveUrl: "https://nvidia-case-study-ved.vercel.app/",
     repoUrl: "https://github.com/vedjr02/Nvidia-Case-Study",
+    previewImage: "/previews/nvidia.jpg",
     metric: { value: 68, suffix: "", label: "Sourced timeline events" },
   },
   {
@@ -97,23 +101,7 @@ export const projects: Project[] = [
     accent: "from-white/10 to-white/5",
     liveUrl: "https://adflex-dynamic-prices-vedant.vercel.app/login",
     repoUrl: "https://github.com/vedjr02/adflex-dynamic-prices",
-  },
-  {
-    id: "enershare",
-    title: "Tariff Analysis Dashboard",
-    category: "EnerShare — Business Consulting",
-    period: "May 2026 — Present",
-    description:
-      "End-to-end Tariff Analysis Dashboard evaluating energy pricing structures and time-of-use tariffs. Defined KPI frameworks, translated stakeholder requirements into analytical models, and built interactive visualizations that turn cost-impact scenarios into clear narratives for non-technical stakeholders.",
-    tags: ["Power BI", "SQL", "KPI Modeling", "Stakeholder Mgmt"],
-    highlights: [
-      "Personalized tariff recommendation engine",
-      "Cost-impact scenario visualization",
-      "Cross-functional requirement gathering",
-    ],
-    status: "In Progress",
-    tier: "consulting",
-    accent: "from-white/10 to-white/5",
+    previewImage: "/previews/adflex.jpg",
   },
   {
     id: "vcg",
@@ -131,6 +119,8 @@ export const projects: Project[] = [
     status: "In Progress",
     tier: "consulting",
     accent: "from-white/10 to-white/5",
+    previewImage: "/previews/vcg.jpg",
+    repoUrl: "https://github.com/vedjr02/virtual-gateway",
   },
   {
     id: "retentioniq",
@@ -150,6 +140,7 @@ export const projects: Project[] = [
     accent: "from-white/10 to-white/5",
     liveUrl: "https://retention-iq-seven.vercel.app",
     repoUrl: "https://github.com/vedjr02/RetentionIQ",
+    previewImage: "/previews/retentioniq.jpg",
   },
   {
     id: "insightpilot",
@@ -169,31 +160,13 @@ export const projects: Project[] = [
     accent: "from-white/10 to-white/5",
     liveUrl: "https://insightpilot-orpin.vercel.app",
     repoUrl: "https://github.com/vedjr02/InsightPilot",
-  },
-  {
-    id: "synthetic-orders",
-    title: "Thane Surge — Q-Commerce SLA Engine",
-    category: "Logistics Intelligence · Synthetic Orders",
-    period: "2025",
-    description:
-      "10-minute grocery delivery surge pricing and SLA prediction engine for Thane, Mumbai. Simulates ~21,500 orders/day across 37 dark stores on real OSM roads, predicts ETA and 10-minute SLA risk, and raises surge multipliers when rain, rush hour, or rider scarcity spike delivery risk.",
-    tags: ["Python", "ML", "OSMnx", "Surge Pricing", "SLA"],
-    highlights: [
-      "~300k synthetic deliveries simulated",
-      "37 dark stores across Thane",
-      "SLA risk → surge pricing loop",
-    ],
-    status: "Completed",
-    tier: "product",
-    accent: "from-white/10 to-white/5",
-    repoUrl: "https://github.com/vedjr02/Synthetic-Orders",
-    metric: { value: 300, suffix: "k", label: "Synthetic deliveries modeled" },
+    previewImage: "/previews/insightpilot.jpg",
   },
   {
     id: "votion",
     title: "Votion",
     category: "Full-stack Workspace",
-    period: "2025",
+    period: "2026",
     description:
       "A Notion-style workspace built with Next.js, React, Convex, and Tailwind — real-time sync, rich editing, hierarchical documents, soft delete, auth, file management, and web publishing. Shipped as a full product surface, not a toy demo.",
     tags: ["Next.js", "Convex", "Auth", "Tailwind", "Realtime"],
@@ -207,6 +180,45 @@ export const projects: Project[] = [
     accent: "from-white/10 to-white/5",
     liveUrl: "https://votion-ved.vercel.app",
     repoUrl: "https://github.com/vedjr02/Votion",
+    previewImage: "/previews/votion.jpg",
+  },
+  {
+    id: "lumen",
+    title: "Lumen — AI BI Dashboard",
+    category: "AI Business Intelligence",
+    period: "2026",
+    description:
+      "Drop a CSV or Excel file and get instant KPIs, charts, anomaly detection, and an AI analyst that answers questions in plain English — built to turn raw tables into decisions without a BI bottleneck.",
+    tags: ["Next.js", "FastAPI", "Claude", "Pandas"],
+    highlights: [
+      "Auto KPIs & gradient charts from uploads",
+      "Anomaly flags on messy datasets",
+      "Plain-English Q&A over your file",
+    ],
+    status: "Completed",
+    tier: "product",
+    accent: "from-white/10 to-white/5",
+    repoUrl: "https://github.com/vedjr02/AI-Business-Intelligence-Dashboard",
+    previewImage: "/previews/lumen.jpg",
+  },
+  {
+    id: "pricesense",
+    title: "PriceSense",
+    category: "Competitor Price Intelligence",
+    period: "2026",
+    description:
+      "Precision analytics engine for tracking competitor listings — capture price history, volatility, and market signals so pricing decisions sit on scheduled scrapes instead of gut feel.",
+    tags: ["Next.js", "Price Tracking", "Analytics", "Vercel"],
+    highlights: [
+      "Listing-level price history & volatility",
+      "Live sync integrity for tracked products",
+      "Market sentiment + arbitrage signals",
+    ],
+    status: "Completed",
+    tier: "product",
+    accent: "from-white/10 to-white/5",
+    repoUrl: "https://github.com/vedjr02/Competitor-Price-Intelligence-Engine",
+    previewImage: "/previews/pricesense.jpg",
   },
   {
     id: "smartbus",
@@ -306,13 +318,6 @@ export const experience = [
   { label: "Impact", note: "From slide to shipped" },
 ];
 
-export const impactStats = [
-  { value: 68, suffix: "", label: "Sourced NVIDIA timeline events", decimals: 0 },
-  { value: 34.2, suffix: "M", label: "Starbucks Rewards members scoped", decimals: 1 },
-  { value: 88, suffix: "%", label: "Diagnostic model accuracy", decimals: 0 },
-  { value: 90, suffix: "%", label: "Manual scheduling automated", decimals: 0 },
-];
-
 export type SideProject = {
   id: string;
   name: string;
@@ -323,15 +328,6 @@ export type SideProject = {
 };
 
 export const sideProjects: SideProject[] = [
-  {
-    id: "lumen",
-    name: "Lumen — AI BI Dashboard",
-    blurb:
-      "Drop a CSV, get auto KPIs, gradient charts, anomaly flags and Claude-powered Q&A.",
-    stack: ["Next.js", "FastAPI", "Claude", "Pandas"],
-    href: "https://github.com/vedjr02/AI-Business-Intelligence-Dashboard",
-    emoji: "✦",
-  },
   {
     id: "habitify",
     name: "Habitifyyy",
@@ -381,8 +377,8 @@ export const sideProjects: SideProject[] = [
     id: "portfolio",
     name: "This portfolio",
     blurb:
-      "The site you're reading. Next.js + Tailwind + Motion + GSAP over a WebGL shader.",
-    stack: ["Next.js", "Tailwind", "GSAP", "Three.js"],
+      "The site you're reading. Next.js + Tailwind + Motion.",
+    stack: ["Next.js", "Tailwind", "Motion"],
     href: "https://github.com/vedjr02/Portfolio-Website",
     emoji: "✺",
   },

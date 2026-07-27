@@ -12,28 +12,31 @@ import { CommandProvider } from "@/components/CommandProvider";
 import { CommandPalette } from "@/components/CommandPalette";
 import { SideRail } from "@/components/SideRail";
 import { SmoothScroll } from "@/components/SmoothScroll";
+import { ToastProvider } from "@/components/Toast";
 
 export default function Home() {
   return (
     <CommandProvider>
-      <SmoothScroll>
-        <BackgroundLayer />
+      <ToastProvider>
+        <SmoothScroll>
+          <BackgroundLayer />
 
-        <main className="relative overflow-x-hidden pb-10">
-          <ScrollProgress />
-          <Nav />
-          <SideRail />
-          <Hero />
-          <Showcase />
-          <ProjectIndex />
-          <Story />
-          <Skills />
-          <Education />
-          <Footer />
-        </main>
+          <main className="relative overflow-x-hidden pb-10">
+            <ScrollProgress />
+            <Nav />
+            <SideRail />
+            <Hero />
+            <Story />
+            <Showcase />
+            <ProjectIndex />
+            <Skills />
+            <Education />
+            <Footer />
+          </main>
 
-        <CommandPalette />
-      </SmoothScroll>
+          <CommandPalette />
+        </SmoothScroll>
+      </ToastProvider>
     </CommandProvider>
   );
 }

@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { profile } from "@/lib/data";
 import { useCommand } from "@/components/CommandProvider";
 import { DoodleNote, DoodleUnderline } from "@/components/Doodles";
+import { HeroAtmosphere } from "@/components/BackgroundLayer";
 
 const easeOut = [0.22, 1, 0.36, 1] as const;
 
@@ -15,6 +16,8 @@ export function Hero() {
       id="top"
       className="relative min-h-[100svh] flex flex-col justify-end pt-28 pb-16 md:pb-24"
     >
+      <HeroAtmosphere />
+
       <div className="mx-auto w-full max-w-6xl px-5 md:px-6 relative">
         <motion.div
           initial={{ opacity: 0, y: 14 }}
@@ -29,13 +32,12 @@ export function Hero() {
           <span className="pill">{profile.location}</span>
         </motion.div>
 
-        {/* Empty space right of the name block on wide screens */}
         <DoodleNote
           label="that's me"
           direction="down-left"
           size="md"
           rotate={8}
-          className="absolute right-8 top-24 hidden xl:flex"
+          className="absolute right-4 top-16 z-10 hidden lg:flex flex-col md:right-8 md:top-20"
         />
 
         <h1 className="font-display leading-[0.86] tracking-[-0.05em]">
@@ -88,7 +90,7 @@ export function Hero() {
               direction="right"
               size="sm"
               rotate={-4}
-              className="hidden md:inline-flex order-first md:order-none mr-1"
+              className="hidden lg:flex flex-col order-first lg:order-none mr-1"
             />
             <a href="#showcase" className="btn-primary">
               See the work

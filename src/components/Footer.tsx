@@ -1,13 +1,29 @@
 "use client";
 
+import { useState } from "react";
 import { profile } from "@/lib/data";
 import { DoodleNote } from "@/components/Doodles";
+import { useToast } from "@/components/Toast";
 
 export function Footer() {
+  const { toast } = useToast();
+  const [copying, setCopying] = useState(false);
+
+  const copyEmail = async () => {
+    if (copying) return;
+    setCopying(true);
+    try {
+      await navigator.clipboard.writeText(profile.email);
+      toast("Copied email");
+    } finally {
+      window.setTimeout(() => setCopying(false), 400);
+    }
+  };
+
   return (
     <footer id="contact" className="relative pt-16 md:pt-24 pb-10">
       <div className="mx-auto max-w-5xl px-5 md:px-6">
-        <div className="surface overflow-hidden bg-bg-deep border-line">
+        <div className="surface overflow-hidden">
           <div className="p-8 md:p-12 relative">
             <div className="absolute -right-16 -top-16 h-56 w-56 rounded-full bg-accent/20 blur-3xl" />
             <div className="absolute -left-10 bottom-0 h-40 w-40 rounded-full bg-sage/15 blur-3xl" />
@@ -22,23 +38,34 @@ export function Footer() {
               I got you — requirements, dashboards, and numbers you can defend
               with stakeholders. Email me and let&apos;s talk.
             </p>
-            <div className="relative mt-8 flex w-full flex-wrap items-center gap-y-4">
-              <a
-                href={profile.socials.email}
+            <div className="relative mt-8 flex w-full flex-wrap items-center gap-3 gap-y-4">
+              <button
+                type="button"
+                onClick={copyEmail}
                 className="relative inline-flex btn-primary text-base shrink-0"
               >
                 {profile.email}
+              </button>
+              <a
+                href={profile.socials.email}
+                className="relative inline-flex btn-secondary text-sm shrink-0"
+              >
+                Open mail
               </a>
-              <div className="ml-auto hidden md:flex min-w-0 pl-6">
+              <div className="ml-auto hidden lg:flex min-w-0 pl-6">
                 <DoodleNote
                   label="say hi"
                   direction="left"
                   size="xxl"
                   rotate={-2}
                   align="end"
+                  className="flex flex-col"
                 />
               </div>
             </div>
+            <p className="relative mt-3 text-xs font-semibold text-muted">
+              Tap the address to copy · or open your mail app
+            </p>
           </div>
         </div>
 
@@ -48,9 +75,11 @@ export function Footer() {
               Navigate
             </p>
             <ul className="space-y-2 text-sm font-semibold text-ink-soft">
+              <li><a href="#story" className="hover:text-accent">About</a></li>
               <li><a href="#showcase" className="hover:text-accent">Cases</a></li>
               <li><a href="#archive" className="hover:text-accent">Projects</a></li>
-              <li><a href="#story" className="hover:text-accent">About</a></li>
+              <li><a href="#skills" className="hover:text-accent">Skills</a></li>
+              <li><a href="#education" className="hover:text-accent">Path</a></li>
               <li><a href="#contact" className="hover:text-accent">Contact</a></li>
             </ul>
           </div>
@@ -70,9 +99,13 @@ export function Footer() {
                 </a>
               </li>
               <li>
-                <a href={profile.socials.email} className="hover:text-accent">
-                  Email
-                </a>
+                <button
+                  type="button"
+                  onClick={copyEmail}
+                  className="hover:text-accent"
+                >
+                  Copy email
+                </button>
               </li>
             </ul>
           </div>

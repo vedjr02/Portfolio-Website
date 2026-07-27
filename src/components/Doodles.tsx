@@ -1,3 +1,5 @@
+import { cn } from "@/lib/utils";
+
 type Dir = "down" | "down-right" | "down-left" | "right" | "left";
 type Size = "sm" | "md" | "lg" | "xl" | "xxl";
 
@@ -57,13 +59,20 @@ export function DoodleNote({
   return (
     <div
       aria-hidden
-      className={`pointer-events-none select-none inline-flex flex-col gap-2.5 text-accent ${
-        align === "end" ? "items-end" : "items-start"
-      } ${className}`}
+      className={cn(
+        // No base display utility — callers pass hidden lg:flex / etc.
+        // so mobile never fights inline-flex and shows overlapping arrows.
+        "pointer-events-none select-none flex-col gap-2.5 text-accent opacity-75",
+        align === "end" ? "items-end" : "items-start",
+        className
+      )}
       style={{ transform: `rotate(${rotate}deg)` }}
     >
       <span
-        className={`font-display font-bold italic tracking-tight leading-none whitespace-nowrap opacity-90 ${s.label}`}
+        className={cn(
+          "font-display font-bold italic tracking-tight leading-none whitespace-nowrap",
+          s.label
+        )}
       >
         {label}
       </span>

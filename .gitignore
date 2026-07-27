@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Local screenshot dumps
+untitled folder/
+IMG_6757.JPG

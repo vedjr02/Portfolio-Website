@@ -4,9 +4,9 @@ import { useEffect, useState } from "react";
 
 const SECTIONS = [
   { id: "top", label: "Top" },
+  { id: "story", label: "About" },
   { id: "showcase", label: "Cases" },
   { id: "archive", label: "Projects" },
-  { id: "story", label: "About" },
   { id: "skills", label: "Skills" },
   { id: "education", label: "Path" },
   { id: "contact", label: "Contact" },
@@ -39,7 +39,7 @@ export function SideRail() {
       aria-label="Section rail"
       className="pointer-events-none fixed right-5 top-1/2 z-40 hidden -translate-y-1/2 xl:block"
     >
-      <ul className="pointer-events-auto rounded-full border border-line bg-panel px-2 py-3 space-y-1">
+      <ul className="pointer-events-auto rounded-full border border-white/10 bg-panel/55 px-2 py-3 space-y-1 backdrop-blur-xl">
         {SECTIONS.map((section) => {
           const isActive = active === section.id;
           return (

@@ -1,7 +1,6 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { AnimatePresence, motion } from "motion/react";
 import {
   consultingProjects,
   productProjects,
@@ -11,9 +10,9 @@ import {
 } from "@/lib/data";
 import { ProjectDrawer } from "@/components/ProjectDrawer";
 import { Marquee } from "@/components/ui/marquee";
-import { NumberTicker } from "@/components/ui/number-ticker";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, ArrowRight } from "lucide-react";
 import { DoodleNote } from "@/components/Doodles";
+import { ProjectPreview } from "@/components/ProjectPreview";
 
 export function ProjectIndex() {
   const adflex = useMemo(
@@ -21,12 +20,25 @@ export function ProjectIndex() {
     []
   );
 
-  const [expandedId, setExpandedId] = useState<string | null>(null);
   const [drawerProject, setDrawerProject] = useState<Project | null>(null);
 
   const rows = useMemo(() => {
-    const consulting = consultingProjects.filter((p) => p.id !== "adflex");
-    return [...consulting, ...productProjects, ...selectedProjects];
+    const order = [
+      "retentioniq",
+      "insightpilot",
+      "votion",
+      "lumen",
+      "pricesense",
+      "vcg",
+      "smartbus",
+      "diabetic-foot",
+    ];
+    const rest = [...consultingProjects, ...productProjects, ...selectedProjects].filter(
+      (p) => p.id !== "adflex"
+    );
+    return order
+      .map((id) => rest.find((p) => p.id === id))
+      .filter((p): p is Project => !!p);
   }, []);
 
   return (
@@ -57,23 +69,22 @@ export function ProjectIndex() {
             Consulting & product builds.
           </h2>
           <p className="mt-3 text-[15px] text-ink-soft leading-relaxed">
-            Current engagement up top. Everything else stays visible — open a
-            row when you want the brief.
+            Current engagement up top. Everything else as clear cards with a live
+            preview when there&apos;s a demo to open.
           </p>
         </div>
 
-        {/* AdFlex — always open featured project card */}
         {adflex && (
-          <div className="relative mb-5 pt-14 lg:pt-16">
+          <div className="relative mb-10 lg:pt-16">
             <DoodleNote
               label="what I'm building now"
               direction="down"
               size="lg"
               rotate={-4}
-              className="absolute left-6 top-0 z-10 hidden lg:flex"
+              className="absolute left-6 top-0 z-10 hidden lg:flex flex-col"
             />
-            <article className="surface overflow-hidden bg-[#101820]">
-              <div className="h-1 w-full bg-accent" />
+            <article className="surface relative overflow-hidden">
+              <div className="h-1 w-full bg-accent/80" />
               <div className="p-5 md:p-7">
                 <div className="flex flex-wrap items-center gap-2 mb-4 w-fit">
                   <span className="pill pill-accent">
@@ -85,7 +96,7 @@ export function ProjectIndex() {
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
-                  <div className="lg:col-span-8 min-w-0">
+                  <div className="lg:col-span-7 min-w-0">
                     <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-muted mb-1.5">
                       {adflex.category}
                     </p>
@@ -106,14 +117,6 @@ export function ProjectIndex() {
                         </li>
                       ))}
                     </ul>
-
-                    <div className="mt-5 flex flex-wrap gap-2">
-                      {adflex.tags.map((t) => (
-                        <span key={t} className="pill">
-                          {t}
-                        </span>
-                      ))}
-                    </div>
 
                     <div className="mt-6 flex flex-wrap gap-3">
                       {adflex.liveUrl && (
@@ -140,30 +143,35 @@ export function ProjectIndex() {
                       <button
                         type="button"
                         onClick={() => setDrawerProject(adflex)}
-                        className="btn-secondary !py-2.5 !px-4 text-sm"
+                        className="btn-brief text-sm"
                       >
                         Brief
+                        <ArrowRight className="h-3.5 w-3.5" />
                       </button>
                     </div>
                   </div>
 
-                  <div className="lg:col-span-4 min-w-0">
-                    <div className="rounded-2xl border border-line bg-bg/50 p-5 h-full flex flex-col justify-between">
-                      <div>
-                        <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-muted">
-                          Engagement
-                        </p>
-                        <p className="mt-3 font-display text-4xl tracking-tight text-accent">
-                          Now
-                        </p>
-                        <p className="mt-2 text-sm font-semibold text-ink-soft">
-                          Business Consultant project for Sustainable Energy
-                          Ireland (SEI)
+                  <div className="lg:col-span-5 min-w-0 flex flex-col gap-4">
+                    {adflex.liveUrl && (
+                      <ProjectPreview
+                        url={adflex.liveUrl}
+                        title={adflex.title}
+                        size="md"
+                        image={adflex.previewImage}
+                      />
+                    )}
+                    <div className="surface-quiet p-5">
+                      <div className="flex items-start gap-3">
+                        <span
+                          className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-sage animate-pulse-dot"
+                          aria-hidden
+                        />
+                        <p className="text-sm leading-relaxed text-ink-soft">
+                          Most probably as you&apos;re reading this, I&apos;m
+                          hustling to improve it, fix issues, and keep building
+                          this project.
                         </p>
                       </div>
-                      <p className="mt-6 text-xs font-bold uppercase tracking-[0.1em] text-muted">
-                        Dynamic pricing · KPI scenarios
-                      </p>
                     </div>
                   </div>
                 </div>
@@ -173,125 +181,94 @@ export function ProjectIndex() {
         )}
 
         <div className="relative">
-          <DoodleNote
-            label="tap a row"
-            direction="down-left"
-            size="sm"
-            rotate={5}
-            className="absolute -top-10 right-4 hidden md:flex"
-          />
-          {/* Other projects — closed by default, visible rows */}
-          <div className="surface divide-y divide-line overflow-hidden">
-          <div className="px-5 md:px-7 py-3 border-b border-line bg-bg/30">
+          <div className="mb-5 flex items-end justify-between gap-4">
             <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-muted">
-              More projects · click a row to expand
+              More projects
             </p>
+            <DoodleNote
+              label="peek inside"
+              direction="down-left"
+              size="sm"
+              rotate={5}
+              className="hidden lg:flex flex-col"
+            />
           </div>
 
-          {rows.map((project, index) => {
-            const open = expandedId === project.id;
-            return (
-              <div key={project.id} className="bg-panel">
-                <button
-                  type="button"
-                  onClick={() =>
-                    setExpandedId((id) => (id === project.id ? null : project.id))
-                  }
-                  className="flex w-full items-center gap-4 md:gap-6 px-5 md:px-7 py-4 text-left hover:bg-bg-deep/70 transition-colors"
-                >
-                  <span className="text-sm font-bold text-muted w-7">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                  <div className="min-w-0 flex-1">
-                    <h3 className="font-display text-lg md:text-xl text-ink truncate tracking-tight">
-                      {project.title}
-                    </h3>
-                    <p className="mt-1 text-xs font-bold uppercase tracking-[0.08em] text-muted truncate">
-                      {project.category} · {project.status}
-                    </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
+            {rows.map((project, index) => (
+              <article
+                key={project.id}
+                className="surface overflow-hidden flex flex-col"
+              >
+                {(project.liveUrl || project.previewImage) && (
+                  <div className="p-3 pb-0">
+                    <ProjectPreview
+                      url={project.liveUrl}
+                      title={project.title}
+                      size="sm"
+                      image={project.previewImage}
+                      caption={
+                        project.liveUrl ? undefined : "Research preview"
+                      }
+                    />
                   </div>
-                  <span className="hidden md:block text-sm font-semibold text-muted">
-                    {project.period.split("—")[0].trim()}
-                  </span>
-                  <span
-                    className={`flex h-8 w-8 items-center justify-center rounded-full border border-line text-lg text-ink transition-transform ${
-                      open ? "rotate-45 bg-accent text-[#061018] border-accent" : ""
-                    }`}
-                  >
-                    +
-                  </span>
-                </button>
+                )}
 
-                <AnimatePresence initial={false}>
-                  {open && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.28 }}
-                      className="overflow-hidden"
+                <div className="flex flex-1 flex-col p-5">
+                  <div className="flex flex-wrap items-center gap-2 mb-3">
+                    <span className="font-mono text-[11px] font-bold text-accent">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <span className="pill">{project.status}</span>
+                    <span className="pill hidden sm:inline-flex">
+                      {project.period.split("—")[0].trim()}
+                    </span>
+                  </div>
+
+                  <p className="text-[11px] font-bold uppercase tracking-[0.12em] text-muted">
+                    {project.category}
+                  </p>
+                  <h3 className="mt-1.5 font-display text-xl leading-tight tracking-tight text-ink">
+                    {project.title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-ink-soft line-clamp-3">
+                    {project.description}
+                  </p>
+
+                  <div className="mt-auto pt-5 flex flex-wrap gap-2 items-center">
+                    {project.liveUrl && (
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="btn-primary !py-2 !px-3.5 text-sm"
+                      >
+                        Live
+                      </a>
+                    )}
+                    {project.repoUrl && (
+                      <a
+                        href={project.repoUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="btn-secondary !py-2 !px-3.5 text-sm"
+                      >
+                        GitHub
+                      </a>
+                    )}
+                    <button
+                      type="button"
+                      onClick={() => setDrawerProject(project)}
+                      className="btn-brief text-sm"
                     >
-                      <div className="px-5 md:px-7 pb-6 md:pl-16 bg-bg/50">
-                        <p className="max-w-3xl text-sm text-ink-soft leading-relaxed">
-                          {project.description}
-                        </p>
-                        {project.metric && (
-                          <p className="mt-3 font-display text-2xl text-accent tabular-nums">
-                            <NumberTicker
-                              value={project.metric.value}
-                              decimalPlaces={project.metric.decimals ?? 0}
-                              className="text-accent"
-                            />
-                            {project.metric.suffix}{" "}
-                            <span className="text-sm font-sans font-semibold text-muted">
-                              {project.metric.label}
-                            </span>
-                          </p>
-                        )}
-                        <div className="mt-4 flex flex-wrap gap-2">
-                          {project.tags.map((t) => (
-                            <span key={t} className="pill">
-                              {t}
-                            </span>
-                          ))}
-                        </div>
-                        <div className="mt-5 flex flex-wrap gap-3">
-                          {project.liveUrl && (
-                            <a
-                              href={project.liveUrl}
-                              target="_blank"
-                              rel="noreferrer"
-                              className="btn-primary !py-2.5 !px-4 text-sm"
-                            >
-                              Live
-                            </a>
-                          )}
-                          {project.repoUrl && (
-                            <a
-                              href={project.repoUrl}
-                              target="_blank"
-                              rel="noreferrer"
-                              className="btn-secondary !py-2.5 !px-4 text-sm"
-                            >
-                              GitHub
-                            </a>
-                          )}
-                          <button
-                            type="button"
-                            onClick={() => setDrawerProject(project)}
-                            className="btn-secondary !py-2.5 !px-4 text-sm"
-                          >
-                            Brief
-                          </button>
-                        </div>
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-            );
-          })}
-        </div>
+                      Brief
+                      <ArrowRight className="h-3.5 w-3.5" />
+                    </button>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
       </div>
 

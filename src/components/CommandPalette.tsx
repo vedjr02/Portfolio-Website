@@ -1,67 +1,169 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import { projects, profile, sideProjects } from "@/lib/data";
+import { featuredProjects, projects, profile, sideProjects } from "@/lib/data";
 import { useCommand } from "@/components/CommandProvider";
+import { useToast } from "@/components/Toast";
 
 type CommandItem = {
   id: string;
   label: string;
   hint: string;
   group: string;
+  keywords?: string;
   action: () => void;
 };
 
+const RECENT_KEY = "va-cmd-recent";
+const RECENT_MAX = 5;
+
+function readRecent(): string[] {
+  try {
+    const raw = localStorage.getItem(RECENT_KEY);
+    if (!raw) return [];
+    const parsed = JSON.parse(raw) as unknown;
+    return Array.isArray(parsed)
+      ? parsed.filter((x): x is string => typeof x === "string")
+      : [];
+  } catch {
+    return [];
+  }
+}
+
+function pushRecent(id: string) {
+  try {
+    const next = [id, ...readRecent().filter((x) => x !== id)].slice(
+      0,
+      RECENT_MAX
+    );
+    localStorage.setItem(RECENT_KEY, JSON.stringify(next));
+  } catch {
+    /* ignore quota / private mode */
+  }
+}
+
+/** Lightweight fuzzy score — higher is better; -1 = no match */
+function fuzzyScore(query: string, ...fields: string[]): number {
+  const q = query.trim().toLowerCase();
+  if (!q) return 0;
+  const text = fields.join(" ").toLowerCase();
+  if (!text) return -1;
+  if (text === q) return 1000;
+  if (text.startsWith(q)) return 850;
+  if (text.includes(q)) return 700;
+
+  let qi = 0;
+  let score = 0;
+  let streak = 0;
+  let last = -2;
+  for (let i = 0; i < text.length && qi < q.length; i++) {
+    if (text[i] === q[qi]) {
+      score += 12;
+      if (i === last + 1) {
+        streak += 1;
+        score += 6 * streak;
+      } else {
+        streak = 0;
+      }
+      if (i === 0 || /[\s·\-_/]/.test(text[i - 1] ?? "")) score += 10;
+      last = i;
+      qi += 1;
+    }
+  }
+  return qi === q.length ? score : -1;
+}
+
+function caseShareUrl(id: string) {
+  const url = new URL(window.location.href);
+  url.searchParams.set("case", id);
+  url.hash = "showcase";
+  return url.toString();
+}
+
 export function CommandPalette() {
   const { open, setOpen } = useCommand();
+  const { toast } = useToast();
   const [query, setQuery] = useState("");
   const [active, setActive] = useState(0);
+  const [recentIds, setRecentIds] = useState<string[]>([]);
   const inputRef = useRef<HTMLInputElement>(null);
 
+  const track = useCallback((id: string, run: () => void) => {
+    pushRecent(id);
+    setRecentIds(readRecent());
+    run();
+  }, []);
+
   const items = useMemo<CommandItem[]>(() => {
-    const jump = (id: string) => {
+    const jump = (sectionId: string) => {
       setOpen(false);
-      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+      document
+        .getElementById(sectionId)
+        ?.scrollIntoView({ behavior: "smooth" });
     };
 
     const list: CommandItem[] = [
       {
-        id: "sec-showcase",
-        label: "Jump to Work",
-        hint: "Featured chapters",
+        id: "sec-story",
+        label: "Jump to About",
+        hint: "Story & photo",
         group: "Navigate",
-        action: () => jump("showcase"),
+        keywords: "about story bio",
+        action: () => track("sec-story", () => jump("story")),
+      },
+      {
+        id: "sec-showcase",
+        label: "Jump to Cases",
+        hint: "Featured case studies",
+        group: "Navigate",
+        keywords: "cases showcase starbucks nvidia",
+        action: () => track("sec-showcase", () => jump("showcase")),
       },
       {
         id: "sec-archive",
-        label: "Jump to Archive",
+        label: "Jump to Projects",
         hint: "Full project list",
         group: "Navigate",
-        action: () => jump("archive"),
+        keywords: "projects archive builds",
+        action: () => track("sec-archive", () => jump("archive")),
       },
       {
-        id: "sec-story",
-        label: "Jump to About",
-        hint: "Story & impact",
+        id: "sec-skills",
+        label: "Jump to Skills",
+        hint: "How I work with data",
         group: "Navigate",
-        action: () => jump("story"),
+        keywords: "skills capabilities",
+        action: () => track("sec-skills", () => jump("skills")),
+      },
+      {
+        id: "sec-education",
+        label: "Jump to Path",
+        hint: "Education",
+        group: "Navigate",
+        keywords: "path education maynooth",
+        action: () => track("sec-education", () => jump("education")),
       },
       {
         id: "sec-contact",
         label: "Jump to Contact",
         hint: "Email & socials",
         group: "Navigate",
-        action: () => jump("contact"),
+        keywords: "contact email hire",
+        action: () => track("sec-contact", () => jump("contact")),
       },
       {
         id: "copy-email",
         label: "Copy email",
         hint: profile.email,
         group: "Actions",
+        keywords: "email copy contact",
         action: async () => {
           await navigator.clipboard.writeText(profile.email);
-          setOpen(false);
+          track("copy-email", () => {
+            setOpen(false);
+            toast("Copied email");
+          });
         },
       },
       {
@@ -69,22 +171,76 @@ export function CommandPalette() {
         label: "Open LinkedIn",
         hint: "Profile",
         group: "Actions",
-        action: () => {
-          window.open(profile.socials.linkedin, "_blank", "noopener,noreferrer");
-          setOpen(false);
-        },
+        action: () =>
+          track("open-linkedin", () => {
+            window.open(
+              profile.socials.linkedin,
+              "_blank",
+              "noopener,noreferrer"
+            );
+            setOpen(false);
+          }),
       },
       {
         id: "open-github",
         label: "Open GitHub",
         hint: "vedjr02",
         group: "Actions",
-        action: () => {
-          window.open(profile.socials.github, "_blank", "noopener,noreferrer");
-          setOpen(false);
-        },
+        action: () =>
+          track("open-github", () => {
+            window.open(
+              profile.socials.github,
+              "_blank",
+              "noopener,noreferrer"
+            );
+            setOpen(false);
+          }),
       },
     ];
+
+    featuredProjects.forEach((p) => {
+      const short =
+        p.id === "starbucks"
+          ? "Starbucks"
+          : p.id === "nvidia"
+            ? "NVIDIA"
+            : p.title;
+      list.push({
+        id: `copy-case-${p.id}`,
+        label: `Copy case link · ${short}`,
+        hint: "Shareable URL",
+        group: "Cases",
+        keywords: `${p.title} ${p.id} case link share copy`,
+        action: async () => {
+          await navigator.clipboard.writeText(caseShareUrl(p.id));
+          track(`copy-case-${p.id}`, () => {
+            setOpen(false);
+            toast(`Copied ${short} link`);
+          });
+        },
+      });
+      list.push({
+        id: `open-case-${p.id}`,
+        label: `Open case · ${short}`,
+        hint: "Jump to Cases",
+        group: "Cases",
+        keywords: `${p.title} ${p.id} case study`,
+        action: () =>
+          track(`open-case-${p.id}`, () => {
+            setOpen(false);
+            const url = new URL(window.location.href);
+            url.searchParams.set("case", p.id);
+            url.hash = "showcase";
+            window.history.replaceState({}, "", url.toString());
+            document
+              .getElementById("showcase")
+              ?.scrollIntoView({ behavior: "smooth" });
+            window.dispatchEvent(
+              new CustomEvent("va:select-case", { detail: p.id })
+            );
+          }),
+      });
+    });
 
     projects.forEach((p) => {
       if (p.liveUrl) {
@@ -93,10 +249,12 @@ export function CommandPalette() {
           label: `Open live · ${p.title}`,
           hint: p.category,
           group: "Projects",
-          action: () => {
-            window.open(p.liveUrl, "_blank", "noopener,noreferrer");
-            setOpen(false);
-          },
+          keywords: p.title,
+          action: () =>
+            track(`live-${p.id}`, () => {
+              window.open(p.liveUrl, "_blank", "noopener,noreferrer");
+              setOpen(false);
+            }),
         });
       }
       if (p.repoUrl) {
@@ -105,10 +263,12 @@ export function CommandPalette() {
           label: `GitHub · ${p.title}`,
           hint: "Repository",
           group: "Projects",
-          action: () => {
-            window.open(p.repoUrl, "_blank", "noopener,noreferrer");
-            setOpen(false);
-          },
+          keywords: p.title,
+          action: () =>
+            track(`repo-${p.id}`, () => {
+              window.open(p.repoUrl, "_blank", "noopener,noreferrer");
+              setOpen(false);
+            }),
         });
       }
     });
@@ -119,26 +279,44 @@ export function CommandPalette() {
         label: p.name,
         hint: "Side project",
         group: "Side projects",
-        action: () => {
-          window.open(p.href, "_blank", "noopener,noreferrer");
-          setOpen(false);
-        },
+        keywords: p.blurb,
+        action: () =>
+          track(`side-${p.id}`, () => {
+            window.open(p.href, "_blank", "noopener,noreferrer");
+            setOpen(false);
+          }),
       });
     });
 
     return list;
-  }, [setOpen]);
+  }, [setOpen, toast, track]);
 
   const filtered = useMemo(() => {
-    const q = query.trim().toLowerCase();
-    if (!q) return items;
-    return items.filter(
-      (i) =>
-        i.label.toLowerCase().includes(q) ||
-        i.hint.toLowerCase().includes(q) ||
-        i.group.toLowerCase().includes(q)
-    );
-  }, [items, query]);
+    const q = query.trim();
+    if (!q) {
+      const recent = recentIds
+        .map((id) => items.find((i) => i.id === id))
+        .filter((i): i is CommandItem => !!i)
+        .map((i) => ({ ...i, group: "Recent" }));
+      const rest = items.filter((i) => !recentIds.includes(i.id));
+      return [...recent, ...rest];
+    }
+
+    return items
+      .map((item) => ({
+        item,
+        score: fuzzyScore(
+          q,
+          item.label,
+          item.hint,
+          item.group,
+          item.keywords ?? ""
+        ),
+      }))
+      .filter((x) => x.score >= 0)
+      .sort((a, b) => b.score - a.score)
+      .map((x) => x.item);
+  }, [items, query, recentIds]);
 
   useEffect(() => {
     if (!open) {
@@ -146,13 +324,14 @@ export function CommandPalette() {
       setActive(0);
       return;
     }
+    setRecentIds(readRecent());
     const t = window.setTimeout(() => inputRef.current?.focus(), 40);
     return () => window.clearTimeout(t);
   }, [open]);
 
   useEffect(() => {
     setActive(0);
-  }, [query]);
+  }, [query, filtered.length]);
 
   useEffect(() => {
     if (!open) return;
@@ -210,7 +389,7 @@ export function CommandPalette() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 10, scale: 0.98 }}
             transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
-            className="relative z-10 w-full max-w-xl overflow-hidden rounded-[1.75rem] border border-line bg-panel"
+            className="relative z-10 w-full max-w-xl overflow-hidden rounded-[1.75rem] border border-white/10 bg-panel/55 backdrop-blur-xl backdrop-saturate-150 shadow-[0_20px_60px_rgba(0,0,0,0.45)]"
           >
             <div className="flex items-center gap-3 border-b border-line px-4 py-3.5">
               <span className="text-xs font-bold uppercase tracking-[0.14em] text-accent">
@@ -220,7 +399,7 @@ export function CommandPalette() {
                 ref={inputRef}
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                placeholder="Jump, open a demo, copy email…"
+                placeholder="Jump, fuzzy search, copy case link…"
                 className="flex-1 bg-transparent text-[15px] text-ink outline-none placeholder:text-muted"
               />
               <kbd className="hidden sm:inline-flex rounded-full border border-line px-2.5 py-1 text-[10px] font-bold text-muted">
@@ -257,7 +436,9 @@ export function CommandPalette() {
                                 : "text-ink-soft hover:text-ink"
                             }`}
                           >
-                            <span className="text-sm font-semibold">{item.label}</span>
+                            <span className="text-sm font-semibold">
+                              {item.label}
+                            </span>
                             <span className="truncate text-[11px] font-semibold uppercase tracking-[0.06em] text-muted">
                               {item.hint}
                             </span>
