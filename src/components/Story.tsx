@@ -52,9 +52,9 @@ export function Story() {
               <DoodleNote
                 label="that's me"
                 direction="down"
-                size="lg"
+                size="md"
                 rotate={-4}
-                className="absolute left-1/2 top-2 z-10 hidden -translate-x-1/2 items-center gap-1 lg:flex flex-col"
+                className="absolute left-1/2 top-2 z-10 flex -translate-x-1/2 flex-col items-center gap-1"
               />
             </div>
             <figcaption className="mt-3">

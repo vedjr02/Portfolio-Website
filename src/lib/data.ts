@@ -42,27 +42,6 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    id: "starbucks",
-    title: "Starbucks Sales Analysis",
-    category: "Business Analytics Case Study",
-    period: "2026",
-    description:
-      "A business analytics case study built entirely from Starbucks' public filings (FY2025–Q2 FY2026 10-K, earnings releases, investor loyalty dashboards). Analyzes three disclosed growth levers under the \"Back to Starbucks\" turnaround: the underpenetrated 3–5 PM afternoon daypart, Rewards loyalty economics (58% of U.S. company-operated tender, 34.2M active members), and beverage/food product mix. Interactive site with toggleable strategic levers, segment-level store breakdowns, and a full source appendix so every number traces back to a named disclosure.",
-    tags: ["Excel", "Power BI", "Tableau", "Python", "Next.js"],
-    highlights: [
-      "3 strategic levers under \"Back to Starbucks\"",
-      "34.2M Rewards members · 58% of U.S. tender",
-      "Every metric traced to a named disclosure",
-    ],
-    status: "Live",
-    tier: "featured",
-    accent: "from-white/10 to-white/5",
-    liveUrl: "https://starbucks-case-study-ved.vercel.app/",
-    repoUrl: "https://github.com/vedjr02/Starbucks-Analysis",
-    previewImage: "/previews/starbucks.jpg",
-    metric: { value: 34.2, suffix: "M", label: "Rewards members analyzed", decimals: 1 },
-  },
-  {
     id: "nvidia",
     title: "How NVIDIA Became the Backbone of the AI Economy",
     category: "Interactive Data Case Study",
@@ -82,6 +61,27 @@ export const projects: Project[] = [
     repoUrl: "https://github.com/vedjr02/Nvidia-Case-Study",
     previewImage: "/previews/nvidia.jpg",
     metric: { value: 68, suffix: "", label: "Sourced timeline events" },
+  },
+  {
+    id: "starbucks",
+    title: "Starbucks Sales Analysis",
+    category: "Business Analytics Case Study",
+    period: "2026",
+    description:
+      "A business analytics case study built entirely from Starbucks' public filings (FY2025–Q2 FY2026 10-K, earnings releases, investor loyalty dashboards). Analyzes three disclosed growth levers under the \"Back to Starbucks\" turnaround: the underpenetrated 3–5 PM afternoon daypart, Rewards loyalty economics (58% of U.S. company-operated tender, 34.2M active members), and beverage/food product mix. Interactive site with toggleable strategic levers, segment-level store breakdowns, and a full source appendix so every number traces back to a named disclosure.",
+    tags: ["Excel", "Power BI", "Tableau", "Python", "Next.js"],
+    highlights: [
+      "3 strategic levers under \"Back to Starbucks\"",
+      "34.2M Rewards members · 58% of U.S. tender",
+      "Every metric traced to a named disclosure",
+    ],
+    status: "Live",
+    tier: "featured",
+    accent: "from-white/10 to-white/5",
+    liveUrl: "https://starbucks-case-study-ved.vercel.app/",
+    repoUrl: "https://github.com/vedjr02/Starbucks-Analysis",
+    previewImage: "/previews/starbucks.jpg",
+    metric: { value: 34.2, suffix: "M", label: "Rewards members analyzed", decimals: 1 },
   },
   {
     id: "adflex",

@@ -1,110 +1,57 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { motion, useMotionTemplate, useMotionValue, useSpring } from "motion/react";
-
 export function BackgroundLayer() {
   return (
     <div className="fixed inset-0 -z-10 overflow-hidden bg-bg">
-      {/* Slow drifting paper grain grid */}
+      {/* Soft base wash — breaks flat #0b0a09 posterization */}
       <div
         aria-hidden
-        className="absolute inset-[-20%] opacity-[0.35] animate-grid-drift"
-        style={{
-          backgroundImage:
-            "radial-gradient(circle at 1px 1px, rgba(246,241,232,0.055) 1px, transparent 0)",
-          backgroundSize: "28px 28px",
-        }}
-      />
-
-      {/* Aurora field */}
-      <div
-        aria-hidden
-        className="absolute -top-40 -left-32 h-[38rem] w-[38rem] rounded-full bg-accent/20 blur-[110px] animate-aurora-a"
-      />
-      <div
-        aria-hidden
-        className="absolute top-[28%] -right-40 h-[34rem] w-[34rem] rounded-full bg-sage/16 blur-[120px] animate-aurora-b"
-      />
-      <div
-        aria-hidden
-        className="absolute bottom-[-18%] left-[12%] h-[30rem] w-[30rem] rounded-full bg-[#c48a2a]/14 blur-[100px] animate-aurora-c"
-      />
-      <div
-        aria-hidden
-        className="absolute top-[55%] left-[42%] h-[22rem] w-[22rem] rounded-full bg-accent/10 blur-[90px] animate-float-soft"
-      />
-
-      {/* Soft vignette so content stays readable */}
-      <div
-        aria-hidden
-        className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_28%,rgba(11,10,9,0.82)_100%)]"
-      />
-
-      {/* Fine film grain — CSS only, cheap */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-[0.045] mix-blend-overlay animate-grain"
-        style={{
-          backgroundImage:
-            "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
-          backgroundSize: "180px 180px",
-        }}
-      />
-    </div>
-  );
-}
-
-/** Hero-only interactive light — follows pointer with soft lag */
-export function HeroAtmosphere() {
-  const reduceMotion = usePrefersReducedMotion();
-  const rawX = useMotionValue(50);
-  const rawY = useMotionValue(35);
-  const x = useSpring(rawX, { stiffness: 45, damping: 22, mass: 0.6 });
-  const y = useSpring(rawY, { stiffness: 45, damping: 22, mass: 0.6 });
-  const spotlight = useMotionTemplate`radial-gradient(620px circle at ${x}% ${y}%, rgba(61,155,255,0.18), transparent 55%)`;
-
-  useEffect(() => {
-    if (reduceMotion) return;
-    const onMove = (e: PointerEvent) => {
-      const w = window.innerWidth || 1;
-      const h = window.innerHeight || 1;
-      rawX.set((e.clientX / w) * 100);
-      rawY.set((e.clientY / h) * 100);
-    };
-    window.addEventListener("pointermove", onMove, { passive: true });
-    return () => window.removeEventListener("pointermove", onMove);
-  }, [rawX, rawY, reduceMotion]);
-
-  return (
-    <div
-      aria-hidden
-      className="pointer-events-none absolute inset-0 -z-[1] overflow-hidden"
-    >
-      <motion.div
         className="absolute inset-0"
         style={{
-          background: reduceMotion
-            ? "radial-gradient(620px circle at 55% 30%, rgba(61,155,255,0.14), transparent 55%)"
-            : spotlight,
+          background:
+            "radial-gradient(ellipse 120% 90% at 50% 40%, #12100e 0%, #0e0d0b 42%, #0b0a09 72%, #090807 100%)",
         }}
       />
-      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent animate-scanline" />
-      <div className="absolute -top-24 left-1/2 h-[28rem] w-[70%] -translate-x-1/2 rounded-full bg-accent/10 blur-[90px]" />
+
+      {/* Aurora as multi-stop radials (no blur blobs — blur bands on dark) */}
+      <div
+        aria-hidden
+        className="absolute inset-0 animate-aurora-a"
+        style={{
+          background: [
+            "radial-gradient(ellipse 55% 45% at 12% 8%, rgba(61,155,255,0.22) 0%, rgba(61,155,255,0.12) 18%, rgba(61,155,255,0.05) 38%, rgba(61,155,255,0.015) 55%, transparent 72%)",
+            "radial-gradient(ellipse 50% 42% at 88% 38%, rgba(125,186,154,0.16) 0%, rgba(125,186,154,0.08) 22%, rgba(125,186,154,0.03) 42%, transparent 68%)",
+          ].join(", "),
+        }}
+      />
+      <div
+        aria-hidden
+        className="absolute inset-0 animate-aurora-b"
+        style={{
+          background:
+            "radial-gradient(ellipse 48% 40% at 28% 92%, rgba(196,138,42,0.14) 0%, rgba(196,138,42,0.07) 24%, rgba(196,138,42,0.025) 44%, transparent 70%)",
+        }}
+      />
+      <div
+        aria-hidden
+        className="absolute inset-0 animate-aurora-c"
+        style={{
+          background:
+            "radial-gradient(ellipse 40% 34% at 58% 58%, rgba(61,155,255,0.1) 0%, rgba(61,155,255,0.04) 28%, transparent 62%)",
+        }}
+      />
+
+      {/* Soft vignette with many stops so edges don’t stair-step */}
+      <div
+        aria-hidden
+        className="absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(ellipse 75% 65% at 50% 42%, transparent 0%, transparent 36%, rgba(11,10,9,0.12) 52%, rgba(11,10,9,0.28) 64%, rgba(11,10,9,0.48) 76%, rgba(11,10,9,0.68) 88%, rgba(11,10,9,0.86) 100%)",
+        }}
+      />
     </div>
   );
-}
-
-function usePrefersReducedMotion() {
-  const [reduced, setReduced] = useState(false);
-  useEffect(() => {
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setReduced(mq.matches);
-    const onChange = () => setReduced(mq.matches);
-    mq.addEventListener("change", onChange);
-    return () => mq.removeEventListener("change", onChange);
-  }, []);
-  return reduced;
 }
 
 export function SectionParallaxOrbs() {

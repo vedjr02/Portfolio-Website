@@ -194,7 +194,7 @@ export function ProjectIndex() {
             />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 md:gap-5">
             {rows.map((project, index) => (
               <article
                 key={project.id}
@@ -235,13 +235,13 @@ export function ProjectIndex() {
                     {project.description}
                   </p>
 
-                  <div className="mt-auto pt-5 flex flex-wrap gap-2 items-center">
+                  <div className="mt-auto flex flex-wrap items-center gap-2 pt-5">
                     {project.liveUrl && (
                       <a
                         href={project.liveUrl}
                         target="_blank"
                         rel="noreferrer"
-                        className="btn-primary !py-2 !px-3.5 text-sm"
+                        className="btn-primary min-h-11 !px-3.5 !py-2.5 text-sm"
                       >
                         Live
                       </a>
@@ -251,7 +251,7 @@ export function ProjectIndex() {
                         href={project.repoUrl}
                         target="_blank"
                         rel="noreferrer"
-                        className="btn-secondary !py-2 !px-3.5 text-sm"
+                        className="btn-secondary min-h-11 !px-3.5 !py-2.5 text-sm"
                       >
                         GitHub
                       </a>

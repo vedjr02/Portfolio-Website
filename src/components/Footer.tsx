@@ -15,6 +15,8 @@ export function Footer() {
     try {
       await navigator.clipboard.writeText(profile.email);
       toast("Copied email");
+    } catch {
+      toast("Couldn’t copy — use Open mail");
     } finally {
       window.setTimeout(() => setCopying(false), 400);
     }
@@ -24,7 +26,7 @@ export function Footer() {
     <footer id="contact" className="relative pt-16 md:pt-24 pb-10">
       <div className="mx-auto max-w-5xl px-5 md:px-6">
         <div className="surface overflow-hidden">
-          <div className="p-8 md:p-12 relative">
+            <div className="p-6 md:p-12 relative">
             <div className="absolute -right-16 -top-16 h-56 w-56 rounded-full bg-accent/20 blur-3xl" />
             <div className="absolute -left-10 bottom-0 h-40 w-40 rounded-full bg-sage/15 blur-3xl" />
 
@@ -38,21 +40,21 @@ export function Footer() {
               I got you — requirements, dashboards, and numbers you can defend
               with stakeholders. Email me and let&apos;s talk.
             </p>
-            <div className="relative mt-8 flex w-full flex-wrap items-center gap-3 gap-y-4">
+            <div className="relative mt-8 flex w-full flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-y-4">
+              <a
+                href={profile.socials.email}
+                className="btn-primary relative inline-flex min-h-11 max-w-full shrink-0 break-all text-sm sm:break-normal sm:text-base"
+              >
+                {profile.email}
+              </a>
               <button
                 type="button"
                 onClick={copyEmail}
-                className="relative inline-flex btn-primary text-base shrink-0"
+                className="btn-secondary relative inline-flex min-h-11 shrink-0 text-sm"
               >
-                {profile.email}
+                Copy email
               </button>
-              <a
-                href={profile.socials.email}
-                className="relative inline-flex btn-secondary text-sm shrink-0"
-              >
-                Open mail
-              </a>
-              <div className="ml-auto hidden lg:flex min-w-0 pl-6">
+              <div className="ml-auto hidden min-w-0 pl-6 lg:flex">
                 <DoodleNote
                   label="say hi"
                   direction="left"
@@ -64,7 +66,7 @@ export function Footer() {
               </div>
             </div>
             <p className="relative mt-3 text-xs font-semibold text-muted">
-              Tap the address to copy · or open your mail app
+              Opens your mail app · or tap Copy email
             </p>
           </div>
         </div>
