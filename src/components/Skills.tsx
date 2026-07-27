@@ -88,7 +88,7 @@ export function Skills() {
           direction="down-left"
           size="lg"
           rotate={-6}
-          className="absolute right-6 top-10 hidden lg:flex"
+          className="absolute right-6 top-10 hidden lg:flex flex-col"
         />
 
         <div className="mt-8 surface overflow-hidden">
