@@ -24,7 +24,6 @@ type Item = {
   label: string;
   section?: SectionId;
   href?: string;
-  desktopOnly?: boolean;
   tile: ReactNode;
 };
 
@@ -48,8 +47,8 @@ const ITEMS: Item[] = [
   { key: "preview", label: "Case studies", section: "cases", tile: <AppIcon src="/dock/preview.webp" /> },
   { key: "contacts", label: "About", section: "about", tile: <AppIcon src="/dock/contacts.webp" /> },
   { key: "mail", label: "Contact", section: "contact", tile: <AppIcon src="/dock/mail.webp" /> },
-  { key: "safari", label: "LinkedIn", href: profile.socials.linkedin, desktopOnly: true, tile: <AppIcon src="/dock/safari.webp" /> },
-  { key: "terminal", label: "GitHub", href: profile.socials.github, desktopOnly: true, tile: <AppIcon src="/dock/terminal.webp" /> },
+  { key: "safari", label: "LinkedIn", href: profile.socials.linkedin, tile: <AppIcon src="/dock/safari.webp" /> },
+  { key: "terminal", label: "GitHub", href: profile.socials.github, tile: <AppIcon src="/dock/terminal.webp" /> },
 ];
 
 function DockIcon({
@@ -75,7 +74,7 @@ function DockIcon({
   const external = !!item.href;
 
   return (
-    <li className={cn("relative flex flex-col items-center", item.desktopOnly && "hidden sm:flex")}>
+    <li className="relative flex flex-col items-center">
       <motion.a
         ref={ref}
         href={external ? item.href : `#${item.section}`}
@@ -89,7 +88,7 @@ function DockIcon({
         aria-label={item.label}
         aria-current={active ? "location" : undefined}
         style={magnify ? { width: size, height: size } : undefined}
-        className="peer relative block size-[52px] text-[16px] sm:size-[50px] sm:text-[20px]"
+        className="peer relative block size-[50px] text-[20px]"
       >
         {item.tile}
       </motion.a>
@@ -110,7 +109,7 @@ function DockIcon({
   );
 }
 
-/** The Dock is the site's navigation. A dot sits under the section you are reading. */
+/** The Dock is the site's navigation. A dot sits under the section you are reading. Phones have no Dock. */
 export function Dock() {
   const mouseX = useMotionValue(Number.POSITIVE_INFINITY);
   const active = useActiveSection();
@@ -132,17 +131,17 @@ export function Dock() {
   return (
     <nav
       aria-label="Dock"
-      className="pointer-events-none fixed inset-x-0 bottom-0 z-40 flex justify-center pb-[max(0.5rem,env(safe-area-inset-bottom))]"
+      className="pointer-events-none fixed inset-x-0 bottom-0 z-40 hidden justify-center md:flex pb-[max(0.5rem,env(safe-area-inset-bottom))]"
     >
       <ul
         onMouseMove={(e) => mouseX.set(e.clientX)}
         onMouseLeave={() => mouseX.set(Number.POSITIVE_INFINITY)}
-        className="vibrant pointer-events-auto flex items-end gap-3.5 rounded-[30px] px-3.5 pt-3 pb-2 sm:gap-2.5 sm:rounded-[22px] sm:px-2.5 sm:pt-2 sm:pb-1 shadow-[0_0_0_0.5px_rgba(255,255,255,0.18),0_10px_30px_-8px_rgba(0,0,0,0.5)] sm:gap-2"
+        className="vibrant pointer-events-auto flex items-end gap-2.5 rounded-[22px] px-2.5 pt-2 pb-1 shadow-[0_0_0_0.5px_rgba(255,255,255,0.18),0_10px_30px_-8px_rgba(0,0,0,0.5)]"
       >
         {main.map((item) => (
           <DockIcon key={item.key} item={item} mouseX={mouseX} active={active === item.section} magnify={magnify} />
         ))}
-        <li aria-hidden className="mx-0.5 hidden h-12 w-px self-center bg-black/15 sm:block" />
+        <li aria-hidden className="mx-0.5 h-12 w-px self-center bg-black/15" />
         {links.map((item) => (
           <DockIcon key={item.key} item={item} mouseX={mouseX} active={false} magnify={magnify} />
         ))}
