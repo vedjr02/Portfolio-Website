@@ -388,7 +388,7 @@ Two sizes exist only for input mechanics. Mobile inputs are 16px so iOS does not
 
 ## Layout
 
-A single scrolling desktop. The menu bar is fixed at the top (36px plus the safe-area inset), and the Dock is fixed and centred at the bottom. The wallpaper is fixed behind everything. Between the two bars, each section is one window (or a pair of overlapping windows) centred in a 1180px content column. The Mail window narrows to 820px. Sections pad 40px vertically on mobile and 64px from `sm` (640px). Horizontal page padding is 12 to 16px on mobile and 32px from `sm`. `scroll-padding-top: 56px` keeps anchored windows clear of the menu bar.
+A single scrolling desktop. The menu bar is fixed at the top (36px plus the safe-area inset), and from `md` (768px) the Dock is fixed and centred at the bottom. The wallpaper is fixed behind everything. Between the two bars, each section is one window (or a pair of overlapping windows) centred in a 1180px content column. The Mail window narrows to 820px. Sections pad 40px vertically on mobile and 64px from `sm` (640px). Horizontal page padding is 12 to 16px on mobile and 32px from `sm`. `scroll-padding-top: 56px` keeps anchored windows clear of the menu bar.
 
 Windows use a source-list pattern. From `md` (768px) a fixed sidebar (13.5rem in Projects) sits beside a flexible content pane. Below `md` the sidebar becomes a horizontally scrolling strip above the content. Window bodies pad 20px on mobile and 32px from `sm`. The Finder list adds columns as the viewport widens: Kind from `md`, Built with from `lg` (1024px). On small screens the kind moves under the name.
 
@@ -448,7 +448,7 @@ Push buttons, drawn the way AppKit draws them.
 
 ### Navigation
 - **Menu bar:** Solid `menubar`, 36px, a 6% black bottom hairline, 13px text. At left are the VA mark (an 18px Graphite Ink tile with a 5px radius) and the bold name, followed by section items (28px, 6px corners, hover `fill`, current `fill-2` with `aria-current="location"`). At right are the Hold My Code glyph, the search button, the Control Center glyph (two toggle pills) and a live Europe/Dublin clock in tabular figures. Section items hide below `md`.
-- **Dock:** Real macOS app icons only (Finder for Projects, Hold My Code, Preview for Case studies, Contacts for About, Mail for Contact, then Safari for LinkedIn and Terminal for GitHub), taken from the system .icns files into `public/dock/`. No photos, no brand logos. Vibrant at 22px corners, centred at the bottom. Tiles are 44px, or 50px from `sm`. On fine pointers they magnify toward the cursor (50 to 76px within 140px, spring 380/28), unless Focus is on. A vibrant tooltip rises above a tile on hover or focus. A 4px ink dot at 75% marks the section in view. A 1px divider (black at 15%) separates sections from external links.
+- **Dock:** Real macOS app icons only (Finder for Projects, Hold My Code, Preview for Case studies, Contacts for About, Mail for Contact, then Safari for LinkedIn and Terminal for GitHub), taken from the system .icns files into `public/dock/`. No photos, no brand logos. Vibrant at 22px corners, centred at the bottom. Tiles are 50px. Phones have no Dock. On fine pointers they magnify toward the cursor (50 to 76px within 140px, spring 380/28), unless Focus is on. A vibrant tooltip rises above a tile on hover or focus. A 4px ink dot at 75% marks the section in view. A 1px divider (black at 15%) separates sections from external links.
 - **Finder sidebar:** Source-list items at 32px with 6px corners. Each has a tag dot or folder glyph, a label and a tabular count. The selected item is `fill-2` at weight 500.
 
 ### Control Center (signature)
@@ -513,6 +513,6 @@ Below the `md` breakpoint (768px) the desktop becomes an iPhone. Desktop windows
 - **Projects** as filter chips over an inset grouped list showing six rows, then "Show all". Rows open Quick Look as a bottom sheet with a grabber.
 - **About** as a Contacts card: round photo, name, grouped rows, story clamped to four lines, toolkit chips.
 - **Contact** as a Settings list with coloured 29px glyph tiles.
-- **Dock** tiles grow to 52px in a 30px-corner bar.
+- **No Dock.** Sections are reached by scrolling, or through Spotlight in the status bar.
 
 The iOS type ramp is 11, 13, 14, 15, 16 (table rows), 18 (card titles), 20 (in-page headings), 22 (app name), 28 (contact name) and 30px (large section titles). These sizes belong to the phone layout only; the desktop keeps the macOS ramp.
