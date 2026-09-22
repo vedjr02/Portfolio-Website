@@ -1,0 +1,1178 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-22T13:27:56.821760+00:00",
+  "title": "Design System: Vedant Ambre",
+  "extensions": {
+    "colorMeta": {
+      "accent": {
+        "role": "primary",
+        "displayName": "System Blue",
+        "canonical": "#0a6cff",
+        "tonalRamp": [
+          "#001f4c",
+          "#003585",
+          "#004bbd",
+          "#0062f5",
+          "#3385ff",
+          "#70a9ff",
+          "#adceff",
+          "#e5f0ff"
+        ]
+      },
+      "accent-dark": {
+        "role": "primary",
+        "displayName": "System Blue (dark appearance)",
+        "canonical": "#2f8bff",
+        "tonalRamp": [
+          "#00224c",
+          "#003b85",
+          "#0053bd",
+          "#006cf5",
+          "#338dff",
+          "#70afff",
+          "#add1ff",
+          "#e5f1ff"
+        ]
+      },
+      "accent-press": {
+        "role": "primary",
+        "displayName": "Pressed Blue",
+        "canonical": "#0058d6",
+        "tonalRamp": [
+          "#001f4c",
+          "#003785",
+          "#004ebd",
+          "#0065f5",
+          "#3387ff",
+          "#70abff",
+          "#adcfff",
+          "#e5f0ff"
+        ]
+      },
+      "accent-press-dark": {
+        "role": "primary",
+        "displayName": "Pressed Blue (dark appearance)",
+        "canonical": "#0a6cff",
+        "tonalRamp": [
+          "#001f4c",
+          "#003585",
+          "#004bbd",
+          "#0062f5",
+          "#3385ff",
+          "#70a9ff",
+          "#adceff",
+          "#e5f0ff"
+        ]
+      },
+      "select": {
+        "role": "primary",
+        "displayName": "Selection Blue",
+        "canonical": "#0a6cff",
+        "tonalRamp": [
+          "#001f4c",
+          "#003585",
+          "#004bbd",
+          "#0062f5",
+          "#3385ff",
+          "#70a9ff",
+          "#adceff",
+          "#e5f0ff"
+        ]
+      },
+      "select-soft": {
+        "role": "primary",
+        "displayName": "Selection Soft",
+        "canonical": "#dbe8fd",
+        "tonalRamp": [
+          "#041e48",
+          "#07347e",
+          "#0a4ab3",
+          "#0d61e8",
+          "#3e84f4",
+          "#78a9f7",
+          "#b2cefb",
+          "#e7f0fe"
+        ]
+      },
+      "select-soft-dark": {
+        "role": "primary",
+        "displayName": "Selection Soft (dark appearance)",
+        "canonical": "rgba(10, 132, 255, 0.24)",
+        "tonalRamp": [
+          "rgba(10,132,255,0.06)",
+          "rgba(10,132,255,0.108)",
+          "rgba(10,132,255,0.156)",
+          "rgba(10,132,255,0.192)",
+          "rgba(10,132,255,0.24)",
+          "rgba(10,132,255,0.3)",
+          "rgba(10,132,255,0.384)",
+          "rgba(10,132,255,0.48)"
+        ]
+      },
+      "sky": {
+        "role": "secondary",
+        "displayName": "Golden Hour Sand",
+        "canonical": "#cfc4b4",
+        "tonalRamp": [
+          "#2f281e",
+          "#514534",
+          "#73624a",
+          "#957f60",
+          "#af9d83",
+          "#c7bba8",
+          "#dfd8cd",
+          "#f5f3ef"
+        ]
+      },
+      "sky-dark": {
+        "role": "secondary",
+        "displayName": "Night Sky",
+        "canonical": "#15141d",
+        "tonalRamp": [
+          "#211f2d",
+          "#39364e",
+          "#514d70",
+          "#696491",
+          "#8a86ac",
+          "#adaac5",
+          "#d0cfde",
+          "#f0f0f5"
+        ]
+      },
+      "hills": {
+        "role": "secondary",
+        "displayName": "Kildare Deep Green",
+        "canonical": "#1e3d33",
+        "tonalRamp": [
+          "#19332b",
+          "#2c594a",
+          "#3e7e6a",
+          "#51a489",
+          "#76bca5",
+          "#9fd0c0",
+          "#c8e4db",
+          "#eef7f4"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Graphite Ink",
+        "canonical": "#1d1d1f",
+        "tonalRamp": [
+          "#252528",
+          "#404045",
+          "#5b5b61",
+          "#76767e",
+          "#96969c",
+          "#b5b5ba",
+          "#d5d5d8",
+          "#f2f2f3"
+        ]
+      },
+      "ink-dark": {
+        "role": "neutral",
+        "displayName": "Graphite Ink (dark appearance)",
+        "canonical": "#f5f5f7",
+        "tonalRamp": [
+          "#22222a",
+          "#3b3b4a",
+          "#545469",
+          "#6d6d88",
+          "#8e8ea4",
+          "#b0b0c0",
+          "#d2d2db",
+          "#f1f1f4"
+        ]
+      },
+      "ink-2": {
+        "role": "neutral",
+        "displayName": "Ink Secondary",
+        "canonical": "#3a3a3c",
+        "tonalRamp": [
+          "#262627",
+          "#414143",
+          "#5d5d60",
+          "#78787c",
+          "#97979b",
+          "#b6b6b9",
+          "#d6d6d7",
+          "#f2f2f2"
+        ]
+      },
+      "ink-2-dark": {
+        "role": "neutral",
+        "displayName": "Ink Secondary (dark appearance)",
+        "canonical": "#d4d4d8",
+        "tonalRamp": [
+          "#242428",
+          "#3f3f46",
+          "#5a5a63",
+          "#747480",
+          "#94949e",
+          "#b4b4bb",
+          "#d4d4d8",
+          "#f2f2f3"
+        ]
+      },
+      "ink-3": {
+        "role": "neutral",
+        "displayName": "Ink Tertiary",
+        "canonical": "#6e6e73",
+        "tonalRamp": [
+          "#252527",
+          "#414144",
+          "#5c5c60",
+          "#78787d",
+          "#97979b",
+          "#b6b6b9",
+          "#d5d5d7",
+          "#f2f2f3"
+        ]
+      },
+      "ink-3-dark": {
+        "role": "neutral",
+        "displayName": "Ink Tertiary (dark appearance)",
+        "canonical": "#a1a1a6",
+        "tonalRamp": [
+          "#252527",
+          "#404044",
+          "#5c5c61",
+          "#77777e",
+          "#96969c",
+          "#b6b6ba",
+          "#d5d5d7",
+          "#f2f2f3"
+        ]
+      },
+      "ink-4": {
+        "role": "neutral",
+        "displayName": "Ink Quaternary",
+        "canonical": "#8a8a8e",
+        "tonalRamp": [
+          "#262627",
+          "#414143",
+          "#5d5d60",
+          "#78787d",
+          "#97979b",
+          "#b6b6b9",
+          "#d5d5d7",
+          "#f2f2f2"
+        ]
+      },
+      "ink-4-dark": {
+        "role": "neutral",
+        "displayName": "Ink Quaternary (dark appearance)",
+        "canonical": "#7c7c80",
+        "tonalRamp": [
+          "#262627",
+          "#414143",
+          "#5d5d60",
+          "#78787c",
+          "#97979b",
+          "#b6b6b9",
+          "#d6d6d7",
+          "#f2f2f2"
+        ]
+      },
+      "window": {
+        "role": "neutral",
+        "displayName": "Window",
+        "canonical": "#ffffff",
+        "tonalRamp": [
+          "#262626",
+          "#424242",
+          "#5e5e5e",
+          "#7a7a7a",
+          "#999999",
+          "#b8b8b8",
+          "#d6d6d6",
+          "#f2f2f2"
+        ]
+      },
+      "window-dark": {
+        "role": "neutral",
+        "displayName": "Window (dark appearance)",
+        "canonical": "#1e1e20",
+        "tonalRamp": [
+          "#252527",
+          "#404044",
+          "#5b5b61",
+          "#76767e",
+          "#96969c",
+          "#b5b5ba",
+          "#d5d5d8",
+          "#f2f2f3"
+        ]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Surface",
+        "canonical": "#ffffff",
+        "tonalRamp": [
+          "#262626",
+          "#424242",
+          "#5e5e5e",
+          "#7a7a7a",
+          "#999999",
+          "#b8b8b8",
+          "#d6d6d6",
+          "#f2f2f2"
+        ]
+      },
+      "surface-dark": {
+        "role": "neutral",
+        "displayName": "Surface (dark appearance)",
+        "canonical": "#2a2a2d",
+        "tonalRamp": [
+          "#252528",
+          "#404045",
+          "#5b5b62",
+          "#76767f",
+          "#95959d",
+          "#b5b5ba",
+          "#d5d5d8",
+          "#f2f2f3"
+        ]
+      },
+      "chrome": {
+        "role": "neutral",
+        "displayName": "Chrome",
+        "canonical": "#f5f5f4",
+        "tonalRamp": [
+          "#282824",
+          "#45453f",
+          "#63635a",
+          "#808075",
+          "#9e9e94",
+          "#bbbbb4",
+          "#d8d8d4",
+          "#f3f3f2"
+        ]
+      },
+      "chrome-dark": {
+        "role": "neutral",
+        "displayName": "Chrome (dark appearance)",
+        "canonical": "#29292c",
+        "tonalRamp": [
+          "#252528",
+          "#404045",
+          "#5b5b62",
+          "#76767f",
+          "#95959d",
+          "#b5b5ba",
+          "#d5d5d8",
+          "#f2f2f3"
+        ]
+      },
+      "chrome-2": {
+        "role": "neutral",
+        "displayName": "Chrome 2",
+        "canonical": "#ececeb",
+        "tonalRamp": [
+          "#272725",
+          "#444441",
+          "#61615c",
+          "#7e7e77",
+          "#9c9c96",
+          "#b9b9b6",
+          "#d7d7d5",
+          "#f3f3f2"
+        ]
+      },
+      "chrome-2-dark": {
+        "role": "neutral",
+        "displayName": "Chrome 2 (dark appearance)",
+        "canonical": "#232326",
+        "tonalRamp": [
+          "#252528",
+          "#404045",
+          "#5a5a62",
+          "#75757f",
+          "#95959d",
+          "#b5b5bb",
+          "#d5d5d8",
+          "#f2f2f3"
+        ]
+      },
+      "sidebar": {
+        "role": "neutral",
+        "displayName": "Sidebar",
+        "canonical": "#eeefee",
+        "tonalRamp": [
+          "#252725",
+          "#404440",
+          "#5b615b",
+          "#777e77",
+          "#969c96",
+          "#b5bab5",
+          "#d5d7d5",
+          "#f2f3f2"
+        ]
+      },
+      "sidebar-dark": {
+        "role": "neutral",
+        "displayName": "Sidebar (dark appearance)",
+        "canonical": "#252528",
+        "tonalRamp": [
+          "#252528",
+          "#404045",
+          "#5b5b62",
+          "#76767f",
+          "#95959d",
+          "#b5b5ba",
+          "#d5d5d8",
+          "#f2f2f3"
+        ]
+      },
+      "zebra": {
+        "role": "neutral",
+        "displayName": "Zebra",
+        "canonical": "#f4f5f5",
+        "tonalRamp": [
+          "#242828",
+          "#3f4545",
+          "#5a6363",
+          "#758080",
+          "#949e9e",
+          "#b4bbbb",
+          "#d4d8d8",
+          "#f2f3f3"
+        ]
+      },
+      "zebra-dark": {
+        "role": "neutral",
+        "displayName": "Zebra (dark appearance)",
+        "canonical": "#232326",
+        "tonalRamp": [
+          "#252528",
+          "#404045",
+          "#5a5a62",
+          "#75757f",
+          "#95959d",
+          "#b5b5bb",
+          "#d5d5d8",
+          "#f2f2f3"
+        ]
+      },
+      "fill": {
+        "role": "neutral",
+        "displayName": "Fill",
+        "canonical": "rgba(0, 0, 0, 0.06)",
+        "tonalRamp": [
+          "rgba(0,0,0,0.015)",
+          "rgba(0,0,0,0.027)",
+          "rgba(0,0,0,0.039)",
+          "rgba(0,0,0,0.048)",
+          "rgba(0,0,0,0.06)",
+          "rgba(0,0,0,0.075)",
+          "rgba(0,0,0,0.096)",
+          "rgba(0,0,0,0.12)"
+        ]
+      },
+      "fill-dark": {
+        "role": "neutral",
+        "displayName": "Fill (dark appearance)",
+        "canonical": "rgba(255, 255, 255, 0.08)",
+        "tonalRamp": [
+          "rgba(255,255,255,0.02)",
+          "rgba(255,255,255,0.036)",
+          "rgba(255,255,255,0.052)",
+          "rgba(255,255,255,0.064)",
+          "rgba(255,255,255,0.08)",
+          "rgba(255,255,255,0.1)",
+          "rgba(255,255,255,0.128)",
+          "rgba(255,255,255,0.16)"
+        ]
+      },
+      "fill-2": {
+        "role": "neutral",
+        "displayName": "Fill 2",
+        "canonical": "rgba(0, 0, 0, 0.09)",
+        "tonalRamp": [
+          "rgba(0,0,0,0.03)",
+          "rgba(0,0,0,0.06)",
+          "rgba(0,0,0,0.09)",
+          "rgba(0,0,0,0.12)",
+          "rgba(0,0,0,0.16)",
+          "rgba(0,0,0,0.22)",
+          "rgba(0,0,0,0.3)",
+          "rgba(0,0,0,0.4)"
+        ]
+      },
+      "fill-2-dark": {
+        "role": "neutral",
+        "displayName": "Fill 2 (dark appearance)",
+        "canonical": "rgba(255, 255, 255, 0.13)",
+        "tonalRamp": [
+          "rgba(255,255,255,0.033)",
+          "rgba(255,255,255,0.059)",
+          "rgba(255,255,255,0.085)",
+          "rgba(255,255,255,0.104)",
+          "rgba(255,255,255,0.13)",
+          "rgba(255,255,255,0.163)",
+          "rgba(255,255,255,0.208)",
+          "rgba(255,255,255,0.26)"
+        ]
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "Rule",
+        "canonical": "rgba(0, 0, 0, 0.09)",
+        "tonalRamp": [
+          "rgba(0,0,0,0.03)",
+          "rgba(0,0,0,0.06)",
+          "rgba(0,0,0,0.09)",
+          "rgba(0,0,0,0.12)",
+          "rgba(0,0,0,0.16)",
+          "rgba(0,0,0,0.22)",
+          "rgba(0,0,0,0.3)",
+          "rgba(0,0,0,0.4)"
+        ]
+      },
+      "rule-dark": {
+        "role": "neutral",
+        "displayName": "Rule (dark appearance)",
+        "canonical": "rgba(255, 255, 255, 0.1)",
+        "tonalRamp": [
+          "rgba(255,255,255,0.025)",
+          "rgba(255,255,255,0.045)",
+          "rgba(255,255,255,0.065)",
+          "rgba(255,255,255,0.08)",
+          "rgba(255,255,255,0.1)",
+          "rgba(255,255,255,0.125)",
+          "rgba(255,255,255,0.16)",
+          "rgba(255,255,255,0.2)"
+        ]
+      },
+      "menubar": {
+        "role": "neutral",
+        "displayName": "Menu Bar",
+        "canonical": "#f3f3f2",
+        "tonalRamp": [
+          "#282825",
+          "#454540",
+          "#62625b",
+          "#7f7f76",
+          "#9d9d95",
+          "#babab5",
+          "#d8d8d5",
+          "#f3f3f2"
+        ]
+      },
+      "menubar-dark": {
+        "role": "neutral",
+        "displayName": "Menu Bar (dark appearance)",
+        "canonical": "#1f1f24",
+        "tonalRamp": [
+          "#232329",
+          "#3d3d47",
+          "#575765",
+          "#717184",
+          "#9191a1",
+          "#b2b2bd",
+          "#d3d3d9",
+          "#f1f1f3"
+        ]
+      },
+      "vibrant": {
+        "role": "neutral",
+        "displayName": "Vibrant",
+        "canonical": "rgba(246, 246, 245, 0.84)",
+        "tonalRamp": [
+          "rgba(246,246,245,0.4)",
+          "rgba(246,246,245,0.5)",
+          "rgba(246,246,245,0.6)",
+          "rgba(246,246,245,0.7)",
+          "rgba(246,246,245,0.78)",
+          "rgba(246,246,245,0.84)",
+          "rgba(246,246,245,0.9)",
+          "rgba(246,246,245,0.96)"
+        ]
+      },
+      "vibrant-dark": {
+        "role": "neutral",
+        "displayName": "Vibrant (dark appearance)",
+        "canonical": "rgba(38, 38, 42, 0.8)",
+        "tonalRamp": [
+          "rgba(38,38,42,0.2)",
+          "rgba(38,38,42,0.36)",
+          "rgba(38,38,42,0.52)",
+          "rgba(38,38,42,0.64)",
+          "rgba(38,38,42,0.8)",
+          "rgba(38,38,42,1)",
+          "rgba(38,38,42,1)",
+          "rgba(38,38,42,1)"
+        ]
+      },
+      "plain-bg": {
+        "role": "neutral",
+        "displayName": "Plain Button",
+        "canonical": "#ffffff",
+        "tonalRamp": [
+          "#262626",
+          "#424242",
+          "#5e5e5e",
+          "#7a7a7a",
+          "#999999",
+          "#b8b8b8",
+          "#d6d6d6",
+          "#f2f2f2"
+        ]
+      },
+      "plain-bg-dark": {
+        "role": "neutral",
+        "displayName": "Plain Button (dark appearance)",
+        "canonical": "#3a3a3d",
+        "tonalRamp": [
+          "#252527",
+          "#414144",
+          "#5c5c61",
+          "#77777d",
+          "#96969c",
+          "#b6b6b9",
+          "#d5d5d7",
+          "#f2f2f3"
+        ]
+      },
+      "plain-hover": {
+        "role": "neutral",
+        "displayName": "Plain Button Hover",
+        "canonical": "#f7f7f7",
+        "tonalRamp": [
+          "#262626",
+          "#424242",
+          "#5e5e5e",
+          "#7a7a7a",
+          "#999999",
+          "#b8b8b8",
+          "#d6d6d6",
+          "#f2f2f2"
+        ]
+      },
+      "plain-hover-dark": {
+        "role": "neutral",
+        "displayName": "Plain Button Hover (dark appearance)",
+        "canonical": "#444448",
+        "tonalRamp": [
+          "#252527",
+          "#404044",
+          "#5c5c61",
+          "#77777e",
+          "#96969c",
+          "#b6b6ba",
+          "#d5d5d7",
+          "#f2f2f3"
+        ]
+      },
+      "plain-press": {
+        "role": "neutral",
+        "displayName": "Plain Button Pressed",
+        "canonical": "#ededed",
+        "tonalRamp": [
+          "#262626",
+          "#424242",
+          "#5e5e5e",
+          "#7a7a7a",
+          "#999999",
+          "#b8b8b8",
+          "#d6d6d6",
+          "#f2f2f2"
+        ]
+      },
+      "plain-press-dark": {
+        "role": "neutral",
+        "displayName": "Plain Button Pressed (dark appearance)",
+        "canonical": "#505054",
+        "tonalRamp": [
+          "#252527",
+          "#414144",
+          "#5c5c61",
+          "#77777d",
+          "#97979b",
+          "#b6b6b9",
+          "#d5d5d7",
+          "#f2f2f3"
+        ]
+      },
+      "live": {
+        "role": "tertiary",
+        "displayName": "Status Live",
+        "canonical": "#28a745",
+        "tonalRamp": [
+          "#0f3e19",
+          "#1a6b2c",
+          "#24983f",
+          "#2fc552",
+          "#5ad877",
+          "#8ce3a0",
+          "#bdefc9",
+          "#eafaee"
+        ]
+      },
+      "live-dark": {
+        "role": "tertiary",
+        "displayName": "Status Live (dark appearance)",
+        "canonical": "#32d74b",
+        "tonalRamp": [
+          "#0c4014",
+          "#166f23",
+          "#1f9e32",
+          "#28cd41",
+          "#54de69",
+          "#88e896",
+          "#bbf2c3",
+          "#eafbec"
+        ]
+      },
+      "tag-red": {
+        "role": "tertiary",
+        "displayName": "Tag Red",
+        "canonical": "#e5484d",
+        "tonalRamp": [
+          "#430a0b",
+          "#741014",
+          "#a5171c",
+          "#d61e24",
+          "#e64c51",
+          "#ed8285",
+          "#f5b8ba",
+          "#fce9e9"
+        ]
+      },
+      "tag-orange": {
+        "role": "tertiary",
+        "displayName": "Tag Orange",
+        "canonical": "#f5a524",
+        "tonalRamp": [
+          "#492e03",
+          "#7f5006",
+          "#b47308",
+          "#ea950b",
+          "#f6af3c",
+          "#f9c776",
+          "#fbdfb1",
+          "#fef5e7"
+        ]
+      },
+      "tag-green": {
+        "role": "tertiary",
+        "displayName": "Tag Green",
+        "canonical": "#30a46c",
+        "tonalRamp": [
+          "#113b27",
+          "#1e6744",
+          "#2b9260",
+          "#37bd7d",
+          "#61d19b",
+          "#91dfb9",
+          "#c0edd7",
+          "#ebf9f2"
+        ]
+      },
+      "tag-blue": {
+        "role": "tertiary",
+        "displayName": "Tag Blue",
+        "canonical": "#0a84ff",
+        "tonalRamp": [
+          "#00264c",
+          "#004285",
+          "#005ebd",
+          "#007af5",
+          "#3399ff",
+          "#70b7ff",
+          "#add6ff",
+          "#e5f2ff"
+        ]
+      },
+      "tag-grey": {
+        "role": "tertiary",
+        "displayName": "Tag Grey",
+        "canonical": "#8e8e93",
+        "tonalRamp": [
+          "#252527",
+          "#414144",
+          "#5c5c60",
+          "#78787d",
+          "#97979b",
+          "#b6b6b9",
+          "#d5d5d7",
+          "#f2f2f3"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Hero thesis headline only."
+      },
+      "headline-flagship": {
+        "displayName": "Headline Flagship",
+        "purpose": "The Hold My Code window title only."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Titles inside a window or sheet: Quick Look name, active case study, About name."
+      },
+      "lead-hero": {
+        "displayName": "Lead Hero",
+        "purpose": "Hero lead under the display headline."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Sub-heads inside a window."
+      },
+      "lead": {
+        "displayName": "Lead",
+        "purpose": "Summary line under a headline; at 600, a small sub-head in the Hold My Code window."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Descriptions in windows and Quick Look, max 62-65ch."
+      },
+      "body-compact": {
+        "displayName": "Body Compact",
+        "purpose": "Longer description text in the case-study pane and Quick Look."
+      },
+      "control-large": {
+        "displayName": "Control Large",
+        "purpose": "Push buttons, the hero info card, Spotlight row labels."
+      },
+      "meta": {
+        "displayName": "Meta",
+        "purpose": "Meta lines under headlines, Finder footer, grouped-list rows."
+      },
+      "control": {
+        "displayName": "Control",
+        "purpose": "The macOS control size: window titles, menu bar, sidebar, list rows, fields, Control Center tile titles."
+      },
+      "caption": {
+        "displayName": "Caption",
+        "purpose": "Tooltips, Spotlight hints, Control Center section headers, README mono page."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "List headers, window subtitles, counts, Control Center choice labels; base size of the Hold My Code panel."
+      },
+      "detail": {
+        "displayName": "Detail",
+        "purpose": "Secondary lines in Control Center tiles, Spotlight group headers."
+      },
+      "micro": {
+        "displayName": "Micro",
+        "purpose": "Smallest caption; panel pills and footnotes."
+      },
+      "mono": {
+        "displayName": "Mono",
+        "purpose": "Quick Look README preview and the kaomoji sticker only."
+      }
+    },
+    "shadows": [
+      {
+        "name": "window",
+        "value": "0 0 0 0.5px rgba(0,0,0,0.22), 0 2px 6px rgba(0,0,0,0.06), 0 24px 60px -12px rgba(40,28,16,0.4)",
+        "purpose": "--window-shadow, light appearance: focused windows and the Quick Look sheet."
+      },
+      {
+        "name": "window-dark",
+        "value": "0 0 0 0.5px rgba(255,255,255,0.14), 0 2px 6px rgba(0,0,0,0.3), 0 30px 70px -12px rgba(0,0,0,0.7)",
+        "purpose": "--window-shadow, dark appearance."
+      },
+      {
+        "name": "window-inactive",
+        "value": "0 0 0 0.5px rgba(0,0,0,0.18), 0 12px 30px -12px rgba(16,38,30,0.3)",
+        "purpose": "A window stacked behind the focused one."
+      },
+      {
+        "name": "window-dragging",
+        "value": "0 0 0 0.5px rgba(0,0,0,0.22), 0 36px 80px -16px rgba(16,38,30,0.5)",
+        "purpose": "A window while it is dragged by its title bar."
+      },
+      {
+        "name": "menu",
+        "value": "0 0 0 0.5px rgba(0,0,0,0.18), 0 12px 32px -6px rgba(0,0,0,0.28)",
+        "purpose": "--menu-shadow, light: popovers, tooltips, notifications, Control Center, Hold My Code panel."
+      },
+      {
+        "name": "menu-dark",
+        "value": "0 0 0 0.5px rgba(255,255,255,0.14), 0 14px 36px -6px rgba(0,0,0,0.6)",
+        "purpose": "--menu-shadow, dark appearance."
+      },
+      {
+        "name": "hud",
+        "value": "0 0 0 0.5px rgba(0,0,0,0.2), 0 30px 80px -20px rgba(0,0,0,0.5)",
+        "purpose": "Spotlight, the highest layer."
+      },
+      {
+        "name": "inset-media",
+        "value": "0 0 0 0.5px rgba(0,0,0,0.2), 0 8px 24px -8px rgba(0,0,0,0.25)",
+        "purpose": "Screenshots and photos inside a window body."
+      },
+      {
+        "name": "hairline",
+        "value": "0 0 0 0.5px var(--rule)",
+        "purpose": "Grouped lists, inset cards, Control Center tiles; edge only, no drop."
+      },
+      {
+        "name": "button-default",
+        "value": "inset 0 0.5px 0 rgba(255,255,255,0.35), 0 0 0 0.5px rgba(0,60,160,0.55), 0 1px 2px rgba(0,40,120,0.25)",
+        "purpose": "AppKit default push button."
+      },
+      {
+        "name": "button-plain",
+        "value": "0 0 0 0.5px rgba(0,0,0,0.2), 0 1px 1.5px rgba(0,0,0,0.12)",
+        "purpose": "Plain push button."
+      },
+      {
+        "name": "sticker",
+        "value": "drop-shadow(0 5px 12px rgba(0,0,0,0.18))",
+        "purpose": "Draggable desktop stickers."
+      },
+      {
+        "name": "focus-ring",
+        "value": "outline: 3px solid color-mix(in oklab, var(--color-accent) 55%, transparent); outline-offset: 2px",
+        "purpose": "Global :focus-visible for non-inputs; fields use a 3px rgba(10,108,255,0.35) box-shadow ring."
+      },
+      {
+        "name": "vibrancy",
+        "value": "background: var(--vibrant); backdrop-filter: blur(24px) saturate(1.8)",
+        "purpose": "The vibrant material for small floating chrome over the wallpaper."
+      }
+    ],
+    "motion": [
+      {
+        "name": "control-state",
+        "value": "120ms ease",
+        "purpose": "Button background, shadow and press transitions."
+      },
+      {
+        "name": "appearance-switch",
+        "value": "350ms ease on background, color, border, box-shadow; 600ms opacity",
+        "purpose": "html.theme-switching while the appearance changes; wallpaper .wp-dark crossfade."
+      },
+      {
+        "name": "wallpaper-dim",
+        "value": "300ms opacity",
+        "purpose": "Wallpaper brightness overlay."
+      },
+      {
+        "name": "window-open",
+        "value": "spring(stiffness 260, damping 30, mass 0.9); from opacity 0, scale 0.97, y 24",
+        "purpose": "Windows open once as they scroll into view."
+      },
+      {
+        "name": "window-reset",
+        "value": "spring(stiffness 320, damping 30)",
+        "purpose": "Double-click a dragged title bar to put the window back."
+      },
+      {
+        "name": "sheet-open",
+        "value": "spring(stiffness 380, damping 32)",
+        "purpose": "Quick Look sheet."
+      },
+      {
+        "name": "hud-open",
+        "value": "spring(stiffness 520, damping 36)",
+        "purpose": "Spotlight and Control Center."
+      },
+      {
+        "name": "notification-in",
+        "value": "spring(stiffness 420, damping 34)",
+        "purpose": "Notification banner."
+      },
+      {
+        "name": "dock-magnify",
+        "value": "spring(stiffness 380, damping 28, mass 0.2); 50 to 76px within 140px",
+        "purpose": "Dock magnification on fine pointers only, off under Focus."
+      },
+      {
+        "name": "ease-out-expo",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Hero rise-in (0.9s, blur 6px to 0), panel drop, Codex card reveal."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "durations 0.01ms; MotionConfig reducedMotion always when Focus is on",
+        "purpose": "All animation collapses under prefers-reduced-motion or Control Center Focus."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      },
+      {
+        "name": "window-drag",
+        "value": "fine pointer and >= 1024px"
+      },
+      {
+        "name": "stickers",
+        "value": "fine pointer and >= 1360px"
+      },
+      {
+        "name": "coarse-pointer",
+        "value": "(pointer: coarse): buttons 44px, small buttons 40px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Default Push Button",
+      "kind": "button",
+      "refersTo": "button-default",
+      "description": "AppKit default button; one per window for the primary action.",
+      "html": "<button class=\"ds-btn ds-btn-default\">See Hold My Code</button>",
+      "css": ".ds-btn{display:inline-flex;align-items:center;justify-content:center;gap:.4rem;min-height:2.25rem;padding:.4rem .95rem;border:0;border-radius:8px;font-family:var(--font-sans,-apple-system,BlinkMacSystemFont,Geist,sans-serif);font-size:.875rem;font-weight:550;line-height:1.2;cursor:pointer;transition:background-color 120ms ease,box-shadow 120ms ease,transform 120ms ease}.ds-btn:active{transform:translateY(.5px)}.ds-btn:focus-visible{outline:3px solid color-mix(in oklab,var(--accent,#0a6cff) 55%,transparent);outline-offset:2px}.ds-btn-default{color:#fff;background:linear-gradient(to bottom,#2b84ff,#0a6cff);box-shadow:inset 0 .5px 0 rgba(255,255,255,.35),0 0 0 .5px rgba(0,60,160,.55),0 1px 2px rgba(0,40,120,.25)}.ds-btn-default:hover{background:linear-gradient(to bottom,#1f7bff,#0063ee)}.ds-btn-default:active{background:var(--accent-press,#0058d6)}"
+    },
+    {
+      "name": "Plain Push Button",
+      "kind": "button",
+      "refersTo": "button-plain",
+      "description": "Secondary actions: Email me, Source, Copy.",
+      "html": "<button class=\"ds-btn-plain\">Email me</button>",
+      "css": ".ds-btn-plain{display:inline-flex;align-items:center;min-height:2.25rem;padding:.4rem .95rem;border:0;border-radius:8px;font-family:var(--font-sans,-apple-system,BlinkMacSystemFont,Geist,sans-serif);font-size:.875rem;font-weight:550;color:var(--ink,#1d1d1f);background:var(--plain-bg,#fff);box-shadow:0 0 0 .5px rgba(0,0,0,.2),0 1px 1.5px rgba(0,0,0,.12);cursor:pointer;transition:background-color 120ms ease,transform 120ms ease}.ds-btn-plain:hover{background:var(--plain-hover,#f7f7f7)}.ds-btn-plain:active{background:var(--plain-press,#ededed);transform:translateY(.5px)}.ds-btn-plain:focus-visible{outline:3px solid color-mix(in oklab,var(--accent,#0a6cff) 55%,transparent);outline-offset:2px}"
+    },
+    {
+      "name": "Search Field",
+      "kind": "input",
+      "refersTo": "search-field",
+      "description": "Toolbar search in a window title bar.",
+      "html": "<label class=\"ds-search\"><svg viewBox=\"0 0 24 24\" width=\"14\" height=\"14\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\"><circle cx=\"11\" cy=\"11\" r=\"7\"/><path d=\"m20 20-3.5-3.5\"/></svg><input type=\"search\" placeholder=\"Search\"></label>",
+      "css": ".ds-search{position:relative;display:inline-block;color:var(--ink-3,#6e6e73)}.ds-search svg{position:absolute;left:8px;top:50%;transform:translateY(-50%);pointer-events:none}.ds-search input{height:28px;width:176px;padding:0 8px 0 28px;border:0;border-radius:7px;background:var(--fill,rgba(0,0,0,.06));font:13px var(--font-sans,-apple-system,BlinkMacSystemFont,Geist,sans-serif);color:var(--ink,#1d1d1f);outline:none;caret-color:var(--accent,#0a6cff);transition:background 120ms ease,box-shadow 120ms ease}.ds-search input::placeholder{color:var(--ink-3,#6e6e73)}.ds-search input:focus{background:var(--surface,#fff);box-shadow:0 0 0 3px rgba(10,108,255,.35)}"
+    },
+    {
+      "name": "Window",
+      "kind": "card",
+      "refersTo": "window",
+      "description": "The primary container: every section is an AppKit document window, draggable by its title bar.",
+      "html": "<div class=\"ds-window\"><div class=\"ds-titlebar\"><span class=\"ds-lights\"><i style=\"background:#ff5f57\"></i><i style=\"background:#febc2e\"></i><i style=\"background:#28c840\"></i></span><span class=\"ds-wtitle\">Projects</span><span class=\"ds-wsub\">12 items</span></div><div class=\"ds-wbody\">Window body</div></div>",
+      "css": ".ds-window{width:360px;border-radius:12px;overflow:hidden;background:var(--window,#fff);box-shadow:var(--window-shadow,0 0 0 .5px rgba(0,0,0,.22),0 2px 6px rgba(0,0,0,.06),0 24px 60px -12px rgba(40,28,16,.4));font-family:var(--font-sans,-apple-system,BlinkMacSystemFont,Geist,sans-serif);color:var(--ink,#1d1d1f)}.ds-titlebar{display:flex;align-items:center;gap:8px;min-height:48px;padding:8px 16px;box-sizing:border-box;background:var(--chrome,#f5f5f4);border-bottom:1px solid var(--rule,rgba(0,0,0,.09));cursor:grab}.ds-titlebar:active{cursor:grabbing}.ds-lights{display:flex;gap:8px;margin-right:8px}.ds-lights i{width:12px;height:12px;border-radius:999px;box-shadow:inset 0 0 0 .5px rgba(0,0,0,.18)}.ds-wtitle{font-size:13px;font-weight:600}.ds-wsub{font-size:12px;color:var(--ink-3,#6e6e73)}.ds-wbody{padding:20px;font-size:15px;line-height:1.6;color:var(--ink-2,#3a3a3c)}"
+    },
+    {
+      "name": "Finder List",
+      "kind": "custom",
+      "refersTo": "list-row",
+      "description": "One-line project rows: zebra stripes, soft-blue hover, system-blue selection.",
+      "html": "<table class=\"ds-list\"><thead><tr><th>Name</th><th>Date</th><th>Status</th></tr></thead><tbody><tr class=\"on\"><td>Hold My Code</td><td>2026</td><td><i class=\"ds-dot\" style=\"background:#fff\"></i>Live</td></tr><tr><td>PriceSense</td><td>2025</td><td><i class=\"ds-dot\" style=\"background:var(--live,#28a745)\"></i>Live</td></tr><tr><td>RetentionIQ</td><td>2025</td><td><i class=\"ds-dot\" style=\"background:var(--ink-4,#8a8a8e)\"></i>Built</td></tr></tbody></table>",
+      "css": ".ds-list{width:380px;border-collapse:collapse;font:13px var(--font-sans,-apple-system,BlinkMacSystemFont,Geist,sans-serif);color:var(--ink,#1d1d1f);font-variant-numeric:tabular-nums}.ds-list th{text-align:left;font-weight:400;font-size:12px;color:var(--ink-3,#6e6e73);padding:6px 12px;border-bottom:1px solid var(--rule,rgba(0,0,0,.09))}.ds-list td{height:36px;padding:0 12px;color:var(--ink-3,#6e6e73)}.ds-list td:first-child{color:var(--ink,#1d1d1f);font-weight:500}.ds-list tbody tr:nth-child(odd){background:var(--window,#fff)}.ds-list tbody tr:nth-child(even){background:var(--zebra,#f4f5f5)}.ds-list tbody tr:hover{background:var(--select-soft,#dbe8fd)}.ds-list tbody tr.on,.ds-list tbody tr.on td{background:var(--select,#0a6cff);color:#fff}.ds-dot{display:inline-block;width:7px;height:7px;border-radius:999px;margin-right:6px}"
+    },
+    {
+      "name": "Menu Bar",
+      "kind": "nav",
+      "refersTo": "menu-bar",
+      "description": "Solid 36px top bar: VA mark, section items, status glyphs, Control Center glyph, Dublin clock.",
+      "html": "<nav class=\"ds-menubar\"><a class=\"b\"><span class=\"va\">VA</span>Vedant Ambre</a><a class=\"cur\">Hold My Code</a><a>Projects</a><a>Contact</a><span class=\"cc\"><svg viewBox=\"0 0 18 16\" width=\"16\" height=\"14\" fill=\"none\"><rect x=\"1\" y=\"1.5\" width=\"16\" height=\"5.5\" rx=\"2.75\" stroke=\"currentColor\" stroke-width=\"1.4\"/><circle cx=\"13.9\" cy=\"4.25\" r=\"1.7\" fill=\"currentColor\"/><rect x=\"1\" y=\"9\" width=\"16\" height=\"5.5\" rx=\"2.75\" stroke=\"currentColor\" stroke-width=\"1.4\"/><circle cx=\"4.1\" cy=\"11.75\" r=\"1.7\" fill=\"currentColor\"/></svg></span><span class=\"clock\">Tue 22 Sept 13:57</span></nav>",
+      "css": ".ds-menubar{display:flex;align-items:center;gap:4px;height:36px;padding:0 8px;background:var(--menubar,#f3f3f2);border-bottom:1px solid rgba(0,0,0,.06);font:13px var(--font-sans,-apple-system,BlinkMacSystemFont,Geist,sans-serif);color:var(--ink,#1d1d1f)}.ds-menubar a{display:flex;align-items:center;gap:8px;height:28px;padding:0 10px;border-radius:6px;cursor:default;transition:background-color 120ms ease}.ds-menubar a:hover{background:var(--fill,rgba(0,0,0,.06))}.ds-menubar a.cur{background:var(--fill-2,rgba(0,0,0,.09))}.ds-menubar a.b{font-weight:600}.ds-menubar .va{display:grid;place-items:center;width:18px;height:18px;border-radius:5px;background:var(--ink,#1d1d1f);color:var(--window,#fff);font-size:9px;font-weight:700}.ds-menubar .cc{margin-left:auto;display:grid;place-items:center;width:36px;height:28px;border-radius:6px}.ds-menubar .cc:hover{background:var(--fill,rgba(0,0,0,.06))}.ds-menubar .clock{padding:0 8px;font-weight:500;font-variant-numeric:tabular-nums}"
+    },
+    {
+      "name": "Control Center",
+      "kind": "custom",
+      "refersTo": "control-center",
+      "description": "Visitor settings: appearance, Focus, desktop icons, availability, wallpaper brightness and picker, now shipping.",
+      "html": "<div class=\"ds-cc\"><div class=\"t wide\"><p class=\"h\">Appearance</p><div class=\"ap\"><span><b class=\"r on\">L</b>Light</span><span><b class=\"r\">D</b>Dark</span><span><b class=\"r\">A</b>Auto</span></div></div><button class=\"t sw\" role=\"switch\" aria-checked=\"true\"><b class=\"r on\">F</b><span><strong>Focus</strong><small>Motion paused</small></span></button><button class=\"t sw\" role=\"switch\" aria-checked=\"false\"><b class=\"r\">I</b><span><strong>Desktop icons</strong><small>Tidied away</small></span></button><label class=\"t wide\"><p class=\"h\">Wallpaper brightness</p><input type=\"range\" min=\"0\" max=\"60\" value=\"45\"></label></div>",
+      "css": ".ds-cc{display:grid;grid-template-columns:1fr 1fr;gap:10px;width:336px;padding:12px;box-sizing:border-box;border-radius:24px;background:var(--vibrant,rgba(246,246,245,.84));backdrop-filter:blur(12px) saturate(1.6);-webkit-backdrop-filter:blur(12px) saturate(1.6);box-shadow:var(--menu-shadow,0 0 0 .5px rgba(0,0,0,.18),0 12px 32px -6px rgba(0,0,0,.28));font-family:var(--font-sans,-apple-system,BlinkMacSystemFont,Geist,sans-serif);color:var(--ink,#1d1d1f)}.ds-cc .t{border:0;border-radius:16px;background:color-mix(in srgb,var(--surface,#fff) 55%,transparent);box-shadow:0 0 0 .5px var(--rule,rgba(0,0,0,.09)),0 1px 2px rgba(0,0,0,.06);padding:10px 12px;text-align:left;font:inherit;color:inherit}.ds-cc .wide{grid-column:span 2;display:block}.ds-cc .h{margin:0 0 8px;font-size:12.5px;font-weight:600;color:var(--ink-2,#3a3a3c)}.ds-cc .ap{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;font-size:12px;text-align:center}.ds-cc .ap span{display:flex;flex-direction:column;align-items:center;gap:6px}.ds-cc .r{display:grid;place-items:center;flex:none;width:32px;height:32px;border-radius:999px;background:var(--fill-2,rgba(0,0,0,.09));font-size:11px;transition:background-color 120ms ease}.ds-cc .r.on{background:var(--accent,#0a6cff);color:#fff}.ds-cc .sw{display:flex;align-items:center;gap:10px;min-height:60px;cursor:pointer}.ds-cc .sw:focus-visible{outline:3px solid color-mix(in oklab,var(--accent,#0a6cff) 55%,transparent);outline-offset:2px}.ds-cc strong{display:block;font-size:13px;font-weight:600;line-height:1.2}.ds-cc small{display:block;font-size:11.5px;color:var(--ink-3,#6e6e73)}.ds-cc input[type=range]{width:100%;accent-color:#fff}"
+    },
+    {
+      "name": "Segmented Control",
+      "kind": "chip",
+      "description": "Two-option AppKit segmented control.",
+      "html": "<div class=\"ds-seg\"><button class=\"on\">Video</button><button>Screenshot</button></div>",
+      "css": ".ds-seg{display:inline-grid;grid-template-columns:1fr 1fr;gap:2px;padding:2px;border-radius:8px;background:var(--fill,rgba(0,0,0,.06));font:500 13px var(--font-sans,-apple-system,BlinkMacSystemFont,Geist,sans-serif)}.ds-seg button{min-height:32px;padding:0 16px;border:0;border-radius:6px;background:transparent;color:var(--ink-2,#3a3a3c);cursor:pointer;transition:color 120ms ease}.ds-seg button:hover{color:var(--ink,#1d1d1f)}.ds-seg button.on{background:var(--surface,#fff);color:var(--ink,#1d1d1f);box-shadow:0 .5px 1.5px rgba(0,0,0,.22)}.ds-seg button:focus-visible{outline:3px solid color-mix(in oklab,var(--accent,#0a6cff) 55%,transparent);outline-offset:2px}"
+    },
+    {
+      "name": "Notification Banner",
+      "kind": "custom",
+      "refersTo": "notification",
+      "description": "Vibrant toast under the menu bar, top right.",
+      "html": "<div class=\"ds-note\"><span class=\"ic\">VA</span><span><b>Email copied</b><span>ambreved3@gmail.com</span></span></div>",
+      "css": ".ds-note{display:flex;align-items:flex-start;gap:12px;width:352px;padding:12px;box-sizing:border-box;border-radius:16px;background:var(--vibrant,rgba(246,246,245,.84));backdrop-filter:blur(24px) saturate(1.8);-webkit-backdrop-filter:blur(24px) saturate(1.8);box-shadow:var(--menu-shadow,0 0 0 .5px rgba(0,0,0,.18),0 12px 32px -6px rgba(0,0,0,.28));font:13px/1.35 var(--font-sans,-apple-system,BlinkMacSystemFont,Geist,sans-serif);color:var(--ink,#1d1d1f)}.ds-note .ic{display:grid;place-items:center;flex:none;width:36px;height:36px;border-radius:9px;background:var(--ink,#1d1d1f);color:var(--window,#fff);font-size:11px;font-weight:700}.ds-note b{display:block;font-weight:600}.ds-note b+span{display:block;color:var(--ink-2,#3a3a3c)}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Desktop, Either Appearance",
+    "overview": "The site is a Mac desktop. The desktop metaphor is structural, not a skin. Each section is an AppKit document window with a unified title bar, traffic lights and an opaque body, and on a mouse-driven screen of 1024px or wider it can be dragged by its title bar. The Dock at the bottom is the navigation, the solid menu bar at the top is the persistent header, Control Center (opened from its menu bar glyph) holds the visitor's settings, Spotlight (\u2318K) is search, Quick Look is project detail, and a notification banner is the toast. Every new surface should answer one question first: which piece of macOS would do this job? Then draw that piece.\n\nThe world follows the visitor's appearance, as macOS does. Every UI colour is a CSS variable with a light value on `:root` and a dark value on `:root[data-theme=\"dark\"]`, and Control Center offers Light, Dark and Auto (Auto is the default and follows `prefers-color-scheme`). The default wallpaper is the Golden Gate photograph. Its light and dark versions crossfade over 600ms when the appearance changes. The Kildare hills SVG is the alternative wallpaper, with a night overlay in dark appearance. Visitors can also dim the wallpaper by up to 60% with a black overlay. The wallpaper carries the atmosphere and is the only large saturated field on the page.\n\nThe desktop runs at the density of macOS itself. Controls are small (13px text, 28 to 36px targets on fine pointers, 44px on coarse), grey chrome is quiet, and a few large system-face headlines carry the content weight. There is one interface accent, system blue, and it does the jobs it does in AppKit: default buttons, selected rows, switches that are on, focus rings and links. Finder tag dots are the only other hues, and they label groups. There is no liquid glass and no backdrop blur: floating chrome uses the near-opaque vibrant material so animation stays at 60fps. Confirmed rejections from the product thesis: no dark hero band, no giant-name hero, no card grid of projects.",
+    "keyCharacteristics": [
+      "Two appearances from one token set: light and dark values for every UI colour, switched on `<html data-theme>` with a 350ms colour ease.",
+      "Sections are windows: 12px corners, a 48px chrome title bar with traffic lights, an opaque body, and a three-layer window shadow. Windows can be dragged by the title bar from 1024px.",
+      "Navigation is macOS furniture: a solid menu bar, a vibrant Dock with a running-indicator dot, Spotlight, and Control Center.",
+      "System blue is the only accent. Finder tag colours appear only as small dots.",
+      "One floating material: `vibrant`, near-opaque with no backdrop filter.",
+      "The system face: SF Pro on Apple devices, with Geist as the fallback elsewhere. Headlines use tight negative tracking, and 13px is the control size.",
+      "Motion is spring-based and brief. Every animation collapses under `prefers-reduced-motion` and under Control Center's Focus switch."
+    ],
+    "rules": [
+      {
+        "name": "The Token Or Nothing Rule",
+        "body": "Every UI colour goes through a CSS variable that has both a light and a dark value. A literal hex on a surface is a bug in one of the two appearances.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Accent Rule",
+        "body": "System blue is the only interface colour. If something needs to look pressable, selected, on or focused, it turns blue. If not, it stays grey.",
+        "section": "colors"
+      },
+      {
+        "name": "The Tag Dot Rule",
+        "body": "Finder tag colours label groups and do nothing else. They show up as dots of 10px or smaller, or as folder badges. They never fill buttons, text, backgrounds or headings.",
+        "section": "colors"
+      },
+      {
+        "name": "The Wallpaper Owns Colour Rule",
+        "body": "Big saturated areas belong to the wallpaper. Windows, bars and panels stay neutral or vibrant.",
+        "section": "colors"
+      },
+      {
+        "name": "The System Size Rule",
+        "body": "Chrome speaks at 13px. Anything that is part of the desktop (menu, sidebar, list, title bar, field, Control Center tile) sits between 11 and 13px. Only content inside a window grows beyond 13.5px.",
+        "section": "typography"
+      },
+      {
+        "name": "The Sentence Case Rule",
+        "body": "Group headers are small, semibold and in sentence case, as in the Finder sidebar and Control Center. Numbers in lists, clocks, counts and money use tabular figures.",
+        "section": "typography"
+      },
+      {
+        "name": "The Hold My Code Exception",
+        "body": "The Hold My Code panel copies the shipped app 2.5.1, so it uses the app's own compact type: 10.5px uppercase labels at 0.04em tracking, and 10.5 to 11px captions. This type lives only inside that panel.",
+        "section": "typography"
+      },
+      {
+        "name": "The Hairline Edge Rule",
+        "body": "Opaque and vibrant surfaces are edged by a 0.5px ring inside the shadow stack, never by a 1px CSS border. Real borders are only for internal dividers (`rule`).",
+        "section": "elevation"
+      },
+      {
+        "name": "The Focus Stack Rule",
+        "body": "Only one window reads as focused at a time. It gets coloured traffic lights and the full window shadow. Any window stacked behind it goes inactive. A dragged window rises to the top of the stack.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** put every new section in a Window with traffic lights, a 13px semibold title and a 12px corner radius. Choose the macOS app that would do the job (Finder, Mail, Quick Look, Preview) and draw its chrome.",
+      "**Do** take every UI colour from a CSS variable that has both a light and a dark value, and check the surface in both appearances.",
+      "**Do** keep System Blue (`accent`, `select`) for default buttons, selection, on-states, focus and links only.",
+      "**Do** use the vibrant material with the Menu shadow for small chrome floating over the wallpaper. Don't add backdrop-filter or blur animations.",
+      "**Do** edge opaque and vibrant surfaces with a 0.5px ring inside the shadow.",
+      "**Do** set type from the recorded ramp (11, 11.5, 12, 12.5, 13, 13.5, 14, 14.5, 15, 17, 22px and the clamp display sizes), keep chrome text at 11 to 13px, group headers in sentence case, and figures tabular.",
+      "**Do** open detail in Quick Look or a sheet, and keep the page itself to one-line rows.",
+      "**Do** use springs for opening surfaces and 120ms ease for control states, and honour both `prefers-reduced-motion` and the Focus switch."
+    ],
+    "donts": [
+      "**Don't** introduce a second interface accent. Finder tag colours stay as dots of 10px or smaller and as folder badges.",
+      "**Don't** hardcode a light-only colour (a white background, a black hairline, an `rgba(248,\u2026)` panel) on a surface that has to work in dark appearance.",
+      "**Don't** put a dark hero band on the page. Dark appearance darkens the whole desktop at once, and no section is dark on its own.",
+      "**Don't** lay projects out as a grid of cards. Projects are rows in the Finder list.",
+      "**Don't** use 1px CSS borders as the outer edge of an opaque or vibrant floating surface. Use the 0.5px ring.",
+      "**Don't** fill large areas with saturated colour inside windows or bars. That field belongs to the wallpaper.",
+      "**Don't** use uppercase letter-spaced labels as section or group headers on new surfaces. The group-label pattern is sentence case. The only exception is the Hold My Code panel, because it copies the shipped app's UI.",
+      "**Don't** add type sizes below 11px outside the Hold My Code panel."
+    ]
+  }
+}

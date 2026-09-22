@@ -1,55 +1,36 @@
-import { Nav } from "@/components/Nav";
-import { Hero } from "@/components/Hero";
-import { Showcase } from "@/components/Showcase";
-import { ProjectIndex } from "@/components/ProjectIndex";
-import { Story } from "@/components/Story";
-import { Skills } from "@/components/Skills";
-import { Education } from "@/components/Education";
-import { Footer } from "@/components/Footer";
-import { ScrollProgress } from "@/components/ScrollProgress";
-import { BackgroundLayer } from "@/components/BackgroundLayer";
 import { CommandProvider } from "@/components/CommandProvider";
+import { SettingsProvider } from "@/components/desktop/settings";
 import { CommandPalette } from "@/components/CommandPalette";
-import { SideRail } from "@/components/SideRail";
-import { SmoothScroll } from "@/components/SmoothScroll";
 import { ToastProvider } from "@/components/Toast";
-import GradualBlur from "@/components/GradualBlur";
+import { Wallpaper } from "@/components/desktop/Wallpaper";
+import { MenuBar } from "@/components/desktop/MenuBar";
+import { Dock } from "@/components/desktop/Dock";
+import { Hero } from "@/components/desktop/Hero";
+import { HoldMyCode } from "@/components/desktop/HoldMyCode";
+import { Cases } from "@/components/desktop/Cases";
+import { Finder } from "@/components/desktop/Finder";
+import { About } from "@/components/desktop/About";
+import { Contact } from "@/components/desktop/Contact";
 
 export default function Home() {
   return (
+    <SettingsProvider>
     <CommandProvider>
       <ToastProvider>
-        <SmoothScroll>
-          <BackgroundLayer />
-
-          <main className="relative overflow-x-hidden pb-10">
-            <ScrollProgress />
-            <Nav />
-            <SideRail />
-            <Hero />
-            <Story />
-            <Showcase />
-            <ProjectIndex />
-            <Skills />
-            <Education />
-            <Footer />
-          </main>
-
-          <GradualBlur
-            target="page"
-            position="bottom"
-            height="4.5rem"
-            strength={2}
-            divCount={5}
-            curve="bezier"
-            exponential
-            opacity={1}
-            zIndex={20}
-          />
-
-          <CommandPalette />
-        </SmoothScroll>
+        <Wallpaper />
+        <MenuBar />
+        <main>
+          <Hero />
+          <HoldMyCode />
+          <Cases />
+          <Finder />
+          <About />
+          <Contact />
+        </main>
+        <Dock />
+        <CommandPalette />
       </ToastProvider>
     </CommandProvider>
+    </SettingsProvider>
   );
 }

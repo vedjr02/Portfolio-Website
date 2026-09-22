@@ -3,7 +3,7 @@ import { ImageResponse } from "next/og";
 export const size = { width: 180, height: 180 };
 export const contentType = "image/png";
 
-/** Apple touch icon — same VA mark, larger */
+/** Apple touch icon - same VA mark, larger */
 export default function AppleIcon() {
   return new ImageResponse(
     (
@@ -14,13 +14,13 @@ export default function AppleIcon() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          background: "#3d9bff",
+          background: "#1d1d1f",
           borderRadius: 40,
         }}
       >
         <span
           style={{
-            color: "#061018",
+            color: "#ffffff",
             fontSize: 78,
             fontWeight: 800,
             letterSpacing: "-0.06em",
