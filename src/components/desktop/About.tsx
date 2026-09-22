@@ -2,18 +2,22 @@ import Image from "next/image";
 import { Window } from "@/components/desktop/Window";
 import { education, profile, toolkit } from "@/lib/data";
 import { Stickers } from "@/components/desktop/Stickers";
+import { MobileAbout } from "@/components/mobile/MobileSections";
 
 /** "About This Mac", for a person. Next to it, the toolkit as a System Settings pane. */
 export function About() {
   return (
-    <section id="about" aria-labelledby="about-title" className="relative scroll-mt-14 px-3 py-10 sm:px-8 sm:py-16">
+    <section id="about" aria-labelledby="about-title" className="relative scroll-mt-14 px-4 py-7 sm:px-8 md:py-16">
       <Stickers
         items={[
           { src: "/stickers/terminal.webp", w: 48, x: "calc(50% - 668px)", y: 200, r: 7 },
           { text: "\u{1F50B}", size: 28, x: "calc(50% + 628px)", y: 520, r: -8 },
         ]}
       />
-      <div className="mx-auto grid max-w-[1180px] items-start gap-6 lg:grid-cols-[1.45fr_1fr] lg:gap-8">
+      <div className="md:hidden">
+        <MobileAbout />
+      </div>
+      <div className="mx-auto hidden max-w-[1180px] md:grid items-start gap-6 lg:grid-cols-[1.45fr_1fr] lg:gap-8">
         <Window title="About Vedant" labelId="about-title" bodyClassName="grid gap-8 p-5 sm:grid-cols-[13rem_1fr] sm:p-8">
           <div className="relative mx-auto aspect-[4/5] w-44 overflow-hidden rounded-[10px] shadow-[0_0_0_0.5px_rgba(0,0,0,0.2),0_10px_24px_-10px_rgba(0,0,0,0.4)] sm:mx-0 sm:w-full">
             <Image
