@@ -9,6 +9,7 @@ import { FolderIcon } from "@/components/desktop/FolderIcon";
 import { groups, projects, type Project, type ProjectGroup } from "@/lib/data";
 import { cn } from "@/lib/utils";
 import { Stickers } from "@/components/desktop/Stickers";
+import { MobileProjects } from "@/components/mobile/MobileSections";
 
 type Filter = "all" | ProjectGroup;
 type Sort = { key: "name" | "date"; dir: 1 | -1 };
@@ -111,7 +112,7 @@ export function Finder() {
   ];
 
   return (
-    <section id="projects" aria-labelledby="projects-title" className="relative scroll-mt-14 px-3 py-10 sm:px-8 sm:py-16">
+    <section id="projects" aria-labelledby="projects-title" className="relative scroll-mt-14 px-4 py-7 sm:px-8 md:py-16">
       <Stickers
         items={[
           { src: "/stickers/folder.webp", w: 50, x: "calc(50% + 614px)", y: 120, r: 6 },
@@ -119,7 +120,10 @@ export function Finder() {
           { src: "/stickers/beachball.svg", w: 24, x: "calc(50% + 640px)", y: 560, r: 0 },
         ]}
       />
-      <div className="mx-auto max-w-[1180px]">
+      <div className="md:hidden">
+        <MobileProjects onOpen={openLook} />
+      </div>
+      <div className="mx-auto hidden max-w-[1180px] md:block">
         <Window
           title="Projects"
           labelId="projects-title"
