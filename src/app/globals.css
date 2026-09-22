@@ -60,6 +60,8 @@
   --live: #28a745;
   --menubar: #f3f3f2;
   --vibrant: rgba(247, 247, 246, 0.97);
+  --vibrant-panel: rgba(246, 246, 245, 0.56);
+  --panel-card: rgba(255, 255, 255, 0.42);
   --window-shadow: 0 0 0 0.5px rgba(0, 0, 0, 0.22), 0 2px 6px rgba(0, 0, 0, 0.06), 0 24px 60px -12px rgba(40, 28, 16, 0.4);
   --menu-shadow: 0 0 0 0.5px rgba(0, 0, 0, 0.18), 0 12px 32px -6px rgba(0, 0, 0, 0.28);
   --plain-bg: #ffffff;
@@ -91,6 +93,8 @@
   --live: #32d74b;
   --menubar: #1f1f24;
   --vibrant: rgba(40, 40, 44, 0.97);
+  --vibrant-panel: rgba(34, 34, 38, 0.52);
+  --panel-card: rgba(255, 255, 255, 0.07);
   --window-shadow: 0 0 0 0.5px rgba(255, 255, 255, 0.14), 0 2px 6px rgba(0, 0, 0, 0.3), 0 30px 70px -12px rgba(0, 0, 0, 0.7);
   --menu-shadow: 0 0 0 0.5px rgba(255, 255, 255, 0.14), 0 14px 36px -6px rgba(0, 0, 0, 0.6);
   --plain-bg: #3a3a3d;
@@ -183,6 +187,14 @@ html::-webkit-scrollbar {
 /* Vibrancy: the translucent material macOS uses for bars and sidebars */
 .vibrant {
   background: var(--vibrant);
+}
+
+/* The Hold My Code panel: the real menu bar material, tinted and blurred so the
+   wallpaper shows through. One static element, so the blur stays cheap. */
+.vibrant-panel {
+  background: var(--vibrant-panel);
+  -webkit-backdrop-filter: blur(34px) saturate(1.8);
+  backdrop-filter: blur(34px) saturate(1.8);
 }
 
 /* Push buttons, drawn the way AppKit draws them */
