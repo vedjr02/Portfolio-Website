@@ -18,8 +18,9 @@ export function HmcGlyph({ className }: { className?: string }) {
   );
 }
 
-function Clock() {
+function Clock({ mobile = false }: { mobile?: boolean }) {
   const [now, setNow] = useState<string | null>(null);
+  const [shortNow, setShortNow] = useState<string | null>(null);
 
   useEffect(() => {
     const fmt = new Intl.DateTimeFormat("en-IE", {
@@ -31,15 +32,25 @@ function Clock() {
       hour12: false,
       timeZone: "Europe/Dublin",
     });
-    const tick = () => setNow(fmt.format(new Date()).replace(",", ""));
+    const short = new Intl.DateTimeFormat("en-IE", { hour: "2-digit", minute: "2-digit", hour12: false, timeZone: "Europe/Dublin" });
+    const tick = () => {
+      setNow(fmt.format(new Date()).replace(",", ""));
+      setShortNow(short.format(new Date()));
+    };
     tick();
     const id = window.setInterval(tick, 15_000);
     return () => window.clearInterval(id);
   }, []);
 
+  if (mobile)
+    return (
+      <span className="tabular pl-3 text-[15px] font-semibold md:hidden" suppressHydrationWarning>
+        {shortNow ?? "\u00a0"}
+      </span>
+    );
   return (
     <span
-      className="tabular hidden min-w-[9.5rem] text-right sm:inline"
+      className="tabular hidden min-w-[9.5rem] text-right md:inline"
       title="Time in Maynooth, Ireland"
       suppressHydrationWarning
     >
@@ -58,11 +69,12 @@ export function MenuBar() {
     <header className="fixed inset-x-0 top-0 z-50 border-b bg-[var(--menubar)] border-black/[0.06] pt-[env(safe-area-inset-top)]">
       <nav
         aria-label="Primary"
-        className="mx-auto flex h-9 items-center gap-1 px-2 text-[13px] text-ink sm:px-3"
+        className="mx-auto flex h-11 items-center gap-1 px-2 text-[13px] text-ink sm:px-3 md:h-9"
       >
+        <Clock mobile />
         <a
           href="#top"
-          className="flex h-7 items-center gap-2 rounded-md px-2 font-semibold no-underline hover:bg-fill"
+          className="hidden h-7 items-center gap-2 rounded-md px-2 font-semibold no-underline hover:bg-fill md:flex"
         >
           <span
             aria-hidden
@@ -101,7 +113,7 @@ export function MenuBar() {
               e.preventDefault();
               goTo("hold-my-code");
             }}
-            className="grid h-7 w-9 place-items-center rounded-md text-ink hover:bg-fill"
+            className="hidden h-7 w-9 place-items-center rounded-md text-ink hover:bg-fill md:grid"
             aria-label="Hold My Code, the app I built"
             title="Hold My Code"
           >
@@ -128,7 +140,7 @@ export function MenuBar() {
           >
             <ControlCenterGlyph className="h-[14px] w-[16px]" />
           </button>
-          <span className="px-2 font-medium">
+          <span className="hidden px-2 font-medium md:inline">
             <Clock />
           </span>
         </div>

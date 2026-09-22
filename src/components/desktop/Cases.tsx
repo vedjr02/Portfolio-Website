@@ -8,6 +8,7 @@ import { Window } from "@/components/desktop/Window";
 import { caseStudies } from "@/lib/data";
 import { cn } from "@/lib/utils";
 import { Stickers } from "@/components/desktop/Stickers";
+import { MobileCases } from "@/components/mobile/MobileSections";
 
 /** Case studies as a Preview window: thumbnails in the sidebar, the open one on the right. */
 export function Cases() {
@@ -25,14 +26,17 @@ export function Cases() {
   }, []);
 
   return (
-    <section id="cases" aria-labelledby="cases-title" className="relative scroll-mt-14 px-3 py-10 sm:px-8 sm:py-16">
+    <section id="cases" aria-labelledby="cases-title" className="relative scroll-mt-14 px-4 py-7 sm:px-8 md:py-16">
       <Stickers
         items={[
           { src: "/stickers/doc.webp", w: 48, x: "calc(50% - 668px)", y: 150, r: -6 },
           { src: "/stickers/settings.webp", w: 50, x: "calc(50% + 616px)", y: 430, r: 7 },
         ]}
       />
-      <div className="mx-auto max-w-[1180px]">
+      <div className="md:hidden">
+        <MobileCases />
+      </div>
+      <div className="mx-auto hidden max-w-[1180px] md:block">
         <Window
           title="Case studies"
           subtitle={`${caseStudies.length} documents`}

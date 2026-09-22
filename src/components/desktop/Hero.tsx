@@ -28,7 +28,7 @@ export function Hero() {
       ref={sectionRef}
       id="top"
       aria-labelledby="hero-title"
-      className="relative flex min-h-[100svh] flex-col px-4 pt-[calc(env(safe-area-inset-top)+5.5rem)] pb-32 sm:px-8 lg:pt-[calc(env(safe-area-inset-top)+6rem)]"
+      className="relative flex flex-col px-4 pt-[calc(env(safe-area-inset-top)+6.5rem)] pb-10 md:min-h-[100svh] md:pb-32 sm:px-8 lg:pt-[calc(env(safe-area-inset-top)+6rem)]"
     >
       <div className="mx-auto w-full max-w-[1180px] lg:flex lg:flex-1 lg:flex-col lg:justify-center">
       <div className="max-w-[46rem] lg:max-w-[min(46rem,calc(100vw-30rem))] lg:py-[4vh]">
@@ -90,7 +90,7 @@ export function Hero() {
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 0.5, ease, delay: 0.5 }}
         style={{ transformOrigin: "top right" }}
-        className="mt-12 self-center lg:absolute lg:top-[calc(env(safe-area-inset-top)+2.85rem)] lg:right-[4.9rem] lg:mt-0"
+        className="mt-12 hidden self-center md:block lg:absolute lg:top-[calc(env(safe-area-inset-top)+2.85rem)] lg:right-[4.9rem] lg:mt-0"
       >
         <div ref={panelRef}>
           <HmcPanel />
@@ -103,7 +103,7 @@ export function Hero() {
 
       <motion.dl
           {...rise(0.36)}
-          className="mx-auto mt-10 grid w-full max-w-[1180px] grid-cols-[auto_1fr] gap-x-5 gap-y-1.5 text-[14px] lg:mt-auto lg:grid-cols-[auto_auto_auto_auto_auto_1fr] lg:gap-x-2.5 lg:border-t lg:border-white/15 lg:pt-5"
+          className="mx-auto mt-10 hidden w-full md:grid max-w-[1180px] grid-cols-[auto_1fr] gap-x-5 gap-y-1.5 text-[14px] lg:mt-auto lg:grid-cols-[auto_auto_auto_auto_auto_1fr] lg:gap-x-2.5 lg:border-t lg:border-white/15 lg:pt-5"
         >
           <dt className="text-white/55">Based in</dt>
           <dd className="text-white/90 lg:mr-10">{profile.location}</dd>

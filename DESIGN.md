@@ -502,3 +502,17 @@ Desktop clutter in the style of holdmycode.xyz: raster Finder icons (folder, ter
 - **Don't** fill large areas with saturated colour inside windows or bars. That field belongs to the wallpaper.
 - **Don't** use uppercase letter-spaced labels as section or group headers on new surfaces. The group-label pattern is sentence case. The only exception is the Hold My Code panel, because it copies the shipped app's UI.
 - **Don't** add type sizes below 11px outside the Hold My Code panel.
+
+## Phone layout (iOS)
+
+Below the `md` breakpoint (768px) the desktop becomes an iPhone. Desktop windows, the demo panel and the hero info line are hidden; each section renders an iOS counterpart from `src/components/mobile/`:
+
+- **Status bar** instead of the menu bar: 24-hour Dublin time at left (15px semibold), Spotlight and Control Center at right, 44px tall.
+- **Hold My Code** as an App Store product page: 112px icon at 24px corners, 22px semibold name, a blue "Get" pill, a horizontally scrolling info strip (Version, Agents, Runs on, Price, Developer), What's New, a swipeable Preview carousel (video first), a three-line description with "more", and an Information list.
+- **Case studies** as swipeable cards (82% width, 18px corners, snap).
+- **Projects** as filter chips over an inset grouped list showing six rows, then "Show all". Rows open Quick Look as a bottom sheet with a grabber.
+- **About** as a Contacts card: round photo, name, grouped rows, story clamped to four lines, toolkit chips.
+- **Contact** as a Settings list with coloured 29px glyph tiles.
+- **Dock** tiles grow to 52px in a 30px-corner bar.
+
+The iOS type ramp is 11, 13, 14, 15, 16 (table rows), 18 (card titles), 20 (in-page headings), 22 (app name), 28 (contact name) and 30px (large section titles). These sizes belong to the phone layout only; the desktop keeps the macOS ramp.

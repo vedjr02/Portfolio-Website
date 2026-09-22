@@ -7,6 +7,7 @@ import { Window } from "@/components/desktop/Window";
 import { holdMyCode as app } from "@/lib/data";
 import { cn } from "@/lib/utils";
 import { Stickers } from "@/components/desktop/Stickers";
+import { MobileHoldMyCode } from "@/components/mobile/MobileSections";
 
 type Media = "screenshot" | "walkthrough";
 
@@ -101,7 +102,7 @@ function MediaViewer() {
 
 export function HoldMyCode() {
   return (
-    <section id="hold-my-code" aria-labelledby="hmc-title" className="relative scroll-mt-14 px-3 py-10 sm:px-8 sm:py-16">
+    <section id="hold-my-code" aria-labelledby="hmc-title" className="relative scroll-mt-14 px-4 py-7 sm:px-8 md:py-16">
       <Stickers
         items={[
           { src: "/stickers/folder-dev.webp", w: 50, x: "calc(50% + 612px)", y: 180, r: 6 },
@@ -111,6 +112,10 @@ export function HoldMyCode() {
           { text: "\u00af\\_(\u30c4)_/\u00af", mono: true, size: 14, x: "calc(50% + 600px)", y: 900, r: -6 },
         ]}
       />
+      <div className="md:hidden">
+        <MobileHoldMyCode />
+      </div>
+      <div className="hidden md:block">
       <Window
         title="Hold My Code"
         subtitle={`Version ${app.version}`}
@@ -249,6 +254,7 @@ export function HoldMyCode() {
           </div>
         </div>
       </Window>
+      </div>
     </section>
   );
 }
