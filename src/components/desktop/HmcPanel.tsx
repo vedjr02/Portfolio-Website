@@ -44,7 +44,7 @@ function fmtAwake(s: number) {
 }
 
 const label = "text-[10.5px] font-semibold tracking-[0.04em] text-ink-3 uppercase";
-const card = "rounded-[10px] bg-surface/70 px-2.5 py-2 shadow-[0_0_0_0.5px_var(--rule)]";
+const card = "rounded-[10px] bg-[var(--panel-card)] px-2.5 py-2 shadow-[0_0_0_0.5px_var(--rule)]";
 
 function Bar({ value }: { value: number }) {
   return (
@@ -107,7 +107,7 @@ export function HmcPanel({ className, paused = false }: { className?: string; pa
       role="img"
       aria-label={`Hold My Code panel demo: ${working} of 3 agents working, ${holding ? "holding the Mac awake with the lid closed" : "idle, the Mac may sleep"}. Demo values.`}
       className={cn(
-        "vibrant w-[20rem] select-none overflow-hidden rounded-[14px] p-2.5 text-[12px] text-ink shadow-menu",
+        "vibrant-panel w-[20rem] select-none overflow-hidden rounded-[14px] p-2.5 text-[12px] text-ink shadow-menu",
         className
       )}
     >
