@@ -3,7 +3,7 @@ import { ImageResponse } from "next/og";
 export const size = { width: 32, height: 32 };
 export const contentType = "image/png";
 
-/** Browser tab favicon — VA mark matching the nav badge */
+/** Browser tab favicon - VA mark matching the nav badge */
 export default function Icon() {
   return new ImageResponse(
     (
@@ -14,13 +14,13 @@ export default function Icon() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          background: "#3d9bff",
-          borderRadius: "50%",
+          background: "#1d1d1f",
+          borderRadius: "22%",
         }}
       >
         <span
           style={{
-            color: "#061018",
+            color: "#ffffff",
             fontSize: 14,
             fontWeight: 800,
             letterSpacing: "-0.06em",
