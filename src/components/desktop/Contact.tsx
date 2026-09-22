@@ -6,6 +6,7 @@ import { Window } from "@/components/desktop/Window";
 import { useToast } from "@/components/Toast";
 import { profile } from "@/lib/data";
 import { Stickers } from "@/components/desktop/Stickers";
+import { MobileContact } from "@/components/mobile/MobileSections";
 
 /** A Mail compose window. Send hands the draft to the visitor's own mail app. */
 export function Contact() {
@@ -25,7 +26,7 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" aria-labelledby="contact-title" className="relative scroll-mt-14 px-3 pt-10 pb-8 sm:px-8 sm:pt-16">
+    <section id="contact" aria-labelledby="contact-title" className="relative scroll-mt-14 px-4 pt-7 pb-8 sm:px-8 md:pt-16">
       <Stickers
         items={[
           { src: "/stickers/mark.webp", w: 52, x: "calc(50% + 470px)", y: 120, r: 5 },
@@ -34,7 +35,10 @@ export function Contact() {
           { src: "/stickers/folder-dev.webp", w: 48, x: "calc(50% + 500px)", y: 380, r: -6 },
         ]}
       />
-      <div className="mx-auto max-w-[820px]">
+      <div className="md:hidden">
+        <MobileContact />
+      </div>
+      <div className="mx-auto hidden max-w-[820px] md:block">
         <Window
           title="New Message"
           labelId="contact-title"
