@@ -210,7 +210,7 @@ export function HoldMyCode() {
         </div>
 
         {/* agents + release notes */}
-        <div className="grid border-t border-rule lg:grid-cols-[1.1fr_1fr]">
+        <div className="grid border-t border-rule lg:grid-cols-2">
           <div className="px-5 py-10 sm:px-10">
             <h3 className="text-[17px] font-semibold">Agents it watches</h3>
             <ul className="mt-4 flex flex-wrap gap-2">
