@@ -89,7 +89,7 @@ function DockIcon({
         aria-label={item.label}
         aria-current={active ? "location" : undefined}
         style={magnify ? { width: size, height: size } : undefined}
-        className="peer relative block size-11 text-[16px] sm:size-[50px] sm:text-[20px]"
+        className="peer relative block size-[52px] text-[16px] sm:size-[50px] sm:text-[20px]"
       >
         {item.tile}
       </motion.a>
@@ -137,7 +137,7 @@ export function Dock() {
       <ul
         onMouseMove={(e) => mouseX.set(e.clientX)}
         onMouseLeave={() => mouseX.set(Number.POSITIVE_INFINITY)}
-        className="vibrant pointer-events-auto flex items-end gap-2.5 rounded-[22px] px-2.5 pt-2 pb-1 shadow-[0_0_0_0.5px_rgba(255,255,255,0.18),0_10px_30px_-8px_rgba(0,0,0,0.5)] sm:gap-2"
+        className="vibrant pointer-events-auto flex items-end gap-3.5 rounded-[30px] px-3.5 pt-3 pb-2 sm:gap-2.5 sm:rounded-[22px] sm:px-2.5 sm:pt-2 sm:pb-1 shadow-[0_0_0_0.5px_rgba(255,255,255,0.18),0_10px_30px_-8px_rgba(0,0,0,0.5)] sm:gap-2"
       >
         {main.map((item) => (
           <DockIcon key={item.key} item={item} mouseX={mouseX} active={active === item.section} magnify={magnify} />
