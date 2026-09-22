@@ -99,6 +99,7 @@ export function QuickLook({ project, onClose, onStep, position }: Props) {
             transition={{ type: "spring", stiffness: 380, damping: 32 }}
             className="relative flex max-h-[92dvh] w-full max-w-[860px] flex-col overflow-hidden rounded-t-[14px] bg-window shadow-window sm:rounded-[14px]"
           >
+            <span aria-hidden className="mx-auto mt-2 block h-[5px] w-9 shrink-0 rounded-full bg-fill-2 sm:hidden" />
             <div className="flex min-h-12 items-center gap-2 border-b border-rule bg-chrome px-3">
               <button
                 ref={closeRef}
