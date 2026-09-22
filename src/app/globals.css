@@ -1,377 +1,298 @@
 @import "tailwindcss";
 
 /*
-  Paper Studio — Dark Bold
-  Warm charcoal field, jet-blue signal, oversized display type.
-  No glass. No neumorphism. No technical grid.
+  Desktop — the site is a Mac desktop in light appearance.
+  Wallpaper: Golden Gate (dark), Kildare hills as the alternative. Windows are sections,
+  the dock is navigation, Spotlight is search, Quick Look is detail.
+  System blue is the only interface accent; Finder tag colours label groups.
 */
-@theme {
-  --color-bg: #0b0a09;
-  --color-bg-deep: #141210;
-  --color-panel: #161412;
-  --color-ink: #f6f1e8;
-  --color-ink-soft: #b8b0a4;
-  --color-muted: #7d766c;
-  --color-line: #2a2621;
-  --color-accent: #3d9bff;
-  --color-accent-deep: #7cbcff;
-  --color-sage: #7dba9a;
-  --color-sage-soft: #1a2a22;
-  /* ReUI / shadcn token aliases → Paper Studio */
-  --color-primary: #3d9bff;
-  --color-primary-foreground: #061018;
-  --color-muted-foreground: #7d766c;
-  --color-foreground: #f6f1e8;
-  --color-background: #0b0a09;
-  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-syne), ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--font-mono-body), ui-monospace, monospace;
+@theme inline {
+  --color-sky: var(--sky);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-ink-4: var(--ink-4);
+  --color-window: var(--window);
+  --color-surface: var(--surface);
+  --color-chrome: var(--chrome);
+  --color-chrome-2: var(--chrome-2);
+  --color-sidebar: var(--sidebar);
+  --color-zebra: var(--zebra);
+  --color-fill: var(--fill);
+  --color-fill-2: var(--fill-2);
+  --color-rule: var(--rule);
+  --color-select: var(--select);
+  --color-select-soft: var(--select-soft);
+  --color-accent: var(--accent);
+  --color-accent-press: var(--accent-press);
+  --color-live: var(--live);
+
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", var(--font-geist), "Segoe UI", sans-serif;
+  --font-hand: var(--font-hand), "Bradley Hand", cursive;
+  --font-mono: var(--font-geist-mono), ui-monospace, "SF Mono", Menlo, monospace;
+
+  --radius-window: 12px;
+  --shadow-window: var(--window-shadow);
+  --shadow-menu: var(--menu-shadow);
 }
 
+/* Light appearance */
 :root {
-  --background: #0b0a09;
-  --foreground: #f6f1e8;
+  color-scheme: light;
+  --sky: #15141d;
+  --ink: #1d1d1f;
+  --ink-2: #3a3a3c;
+  --ink-3: #6e6e73;
+  --ink-4: #8a8a8e;
+  --window: #ffffff;
+  --surface: #ffffff;
+  --chrome: #f5f5f4;
+  --chrome-2: #ececeb;
+  --sidebar: #eeefee;
+  --zebra: #f4f5f5;
+  --fill: rgba(0, 0, 0, 0.06);
+  --fill-2: rgba(0, 0, 0, 0.09);
+  --rule: rgba(0, 0, 0, 0.09);
+  --select: #0a6cff;
+  --select-soft: #dbe8fd;
+  --accent: #0a6cff;
+  --accent-press: #0058d6;
+  --live: #28a745;
+  --menubar: #f3f3f2;
+  --vibrant: rgba(247, 247, 246, 0.97);
+  --window-shadow: 0 0 0 0.5px rgba(0, 0, 0, 0.22), 0 2px 6px rgba(0, 0, 0, 0.06), 0 24px 60px -12px rgba(40, 28, 16, 0.4);
+  --menu-shadow: 0 0 0 0.5px rgba(0, 0, 0, 0.18), 0 12px 32px -6px rgba(0, 0, 0, 0.28);
+  --plain-bg: #ffffff;
+  --plain-hover: #f7f7f7;
+  --plain-press: #ededed;
+}
+
+/* Dark appearance, set on <html data-theme="dark"> */
+:root[data-theme="dark"] {
   color-scheme: dark;
+  --sky: #15141d;
+  --ink: #f5f5f7;
+  --ink-2: #d4d4d8;
+  --ink-3: #a1a1a6;
+  --ink-4: #7c7c80;
+  --window: #1e1e20;
+  --surface: #2a2a2d;
+  --chrome: #29292c;
+  --chrome-2: #232326;
+  --sidebar: #252528;
+  --zebra: #232326;
+  --fill: rgba(255, 255, 255, 0.08);
+  --fill-2: rgba(255, 255, 255, 0.13);
+  --rule: rgba(255, 255, 255, 0.1);
+  --select: #0a6cff;
+  --select-soft: rgba(10, 132, 255, 0.24);
+  --accent: #2f8bff;
+  --accent-press: #0a6cff;
+  --live: #32d74b;
+  --menubar: #1f1f24;
+  --vibrant: rgba(40, 40, 44, 0.97);
+  --window-shadow: 0 0 0 0.5px rgba(255, 255, 255, 0.14), 0 2px 6px rgba(0, 0, 0, 0.3), 0 30px 70px -12px rgba(0, 0, 0, 0.7);
+  --menu-shadow: 0 0 0 0.5px rgba(255, 255, 255, 0.14), 0 14px 36px -6px rgba(0, 0, 0, 0.6);
+  --plain-bg: #3a3a3d;
+  --plain-hover: #444448;
+  --plain-press: #505054;
 }
 
 html {
-  background: var(--background);
-  color: var(--foreground);
-  overflow-x: hidden;
-  max-width: 100%;
+  background: var(--color-sky);
+  color: var(--color-ink);
   scroll-behavior: smooth;
+  scroll-padding-top: 56px;
+  -webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 body {
   background: transparent;
-  color: var(--foreground);
-  font-family: var(--font-sans), system-ui, sans-serif;
-  font-weight: 500;
-  letter-spacing: -0.01em;
-  overflow-x: hidden;
-  max-width: 100%;
+  font-family: var(--font-sans);
+  letter-spacing: -0.006em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;
 }
 
-.font-display {
-  font-family: var(--font-display), system-ui, sans-serif;
-  font-weight: 800;
-  letter-spacing: -0.04em;
-  color: var(--color-ink);
+::selection {
+  background: #b3d1ff;
+  color: #0b1f3a;
 }
 
-.font-mono {
-  font-family: var(--font-mono), monospace;
-  font-weight: 500;
-  letter-spacing: 0.04em;
+:focus-visible:not(input, textarea) {
+  outline: 3px solid color-mix(in oklab, var(--color-accent) 55%, transparent);
+  outline-offset: 2px;
+  border-radius: 6px;
 }
 
-::-webkit-scrollbar {
-  width: 10px;
+input,
+textarea {
+  caret-color: var(--color-accent);
 }
-::-webkit-scrollbar-track {
-  background: var(--background);
+
+a {
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
 }
-::-webkit-scrollbar-thumb {
-  background: #3a342c;
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Scrollbars: macOS overlay style inside windows */
+.mac-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.28) transparent;
+}
+.mac-scroll::-webkit-scrollbar {
+  width: 11px;
+  height: 11px;
+}
+.mac-scroll::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.26);
   border-radius: 999px;
-  border: 2px solid var(--background);
+  border: 3px solid transparent;
+  background-clip: content-box;
 }
-::-webkit-scrollbar-thumb:hover {
-  background: #524a40;
-}
-
-.surface {
-  background: color-mix(in oklab, var(--color-panel) 52%, transparent);
-  border: 1px solid color-mix(in oklab, white 10%, var(--color-line));
-  border-radius: 1.75rem;
-  backdrop-filter: blur(14px) saturate(1.2);
-  -webkit-backdrop-filter: blur(14px) saturate(1.2);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
-}
-
-.surface-quiet {
-  background: color-mix(in oklab, var(--color-panel) 40%, transparent);
-  border: 1px solid color-mix(in oklab, white 8%, var(--color-line));
-  border-radius: 1.25rem;
-  overflow: hidden;
-  backdrop-filter: blur(12px) saturate(1.15);
-  -webkit-backdrop-filter: blur(12px) saturate(1.15);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
-}
-
-.pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  border-radius: 999px;
-  border: 1px solid color-mix(in oklab, white 8%, var(--color-line));
-  background: color-mix(in oklab, var(--color-bg-deep) 55%, transparent);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  color: var(--color-ink-soft);
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  padding: 0.4rem 0.85rem;
-}
-
-.pill-accent {
-  border-color: color-mix(in oklab, var(--color-accent) 45%, var(--color-line));
-  background: color-mix(in oklab, var(--color-accent) 12%, transparent);
-  color: var(--color-accent-deep);
-}
-
-.btn-primary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.4rem;
-  border-radius: 999px;
-  background: var(--color-accent);
-  color: #061018;
-  font-weight: 800;
-  padding: 0.9rem 1.4rem;
-  transition:
-    filter 0.2s ease,
-    transform 0.2s ease;
-}
-.btn-primary:hover {
-  filter: brightness(1.08);
-}
-
-.btn-secondary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.4rem;
-  border-radius: 999px;
+.mac-scroll::-webkit-scrollbar-track {
   background: transparent;
-  color: var(--color-ink);
-  border: 1px solid var(--color-line);
-  font-weight: 700;
-  padding: 0.9rem 1.4rem;
-  transition:
-    border-color 0.2s ease,
-    background 0.2s ease;
-}
-.btn-secondary:hover {
-  border-color: var(--color-ink-soft);
-  background: var(--color-bg-deep);
 }
 
-.btn-brief {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.35rem;
-  border: none;
-  background: transparent;
-  color: var(--color-accent-deep);
-  font-weight: 700;
-  min-height: 2.75rem;
-  padding: 0.65rem 0.75rem;
-  border-radius: 0.75rem;
-  text-decoration: underline;
-  text-decoration-thickness: 1.5px;
-  text-underline-offset: 0.28em;
-  text-decoration-color: color-mix(in oklab, var(--color-accent) 45%, transparent);
-  transition:
-    color 0.2s ease,
-    text-decoration-color 0.2s ease,
-    background 0.2s ease;
+/* The page itself scrolls without a visible scrollbar */
+html {
+  scrollbar-width: none;
 }
-.btn-brief:hover {
-  color: var(--color-accent);
-  text-decoration-color: var(--color-accent);
-  background: color-mix(in oklab, var(--color-accent) 8%, transparent);
-}
-
-.neu,
-.neu-sm,
-.neu-inset,
-.neu-btn,
-.neu-hover,
-.glass,
-.glass-hover,
-.panel {
-  background: var(--color-panel) !important;
-  box-shadow: none !important;
-  border: 1px solid var(--color-line) !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-  border-radius: 1.5rem;
-}
-
-.chip {
-  border: 1px solid var(--color-line);
-  background: var(--color-bg-deep);
-  color: var(--color-ink-soft);
-  font-size: 11px;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  font-weight: 700;
-  border-radius: 999px;
-  padding: 0.35rem 0.75rem;
-}
-
-.chip-active {
-  border-color: var(--color-accent);
-  color: var(--color-accent-deep);
-  background: color-mix(in oklab, var(--color-accent) 12%, transparent);
-}
-
-.btn-solid {
-  background: var(--color-accent);
-  color: #061018;
-  font-weight: 800;
-  border: 1px solid var(--color-accent);
-  border-radius: 999px;
-  transition: filter 0.2s ease;
-}
-.btn-solid:hover {
-  filter: brightness(1.08);
-}
-
-.btn-ghost {
-  background: transparent;
-  color: var(--color-ink);
-  border: 1px solid var(--color-line);
-  border-radius: 999px;
-  transition:
-    border-color 0.2s ease,
-    background 0.2s ease;
-}
-.btn-ghost:hover {
-  border-color: var(--color-ink-soft);
-  background: var(--color-bg-deep);
-}
-
-.hide-scrollbar::-webkit-scrollbar {
+html::-webkit-scrollbar {
   display: none;
 }
-.hide-scrollbar {
-  scrollbar-width: none;
-  -ms-overflow-style: none;
+
+/* Vibrancy: the translucent material macOS uses for bars and sidebars */
+.vibrant {
+  background: var(--vibrant);
 }
 
-@keyframes marquee {
-  0% {
-    transform: translate3d(0, 0, 0);
-  }
-  100% {
-    transform: translate3d(-50%, 0, 0);
-  }
+/* Push buttons, drawn the way AppKit draws them */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  min-height: 2.25rem;
+  padding: 0.4rem 0.95rem;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 550;
+  line-height: 1.2;
+  white-space: nowrap;
+  text-decoration: none;
+  cursor: default;
+  transition: background-color 120ms ease, box-shadow 120ms ease, transform 120ms ease;
+  user-select: none;
 }
-.animate-marquee {
-  animation: marquee 40s linear infinite;
+.btn:active {
+  transform: translateY(0.5px);
 }
-
-@keyframes pulse-dot {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.4;
-  }
+.btn-default {
+  color: #fff;
+  background: linear-gradient(to bottom, #2b84ff, #0a6cff);
+  box-shadow: inset 0 0.5px 0 rgba(255, 255, 255, 0.35), 0 0 0 0.5px rgba(0, 60, 160, 0.55), 0 1px 2px rgba(0, 40, 120, 0.25);
 }
-.animate-pulse-dot {
-  animation: pulse-dot 2s ease-in-out infinite;
+.btn-default:hover {
+  background: linear-gradient(to bottom, #1f7bff, #0063ee);
 }
-
-@keyframes float-soft {
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0);
-  }
-  50% {
-    transform: translate3d(0, -12px, 0);
-  }
+.btn-default:active {
+  background: var(--color-accent-press);
 }
-.animate-float-soft {
-  animation: float-soft 9s ease-in-out infinite;
+.btn-plain {
+  color: var(--color-ink);
+  background: var(--plain-bg);
+  box-shadow: 0 0 0 0.5px rgba(0, 0, 0, 0.2), 0 1px 1.5px rgba(0, 0, 0, 0.12);
 }
-
-@keyframes aurora-a {
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0) scale(1);
-    opacity: 1;
-  }
-  50% {
-    transform: translate3d(2.5%, 1.5%, 0) scale(1.04);
-    opacity: 0.92;
-  }
+.btn-plain:hover {
+  background: var(--plain-hover);
 }
-.animate-aurora-a {
-  animation: aurora-a 22s ease-in-out infinite;
-  will-change: transform;
+.btn-plain:active {
+  background: var(--plain-press);
 }
-
-@keyframes aurora-b {
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0) scale(1);
-    opacity: 1;
-  }
-  50% {
-    transform: translate3d(-2%, 2%, 0) scale(1.05);
-    opacity: 0.9;
-  }
+.btn-sm {
+  min-height: 1.85rem;
+  padding: 0.25rem 0.7rem;
+  font-size: 0.8125rem;
+  border-radius: 7px;
 }
-.animate-aurora-b {
-  animation: aurora-b 28s ease-in-out infinite;
-  will-change: transform;
-}
-
-@keyframes aurora-c {
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0) scale(1);
-    opacity: 1;
+@media (pointer: coarse) {
+  .btn {
+    min-height: 2.75rem;
   }
-  50% {
-    transform: translate3d(1.5%, -1.5%, 0) scale(1.03);
-    opacity: 0.88;
-  }
-}
-.animate-aurora-c {
-  animation: aurora-c 32s ease-in-out infinite;
-  will-change: transform;
-}
-
-@keyframes preview-shimmer {
-  0% {
-    background-position: 100% 0;
-  }
-  100% {
-    background-position: -100% 0;
+  .btn-sm {
+    min-height: 2.5rem;
   }
 }
 
-.preview-skeleton {
-  background: linear-gradient(
-    110deg,
-    #161412 0%,
-    #161412 35%,
-    #2a2621 50%,
-    #161412 65%,
-    #161412 100%
-  );
-  background-size: 200% 100%;
-  animation: preview-shimmer 1.35s ease-in-out infinite;
+.cursor-default-all,
+.cursor-default-all * {
+  cursor: default;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .animate-marquee,
-  .animate-pulse-dot,
-  .animate-float-soft,
-  .animate-aurora-a,
-  .animate-aurora-b,
-  .animate-aurora-c,
-  .preview-skeleton {
-    animation: none !important;
-  }
+a.btn,
+button.btn {
+  cursor: pointer;
+}
+
+/* Wallpaper layers that belong to dark appearance fade in with it */
+.wp-dark {
+  opacity: 0;
+  transition: opacity 600ms ease;
+}
+:root[data-theme="dark"] .wp-dark {
+  opacity: 1;
+}
+
+
+/* Control Center slider: a fat macOS track that fills white from the left */
+.cc-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+}
+.cc-slider::-webkit-slider-runnable-track {
+  height: 22px;
+  border-radius: 999px;
+  background: var(--fill-2);
+}
+.cc-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: 0 0 0 0.5px rgba(0, 0, 0, 0.25), 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+.cc-slider::-moz-range-track {
+  height: 22px;
+  border-radius: 999px;
+  background: var(--fill-2);
+}
+.cc-slider::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  border: 0;
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: 0 0 0 0.5px rgba(0, 0, 0, 0.25), 0 1px 3px rgba(0, 0, 0, 0.3);
 }
