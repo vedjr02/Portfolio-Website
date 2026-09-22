@@ -30,8 +30,8 @@ export function Hero() {
       aria-labelledby="hero-title"
       className="relative flex flex-col px-4 pt-[calc(env(safe-area-inset-top)+6.5rem)] pb-10 md:min-h-[100svh] md:pb-32 sm:px-8 lg:pt-[calc(env(safe-area-inset-top)+6rem)]"
     >
-      <div className="mx-auto w-full max-w-[1180px] lg:flex lg:flex-1 lg:flex-col lg:justify-center">
-      <div className="max-w-[46rem] lg:max-w-[min(46rem,calc(100vw-30rem))] lg:py-[4vh]">
+      <div className="mx-auto w-full max-w-[1180px] lg:flex lg:flex-1 lg:flex-col">
+      <div className="max-w-[46rem] lg:flex lg:max-w-[min(46rem,calc(100vw-30rem))] lg:flex-1 lg:flex-col lg:pt-[3vh]">
         <motion.h1
           id="hero-title"
           {...rise(0.05)}
@@ -47,9 +47,11 @@ export function Hero() {
           Business analyst who ships software.
         </motion.p>
 
+        {/* On desktop the copy sits low, leaving the middle open for the doodle arrow */}
+        <div className="lg:mt-auto lg:pt-[18vh]">
         <motion.p
           {...rise(0.22)}
-          className="mt-6 max-w-[34rem] text-[clamp(1.02rem,1.5vw,1.2rem)] lg:mt-9 leading-[1.55] text-pretty text-white/70"
+          className="mt-6 max-w-[34rem] text-[clamp(1.02rem,1.5vw,1.2rem)] lg:mt-0 leading-[1.55] text-pretty text-white/70"
         >
           I scope a problem the way an analyst does, then build the fix myself.
           The latest is{" "}
@@ -82,6 +84,7 @@ export function Hero() {
             Email me
           </a>
         </motion.div>
+        </div>
       </div>
 
       {/* The panel hangs from its menu bar icon, top right, like the real app */}
@@ -103,7 +106,7 @@ export function Hero() {
 
       <motion.dl
           {...rise(0.36)}
-          className="mx-auto mt-10 hidden w-full md:grid max-w-[1180px] grid-cols-[auto_1fr] gap-x-5 gap-y-1.5 text-[14px] lg:mt-auto lg:grid-cols-[auto_auto_auto_auto_auto_1fr] lg:gap-x-2.5 lg:border-t lg:border-white/15 lg:pt-5"
+          className="mx-auto mt-10 hidden w-full md:grid max-w-[1180px] grid-cols-[auto_1fr] gap-x-5 gap-y-1.5 text-[14px] lg:mt-12 lg:grid-cols-[auto_auto_auto_auto_auto_1fr] lg:gap-x-2.5 lg:border-t lg:border-white/15 lg:pt-5"
         >
           <dt className="text-white/55">Based in</dt>
           <dd className="text-white/90 lg:mr-10">{profile.location}</dd>

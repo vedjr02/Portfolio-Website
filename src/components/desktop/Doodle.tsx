@@ -32,8 +32,10 @@ function wobblyPath(a: Pt, c1: Pt, c2: Pt, b: Pt) {
   const head = [ang + Math.PI - 0.5, ang + Math.PI + 0.42].map(
     (a2) => `M${last.x.toFixed(1)} ${last.y.toFixed(1)} L${(last.x + Math.cos(a2) * len).toFixed(1)} ${(last.y + Math.sin(a2) * len).toFixed(1)}`
   );
-  const mid = pts[Math.round(n * 0.78)];
-  return { d, head, mid };
+  // tuck the note under the last stretch of the line, clear of wherever it passes
+  const noteW = 290;
+  const under = pts.filter((p) => p.x >= last.x - noteW).reduce((y, p) => Math.max(y, p.y), last.y);
+  return { d, head, note: { x: last.x - noteW, y: under + 16 } };
 }
 
 /**
@@ -66,12 +68,12 @@ export function Doodle({
       const fr = f.getBoundingClientRect();
       const para = (f.closest("p") ?? f).getBoundingClientRect();
       const tr = t.getBoundingClientRect();
-      // start just under the highlighted words, finish at the panel's left edge
-      // dip under the paragraph, then rise into the gap and land on the panel's left edge
-      const a = { x: fr.left - cr.left + fr.width * 0.5, y: para.bottom - cr.top + 10 };
+      // start above the paragraph in line with the highlighted words, rise through the open middle of
+      // the hero and land on the panel's left edge
+      const a = { x: fr.left - cr.left + fr.width * 0.5, y: para.top - cr.top - 14 };
       const b = { x: tr.left - cr.left - 16, y: tr.top - cr.top + 300 };
-      const c1 = { x: a.x + 30, y: a.y + 78 };
-      const c2 = { x: b.x - 170, y: b.y + 110 };
+      const c1 = { x: a.x + 10, y: a.y - 150 };
+      const c2 = { x: Math.max(a.x + 140, b.x - 440), y: b.y + 4 };
       const u = { x1: fr.left - cr.left, x2: fr.right - cr.left, y: fr.bottom - cr.top + 1 };
       setGeo({ ...wobblyPath(a, c1, c2, b), underline: `M${u.x1} ${u.y + 1} Q${(u.x1 + u.x2) / 2} ${u.y + 4} ${u.x2} ${u.y - 1}` });
     };
@@ -139,7 +141,7 @@ export function Doodle({
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 2.1 }}
         className="font-hand absolute text-[22px] leading-none whitespace-nowrap text-white/75"
-        style={{ left: geo.mid.x - 150, top: geo.mid.y - 62, rotate: "-5deg" }}
+        style={{ left: geo.note.x, top: geo.note.y, rotate: "-4deg" }}
       >
         the app I built, running live
       </motion.span>
