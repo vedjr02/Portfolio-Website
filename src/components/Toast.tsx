@@ -5,25 +5,31 @@ import {
   useCallback,
   useContext,
   useMemo,
+  useRef,
   useState,
   type ReactNode,
 } from "react";
 import { AnimatePresence, motion } from "motion/react";
 
+type Note = { id: number; title: string; body?: string };
+
 type ToastContextValue = {
-  toast: (message: string) => void;
+  toast: (title: string, body?: string) => void;
 };
 
 const ToastContext = createContext<ToastContextValue | null>(null);
 
+/** Feedback arrives as a macOS notification banner, top right. */
 export function ToastProvider({ children }: { children: ReactNode }) {
-  const [message, setMessage] = useState<string | null>(null);
+  const [note, setNote] = useState<Note | null>(null);
+  const seq = useRef(0);
 
-  const toast = useCallback((next: string) => {
-    setMessage(next);
+  const toast = useCallback((title: string, body?: string) => {
+    const id = ++seq.current;
+    setNote({ id, title, body });
     window.setTimeout(() => {
-      setMessage((current) => (current === next ? null : current));
-    }, 2200);
+      setNote((current) => (current?.id === id ? null : current));
+    }, 3200);
   }, []);
 
   const value = useMemo(() => ({ toast }), [toast]);
@@ -31,23 +37,35 @@ export function ToastProvider({ children }: { children: ReactNode }) {
   return (
     <ToastContext.Provider value={value}>
       {children}
-      <AnimatePresence>
-        {message && (
-          <motion.div
-            role="status"
-            aria-live="polite"
-            initial={{ opacity: 0, y: 16, scale: 0.98 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 10, scale: 0.98 }}
-            transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
-            className="pointer-events-none fixed inset-x-0 bottom-[max(1.5rem,env(safe-area-inset-bottom))] z-[90] flex justify-center px-4"
-          >
-            <div className="rounded-full border border-line bg-panel px-4 py-2.5 text-sm font-semibold text-ink shadow-[0_12px_40px_rgba(0,0,0,0.45)]">
-              <span className="text-accent">✓</span> {message}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <div
+        role="status"
+        aria-live="polite"
+        className="pointer-events-none fixed top-[calc(env(safe-area-inset-top)+2.75rem)] right-3 left-3 z-[90] flex justify-end sm:left-auto"
+      >
+        <AnimatePresence>
+          {note && (
+            <motion.div
+              key={note.id}
+              initial={{ opacity: 0, x: 40 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: 40 }}
+              transition={{ type: "spring", stiffness: 420, damping: 34 }}
+              className="vibrant flex w-full items-start gap-3 rounded-[16px] p-3 shadow-menu sm:w-[22rem]"
+            >
+              <span
+                aria-hidden
+                className="grid size-9 shrink-0 place-items-center rounded-[9px] bg-ink text-[11px] font-bold text-window"
+              >
+                VA
+              </span>
+              <span className="min-w-0 text-[13px] leading-snug">
+                <span className="block font-semibold">{note.title}</span>
+                {note.body && <span className="block truncate text-ink-2">{note.body}</span>}
+              </span>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
     </ToastContext.Provider>
   );
 }
