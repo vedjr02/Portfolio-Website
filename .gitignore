@@ -51,3 +51,6 @@ Golden Gate 6016x4147.png
 # local screenshots / reports
 /.shots/
 /.lighthouse/
+
+# portrait debugging preview
+/assets/portrait/preview-luma.png
