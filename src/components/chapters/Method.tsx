@@ -3,7 +3,7 @@ import { method } from "@/content/method";
 
 export function Method() {
   return (
-    <Chapter id="method" poster="columns" label="01 — Method">
+    <Chapter id="method" label="01 — Method">
       <Scene state="histogram" className="wrap flex items-center py-[18vh]">
         <div className="scrim max-w-[46rem]">
           <Eyebrow index="01">Method · sort before you build</Eyebrow>

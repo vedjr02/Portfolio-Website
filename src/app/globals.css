@@ -160,9 +160,8 @@ body {
 }
 
 /*
-  A chapter is a tall section. Its stage (poster frame) sticks to the viewport
-  while the copy scrolls over it. When the engine is running the stage hides and
-  the persistent canvas shows through; the poster is the static tier.
+  A chapter is a run of scenes. Each scene's stage (its poster frame) sticks to the
+  viewport while the copy scrolls over it: the static tier and the no-JS view.
 */
 .chapter {
   position: relative;
@@ -186,11 +185,34 @@ body {
   object-fit: cover;
 }
 
+/* with the engine running the posters are never fetched (display: none skips lazy images) */
 html[data-engine="on"] .stage {
-  visibility: hidden;
+  display: none;
 }
 
-.chapter-body {
+.scene {
+  position: relative;
+}
+
+/* a veil where the copy lives: left third on desktop, lower half on phones */
+.stage::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgb(12 11 16 / 0.72), rgb(12 11 16 / 0.35) 34%, rgb(12 11 16 / 0) 52%);
+}
+
+@media (max-width: 767px), (max-aspect-ratio: 1/1) {
+  .stage::after {
+    background: linear-gradient(to bottom, rgb(12 11 16 / 0) 38%, rgb(12 11 16 / 0.7) 60%);
+  }
+  /* phones: the shape owns the top half of the first screen, copy starts below it */
+  .scene-body:not(.hero-body) {
+    padding-top: 48svh !important;
+  }
+}
+
+.scene-body {
   position: relative;
   z-index: 1;
 }

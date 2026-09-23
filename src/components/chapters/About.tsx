@@ -4,7 +4,7 @@ import { profile } from "@/content/profile";
 
 export function About() {
   return (
-    <Chapter id="about" poster="portrait" label="06 — About">
+    <Chapter id="about" label="06 — About">
       <Scene state="portrait" className="wrap grid items-center py-[16vh] lg:grid-cols-12" minHeight="140svh">
         <div className="scrim lg:col-span-5">
           <Eyebrow index="06">About</Eyebrow>

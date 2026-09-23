@@ -4,8 +4,8 @@ import { profile } from "@/content/profile";
 
 export function Hero() {
   return (
-    <Chapter id="hero" poster="noise" label="00 — Noise">
-      <Scene state="noise" className="wrap flex flex-col pt-[calc(var(--nav-h)+env(safe-area-inset-top))]">
+    <Chapter id="hero" label="00 — Noise">
+      <Scene state="noise" className="hero-body wrap flex flex-col pt-[calc(var(--nav-h)+env(safe-area-inset-top))]">
         <div className="flex flex-1 flex-col justify-end pb-[max(40px,7vh)]">
           <p className="t-label mb-6 flex items-center gap-3">
             <span className="text-signal">00</span>

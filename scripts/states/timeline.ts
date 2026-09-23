@@ -138,7 +138,7 @@ export function timeline(): Built[] {
     pitch: 0,
     fov: 30,
     desktop: [0.03, 0.34, 0.97, 0.92] as [number, number, number, number],
-    mobile: [0.02, 0.42, 0.98, 0.72] as [number, number, number, number],
+    mobile: [0.02, 0.1, 0.98, 0.42] as [number, number, number, number],
   };
 
   // one shared order so only the claims move between the two states
@@ -160,7 +160,7 @@ export function timeline(): Built[] {
       count: COUNT,
       anchors: b.anchors,
       categories,
-      camera: { ...camTimeline, center: [0, -0.45, 0], size: [X1 - X0 + 0.9, 5.2, 0.5], desktop: [0.03, 0.12, 0.97, 0.72], mobile: [0.02, 0.3, 0.98, 0.64] },
+      camera: { ...camTimeline, center: [0, -0.45, 0], size: [X1 - X0 + 0.9, 5.2, 0.5], desktop: [0.03, 0.12, 0.97, 0.72], mobile: [0.02, 0.08, 0.98, 0.46] },
       labels: [...years, ...lanes, crossLabel, { text: `Rejected · ${rejectedClaims.length} claims`, pos: [BIN.x - BIN.w / 2, BIN.y - 0.28, 0], kind: "bin" }],
       items: [...items.filter((it) => it.id < nvidiaEvents.length), ...binItems],
     },

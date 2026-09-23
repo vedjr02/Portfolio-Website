@@ -4,7 +4,7 @@ import { holdMyCode as app } from "@/content/holdMyCode";
 
 export function Flagship() {
   return (
-    <Chapter id="flagship" poster="macbook" label="02 — Flagship">
+    <Chapter id="flagship" label="02 — Flagship">
       <Scene state="macbook" className="wrap grid items-center gap-12 py-[14vh] lg:grid-cols-12" minHeight="140svh">
         <div className="scrim lg:col-span-5">
           <Eyebrow index="02">Flagship · macOS app</Eyebrow>

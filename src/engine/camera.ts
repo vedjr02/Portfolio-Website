@@ -69,9 +69,12 @@ export function frame(spec: Pick<CameraSpec, "center" | "size" | "yaw" | "pitch"
   };
 }
 
-/** Screen region for a spec on this viewport (phones use the mobile region). */
-export function regionFor(spec: CameraSpec, width: number): Region {
-  return width < 768 ? spec.mobile : spec.desktop;
+/** Portrait viewports (phones, tablets upright) use the tall layout. */
+export const isTall = (width: number, height: number) => width < 768 || height >= width;
+
+/** Screen region for a spec on this viewport. */
+export function regionFor(spec: CameraSpec, width: number, height: number): Region {
+  return isTall(width, height) ? spec.mobile : spec.desktop;
 }
 
 export const lerp = (a: number, b: number, t: number) => a + (b - a) * t;

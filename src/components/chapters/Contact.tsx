@@ -3,7 +3,7 @@ import { contact } from "@/content/contact";
 
 export function Contact() {
   return (
-    <Chapter id="contact" poster="point" label="07 — Contact">
+    <Chapter id="contact" label="07 — Contact">
       <Scene state="point" className="wrap flex flex-col justify-end pt-[20vh] pb-[12vh]" minHeight="110svh">
         <Eyebrow index="07">Contact · converge</Eyebrow>
         <h2 id="contact-title" className="t-chapter mt-6 max-w-[16ch]">

@@ -5,7 +5,7 @@ export function Meridian() {
   const bottleneck = processMap.edges.find((e) => e.bottleneck)!;
   const label = (id: string) => processMap.nodes.find((n) => n.id === id)!.label;
   return (
-    <Chapter id="meridian" poster="process" label="04 — In progress">
+    <Chapter id="meridian" label="04 — In progress">
       <Scene state="process" className="wrap flex flex-col justify-between gap-16 py-[16vh]" minHeight="170svh">
         <div className="scrim max-w-[42rem]">
           <Eyebrow index="04">{meridianRoom.eyebrow}</Eyebrow>

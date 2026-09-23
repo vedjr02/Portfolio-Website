@@ -5,7 +5,7 @@ const sorted = [...projects].sort((a, b) => b.sort.localeCompare(a.sort));
 
 export function Index() {
   return (
-    <Chapter id="index" poster="clusters" label="05 — Index">
+    <Chapter id="index" label="05 — Index">
       <Scene state="clusters" className="wrap flex items-end pb-[8vh]" minHeight="110svh">
         <div className="scrim max-w-[42rem]">
           <Eyebrow index="05">Index · all {projects.length} projects</Eyebrow>

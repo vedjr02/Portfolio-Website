@@ -46,7 +46,7 @@ function Links({ room }: { room: Room }) {
 export function NvidiaRoom() {
   const c = nvidiaCrossover;
   return (
-    <Chapter id="nvidia" poster="timeline" label="03.1 — NVIDIA">
+    <Chapter id="nvidia" label="03.1 — NVIDIA">
       <Scene state="timeline" className="wrap pt-[18vh]" minHeight="130svh">
         <div className="scrim max-w-[44rem]">
           <Eyebrow index="03.1">{nvidiaRoom.eyebrow}</Eyebrow>
@@ -69,12 +69,12 @@ export function NvidiaRoom() {
       </Scene>
 
       <Scene state="crossover" className="wrap flex items-center" minHeight="130svh">
-        <div className="scrim grid w-full gap-10 lg:grid-cols-12">
-          <div className="lg:col-span-6">
+        <div className="scrim max-w-[34rem]">
+          <div>
             <p className="t-label text-signal">The crossover</p>
             <p className="t-chapter mt-5">Six months before ChatGPT.</p>
           </div>
-          <div className="self-end lg:col-span-5 lg:col-start-8">
+          <div className="mt-8">
             <p className="t-body">
               In the quarter to {longDate(c.end)} ({c.quarter.replace("FY", "fiscal ")}), data centre revenue passed gaming
               for good: <span className="t-mono text-paper">{money(c.dataCenter)}</span> against{" "}
@@ -129,7 +129,7 @@ export function AdflexRoom() {
   const { peak, min, max } = tariffSurface;
   const hh = (h: number) => `${String(h).padStart(2, "0")}:00`;
   return (
-    <Chapter id="adflex" poster="surface" label="03.2 — AdFlex">
+    <Chapter id="adflex" label="03.2 — AdFlex">
       <Scene state="surface" className="wrap flex flex-col justify-between gap-16 py-[16vh]" minHeight="160svh">
         <div className="scrim max-w-[40rem]">
           <Eyebrow index="03.2">{adflexRoom.eyebrow}</Eyebrow>

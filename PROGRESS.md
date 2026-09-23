@@ -1,7 +1,7 @@
 # PROGRESS — v3 "SIGNAL"
 
-**Current phase:** 1 — Art direction
-**Current task:** 1.6 Poster composition
+**Current phase:** 2 — Signal engine spike
+**Current task:** 2.1 Engine core
 
 Resume prompt: *"Resume the autonomous loop: read docs/BRIEF.md, loop-harness rules in PROGRESS.md header, and continue from the first unchecked task."*
 
@@ -84,10 +84,10 @@ Then, and only then, write `HANDOFF.md`: the preview URL, what was built, the fi
 - [x] 1.3 State builders A: noise, histogram, method columns, MacBook (procedural GLB → surface sampling), NVIDIA timeline + rejected bin
 - [x] 1.4 State builders B: Starbucks braid, AdFlex tariff surface, Meridian process map, GridPeer, 21 clusters, portrait (mask + depth), converge point
 - [x] 1.5 `scripts/build-states.ts` → `public/states/*.bin.gz` + manifest; Canvas2D poster renderer → `public/posters/*`
-- [ ] 1.6 Poster composition: Hero, Method, Flagship
-- [ ] 1.7 Poster composition: Cases (3 rooms), Systems
-- [ ] 1.8 Poster composition: Index, About, Contact
-- [ ] 1.9 Phase 1 review at 390/768/1440/1920; fix-ups
+- [x] 1.6 Poster composition: Hero, Method, Flagship
+- [x] 1.7 Poster composition: Cases (3 rooms), Systems
+- [x] 1.8 Poster composition: Index, About, Contact
+- [x] 1.9 Phase 1 review at 390/768/1440/1920; fix-ups
 
 ### Phase 2 — Signal engine spike (`/lab`)
 - [ ] 2.1 Engine core: WebGPURenderer (WebGPU → WebGL2), DPR clamp, resize, loop, visibility/offscreen pause
@@ -188,9 +188,14 @@ Then, and only then, write `HANDOFF.md`: the preview URL, what was built, the fi
 | 5 | 0.5 profile README username fix | pushed to `claude/elegant-hawking-a419ix` in vedjrr/vedjr02 | 92e3e6e (vedjr02) |
 | — | Phase 0 review | no visual output; plan + content verified | — |
 | 6 | 1.1 + 1.2 tokens, fonts, nav, footer, 9 chapters with real copy | green; screens at 1440/390 checked (type reads as editorial; right side reserved for particles) | 74cbc48 |
-| 7 | 1.3–1.5 state builders (13 states from real data), build-states → 1.18 MB gz, Canvas2D poster renderer → 22 posters | camera framing unit-tested; posters reviewed over 3 passes (density cap per state added) | (this commit) |
+| 7 | 1.3–1.5 state builders (13 states from real data), build-states → 1.18 MB gz, Canvas2D poster renderer → 22 posters | camera framing unit-tested; posters reviewed over 3 passes (density cap per state added) | 9234fe8 |
+| 8 | 1.6–1.9 per-scene posters, copy veil, portrait-orientation layout, crossover layout; phase-1 gate shots (390/768/1440/1920) in docs/shots/phase-1 | frames read as posters with motion off at all four sizes | (this commit) |
 
 ---
+
+## Phase status notes
+
+- **Phase 1 (done):** every scene has a real poster frame drawn from its state data; copy/particle composition checked at 390, 768, 1440 and 1920. Gate screenshots: `docs/shots/phase-1/`. Known gap: the MacBook screen still reads noisy behind the DOM panel (revisit with the engine's screen category in 3.4).
 
 ## Blockers
 

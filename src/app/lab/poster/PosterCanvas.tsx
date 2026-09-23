@@ -59,7 +59,7 @@ export function PosterCanvas() {
       const src = meta.source ? manifest.states[meta.source] : meta;
       const data = src.file ? await loadStateBuffer(`/states/${src.file}`) : null;
 
-      const f = frame(meta.camera, W, H, regionFor(meta.camera, W));
+      const f = frame(meta.camera, W, H, regionFor(meta.camera, W, H));
       const cam = new PerspectiveCamera(f.fov, W / H, 0.05, 200);
       cam.position.set(...f.position);
       cam.lookAt(new Vector3(...f.target));

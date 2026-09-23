@@ -15,7 +15,7 @@ const arg = (k, d) => {
 const url = arg("url", "http://localhost:3100");
 const only = arg("only", "")?.split(",").filter(Boolean);
 const renderer = arg("renderer", "poster");
-const STATES = ["noise", "columns", "macbook", "macbook-closed", "timeline", "timeline-rejected", "surface", "process", "clusters", "portrait", "point"];
+const STATES = ["noise", "histogram", "columns", "macbook", "macbook-closed", "timeline", "timeline-rejected", "crossover", "surface", "process", "clusters", "portrait", "point"];
 const SIZES = [
   { tag: "d", w: 1680, h: 1050, n: 110000 },
   { tag: "m", w: 780, h: 1688, n: 70000 },
