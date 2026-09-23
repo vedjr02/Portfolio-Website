@@ -3,8 +3,9 @@ import { ImageResponse } from "next/og";
 export const size = { width: 32, height: 32 };
 export const contentType = "image/png";
 
-/** Browser tab favicon - VA mark matching the nav badge */
+/** Favicon: a 3×3 field of dust with one point of signal. */
 export default function Icon() {
+  const dots = Array.from({ length: 9 }, (_, i) => i);
   return new ImageResponse(
     (
       <div
@@ -12,24 +13,21 @@ export default function Icon() {
           width: "100%",
           height: "100%",
           display: "flex",
-          alignItems: "center",
+          flexWrap: "wrap",
+          alignContent: "center",
           justifyContent: "center",
-          background: "#1d1d1f",
+          gap: 4,
+          padding: 6,
+          background: "#0c0b10",
           borderRadius: "22%",
         }}
       >
-        <span
-          style={{
-            color: "#ffffff",
-            fontSize: 14,
-            fontWeight: 800,
-            letterSpacing: "-0.06em",
-            fontFamily: "ui-sans-serif, system-ui, sans-serif",
-            lineHeight: 1,
-          }}
-        >
-          VA
-        </span>
+        {dots.map((i) => (
+          <div
+            key={i}
+            style={{ width: 4, height: 4, borderRadius: 4, background: i === 4 ? "#f2b64a" : "#6f6a73" }}
+          />
+        ))}
       </div>
     ),
     { ...size }

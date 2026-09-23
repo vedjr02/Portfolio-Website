@@ -31,3 +31,14 @@ The typed content layer lives in `src/content/` (profile, projects, holdMyCode, 
 ## Rejected ideas
 
 _(filled in as they come up)_
+
+## Art direction (Phase 1)
+
+- **Palette: warm near-black `#0c0b10`, paper `#efeae2`, one accent "signal" amber `#f2b64a`, muted red `#c4625a` reserved for rejected claims.** — Amber nods to the data terminals analysts live in and separates from red by lightness, so the signal/rejected pair survives red-green colour blindness. v2's `#15141d` is kept as the raised surface.
+- **Fonts kept as briefed: Instrument Serif / Geist / Geist Mono.** — The serif makes frozen frames read as posters; the mono makes every number look measured. No stronger pairing justified a change.
+- **Dark only.** — The site is one film; a light theme would break the particle look and double the poster set.
+- **Copy sits in the left five columns; particles own the right two-thirds on desktop; on phones copy sits over a soft scrim.** — Keeps AA contrast without dimming the engine.
+- **Chapter numbering 00–07 with the rooms as 03.1 (NVIDIA) and 03.2 (AdFlex).** — Reads like a requirements document outline, which is the point of the site.
+- **Removed `motion`, `framer-motion`, `@base-ui/react`, `class-variance-authority` and `lucide-react`.** — Nothing in v3 needs them; the HMC panel was ported to CSS transitions. Saves initial JS.
+- **v2 desktop components deleted on this branch only.** — They stay on `main` and in history; public assets are untouched.
+- **New headline copy** (flagged): method "Noise in. A decision out. Then the thing that ships."; NVIDIA "NVIDIA, told only from filings"; AdFlex "AdFlex: tariffs before decisions"; Meridian "Meridian: how a loan process really runs"; Index "Everything, including the small stuff."; About "A clean query can change what a team believes." (from the story line); Contact "Hiring a business analyst?". **[check]**

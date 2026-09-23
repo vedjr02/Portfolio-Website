@@ -1,310 +1,503 @@
 @import "tailwindcss";
 
 /*
-  Desktop — the site is a Mac desktop in light appearance.
-  Wallpaper: Golden Gate (dark), Kildare hills as the alternative. Windows are sections,
-  the dock is navigation, Spotlight is search, Quick Look is detail.
-  System blue is the only interface accent; Finder tag colours label groups.
+  SIGNAL — v3 art direction. One dark film; every pixel a data point.
+  Palette: warm near-black, paper text, one "signal" amber, one muted red
+  reserved for rejected claims. See PLAN.md §7.
 */
+
 @theme inline {
-  --color-sky: var(--sky);
-  --color-ink: var(--ink);
-  --color-ink-2: var(--ink-2);
-  --color-ink-3: var(--ink-3);
-  --color-ink-4: var(--ink-4);
-  --color-window: var(--window);
-  --color-surface: var(--surface);
-  --color-chrome: var(--chrome);
-  --color-chrome-2: var(--chrome-2);
-  --color-sidebar: var(--sidebar);
-  --color-zebra: var(--zebra);
-  --color-fill: var(--fill);
-  --color-fill-2: var(--fill-2);
+  --color-bg: var(--bg);
+  --color-raise: var(--bg-raise);
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
+  --color-paper-3: var(--paper-3);
+  --color-dust: var(--dust);
+  --color-signal: var(--signal);
+  --color-rejected: var(--rejected);
   --color-rule: var(--rule);
-  --color-select: var(--select);
-  --color-select-soft: var(--select-soft);
-  --color-accent: var(--accent);
-  --color-accent-press: var(--accent-press);
-  --color-live: var(--live);
 
-  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", var(--font-geist), "Segoe UI", sans-serif;
-  --font-hand: var(--font-hand), "Bradley Hand", cursive;
+  --font-display: var(--font-instrument), "Iowan Old Style", "Times New Roman", serif;
+  --font-sans: var(--font-geist), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, "SF Mono", Menlo, monospace;
-
-  --radius-window: 12px;
-  --shadow-window: var(--window-shadow);
-  --shadow-menu: var(--menu-shadow);
 }
 
-/* Light appearance */
 :root {
-  color-scheme: light;
-  --sky: #15141d;
-  --ink: #1d1d1f;
-  --ink-2: #3a3a3c;
-  --ink-3: #6e6e73;
-  --ink-4: #8a8a8e;
-  --window: #ffffff;
-  --surface: #ffffff;
-  --chrome: #f5f5f4;
-  --chrome-2: #ececeb;
-  --sidebar: #eeefee;
-  --zebra: #f4f5f5;
-  --fill: rgba(0, 0, 0, 0.06);
-  --fill-2: rgba(0, 0, 0, 0.09);
-  --rule: rgba(0, 0, 0, 0.09);
-  --select: #0a6cff;
-  --select-soft: #dbe8fd;
-  --accent: #0a6cff;
-  --accent-press: #0058d6;
-  --live: #28a745;
-  --menubar: #f3f3f2;
-  --vibrant: rgba(247, 247, 246, 0.97);
-  --vibrant-panel: rgba(246, 246, 245, 0.56);
-  --panel-card: rgba(255, 255, 255, 0.42);
-  --window-shadow: 0 0 0 0.5px rgba(0, 0, 0, 0.22), 0 2px 6px rgba(0, 0, 0, 0.06), 0 24px 60px -12px rgba(40, 28, 16, 0.4);
-  --menu-shadow: 0 0 0 0.5px rgba(0, 0, 0, 0.18), 0 12px 32px -6px rgba(0, 0, 0, 0.28);
-  --plain-bg: #ffffff;
-  --plain-hover: #f7f7f7;
-  --plain-press: #ededed;
-}
-
-/* Dark appearance, set on <html data-theme="dark"> */
-:root[data-theme="dark"] {
   color-scheme: dark;
-  --sky: #15141d;
-  --ink: #f5f5f7;
-  --ink-2: #d4d4d8;
-  --ink-3: #a1a1a6;
-  --ink-4: #7c7c80;
-  --window: #1e1e20;
-  --surface: #2a2a2d;
-  --chrome: #29292c;
-  --chrome-2: #232326;
-  --sidebar: #252528;
-  --zebra: #232326;
-  --fill: rgba(255, 255, 255, 0.08);
-  --fill-2: rgba(255, 255, 255, 0.13);
-  --rule: rgba(255, 255, 255, 0.1);
-  --select: #0a6cff;
-  --select-soft: rgba(10, 132, 255, 0.24);
-  --accent: #2f8bff;
-  --accent-press: #0a6cff;
-  --live: #32d74b;
-  --menubar: #1f1f24;
-  --vibrant: rgba(40, 40, 44, 0.97);
-  --vibrant-panel: rgba(34, 34, 38, 0.52);
-  --panel-card: rgba(255, 255, 255, 0.07);
-  --window-shadow: 0 0 0 0.5px rgba(255, 255, 255, 0.14), 0 2px 6px rgba(0, 0, 0, 0.3), 0 30px 70px -12px rgba(0, 0, 0, 0.7);
-  --menu-shadow: 0 0 0 0.5px rgba(255, 255, 255, 0.14), 0 14px 36px -6px rgba(0, 0, 0, 0.6);
-  --plain-bg: #3a3a3d;
-  --plain-hover: #444448;
-  --plain-press: #505054;
+  --bg: #0c0b10;
+  --bg-raise: #15141d;
+  --paper: #efeae2;
+  --paper-2: #b8b2a8;
+  --paper-3: #8c867e;
+  --dust: #6f6a73;
+  --signal: #f2b64a;
+  --signal-ink: #1a1308;
+  --rejected: #c4625a;
+  --rule: rgb(239 234 226 / 0.12);
+  --rule-strong: rgb(239 234 226 / 0.22);
+
+  --margin: clamp(16px, 4vw, 64px);
+  --gutter: 24px;
+  --max: 1440px;
+  --nav-h: 56px;
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 html {
-  background: var(--color-sky);
-  color: var(--color-ink);
-  scroll-behavior: smooth;
-  scroll-padding-top: 56px;
+  background: var(--bg);
+  color: var(--paper);
   -webkit-text-size-adjust: 100%;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
+  scroll-padding-top: calc(var(--nav-h) + 16px);
 }
 
 body {
-  background: transparent;
+  background: var(--bg);
   font-family: var(--font-sans);
-  letter-spacing: -0.006em;
+  font-size: 17px;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: clip;
 }
 
 ::selection {
-  background: #b3d1ff;
-  color: #0b1f3a;
+  background: var(--signal);
+  color: var(--signal-ink);
 }
 
-:focus-visible:not(input, textarea) {
-  outline: 3px solid color-mix(in oklab, var(--color-accent) 55%, transparent);
-  outline-offset: 2px;
-  border-radius: 6px;
+:focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: 3px;
+  border-radius: 2px;
 }
 
-input,
-textarea {
-  caret-color: var(--color-accent);
+/* ---------------------------------------------------------------- */
+/* Type                                                              */
+/* ---------------------------------------------------------------- */
+
+.t-display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(5.5rem, 24vw, 13rem);
+  line-height: 0.84;
+  letter-spacing: -0.035em;
 }
 
-a {
-  text-underline-offset: 3px;
-  text-decoration-thickness: 1px;
+.t-chapter {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2.75rem, 7vw, 6.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
 }
 
-.tabular {
-  font-variant-numeric: tabular-nums;
+.t-title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2rem, 4.2vw, 3.6rem);
+  line-height: 1;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
 }
 
-/* Scrollbars: macOS overlay style inside windows */
-.mac-scroll {
-  scrollbar-width: thin;
-  scrollbar-color: rgba(0, 0, 0, 0.28) transparent;
-}
-.mac-scroll::-webkit-scrollbar {
-  width: 11px;
-  height: 11px;
-}
-.mac-scroll::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.26);
-  border-radius: 999px;
-  border: 3px solid transparent;
-  background-clip: content-box;
-}
-.mac-scroll::-webkit-scrollbar-track {
-  background: transparent;
+.t-lead {
+  font-size: clamp(1.2rem, 1.9vw, 1.55rem);
+  line-height: 1.35;
+  letter-spacing: -0.012em;
+  text-wrap: pretty;
 }
 
-/* The page itself scrolls without a visible scrollbar */
-html {
-  scrollbar-width: none;
-}
-html::-webkit-scrollbar {
-  display: none;
-}
-
-/* Vibrancy: the translucent material macOS uses for bars and sidebars */
-.vibrant {
-  background: var(--vibrant);
+.t-body {
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--paper-2);
+  text-wrap: pretty;
 }
 
-/* The Hold My Code panel: the real menu bar material, tinted and blurred so the
-   wallpaper shows through. One static element, so the blur stays cheap. */
-.vibrant-panel {
-  background: var(--vibrant-panel);
-  -webkit-backdrop-filter: blur(34px) saturate(1.8);
-  backdrop-filter: blur(34px) saturate(1.8);
+.t-label {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  line-height: 1.35;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--paper-3);
 }
 
-/* Push buttons, drawn the way AppKit draws them */
+.t-mono {
+  font-family: var(--font-mono);
+  font-feature-settings: "tnum" 1, "zero" 1;
+}
+
+.t-num {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 4vw, 3.4rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+
+/* ---------------------------------------------------------------- */
+/* Layout                                                            */
+/* ---------------------------------------------------------------- */
+
+.wrap {
+  width: 100%;
+  max-width: var(--max);
+  margin-inline: auto;
+  padding-inline: var(--margin);
+}
+
+.grid-12 {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--gutter);
+}
+
+.hairline {
+  border-top: 1px solid var(--rule);
+}
+
+/*
+  A chapter is a tall section. Its stage (poster frame) sticks to the viewport
+  while the copy scrolls over it. When the engine is running the stage hides and
+  the persistent canvas shows through; the poster is the static tier.
+*/
+.chapter {
+  position: relative;
+}
+
+.stage {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  margin-bottom: -100svh;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.stage picture,
+.stage img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+html[data-engine="on"] .stage {
+  visibility: hidden;
+}
+
+.chapter-body {
+  position: relative;
+  z-index: 1;
+}
+
+/* Copy that sits over particles on small screens gets a soft scrim */
+.scrim {
+  position: relative;
+  isolation: isolate;
+}
+
+@media (max-width: 767px) {
+  .scrim::before {
+    content: "";
+    position: absolute;
+    inset: -32px calc(-1 * var(--margin));
+    background: linear-gradient(
+      to bottom,
+      rgb(12 11 16 / 0),
+      rgb(12 11 16 / 0.84) 22%,
+      rgb(12 11 16 / 0.84) 82%,
+      rgb(12 11 16 / 0)
+    );
+    z-index: -1;
+    pointer-events: none;
+  }
+}
+
+/* ---------------------------------------------------------------- */
+/* Controls                                                          */
+/* ---------------------------------------------------------------- */
+
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.4rem;
-  min-height: 2.25rem;
-  padding: 0.4rem 0.95rem;
-  border-radius: 8px;
-  font-size: 0.875rem;
-  font-weight: 550;
-  line-height: 1.2;
+  gap: 0.55em;
+  min-height: 44px;
+  padding: 0 1.15rem;
+  border-radius: 999px;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  line-height: 1;
   white-space: nowrap;
-  text-decoration: none;
-  cursor: default;
-  transition: background-color 120ms ease, box-shadow 120ms ease, transform 120ms ease;
+  transition:
+    background-color 0.25s var(--ease-out),
+    color 0.25s var(--ease-out),
+    box-shadow 0.25s var(--ease-out),
+    transform 0.25s var(--ease-out);
+}
+
+.btn-signal {
+  background: var(--signal);
+  color: var(--signal-ink);
+}
+.btn-signal:hover {
+  background: #f6c565;
+}
+
+.btn-ghost {
+  color: var(--paper);
+  box-shadow: inset 0 0 0 1px var(--rule-strong);
+}
+.btn-ghost:hover {
+  box-shadow: inset 0 0 0 1px var(--paper-3);
+  background: rgb(239 234 226 / 0.05);
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.link {
+  color: var(--paper);
+  text-decoration: underline;
+  text-decoration-color: var(--rule-strong);
+  text-underline-offset: 0.22em;
+  text-decoration-thickness: 1px;
+  transition: text-decoration-color 0.2s;
+}
+.link:hover {
+  text-decoration-color: var(--signal);
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--paper-2);
+  padding: 0.35em 0.75em;
+  border-radius: 999px;
+  box-shadow: inset 0 0 0 1px var(--rule-strong);
+  white-space: nowrap;
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  display: inline-block;
+  flex: none;
+}
+
+.skip-link {
+  position: fixed;
+  left: 12px;
+  top: 12px;
+  z-index: 100;
+  transform: translateY(-160%);
+  background: var(--signal);
+  color: var(--signal-ink);
+  padding: 10px 16px;
+  border-radius: 999px;
+  font-weight: 600;
+  transition: transform 0.2s;
+}
+.skip-link:focus {
+  transform: none;
+}
+
+/* ---------------------------------------------------------------- */
+/* Motion preferences                                                */
+/* ---------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ---------------------------------------------------------------- */
+/* Hold My Code panel — the one Mac-desktop nod (dark appearance)     */
+/* ---------------------------------------------------------------- */
+
+.hmc-panel {
+  --hmc-rule: rgb(255 255 255 / 0.1);
+  width: 20rem;
+  padding: 10px;
+  border-radius: 14px;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", var(--font-geist), sans-serif;
+  font-size: 12px;
+  line-height: 1.35;
+  color: #f5f5f7;
+  background: rgb(38 36 44 / 0.78);
+  backdrop-filter: blur(24px) saturate(1.4);
+  -webkit-backdrop-filter: blur(24px) saturate(1.4);
+  box-shadow:
+    0 0 0 0.5px rgb(255 255 255 / 0.16) inset,
+    0 0 0 0.5px rgb(0 0 0 / 0.6),
+    0 20px 50px -12px rgb(0 0 0 / 0.7);
   user-select: none;
 }
-.btn:active {
-  transform: translateY(0.5px);
+.hmc-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 2px 6px 8px;
 }
-.btn-default {
-  color: #fff;
-  background: linear-gradient(to bottom, #2b84ff, #0a6cff);
-  box-shadow: inset 0 0.5px 0 rgba(255, 255, 255, 0.35), 0 0 0 0.5px rgba(0, 60, 160, 0.55), 0 1px 2px rgba(0, 40, 120, 0.25);
+.hmc-name {
+  font-size: 13px;
+  font-weight: 600;
 }
-.btn-default:hover {
-  background: linear-gradient(to bottom, #1f7bff, #0063ee);
+.hmc-status {
+  margin-top: 2px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #a1a1a6;
 }
-.btn-default:active {
-  background: var(--color-accent-press);
+.hmc-dim {
+  color: #a1a1a6;
 }
-.btn-plain {
-  color: var(--color-ink);
-  background: var(--plain-bg);
-  box-shadow: 0 0 0 0.5px rgba(0, 0, 0, 0.2), 0 1px 1.5px rgba(0, 0, 0, 0.12);
+.hmc-chip {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  border-radius: 999px;
+  background: rgb(255 255 255 / 0.08);
+  padding: 3px 8px;
+  font-size: 11px;
+  font-weight: 500;
+  color: #d4d4d8;
 }
-.btn-plain:hover {
-  background: var(--plain-hover);
+.hmc-switch {
+  position: relative;
+  width: 38px;
+  height: 22px;
+  border-radius: 999px;
+  background: rgb(255 255 255 / 0.16);
+  transition: background-color 0.5s;
 }
-.btn-plain:active {
-  background: var(--plain-press);
+.hmc-switch.on {
+  background: #0a84ff;
 }
-.btn-sm {
-  min-height: 1.85rem;
-  padding: 0.25rem 0.7rem;
-  font-size: 0.8125rem;
-  border-radius: 7px;
+.hmc-switch > span {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.3);
+  transition: transform 0.35s cubic-bezier(0.3, 1.4, 0.5, 1);
 }
-@media (pointer: coarse) {
-  .btn {
-    min-height: 2.75rem;
-  }
-  .btn-sm {
-    min-height: 2.5rem;
-  }
+.hmc-switch.on > span {
+  transform: translateX(16px);
 }
-
-.cursor-default-all,
-.cursor-default-all * {
-  cursor: default;
+.hmc-card {
+  border-radius: 10px;
+  background: rgb(255 255 255 / 0.06);
+  padding: 8px 10px;
+  box-shadow: 0 0 0 0.5px var(--hmc-rule);
 }
-
-a.btn,
-button.btn {
-  cursor: pointer;
+.hmc-cap {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #a1a1a6;
 }
-
-/* Wallpaper layers that belong to dark appearance fade in with it */
-.wp-dark {
+.hmc-logo {
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 5px;
+  background: #fff;
+}
+.hmc-logo img {
+  width: 14px;
+  height: 14px;
+}
+.hmc-pill {
+  border-radius: 999px;
+  padding: 1px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  background: rgb(255 255 255 / 0.08);
+  color: #a1a1a6;
+  transition: background-color 0.5s, color 0.5s;
+}
+.hmc-pill.on {
+  background: rgb(52 199 89 / 0.2);
+  color: #4cd964;
+}
+.hmc-seg {
+  margin-top: 4px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  border-radius: 8px;
+  background: rgb(255 255 255 / 0.08);
+  padding: 2px;
+  font-size: 11.5px;
+  font-weight: 500;
+  text-align: center;
+}
+.hmc-seg button {
+  border-radius: 6px;
+  padding: 4px 0;
+  color: #a1a1a6;
+}
+.hmc-seg button[aria-checked="true"] {
+  background: rgb(255 255 255 / 0.18);
+  color: #f5f5f7;
+  box-shadow: 0 0.5px 1.5px rgb(0 0 0 / 0.3);
+}
+.hmc-seg button:focus-visible {
+  outline-offset: 1px;
+}
+.hmc-bar {
+  margin-top: 4px;
+  height: 5px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgb(255 255 255 / 0.12);
+}
+.hmc-bar > div {
+  height: 100%;
+  border-radius: 999px;
+  background: #30c253;
+  transform-origin: left;
+  transition: transform 0.7s var(--ease-out);
+}
+.hmc-collapse {
+  display: grid;
+  grid-template-rows: 0fr;
   opacity: 0;
-  transition: opacity 600ms ease;
+  transition: grid-template-rows 0.35s var(--ease-out), opacity 0.35s;
 }
-:root[data-theme="dark"] .wp-dark {
+.hmc-collapse > div {
+  overflow: hidden;
+}
+.hmc-collapse.open {
+  grid-template-rows: 1fr;
   opacity: 1;
-}
-
-
-/* Control Center slider: a fat macOS track that fills white from the left */
-.cc-slider {
-  -webkit-appearance: none;
-  appearance: none;
-  background: transparent;
-  cursor: pointer;
-}
-.cc-slider::-webkit-slider-runnable-track {
-  height: 22px;
-  border-radius: 999px;
-  background: var(--fill-2);
-}
-.cc-slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  width: 22px;
-  height: 22px;
-  border-radius: 999px;
-  background: #fff;
-  box-shadow: 0 0 0 0.5px rgba(0, 0, 0, 0.25), 0 1px 3px rgba(0, 0, 0, 0.3);
-}
-.cc-slider::-moz-range-track {
-  height: 22px;
-  border-radius: 999px;
-  background: var(--fill-2);
-}
-.cc-slider::-moz-range-thumb {
-  width: 22px;
-  height: 22px;
-  border: 0;
-  border-radius: 999px;
-  background: #fff;
-  box-shadow: 0 0 0 0.5px rgba(0, 0, 0, 0.25), 0 1px 3px rgba(0, 0, 0, 0.3);
 }

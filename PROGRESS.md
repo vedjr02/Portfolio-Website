@@ -1,7 +1,7 @@
 # PROGRESS — v3 "SIGNAL"
 
-**Current phase:** 0 — Audit, content layer, plan
-**Current task:** 0.5 Profile README username fix
+**Current phase:** 1 — Art direction
+**Current task:** 1.3 State builders A
 
 Resume prompt: *"Resume the autonomous loop: read docs/BRIEF.md, loop-harness rules in PROGRESS.md header, and continue from the first unchecked task."*
 
@@ -76,11 +76,11 @@ Then, and only then, write `HANDOFF.md`: the preview URL, what was built, the fi
 - [x] 0.2 Typed content layer `src/content/*` (21 projects, HMC facts + releases, NVIDIA events/rejected/quarters, Starbucks, AdFlex tariffs, Meridian, GridPeer, method, education, toolkit, contact); `vedjr02` → `vedjrr`; flag every copy change
 - [x] 0.3 Old site renders from the new content layer (no regressions); typecheck/lint/build green
 - [x] 0.4 `PLAN.md` (phases, storyboard, state list, architecture, perf budget, palette, type, risks, assumptions)
-- [ ] 0.5 Profile README repo (`vedjrr/vedjr02`, designated branch): `vedjr02` → `vedjrr` in config/README/SVG text
+- [x] 0.5 Profile README repo (`vedjrr/vedjr02`, designated branch): `vedjr02` → `vedjrr` in config/README/SVG text
 
 ### Phase 1 — Art direction (static posters, no motion)
-- [ ] 1.1 Design tokens: palette, type scale, grid, fonts (Instrument Serif / Geist / Geist Mono), focus styles
-- [ ] 1.2 Page skeleton: root layout, nav (60-second version, sound slot), skip link, footer, chapter sections; old desktop UI removed from the page
+- [x] 1.1 Design tokens: palette, type scale, grid, fonts (Instrument Serif / Geist / Geist Mono), focus styles
+- [x] 1.2 Page skeleton: root layout, nav (60-second version, sound slot), skip link, footer, chapter sections; old desktop UI removed from the page
 - [ ] 1.3 State builders A: noise, histogram, method columns, MacBook (procedural GLB → surface sampling), NVIDIA timeline + rejected bin
 - [ ] 1.4 State builders B: Starbucks braid, AdFlex tariff surface, Meridian process map, GridPeer, 21 clusters, portrait (mask + depth), converge point
 - [ ] 1.5 `scripts/build-states.ts` → `public/states/*.bin.gz` + manifest; Canvas2D poster renderer → `public/posters/*`
@@ -184,7 +184,10 @@ Then, and only then, write `HANDOFF.md`: the preview URL, what was built, the fi
 | 1 | S.1 branch + brief | done | 48d04a4 |
 | 2 | S.2 progress/decisions/tooling | done | 48d04a4 |
 | 3 | 0.2 + 0.3 content layer, v2 adapter, link fixes | typecheck/lint/build green; v2 renders from new layer (screens checked) | 74d8b45 |
-| 4 | 0.1 + 0.4 audit + PLAN.md | plan written, assumptions logged | (this commit) |
+| 4 | 0.1 + 0.4 audit + PLAN.md | plan written, assumptions logged | 1d17c2f |
+| 5 | 0.5 profile README username fix | pushed to `claude/elegant-hawking-a419ix` in vedjrr/vedjr02 | 92e3e6e (vedjr02) |
+| — | Phase 0 review | no visual output; plan + content verified | — |
+| 6 | 1.1 + 1.2 tokens, fonts, nav, footer, 9 chapters with real copy | green; screens at 1440/390 checked (type reads as editorial; right side reserved for particles) | (this commit) |
 
 ---
 

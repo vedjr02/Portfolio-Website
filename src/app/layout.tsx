@@ -1,18 +1,21 @@
-import type { Metadata } from "next";
-import { Caveat, Geist, Geist_Mono } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
 import "./globals.css";
-import { themeBootScript } from "@/components/desktop/themeBoot";
+import { Nav } from "@/components/Nav";
+import { Footer } from "@/components/Footer";
+import { profile } from "@/content/profile";
+
+const instrument = Instrument_Serif({
+  variable: "--font-instrument",
+  subsets: ["latin"],
+  weight: "400",
+  style: ["normal", "italic"],
+  display: "swap",
+});
 
 const geist = Geist({
   variable: "--font-geist",
   subsets: ["latin"],
-  display: "swap",
-});
-
-const hand = Caveat({
-  variable: "--font-hand",
-  subsets: ["latin"],
-  weight: ["500"],
   display: "swap",
 });
 
@@ -24,56 +27,43 @@ const geistMono = Geist_Mono({
 });
 
 const description =
-  "Business analyst in Maynooth, Ireland who ships working software. Builder of Hold My Code, a macOS app for coding agents, plus sourced case studies and data products. Available Sep 2026.";
+  "Vedant Ambre is a business analyst in Maynooth, Ireland who ships working software: Hold My Code, a macOS app for coding agents, sourced case studies and data products. Available from Sep 2026 for business analyst roles.";
 
 export const metadata: Metadata = {
-  title: "Vedant Ambre · Business analyst who ships software",
+  metadataBase: new URL(profile.site),
+  title: {
+    default: `${profile.name} · ${profile.positioning.replace(/\.$/, "")}`,
+    template: `%s · ${profile.name}`,
+  },
   description,
-  metadataBase: new URL("https://vedantambre.com"),
+  alternates: { canonical: "/" },
   openGraph: {
-    title: "Vedant Ambre · Business analyst who ships software",
+    title: `${profile.name} · ${profile.positioning.replace(/\.$/, "")}`,
     description,
     type: "website",
-    images: [{ url: "/og.jpg", width: 1200, height: 630, alt: "Vedant Ambre" }],
+    url: "/",
   },
-  twitter: {
-    card: "summary_large_image",
-    title: "Vedant Ambre · Business analyst who ships software",
-    description,
-    images: ["/og.jpg"],
-  },
+  twitter: { card: "summary_large_image" },
 };
 
-export const viewport = {
+export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  maximumScale: 5,
-  viewportFit: "cover" as const,
-  themeColor: "#15141d",
+  viewportFit: "cover",
+  themeColor: "#0c0b10",
+  colorScheme: "dark",
 };
 
-const contract = `
-THESIS: The portfolio is a Mac desktop, in light or dark appearance. Hold My Code, the menu bar app Vedant built, is open in the menu bar on arrival. Refuses the dark hero, giant name and card grid.
-OWN-WORLD: dark Golden Gate wallpaper in both appearances, Kildare hills as the alternative; AppKit windows with traffic lights; solid vibrant dock and Control Center, no glass; system blue as the one accent; Finder tag dots for groups; Geist.
-STORY: A hiring manager sees a BA who ships real software, opens the flagship, scans every project in a Finder list, Quick Looks any row, then writes an email in the Mail window.
-FIRST VIEWPORT: Menu bar on top, thesis headline left on the sky, the Hold My Code panel dropped from its menu bar icon on the right, dock at the bottom. Primary action: See Hold My Code.
-FORM: macOS desktop, my own top-ranked grounded candidate (user pick over roll 6), seed f0860680.
-FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
-`;
-
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" data-theme="dark" className={`${geist.variable} ${geistMono.variable} ${hand.variable}`} suppressHydrationWarning>
-      <head>
-        <script dangerouslySetInnerHTML={{ __html: themeBootScript }} />
-      </head>
-      <body className="min-h-dvh font-sans text-ink antialiased">
-        <div hidden dangerouslySetInnerHTML={{ __html: `<!--${contract}-->` }} />
+    <html lang="en-IE" className={`${instrument.variable} ${geist.variable} ${geistMono.variable}`}>
+      <body>
+        <a href="#main" className="skip-link">
+          Skip to content
+        </a>
+        <Nav />
         {children}
+        <Footer />
       </body>
     </html>
   );

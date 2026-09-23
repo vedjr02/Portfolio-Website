@@ -3,8 +3,9 @@ import { ImageResponse } from "next/og";
 export const size = { width: 180, height: 180 };
 export const contentType = "image/png";
 
-/** Apple touch icon - same VA mark, larger */
+/** Favicon: a 3×3 field of dust with one point of signal. */
 export default function AppleIcon() {
+  const dots = Array.from({ length: 9 }, (_, i) => i);
   return new ImageResponse(
     (
       <div
@@ -12,24 +13,21 @@ export default function AppleIcon() {
           width: "100%",
           height: "100%",
           display: "flex",
-          alignItems: "center",
+          flexWrap: "wrap",
+          alignContent: "center",
           justifyContent: "center",
-          background: "#1d1d1f",
-          borderRadius: 40,
+          gap: 22,
+          padding: 34,
+          background: "#0c0b10",
+          borderRadius: 0,
         }}
       >
-        <span
-          style={{
-            color: "#ffffff",
-            fontSize: 78,
-            fontWeight: 800,
-            letterSpacing: "-0.06em",
-            fontFamily: "ui-sans-serif, system-ui, sans-serif",
-            lineHeight: 1,
-          }}
-        >
-          VA
-        </span>
+        {dots.map((i) => (
+          <div
+            key={i}
+            style={{ width: 22, height: 22, borderRadius: 22, background: i === 4 ? "#f2b64a" : "#6f6a73" }}
+          />
+        ))}
       </div>
     ),
     { ...size }

@@ -54,7 +54,7 @@ for (const [w, h] of sizes) {
   page.on("pageerror", (e) => console.error(`[pageerror ${w}] ${e.message}`));
   page.on("console", (m) => m.type() === "error" && console.error(`[console ${w}] ${m.text()}`));
   for (const route of routes) {
-    await page.goto(url + route + query, { waitUntil: "networkidle" });
+    await page.goto(url + route + query, { waitUntil: "load" });
     await page.waitForTimeout(wait);
     const slug = route === "/" ? "home" : route.replace(/\//g, "_").replace(/^_/, "");
     if (route === "/" && !full) {
