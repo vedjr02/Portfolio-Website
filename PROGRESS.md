@@ -1,7 +1,7 @@
 # PROGRESS — v3 "SIGNAL"
 
 **Current phase:** 0 — Audit, content layer, plan
-**Current task:** 0.2 Typed content layer
+**Current task:** 0.4 PLAN.md (0.1 audit is §1 of it)
 
 Resume prompt: *"Resume the autonomous loop: read docs/BRIEF.md, loop-harness rules in PROGRESS.md header, and continue from the first unchecked task."*
 
@@ -68,12 +68,12 @@ Then, and only then, write `HANDOFF.md`: the preview URL, what was built, the fi
 
 ### Setup
 - [x] S.1 Branch `v3-signal` from `main`; brief saved to `docs/BRIEF.md`
-- [ ] S.2 `PROGRESS.md`, `DECISIONS.md`; tooling scripts (typecheck, test, shots)
+- [x] S.2 `PROGRESS.md`, `DECISIONS.md`; tooling scripts (typecheck, test, shots)
 
 ### Phase 0 — Audit, content layer, plan
 - [ ] 0.1 Audit report (framework, routing, content, deploy, reusable parts) → `PLAN.md §1`
-- [ ] 0.2 Typed content layer `src/content/*` (21 projects, HMC facts + releases, NVIDIA events/rejected/quarters, Starbucks, AdFlex tariffs, Meridian, GridPeer, method, education, toolkit, contact); `vedjr02` → `vedjrr`; flag every copy change
-- [ ] 0.3 Old site renders from the new content layer (no regressions); typecheck/lint/build green
+- [x] 0.2 Typed content layer `src/content/*` (21 projects, HMC facts + releases, NVIDIA events/rejected/quarters, Starbucks, AdFlex tariffs, Meridian, GridPeer, method, education, toolkit, contact); `vedjr02` → `vedjrr`; flag every copy change
+- [x] 0.3 Old site renders from the new content layer (no regressions); typecheck/lint/build green
 - [ ] 0.4 `PLAN.md` (phases, storyboard, state list, architecture, perf budget, palette, type, risks, assumptions)
 - [ ] 0.5 Profile README repo (`vedjrr/vedjr02`, designated branch): `vedjr02` → `vedjrr` in config/README/SVG text
 
@@ -180,7 +180,9 @@ Then, and only then, write `HANDOFF.md`: the preview URL, what was built, the fi
 
 | # | Task | Result | Commit |
 |---|---|---|---|
-| 1 | S.1 branch + brief | done | (pending) |
+| 1 | S.1 branch + brief | done | 48d04a4 |
+| 2 | S.2 progress/decisions/tooling | done | 48d04a4 |
+| 3 | 0.2 + 0.3 content layer, v2 adapter, link fixes | typecheck/lint/build green; v2 renders from new layer (screens checked) | (this commit) |
 
 ---
 
