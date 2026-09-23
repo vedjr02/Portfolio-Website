@@ -1,7 +1,7 @@
 # PROGRESS — v3 "SIGNAL"
 
 **Current phase:** 0 — Audit, content layer, plan
-**Current task:** 0.4 PLAN.md (0.1 audit is §1 of it)
+**Current task:** 0.5 Profile README username fix
 
 Resume prompt: *"Resume the autonomous loop: read docs/BRIEF.md, loop-harness rules in PROGRESS.md header, and continue from the first unchecked task."*
 
@@ -59,6 +59,7 @@ Then, and only then, write `HANDOFF.md`: the preview URL, what was built, the fi
 - Repo: `vedjrr/Portfolio-Website` cloned at `/home/user/portfolio-website`, branch `v3-signal`. (The session's other repo, `vedjrr/vedjr02`, is the GitHub profile README, not the site.)
 - Local builds need `NODE_USE_ENV_PROXY=1` so `next/font` can fetch Google Fonts through the sandbox proxy (Vercel does not need it).
 - Data sources were read from the case-study repos (cloned read-only under `/home/user/vedjrr/` and `/home/user/adflex-dynamic-prices`): NVIDIA `data/timeline.json` + `data/financials.json`, Meridian `07-PROGRESS-STATE.md`/`AUDIT-LOG.md`, AdFlex `lib/retailTariffs.ts`, Hold My Code releases via GitHub API.
+- Vercel previews deploy on every push (GitHub deployment API gives the URL) but `*.vercel.app` is blocked from this sandbox; verify with local `next build && next start`.
 - Headless Chromium: WebGL2 = ANGLE/SwiftShader (software). `navigator.gpu` absent on `about:blank`; WebGPU to be re-tested on `http://localhost`.
 - Commands: `npm run typecheck`, `npm run lint`, `npm run build`, `npm test`, `npm run shots` (Playwright screenshots), `npm run states` (rebuild particle states).
 
@@ -71,10 +72,10 @@ Then, and only then, write `HANDOFF.md`: the preview URL, what was built, the fi
 - [x] S.2 `PROGRESS.md`, `DECISIONS.md`; tooling scripts (typecheck, test, shots)
 
 ### Phase 0 — Audit, content layer, plan
-- [ ] 0.1 Audit report (framework, routing, content, deploy, reusable parts) → `PLAN.md §1`
+- [x] 0.1 Audit report (framework, routing, content, deploy, reusable parts) → `PLAN.md §1`
 - [x] 0.2 Typed content layer `src/content/*` (21 projects, HMC facts + releases, NVIDIA events/rejected/quarters, Starbucks, AdFlex tariffs, Meridian, GridPeer, method, education, toolkit, contact); `vedjr02` → `vedjrr`; flag every copy change
 - [x] 0.3 Old site renders from the new content layer (no regressions); typecheck/lint/build green
-- [ ] 0.4 `PLAN.md` (phases, storyboard, state list, architecture, perf budget, palette, type, risks, assumptions)
+- [x] 0.4 `PLAN.md` (phases, storyboard, state list, architecture, perf budget, palette, type, risks, assumptions)
 - [ ] 0.5 Profile README repo (`vedjrr/vedjr02`, designated branch): `vedjr02` → `vedjrr` in config/README/SVG text
 
 ### Phase 1 — Art direction (static posters, no motion)
@@ -182,7 +183,8 @@ Then, and only then, write `HANDOFF.md`: the preview URL, what was built, the fi
 |---|---|---|---|
 | 1 | S.1 branch + brief | done | 48d04a4 |
 | 2 | S.2 progress/decisions/tooling | done | 48d04a4 |
-| 3 | 0.2 + 0.3 content layer, v2 adapter, link fixes | typecheck/lint/build green; v2 renders from new layer (screens checked) | (this commit) |
+| 3 | 0.2 + 0.3 content layer, v2 adapter, link fixes | typecheck/lint/build green; v2 renders from new layer (screens checked) | 74d8b45 |
+| 4 | 0.1 + 0.4 audit + PLAN.md | plan written, assumptions logged | (this commit) |
 
 ---
 
