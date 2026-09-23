@@ -5,7 +5,7 @@ import { GLTFExporter } from "three/examples/jsm/exporters/GLTFExporter.js";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { MeshSurfaceSampler } from "three/examples/jsm/math/MeshSurfaceSampler.js";
 import { holdMyCode } from "../../src/content/holdMyCode";
-import { cat, DIM, pack, PAPER, PAPER_2, rng, SIGNAL, type Built, type Point } from "./common";
+import { cat, pack, PAPER, PAPER_2, rng, SIGNAL, type Built, type Point } from "./common";
 
 /**
  * A 13-inch MacBook (30.4 × 21.5 cm, 1 world unit = 10 cm), modelled from

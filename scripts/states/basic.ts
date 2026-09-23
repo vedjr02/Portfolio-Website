@@ -1,5 +1,5 @@
 import { FIELD } from "../../src/engine/noise";
-import { cat, DIM, DUST, gaussian, pack, PAPER, PAPER_2, rng, SIGNAL, type Built, type Point } from "./common";
+import { cat, DIM, gaussian, pack, PAPER, PAPER_2, rng, SIGNAL, type Built, type Point } from "./common";
 
 /* ---------------------------------------------------------------- */
 /* 00 noise — procedural in the shader; only metadata ships           */
