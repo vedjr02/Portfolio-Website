@@ -37,6 +37,29 @@ export const nvidiaCrossover = (() => {
 
 export const chatGptLaunch = "2022-11-30";
 
+/**
+ * Where each rejected claim sits on the timeline before it falls: the date the
+ * claim itself refers to (same order as rejectedClaims). Placement only; the
+ * claims stay rejected.
+ */
+export const rejectedRefDates = [
+  "2025-12-24", // Groq "acquisition"
+  "2023-01-23", // Microsoft "exactly $10 billion"
+  "2025-01-27", // DeepSeek R1 training cost
+  "2016-08-15", // DGX-1 hand delivery
+  "2025-08-11", // H20 15% share "codified"
+  "2025-06-15", // "~90% market share"
+  "2025-01-21", // Stargate "$500 billion committed"
+  "2024-07-12", // Graphcore price
+  "2024-08-15", // Blackwell "respin"
+  "2025-05-13", // BIS replacement rule
+  "2018-11-15", // 2018 correction "$700 million"
+  "2026-07-15", // AMD Helios price
+  "2025-10-15", // Cerebras IPO withdrawal
+  "2026-04-29", // Meta "$600 billion" 2026 capex
+  "2022-06-15", // China share FY2022/FY2023
+];
+
 export const nvidiaRoom: Room = {
   id: "nvidia",
   eyebrow: "Case study · 2006–2026",

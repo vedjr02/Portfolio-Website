@@ -42,3 +42,14 @@ _(filled in as they come up)_
 - **Removed `motion`, `framer-motion`, `@base-ui/react`, `class-variance-authority` and `lucide-react`.** — Nothing in v3 needs them; the HMC panel was ported to CSS transitions. Saves initial JS.
 - **v2 desktop components deleted on this branch only.** — They stay on `main` and in history; public assets are untouched.
 - **New headline copy** (flagged): method "Noise in. A decision out. Then the thing that ships."; NVIDIA "NVIDIA, told only from filings"; AdFlex "AdFlex: tariffs before decisions"; Meridian "Meridian: how a loan process really runs"; Index "Everything, including the small stuff."; About "A clean query can change what a team believes." (from the story line); Contact "Hiring a business analyst?". **[check]**
+
+## Particle states (Phase 1)
+
+- **Anchors, not full-resolution states.** — 250k particles × 8 bytes × 13 states would be ~26 MB and blow the 6 MB budget. Each state ships 4k–32k anchors (half floats, gzipped, 1.18 MB total); higher tiers jitter extra particles around their anchor.
+- **Per-state density cap; the remainder stays as faint ambient noise.** — Small shapes (a timeline dot, the contact point) otherwise saturate to white on high tiers. The leftover particles drift in the noise field at ~7% alpha, so the unsorted data is always faintly there behind the signal.
+- **Anchors are x-sorted in every state.** — The same particle index sits at a similar horizontal position in every shape, so transitions pour sideways (left of the histogram becomes the left of the laptop) instead of scrambling. Paired states (timeline / rejected) share one order so only the claims move.
+- **The MacBook is modelled from primitives, exported as a real GLB (`assets/models/macbook.glb`, 124 KB) and surface-sampled from it** with `MeshSurfaceSampler`. — No third-party model licence to worry about; 13" proportions (30.4 × 21.5 cm).
+- **Timeline uses six swimlanes (one per event category) instead of six colours.** — Keeps the palette to paper + amber + red while still showing the categories; swimlanes are a BA-native diagram.
+- **Rejected claims wait above the lanes at the date each claim refers to, then fall into the bin.** — The data has no date per claim, so placement uses the date in the claim's own text (`rejectedRefDates`, commented per claim).
+- **Portrait mask by rembg `u2net_human_seg`; depth is a generated estimate from the mask's distance field plus a little luminance.** — Hugging Face depth models are blocked from this sandbox; the distance field gives a believable body bulge for a few degrees of orbit. It is labelled as an estimate in code.
+- **Posters are rendered from the same state files by a Canvas 2D renderer (`/lab/poster`), then re-rendered from the engine in Phase 6.** — Gives the static tier and the no-JS view real frames before the engine exists.

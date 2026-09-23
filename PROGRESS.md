@@ -1,7 +1,7 @@
 # PROGRESS — v3 "SIGNAL"
 
 **Current phase:** 1 — Art direction
-**Current task:** 1.3 State builders A
+**Current task:** 1.6 Poster composition
 
 Resume prompt: *"Resume the autonomous loop: read docs/BRIEF.md, loop-harness rules in PROGRESS.md header, and continue from the first unchecked task."*
 
@@ -81,9 +81,9 @@ Then, and only then, write `HANDOFF.md`: the preview URL, what was built, the fi
 ### Phase 1 — Art direction (static posters, no motion)
 - [x] 1.1 Design tokens: palette, type scale, grid, fonts (Instrument Serif / Geist / Geist Mono), focus styles
 - [x] 1.2 Page skeleton: root layout, nav (60-second version, sound slot), skip link, footer, chapter sections; old desktop UI removed from the page
-- [ ] 1.3 State builders A: noise, histogram, method columns, MacBook (procedural GLB → surface sampling), NVIDIA timeline + rejected bin
-- [ ] 1.4 State builders B: Starbucks braid, AdFlex tariff surface, Meridian process map, GridPeer, 21 clusters, portrait (mask + depth), converge point
-- [ ] 1.5 `scripts/build-states.ts` → `public/states/*.bin.gz` + manifest; Canvas2D poster renderer → `public/posters/*`
+- [x] 1.3 State builders A: noise, histogram, method columns, MacBook (procedural GLB → surface sampling), NVIDIA timeline + rejected bin
+- [x] 1.4 State builders B: Starbucks braid, AdFlex tariff surface, Meridian process map, GridPeer, 21 clusters, portrait (mask + depth), converge point
+- [x] 1.5 `scripts/build-states.ts` → `public/states/*.bin.gz` + manifest; Canvas2D poster renderer → `public/posters/*`
 - [ ] 1.6 Poster composition: Hero, Method, Flagship
 - [ ] 1.7 Poster composition: Cases (3 rooms), Systems
 - [ ] 1.8 Poster composition: Index, About, Contact
@@ -187,7 +187,8 @@ Then, and only then, write `HANDOFF.md`: the preview URL, what was built, the fi
 | 4 | 0.1 + 0.4 audit + PLAN.md | plan written, assumptions logged | 1d17c2f |
 | 5 | 0.5 profile README username fix | pushed to `claude/elegant-hawking-a419ix` in vedjrr/vedjr02 | 92e3e6e (vedjr02) |
 | — | Phase 0 review | no visual output; plan + content verified | — |
-| 6 | 1.1 + 1.2 tokens, fonts, nav, footer, 9 chapters with real copy | green; screens at 1440/390 checked (type reads as editorial; right side reserved for particles) | (this commit) |
+| 6 | 1.1 + 1.2 tokens, fonts, nav, footer, 9 chapters with real copy | green; screens at 1440/390 checked (type reads as editorial; right side reserved for particles) | 74cbc48 |
+| 7 | 1.3–1.5 state builders (13 states from real data), build-states → 1.18 MB gz, Canvas2D poster renderer → 22 posters | camera framing unit-tested; posters reviewed over 3 passes (density cap per state added) | (this commit) |
 
 ---
 
